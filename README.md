@@ -1,1 +1,0 @@
-# amandamata.github.io
