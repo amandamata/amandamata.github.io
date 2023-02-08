@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="https://amandamata.github.io/css/bootstrap.min.css" />
 
   
-  <title>Categories | Amanda Blog</title>
+  <title>Queue | Amanda Blog</title>
   
 
   <style>
@@ -181,8 +181,40 @@ blockquote,
   
   <div class="container">
     <article>
-      <h1>Categories</h1>
+      <h1>Queue</h1>
+<p>
+  <small class="text-secondary">
+  
+  
+  Feb 8, 2023
+  </small>
+  
 
+<small><code><a href="https://amandamata.github.io/tags/aws">aws</a></code></small>
+
+
+<small><code><a href="https://amandamata.github.io/tags/sqs">sqs</a></code></small>
+
+
+<small><code><a href="https://amandamata.github.io/tags/queue">queue</a></code></small>
+
+  
+
+</p>
+<p>What is a queue?
+A queue is a collection of entities that are maintained in a sequence and can be modified by the addition of entities at one end of the sequence and the removal of entities from the other end of sequence. Wikipedia</p>
+<p>Imagine that we have a user&rsquo;s API.</p>
+<img src="https://amandamata.github.io/img/queue2.png" alt="Some description" class="some-class" style="some-style">
+<p>We can create users in the system and then retrieve them back, maybe update and maybe delete them, send an email to the user, and also make a request to another API.
+In this scenario, if when sending an email and that email fails, that entire request fails and it&rsquo;s necessary to make another request to have the entire process done.</p>
+<img src="https://amandamata.github.io/img/queue1.png" alt="Some description" class="some-class" style="some-style">
+<p>But that does not need to be like this, cuz sending an email and making the request to another API for this flow it&rsquo;s not crucial and could be done later async.</p>
+<p>Here enter the queue concept.
+We could instead of making all those things sync, make only the crucial sync and the rest async by adding in a queue what could be done later.</p>
+<p>To get this done it&rsquo;s necessary to have a consumer service, that will be listening to the queue and do something with the information in the queue, like sending an email.</p>
+<img src="https://amandamata.github.io/img/queue3.png" alt="Some description" class="some-class" style="some-style">
+<p>That makes your system more resilient if something fails to process, it&rsquo;s going back to the queue and then will be reprocessed later.</p>
+<p>To continue studying: SQS Simple Queue Service, AWS</p>
 
     </article>
   </div>
