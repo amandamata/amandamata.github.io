@@ -12,7 +12,8 @@
       <pubDate>Wed, 08 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://amandamata.github.io/pt-pt/queue/</guid>
-      <description>O que é uma fila? Uma fila é uma estrutura de dados dinâmica que admite remoção de elementos e inserção de novos objetos. Mais especificamente, uma fila (= queue) é uma estrutura sujeita à seguinte regra de operação: sempre que houver uma remoção, o elemento removido é o que está na estrutura há mais tempo.
+      <description>en
+O que é uma fila? Uma fila é uma estrutura de dados dinâmica que admite remoção de elementos e inserção de novos objetos. Mais especificamente, uma fila (= queue) é uma estrutura sujeita à seguinte regra de operação: sempre que houver uma remoção, o elemento removido é o que está na estrutura há mais tempo.
 Imagine que temos uma api de usuários
 Com essa API, podemos criar usuários no sistema e receber uma resposta dessa criação, talvez até atualizar ou deletar o usuário, enviar um email para o usuário e fazer uma requisição para outra API.</description>
     </item>
