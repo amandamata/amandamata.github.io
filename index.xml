@@ -5,14 +5,23 @@
     <link>https://amandamata.github.io/</link>
     <description>Recent content on Amanda Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 08 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://amandamata.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 09 Feb 2023 07:55:10 -0300</lastBuildDate><atom:link href="https://amandamata.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Folders in linux</title>
+      <link>https://amandamata.github.io/folders-in-linux/</link>
+      <pubDate>Thu, 09 Feb 2023 07:55:10 -0300</pubDate>
+      
+      <guid>https://amandamata.github.io/folders-in-linux/</guid>
+      <description>en pt-pt</description>
+    </item>
+    
     <item>
       <title>Queue</title>
       <link>https://amandamata.github.io/queue/</link>
       <pubDate>Wed, 08 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://amandamata.github.io/queue/</guid>
-      <description>pt-pt
+      <description>en pt-pt
 What is a queue? A queue is a collection of entities that are maintained in a sequence and can be modified by the addition of entities at one end of the sequence and the removal of entities from the other end of sequence. Wikipedia
 Imagine that we have a user&amp;rsquo;s API.
 We can create users in the system and then retrieve them back, maybe update and maybe delete them, send an email to the user, and also make a request to another API.</description>
@@ -24,7 +33,7 @@ We can create users in the system and then retrieve them back, maybe update and 
       <pubDate>Wed, 25 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://amandamata.github.io/about/</guid>
-      <description>pt-pt
+      <description>en pt-pt
 Me Welcome to my corner of the internet.
 Come on in and make yourself at home.
 My blog is a loose collection of things learned and et cereta. Work I’m a Software Engineer at PagarMe.

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on Amanda Blog</title>
+    <link>https://amandamata.github.io/tags/linux/</link>
+    <description>Recent content in linux on Amanda Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 09 Feb 2023 07:55:10 -0300</lastBuildDate><atom:link href="https://amandamata.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Folders in linux</title>
+      <link>https://amandamata.github.io/folders-in-linux/</link>
+      <pubDate>Thu, 09 Feb 2023 07:55:10 -0300</pubDate>
+      
+      <guid>https://amandamata.github.io/folders-in-linux/</guid>
+      <description>en pt-pt</description>
+    </item>
+    
+  </channel>
+</rss>

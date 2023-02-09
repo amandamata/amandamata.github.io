@@ -5,14 +5,23 @@
     <link>https://amandamata.github.io/pt-pt/</link>
     <description>Recent content on Blog de Amanda</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 08 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://amandamata.github.io/pt-pt/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 09 Feb 2023 07:52:10 -0300</lastBuildDate><atom:link href="https://amandamata.github.io/pt-pt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pastas no linux</title>
+      <link>https://amandamata.github.io/pt-pt/folders-in-linux/</link>
+      <pubDate>Thu, 09 Feb 2023 07:52:10 -0300</pubDate>
+      
+      <guid>https://amandamata.github.io/pt-pt/folders-in-linux/</guid>
+      <description>en pt-pt</description>
+    </item>
+    
     <item>
       <title>Fila</title>
       <link>https://amandamata.github.io/pt-pt/queue/</link>
       <pubDate>Wed, 08 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://amandamata.github.io/pt-pt/queue/</guid>
-      <description>en
+      <description>en pt-pt
 O que é uma fila? Uma fila é uma estrutura de dados dinâmica que admite remoção de elementos e inserção de novos objetos. Mais especificamente, uma fila (= queue) é uma estrutura sujeita à seguinte regra de operação: sempre que houver uma remoção, o elemento removido é o que está na estrutura há mais tempo.
 Imagine que temos uma api de usuários
 Com essa API, podemos criar usuários no sistema e receber uma resposta dessa criação, talvez até atualizar ou deletar o usuário, enviar um email para o usuário e fazer uma requisição para outra API.</description>
@@ -24,7 +33,7 @@ Com essa API, podemos criar usuários no sistema e receber uma resposta dessa cr
       <pubDate>Wed, 25 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://amandamata.github.io/pt-pt/about/</guid>
-      <description>en
+      <description>en pt-pt
 Mim Seja bem vindo ao meu cantinho na internet. Meu blog é uma coleção solta de coisas que eu aprendo e et cetera. Trabalho Sou Software Engineer na PagarMe.
 Sou formada em Ciência da Computação (mas todos sabem que o aprendizado nunca acaba). Contato Quer entrar em contato? Me manda um email aqui YW1hbmRhLm1hdGFAbGl2ZS5jb20= Decodifique a string Base64 aqui Tradução Pretendo postar tanto em inglês quanto em português, foi a ideia que eu tive para tentar melhorar minha escrita.</description>
     </item>
