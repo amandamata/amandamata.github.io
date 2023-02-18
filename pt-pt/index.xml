@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog de Amanda</title>
+    <title>amandamata</title>
     <link>https://amandamata.github.io/pt-pt/</link>
-    <description>Recent content on Blog de Amanda</description>
+    <description>Recent content on amandamata</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 18 Feb 2023 06:12:47 -0300</lastBuildDate><atom:link href="https://amandamata.github.io/pt-pt/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -50,7 +50,10 @@ Com essa API, podemos criar usuários no sistema e receber uma resposta dessa cr
       
       <guid>https://amandamata.github.io/pt-pt/about/</guid>
       <description>en pt-pt
-Mim Seja bem vindo ao meu cantinho na internet. Meu blog é uma coleção solta de coisas que eu aprendo. Trabalho Sou Software Engineer na PagarMe.
+Mim Oi! Meu nome é Amanda, tenho 27 anos.
+Trabalho com tecnologia desde 2014 e com programação desde 2019.
+Seja bem vindo ao meu cantinho na internet.
+Meu blog é uma coleção solta de coisas que eu aprendo. Trabalho Sou Software Engineer na PagarMe.
 Sou formada em Ciência da Computação (mas todos sabem que o aprendizado nunca acaba). Contato Quer entrar em contato? Me manda um email aqui YW1hbmRhLm1hdGFAbGl2ZS5jb20= Decodifique a string Base64 aqui Tradução Pretendo postar tanto em inglês quanto em português, estou tentando melhorar minha escrita em inglês, e acho legal manter o conteúdo traduzido para português também.</description>
     </item>
     

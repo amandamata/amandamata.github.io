@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>c# on Blog de Amanda</title>
+    <title>c# on amandamata</title>
     <link>https://amandamata.github.io/pt-pt/tags/c#/</link>
-    <description>Recent content in c# on Blog de Amanda</description>
+    <description>Recent content in c# on amandamata</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 18 Feb 2023 06:12:47 -0300</lastBuildDate><atom:link href="https://amandamata.github.io/pt-pt/tags/c#/index.xml" rel="self" type="application/rss+xml" />
     <item>
