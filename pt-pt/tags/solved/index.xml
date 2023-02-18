@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>solved on Blog de Amanda</title>
+    <link>https://amandamata.github.io/pt-pt/tags/solved/</link>
+    <description>Recent content in solved on Blog de Amanda</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 18 Feb 2023 06:12:47 -0300</lastBuildDate><atom:link href="https://amandamata.github.io/pt-pt/tags/solved/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Colchetes em uma nova linha no vscode</title>
+      <link>https://amandamata.github.io/pt-pt/curly-brace/</link>
+      <pubDate>Sat, 18 Feb 2023 06:12:47 -0300</pubDate>
+      
+      <guid>https://amandamata.github.io/pt-pt/curly-brace/</guid>
+      <description>en pt-pt
+Essa última semana eu levantei cedo todos os tias, tentando fazer apenas uma coisa: fazer o Visual Studio Code inserir uma nova linha antes dos colchetes {}.
+Eu tenho isso:
+if (true){ // do something } e quero formatar dessa forma:
+if (true) { // do something } Não foi tão facil como parece ser.
+A mesma questão foi encontrada em vários sites, e no stack overflow, e as pessoas desapontadas sem uma solução.</description>
+    </item>
+    
+  </channel>
+</rss>
