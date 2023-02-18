@@ -13,7 +13,7 @@
       
       <guid>https://amandamata.github.io/pt-pt/curly-brace/</guid>
       <description>en pt-pt
-Essa última semana eu levantei cedo todos os tias, tentando fazer apenas uma coisa: fazer o Visual Studio Code inserir uma nova linha antes dos colchetes {}.
+Essa última semana eu levantei cedo todos os dias, tentando fazer apenas uma coisa: fazer o Visual Studio Code inserir uma nova linha antes dos colchetes {}.
 Eu tenho isso:
 if (true){ // do something } e quero formatar dessa forma:
 if (true) { // do something } Não foi tão facil como parece ser.
