@@ -12,7 +12,7 @@
       <pubDate>Sat, 18 Feb 2023 06:13:07 -0300</pubDate>
       
       <guid>https://amandamata.github.io/curly-brace/</guid>
-      <description>en pt-pt
+      <description>posts pt
 This pass week I wake up early every day trying to do only one thing: make Visual Studio Code insert a new line before a curly bracket, braces {}.
 I have this:
 if (true){ // do something } and I want to format it like this:
@@ -25,7 +25,7 @@ if (true) { // do something } Was not as easy thing as may seem. Many sites and 
       <pubDate>Thu, 09 Feb 2023 07:55:10 -0300</pubDate>
       
       <guid>https://amandamata.github.io/folders-in-linux/</guid>
-      <description>en pt-pt
+      <description>posts pt
 You&amp;rsquo;ve just installed linux and you&amp;rsquo;re used to the structure of windows and its directories, so you&amp;rsquo;ll take a look in your file manager looking for the disk C: and you can&amp;rsquo;t find it&amp;hellip; Knowing Linux directories can help administer the system and understand how it works.
 If we analyze windows and linux, they ended up evolving differently in terms of directory structure. Linux is much more like any other system with unix roots like macOS.</description>
     </item>
@@ -36,7 +36,7 @@ If we analyze windows and linux, they ended up evolving differently in terms of 
       <pubDate>Wed, 08 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://amandamata.github.io/queue/</guid>
-      <description>en pt-pt
+      <description>posts pt
 What is a queue? A queue is a collection of entities that are maintained in a sequence and can be modified by the addition of entities at one end of the sequence and the removal of entities from the other end of sequence. Wikipedia
 Imagine that we have a user&amp;rsquo;s API.
 We can create users in the system and then retrieve them back, maybe update and maybe delete them, send an email to the user, and also make a request to another API.</description>
@@ -48,7 +48,7 @@ We can create users in the system and then retrieve them back, maybe update and 
       <pubDate>Wed, 25 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://amandamata.github.io/about/</guid>
-      <description>en pt-pt
+      <description>posts pt
 Hi! My name is Amanda, I&amp;rsquo;m 27 years old.
 I&amp;rsquo;ve been working with technology since 2014 and with programming since 2019.
 Welcome to my corner of the internet.
