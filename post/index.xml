@@ -20,7 +20,7 @@ if (true) { // do something } Was not as easy thing as may seem. Many sites and 
     </item>
     
     <item>
-      <title>Folders in linux</title>
+      <title>Understanding folders in linux</title>
       <link>https://amandamata.github.io/folders-in-linux/</link>
       <pubDate>Thu, 09 Feb 2023 07:55:10 -0300</pubDate>
       
@@ -31,7 +31,7 @@ If we analyze windows and linux, they ended up evolving differently in terms of 
     </item>
     
     <item>
-      <title>Queue</title>
+      <title>Application of queue</title>
       <link>https://amandamata.github.io/queue/</link>
       <pubDate>Wed, 08 Feb 2023 00:00:00 +0000</pubDate>
       

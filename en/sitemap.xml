@@ -106,6 +106,19 @@
                 href="https://amandamata.github.io/tags/vscode/"
                 />
   </url><url>
+    <loc>https://amandamata.github.io/tags/linux/</loc>
+    <lastmod>2023-02-09T07:55:10-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt-pt"
+                href="https://amandamata.github.io/pt-pt/tags/linux/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://amandamata.github.io/tags/linux/"
+                />
+  </url><url>
     <loc>https://amandamata.github.io/folders-in-linux/</loc>
     <lastmod>2023-02-09T07:55:10-03:00</lastmod>
     <xhtml:link
@@ -119,17 +132,17 @@
                 href="https://amandamata.github.io/folders-in-linux/"
                 />
   </url><url>
-    <loc>https://amandamata.github.io/tags/linux/</loc>
-    <lastmod>2023-02-09T07:55:10-03:00</lastmod>
+    <loc>https://amandamata.github.io/queue/</loc>
+    <lastmod>2023-02-08T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-pt"
-                href="https://amandamata.github.io/pt-pt/tags/linux/"
+                href="https://amandamata.github.io/pt-pt/queue/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://amandamata.github.io/tags/linux/"
+                href="https://amandamata.github.io/queue/"
                 />
   </url><url>
     <loc>https://amandamata.github.io/tags/aws/</loc>
@@ -147,19 +160,6 @@
   </url><url>
     <loc>https://amandamata.github.io/tags/queue/</loc>
     <lastmod>2023-02-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://amandamata.github.io/queue/</loc>
-    <lastmod>2023-02-08T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-pt"
-                href="https://amandamata.github.io/pt-pt/queue/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://amandamata.github.io/queue/"
-                />
   </url><url>
     <loc>https://amandamata.github.io/tags/sqs/</loc>
     <lastmod>2023-02-08T00:00:00+00:00</lastmod>
