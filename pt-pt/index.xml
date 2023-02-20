@@ -12,8 +12,7 @@
       <pubDate>Sat, 18 Feb 2023 06:12:47 -0300</pubDate>
       
       <guid>https://amandamata.github.io/pt-pt/curly-brace/</guid>
-      <description>posts en
-Essa última semana eu levantei cedo todos os dias, tentando fazer apenas uma coisa: fazer o Visual Studio Code inserir uma nova linha antes dos colchetes {}.
+      <description>Essa última semana eu levantei cedo todos os dias, tentando fazer apenas uma coisa: fazer o Visual Studio Code inserir uma nova linha antes dos colchetes {}.
 Eu tenho isso:
 if (true){ // do something } e quero formatar dessa forma:
 if (true) { // do something } Não foi tão facil como parece ser.
@@ -26,8 +25,7 @@ A mesma questão foi encontrada em vários sites, e no stack overflow, e as pess
       <pubDate>Thu, 09 Feb 2023 07:52:10 -0300</pubDate>
       
       <guid>https://amandamata.github.io/pt-pt/folders-in-linux/</guid>
-      <description>posts en
-Você acabou de instalar o linux e está acostumado com a estrutura do windows e seus diretórios, então você vai dar uma olhada no seu gestor de arquivos procurando pelo disco C: e não encontra.. Conhecer os diretórios do linux pode ajudar a administrar o sistema e entender como ele funciona.
+      <description>Você acabou de instalar o linux e está acostumado com a estrutura do windows e seus diretórios, então você vai dar uma olhada no seu gestor de arquivos procurando pelo disco C: e não encontra.. Conhecer os diretórios do linux pode ajudar a administrar o sistema e entender como ele funciona.
 Se a gente for analisar o windows e o linux acabaram evoluindo de forma diferente com relação a estrutura de diretórios.</description>
     </item>
     
@@ -37,8 +35,7 @@ Se a gente for analisar o windows e o linux acabaram evoluindo de forma diferent
       <pubDate>Wed, 08 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://amandamata.github.io/pt-pt/queue/</guid>
-      <description>posts en
-O que é uma fila? Uma fila é uma estrutura de dados dinâmica que admite remoção de elementos e inserção de novos objetos. Mais especificamente, uma fila (= queue) é uma estrutura sujeita à seguinte regra de operação: sempre que houver uma remoção, o elemento removido é o que está na estrutura há mais tempo.
+      <description>O que é uma fila? Uma fila é uma estrutura de dados dinâmica que admite remoção de elementos e inserção de novos objetos. Mais especificamente, uma fila (= queue) é uma estrutura sujeita à seguinte regra de operação: sempre que houver uma remoção, o elemento removido é o que está na estrutura há mais tempo.
 Imagine que temos uma api de usuários
 Com essa API, podemos criar usuários no sistema e receber uma resposta dessa criação, talvez até atualizar ou deletar o usuário, enviar um email para o usuário e fazer uma requisição para outra API.</description>
     </item>
@@ -49,12 +46,11 @@ Com essa API, podemos criar usuários no sistema e receber uma resposta dessa cr
       <pubDate>Wed, 25 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://amandamata.github.io/pt-pt/about/</guid>
-      <description>posts en
-Oi! Meu nome é Amanda, tenho 27 anos.
+      <description>Oi! Meu nome é Amanda, tenho 26 anos.
 Trabalho com tecnologia desde 2014 e com programação desde 2019.
 Seja bem vindo ao meu cantinho na internet.
 Meu blog é uma coleção solta de coisas que eu aprendo. Trabalho Sou Software Engineer na PagarMe.
-Sou formada em Ciência da Computação (mas todos sabem que o aprendizado nunca acaba). Contato Quer entrar em contato? Me manda um email aqui YW1hbmRhLm1hdGFAbGl2ZS5jb20= Decodifique a string Base64 aqui Tradução Pretendo postar tanto em inglês quanto em português, estou tentando melhorar minha escrita em inglês, e acho legal manter o conteúdo traduzido para português também.</description>
+Sou formada em Ciência da Computação (mas todos sabem que o aprendizado nunca acaba). Contato Quer entrar em contato? Me envie um e-mail YW1hbmRhLm1hdGFAbGl2ZS5jb20= Decodifique a string Base64 aqui RSS Não perca nenhum post RSS feed Tradução Pretendo postar tanto em inglês quanto em português, estou tentando melhorar minha escrita em inglês, e acho legal manter o conteúdo traduzido para português também.</description>
     </item>
     
   </channel>

@@ -12,8 +12,7 @@
       <pubDate>Sat, 18 Feb 2023 06:13:07 -0300</pubDate>
       
       <guid>https://amandamata.github.io/curly-brace/</guid>
-      <description>posts pt
-This pass week I wake up early every day trying to do only one thing: make Visual Studio Code insert a new line before a curly bracket, braces {}.
+      <description>This pass week I wake up early every day trying to do only one thing: make Visual Studio Code insert a new line before a curly bracket, braces {}.
 I have this:
 if (true){ // do something } and I want to format it like this:
 if (true) { // do something } Was not as easy thing as may seem. Many sites and stack overflow have the same question, with many disappointing people without a resolution.</description>
@@ -25,8 +24,7 @@ if (true) { // do something } Was not as easy thing as may seem. Many sites and 
       <pubDate>Thu, 09 Feb 2023 07:55:10 -0300</pubDate>
       
       <guid>https://amandamata.github.io/folders-in-linux/</guid>
-      <description>posts pt
-You&amp;rsquo;ve just installed linux and you&amp;rsquo;re used to the structure of windows and its directories, so you&amp;rsquo;ll take a look in your file manager looking for the disk C: and you can&amp;rsquo;t find it&amp;hellip; Knowing Linux directories can help administer the system and understand how it works.
+      <description>You&amp;rsquo;ve just installed linux and you&amp;rsquo;re used to the structure of windows and its directories, so you&amp;rsquo;ll take a look in your file manager looking for the disk C: and you can&amp;rsquo;t find it&amp;hellip; Knowing Linux directories can help administer the system and understand how it works.
 If we analyze windows and linux, they ended up evolving differently in terms of directory structure. Linux is much more like any other system with unix roots like macOS.</description>
     </item>
     
@@ -36,8 +34,7 @@ If we analyze windows and linux, they ended up evolving differently in terms of 
       <pubDate>Wed, 08 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://amandamata.github.io/queue/</guid>
-      <description>posts pt
-What is a queue? A queue is a collection of entities that are maintained in a sequence and can be modified by the addition of entities at one end of the sequence and the removal of entities from the other end of sequence. Wikipedia
+      <description>What is a queue? A queue is a collection of entities that are maintained in a sequence and can be modified by the addition of entities at one end of the sequence and the removal of entities from the other end of sequence. Wikipedia
 Imagine that we have a user&amp;rsquo;s API.
 We can create users in the system and then retrieve them back, maybe update and maybe delete them, send an email to the user, and also make a request to another API.</description>
     </item>
@@ -48,13 +45,12 @@ We can create users in the system and then retrieve them back, maybe update and 
       <pubDate>Wed, 25 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://amandamata.github.io/about/</guid>
-      <description>posts pt
-Hi! My name is Amanda, I&amp;rsquo;m 27 years old.
+      <description>Hi! My name is Amanda, I&amp;rsquo;m 26 years old.
 I&amp;rsquo;ve been working with technology since 2014 and with programming since 2019.
 Welcome to my corner of the internet.
 Come on in and make yourself at home.
 My blog is a loose collection of things learned. Work I’m a Software Engineer at PagarMe.
-I&amp;rsquo;m graduated in Computer Science (but we all know the learning never ends). Contact Wanna get in touch?</description>
+I&amp;rsquo;m graduated in Computer Science (but we all know the learning never ends). Contact Wanna get in touch? Email me at YW1hbmRhLm1hdGFAbGl2ZS5jb20= Decode that Base64 string here RSS Don&amp;rsquo;t miss any post, subscribe to this feed.</description>
     </item>
     
   </channel>
