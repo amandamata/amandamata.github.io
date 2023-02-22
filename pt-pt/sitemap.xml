@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://amandamata.github.io/pt-pt/</loc>
-    <lastmod>2023-02-18T06:12:47-03:00</lastmod>
+    <lastmod>2023-02-22T07:19:25-03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -15,17 +15,95 @@
                 href="https://amandamata.github.io/pt-pt/"
                 />
   </url><url>
-    <loc>https://amandamata.github.io/pt-pt/tags/c#/</loc>
-    <lastmod>2023-02-18T06:12:47-03:00</lastmod>
+    <loc>https://amandamata.github.io/pt-pt/tags/aws/</loc>
+    <lastmod>2023-02-22T07:19:25-03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://amandamata.github.io/tags/c#/"
+                href="https://amandamata.github.io/tags/aws/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-pt"
-                href="https://amandamata.github.io/pt-pt/tags/c#/"
+                href="https://amandamata.github.io/pt-pt/tags/aws/"
+                />
+  </url><url>
+    <loc>https://amandamata.github.io/pt-pt/tags/dotnet/</loc>
+    <lastmod>2023-02-22T07:19:25-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://amandamata.github.io/tags/dotnet/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt-pt"
+                href="https://amandamata.github.io/pt-pt/tags/dotnet/"
+                />
+  </url><url>
+    <loc>https://amandamata.github.io/pt-pt/queue-csharp-sqs/</loc>
+    <lastmod>2023-02-22T07:19:25-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://amandamata.github.io/queue-csharp-sqs/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt-pt"
+                href="https://amandamata.github.io/pt-pt/queue-csharp-sqs/"
+                />
+  </url><url>
+    <loc>https://amandamata.github.io/pt-pt/post/</loc>
+    <lastmod>2023-02-22T07:19:25-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://amandamata.github.io/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt-pt"
+                href="https://amandamata.github.io/pt-pt/post/"
+                />
+  </url><url>
+    <loc>https://amandamata.github.io/pt-pt/tags/queue/</loc>
+    <lastmod>2023-02-22T07:19:25-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://amandamata.github.io/tags/queue/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt-pt"
+                href="https://amandamata.github.io/pt-pt/tags/queue/"
+                />
+  </url><url>
+    <loc>https://amandamata.github.io/pt-pt/tags/sqs/</loc>
+    <lastmod>2023-02-22T07:19:25-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://amandamata.github.io/tags/sqs/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt-pt"
+                href="https://amandamata.github.io/pt-pt/tags/sqs/"
+                />
+  </url><url>
+    <loc>https://amandamata.github.io/pt-pt/tags/</loc>
+    <lastmod>2023-02-22T07:19:25-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://amandamata.github.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt-pt"
+                href="https://amandamata.github.io/pt-pt/tags/"
                 />
   </url><url>
     <loc>https://amandamata.github.io/pt-pt/curly-brace/</loc>
@@ -54,19 +132,6 @@
                 href="https://amandamata.github.io/pt-pt/tags/omnisharp/"
                 />
   </url><url>
-    <loc>https://amandamata.github.io/pt-pt/post/</loc>
-    <lastmod>2023-02-18T06:12:47-03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://amandamata.github.io/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-pt"
-                href="https://amandamata.github.io/pt-pt/post/"
-                />
-  </url><url>
     <loc>https://amandamata.github.io/pt-pt/tags/solved/</loc>
     <lastmod>2023-02-18T06:12:47-03:00</lastmod>
     <xhtml:link
@@ -78,19 +143,6 @@
                 rel="alternate"
                 hreflang="pt-pt"
                 href="https://amandamata.github.io/pt-pt/tags/solved/"
-                />
-  </url><url>
-    <loc>https://amandamata.github.io/pt-pt/tags/</loc>
-    <lastmod>2023-02-18T06:12:47-03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://amandamata.github.io/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-pt"
-                href="https://amandamata.github.io/pt-pt/tags/"
                 />
   </url><url>
     <loc>https://amandamata.github.io/pt-pt/tags/vscode/</loc>
@@ -130,35 +182,6 @@
                 rel="alternate"
                 hreflang="pt-pt"
                 href="https://amandamata.github.io/pt-pt/tags/linux/"
-                />
-  </url><url>
-    <loc>https://amandamata.github.io/pt-pt/tags/aws/</loc>
-    <lastmod>2023-02-08T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://amandamata.github.io/tags/aws/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-pt"
-                href="https://amandamata.github.io/pt-pt/tags/aws/"
-                />
-  </url><url>
-    <loc>https://amandamata.github.io/pt-pt/tags/fila/</loc>
-    <lastmod>2023-02-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://amandamata.github.io/pt-pt/tags/sqs/</loc>
-    <lastmod>2023-02-08T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://amandamata.github.io/tags/sqs/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-pt"
-                href="https://amandamata.github.io/pt-pt/tags/sqs/"
                 />
   </url><url>
     <loc>https://amandamata.github.io/pt-pt/queue/</loc>

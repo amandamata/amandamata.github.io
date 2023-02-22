@@ -5,7 +5,18 @@
     <link>https://amandamata.github.io/pt-pt/</link>
     <description>Recent content on amandamata</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 18 Feb 2023 06:12:47 -0300</lastBuildDate><atom:link href="https://amandamata.github.io/pt-pt/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Feb 2023 07:19:25 -0300</lastBuildDate><atom:link href="https://amandamata.github.io/pt-pt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Implementando um publisher e consumer SQS usando dotnet</title>
+      <link>https://amandamata.github.io/pt-pt/queue-csharp-sqs/</link>
+      <pubDate>Wed, 22 Feb 2023 07:19:25 -0300</pubDate>
+      
+      <guid>https://amandamata.github.io/pt-pt/queue-csharp-sqs/</guid>
+      <description>Nesse post, eu passei a introdução de uma fila e como utilizá-la. Agora, eu vou explicar como implementar um consumer e sqs publisher usando c# dotnet. SQS O que é SQS?
+SQS (Simple Queue Service) é um serviço da Amazon que permite que você envie, salve, e receba mensagens entre aplicações, sem que você perca essas mensagens caso o serviço esteja indisponível.
+A melhor parte de tudo isso é que, para você pagar por esse serviço, você teria que enviar mais de um milhão de requisições por mês, para que a amazon te envie uma cobrança.</description>
+    </item>
+    
     <item>
       <title>Colchetes em uma nova linha no vscode</title>
       <link>https://amandamata.github.io/pt-pt/curly-brace/</link>

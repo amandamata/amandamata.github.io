@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.110.0">
+
+  
+  <meta name="description" content="amandamata">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://amandamata.github.io/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://amandamata.github.io/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://amandamata.github.io/favicon-16x16.png">
+
+  
+  <link rel="mask-icon" href="https://amandamata.github.io/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://amandamata.github.io/css/bootstrap.min.css" />
+
+  
+  <title>Implementando um publisher e consumer SQS usando dotnet | amandamata</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #007bff;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #0056b3;
+}
+
+
+
+.custom-navbar {
+  background-color: #212529;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+
+
+.container {
+  max-width: 800px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: .9em;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/pt-pt/">Posts</a>
+    
+    <a href="/pt-pt/tags/">Tags</a>
+    
+    <a href="/pt-pt/about/">Sobre</a>
+    
+    
+    <a href="https://amandamata.github.io/">en</a>
+    
+    <a href="https://amandamata.github.io/pt-pt/">pt</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h1>Implementando um publisher e consumer SQS usando dotnet</h1>
+<p>
+  <small class="text-secondary">
+  
+  
+  Feb 22, 2023
+  </small>
+  
+
+<small><code><a href="https://amandamata.github.io/tags/queue">queue</a></code></small>
+
+
+<small><code><a href="https://amandamata.github.io/tags/sqs">sqs</a></code></small>
+
+
+<small><code><a href="https://amandamata.github.io/tags/dotnet">dotnet</a></code></small>
+
+
+<small><code><a href="https://amandamata.github.io/tags/aws">aws</a></code></small>
+
+  
+
+</p>
+<p>Nesse <a href="/pt-pt/queue">post</a>, eu passei a introdução de uma fila e como utilizá-la. Agora, eu vou explicar como implementar um consumer e sqs publisher usando c# dotnet.
+<br/><br/></p>
+<h5 id="sqs">SQS</h5>
+<p>O que é SQS?</p>
+<p>SQS (Simple Queue Service) é um serviço da Amazon que permite que você envie, salve, e receba mensagens entre aplicações, sem que você perca essas mensagens caso o serviço esteja indisponível.</p>
+<p>A melhor parte de tudo isso é que, para você pagar por esse serviço, você teria que enviar mais de um milhão de requisições por mês, para que a amazon te envie uma cobrança.</p>
+<p>Para começar pe necessário criar uma conta na <a href="https://aws.amazon.com/">aws</a> e então ir para o <a href="https://console.aws.amazon.com">console</a>.</p>
+<p>Na área do console, digite SQS no campo de busca e entre na primeira opção, Simple Queue Service.</p>
+<p>Clique em Create queue, e adicione o nome para a fila, e então vá para o final da página e clique em Create queue. Você pode alterar os valores que vem por padrão, mas para esse exemplos o padrão já está de acordo.
+<br/><br/></p>
+<h5 id="aws-command-line-interface">AWS Command Line Interface</h5>
+<p>A AWS Command Line Interface permite que façamos mudanças e requisições diretamente pelo console localmente, sem a necessidade de acessar o AWS console no navegador.</p>
+<p>Se por exemplo quisermos listar os buckets:</p>
+<pre tabindex="0"><code>aws s3api list-buckets
+</code></pre><p>Para conseguirmos fazer isso, é necessário instalar o cli, o tutorial para Windows, Linux e macOs está <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">aqui</a>.</p>
+<p>Depois da instalação, é necessário autenticar sua máquina na aws.</p>
+<p>Na aws console, clique em seu nome e vá até Security Credentials, lá você precisa criar uma Access Key.</p>
+<p>Então em seu console você vai digitar:</p>
+<pre tabindex="0"><code>aws configure
+</code></pre><p>Então coloque a sua access key e token quando solicitado.</p>
+<blockquote>
+<p>Importante, no console da aws você possui uma região, a minha é us-east-1, você pode ver a sua consultando a url: https://<em><strong>us-east-1</strong></em>.console.aws.amazon.com/</p>
+</blockquote>
+<p>Essa região deve ser passada durante a configuração aws no console, para que consiga utilizar completamente as features via console localmente.</p>
+<p>Depois da configuração finalizada, você poderá executar a listagem de buckets.</p>
+<pre tabindex="0"><code>aws s3api list-buckets
+</code></pre><br/>
+<h5 id="publisher">Publisher</h5>
+<p>O que é um publisher?</p>
+<p>Um publisher é um serviço que vai pegar uma informação que algo mudou por exemplo e enviar essa informação para a fila.
+No exemplo que utilizei no post sobre a fila, o publisher estava dentro da API, e quando um novo usuário era criado a informação era enviada para a fila.</p>
+<p>Então com tudo configurado, agora vamos criar o publisher.</p>
+<p>Para deixar simples, o exemplo aqui vai ser apenas o publisher, então você pode pegar a implementação e aplicar na sua API.</p>
+<p>Vamos utilizar o Console App</p>
+<p>Crie uma nova pasta:</p>
+<pre tabindex="0"><code>mkdir publisher
+</code></pre><p>Entre na pasta:</p>
+<pre tabindex="0"><code>cd publisher
+</code></pre><p>Crie o projeto:</p>
+<pre tabindex="0"><code>dotnet new console
+</code></pre><p>Um modelo é necessário:</p>
+<pre tabindex="0"><code>public class CustomerCreated
+{
+  public Guid Id { get; init; }
+  public string FullName { get; init; }
+  public string Email { get; init; }
+  public DateTime DateOfBirth { get; init; }
+}
+</code></pre><p>E instale o <a href="https://www.nuget.org/packages/AWSSDK.SQS">AWS SDK</a></p>
+<pre tabindex="0"><code>dotnet add package AWSSDK.SQS --version 3.7.100.78
+</code></pre><p>Então na classe Program precisamos criar o request e enviá-lo:</p>
+<pre tabindex="0"><code>using System.Text.Json;
+using Amazon.SQS;
+using Amazon.SQS.Model;
+
+var sqsCLient = new AmazonSQSClient();
+
+var customer = new CustomerCreated
+{
+  Id = Guid.NewGuid(),
+  FullName = &#34;Amanda Mata&#34;,
+  Email = &#34;email@email.com&#34;,
+  DateOfBirth = new DateTime(1996, 06, 18)
+};
+
+var queueUrlResponse = await sqsCLient.GetQueueUrlAsync(&#34;customers&#34;);
+
+var sendMessageRequest = new SendMessageRequest
+{
+  QueueUrl = queueUrlResponse.QueueUrl, 
+  MessageBody = JsonSerializer.Serialize(customer),
+  MessageAttributes = new Dictionary&lt;string, MessageAttributeValue&gt;
+  {
+      {
+          &#34;MessageType&#34;, new MessageAttributeValue
+          {
+              DataType = &#34;String&#34;, 
+              StringValue = nameof(CustomerCreated)
+          }
+      }
+  }
+};
+
+var response = await sqsCLient.SendMessageAsync(sendMessageRequest);
+
+Console.WriteLine();
+</code></pre><blockquote>
+<p>No sqsCLient.GetQueueUrlAsync(&ldquo;customers&rdquo;) eu utilizei &ldquo;customers&rdquo; porque esse é o nome da minha fila</p>
+</blockquote>
+<br/>
+<h5 id="consumer">Consumer</h5>
+<p>O que é um consumer?</p>
+<p>Um consumer é o serviço que irá escutar a fila.</p>
+<p>Vamos utilizar o Console App</p>
+<p>Crie uma nova pasta:</p>
+<pre tabindex="0"><code>mkdir consumer
+</code></pre><p>Entre na pasta:</p>
+<pre tabindex="0"><code>cd consumer
+</code></pre><p>Crie o projeto:</p>
+<pre tabindex="0"><code>dotnet new console
+</code></pre><p>Um modelo é necessário:</p>
+<pre tabindex="0"><code>public class CustomerCreated
+{
+  public Guid Id { get; init; }
+  public string FullName { get; init; }
+  public string Email { get; init; }
+  public DateTime DateOfBirth { get; init; }
+}
+</code></pre><p>E instale o <a href="https://www.nuget.org/packages/AWSSDK.SQS">AWS SDK</a></p>
+<pre tabindex="0"><code>dotnet add package AWSSDK.SQS --version 3.7.100.78
+</code></pre><p>Então na classe Program precisamos receber a requisição:</p>
+<pre tabindex="0"><code>using Amazon.SQS;
+using Amazon.SQS.Model;
+	 
+var cts = new CancellationTokenSource();
+var sqsCLient = new AmazonSQSClient();
+var queueUrlResponse = await sqsCLient.GetQueueUrlAsync(&#34;customers&#34;);
+var receiveMessageRequest = new ReceiveMessageRequest
+{
+  QueueUrl = queueUrlResponse.QueueUrl,
+  AttributeNames = new List&lt;string&gt;{ &#34;All&#34; },
+  MessageAttributeNames = new List&lt;string&gt;{ &#34;All&#34; }
+};
+	 
+while(!cts.IsCancellationRequested)
+{
+  var response = await sqsCLient.ReceiveMessageAsync(receiveMessageRequest, cts.Token);
+  response.Messages.ForEach(async message =&gt; {
+    Console.WriteLine($&#34;Message Id: { message.MessageId }&#34;);
+    Console.WriteLine($&#34;Message Body: { message.Body }&#34;);
+    await sqsCLient.DeleteMessageAsync(queueUrlResponse.QueueUrl, message.ReceiptHandle);
+  });
+
+  await Task.Delay(3000);
+}
+
+Console.WriteLine();
+</code></pre><br/>
+<p>Agora o publisher e o consumer estão criados, você pode verificar as mensagens no aws console, mas apenas executando o publisher e o consumer você vai conseguir ver as mensagens sendo enviadas e sendo recebidas.</p>
+<hr>
+<p>Eu criei esse post para meus estudos, os aprendizados passados aqui foram obtidos através do curso <a href="https://nickchapsas.com/p/cloud-fundamentals-aws-services-for-c-developers">Cloud Fundamentals: AWS Services for C# Developers course</a>.</p>
+
+    </article>
+  </div>
+
+  
+  
+  
+
+  
+
+  
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#216942",
+      "text": "#b2d192"
+    },
+    "button": {
+      "background": "#afed71"
+    }
+  }
+})});
+</script>
+
+</body>
+
+</html>
