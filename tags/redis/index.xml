@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>redis on amandamata</title>
+    <link>https://amandamata.github.io/tags/redis/</link>
+    <description>Recent content in redis on amandamata</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 25 Apr 2023 07:42:55 -0300</lastBuildDate><atom:link href="https://amandamata.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Implementing a redis cache in dotnet</title>
+      <link>https://amandamata.github.io/redis/</link>
+      <pubDate>Tue, 25 Apr 2023 07:42:55 -0300</pubDate>
+      
+      <guid>https://amandamata.github.io/redis/</guid>
+      <description>Recently I had to implement a cache in an application to avoid unnecessary queries to the database, and that was truly cool. I&amp;rsquo;ve worked with Redis in the past, but I think I did it the wrong way because implementing a cache with Redis has never been so cool.</description>
+    </item>
+    
+  </channel>
+</rss>
