@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on amandamata</title>
+    <link>https://amandamata.github.io/tags/git/</link>
+    <description>Recent content in git on amandamata</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 30 May 2023 14:01:29 -0300</lastBuildDate><atom:link href="https://amandamata.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to remove sensitive information from commit history</title>
+      <link>https://amandamata.github.io/bfg/</link>
+      <pubDate>Tue, 30 May 2023 14:01:29 -0300</pubDate>
+      
+      <guid>https://amandamata.github.io/bfg/</guid>
+      <description>Today I learned something extremely useful: how to efficiently remove sensitive information from commit history.
+I believe that at some point, we have all made the mistake of accidentally pushing sensitive information to a repository on GitHub. Simply deleting the information does not solve the problem because the commit history will still show the previous version with that sensitive information.
+To address this issue, people often use git-filter-branch. However, I would like to introduce an even better alternative: BFG.</description>
+    </item>
+    
+  </channel>
+</rss>

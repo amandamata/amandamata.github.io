@@ -31,13 +31,7 @@
   <link rel="stylesheet" href="https://amandamata.github.io/css/bootstrap.min.css" />
 
   
-  
-  
-    
-      
-    
-  
-  <title>Posts | amandamata</title>
+  <title>Como apagar uma informação sensível do histórico de commits | amandamata</title>
   
 
   <style>
@@ -189,117 +183,58 @@ blockquote,
   
   <div class="container">
     <article>
-      
-
+      <h1>Como apagar uma informação sensível do histórico de commits</h1>
+<p>
+  <small class="text-secondary">
   
-    
   
-
-<h1>Posts</h1>
-
-
-
-  <p>
-    <a href="https://amandamata.github.io/pt-pt/bfg/">Como apagar uma informação sensível do histórico de commits</a>
-    
-    
-    <br>
-    <small class="text-secondary">May 30, 2023</small>
-    
+  May 30, 2023
+  </small>
+  
 
 <small><code><a href="https://amandamata.github.io/tags/git">git</a></code></small>
 
-    
-  </p>
+  
 
-  <p>
-    <a href="https://amandamata.github.io/pt-pt/redis/">Implementando cache Redis com dotnet</a>
-    
-    
-    <br>
-    <small class="text-secondary">Apr 25, 2023</small>
-    
-
-<small><code><a href="https://amandamata.github.io/tags/cache">cache</a></code></small>
-
-
-<small><code><a href="https://amandamata.github.io/tags/redis">redis</a></code></small>
-
-
-<small><code><a href="https://amandamata.github.io/tags/dotnet">dotnet</a></code></small>
-
-    
-  </p>
-
-  <p>
-    <a href="https://amandamata.github.io/pt-pt/queue-csharp-sqs/">Implementando um publisher e consumer SQS usando dotnet</a>
-    
-    
-    <br>
-    <small class="text-secondary">Feb 22, 2023</small>
-    
-
-<small><code><a href="https://amandamata.github.io/tags/queue">queue</a></code></small>
-
-
-<small><code><a href="https://amandamata.github.io/tags/sqs">sqs</a></code></small>
-
-
-<small><code><a href="https://amandamata.github.io/tags/dotnet">dotnet</a></code></small>
-
-
-<small><code><a href="https://amandamata.github.io/tags/aws">aws</a></code></small>
-
-    
-  </p>
-
-  <p>
-    <a href="https://amandamata.github.io/pt-pt/curly-brace/">Colchetes em uma nova linha no vscode</a>
-    
-    
-    <br>
-    <small class="text-secondary">Feb 18, 2023</small>
-    
-
-<small><code><a href="https://amandamata.github.io/tags/vscode">vscode</a></code></small>
-
-
-<small><code><a href="https://amandamata.github.io/tags/solved">solved</a></code></small>
-
-
-<small><code><a href="https://amandamata.github.io/tags/dotnet">dotnet</a></code></small>
-
-
-<small><code><a href="https://amandamata.github.io/tags/omnisharp">omnisharp</a></code></small>
-
-    
-  </p>
-
-  <p>
-    <a href="https://amandamata.github.io/pt-pt/folders-in-linux/">Ententendo as pastas no linux</a>
-    
-    
-    <br>
-    <small class="text-secondary">Feb 9, 2023</small>
-    
-
-<small><code><a href="https://amandamata.github.io/tags/linux">linux</a></code></small>
-
-    
-  </p>
-
-  <p>
-    <a href="https://amandamata.github.io/pt-pt/queue/">Usos para uma fila</a>
-    
-    
-    <br>
-    <small class="text-secondary">Feb 8, 2023</small>
-    
-
-<small><code><a href="https://amandamata.github.io/tags/queue">queue</a></code></small>
-
-    
-  </p>
+</p>
+<p>Hoje aprendi algo extremamente útil: como remover informações sensíveis do histórico de commits de forma eficiente.</p>
+<p>Acredito que em algum momento todos nós cometemos o erro de enviar acidentalmente informações sensíveis para um repositório no GitHub, e simplesmente apagar a informação não resolve o problema, uma vez que o histórico de commits ainda mostrará a versão anterior com essas informações.</p>
+<p>Para solucionar essa questão, as pessoas costumam utilizar o git-filter-branch. No entanto, gostaria de apresentar uma alternativa ainda melhor: o BFG.</p>
+<p>O BFG é uma ferramenta poderosa e fácil de usar que permite remover informações confidenciais do histórico de commits do seu repositório de forma segura. Ele oferece uma solução mais rápida e eficiente em comparação com o git-filter-branch.</br></br></p>
+<h5 id="cenário">Cenário</h5>
+<p>Temos o repositório <a href="https://github.com/amandamata/how-to-use-bfg">how-to-use-bfg</a></p>
+<p>Nesse repositório existia um appsettings.json com informações sensiveis
+<img src="https://amandamata.github.io/img/bfg1.png" alt="Some description" class="some-class" style="some-style"></p>
+<p>Eu exclui essa informação sensivel, fiz o commit e push, mas no histórico essa informação sensivel ainda aparece
+<img src="https://amandamata.github.io/img/bfg2.png" alt="Some description" class="some-class" style="some-style">
+</br></br></p>
+<h5 id="como-utilizar">Como utilizar</h5>
+<p>O tutorial no site do BFG não é difícil, mas vou descrever aqui de forma mais detalhada para tornar o processo mais compreensível e simples de seguir.</p>
+<p>Para utilizar o BFG, siga estes passos:</p>
+<ol>
+<li>Baixe o arquivo .jar do site do BFG.</li>
+<li>Faça um clone do repositório atual usando o comando:
+<pre tabindex="0"><code>git clone git@github.com:amandamata/how-to-use-bfg.git --mirror
+</code></pre></li>
+<li>Crie um arquivo de referência contendo o valor que deseja remover do histórico de commits. Por exemplo:
+<pre tabindex="0"><code>echo *VyieIqbij35MYV5&amp;bIakKmq1Z &gt; auth.txt
+</code></pre></li>
+<li>Execute o BFG, passando o valor de referência, usando o seguinte comando:
+<pre tabindex="0"><code>java -jar ~/Downloads/bfg-1.14.0.jar --replace-text auth.txt how-to-use-bfg.git
+</code></pre></li>
+<li>Acesse o diretório do repositório clonado:
+<pre tabindex="0"><code>cd how-to-use-bfg.git
+</code></pre></li>
+<li>Execute o seguinte comando:
+<pre tabindex="0"><code>git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive
+</code></pre></li>
+<li>Faça o push das alterações:
+<pre tabindex="0"><code>git push
+</code></pre></li>
+</ol>
+<p>Após seguir esses passos, o histórico de commits do seu repositório será atualizado e as informações sensíveis serão removidas.</p>
+<img src="https://amandamata.github.io/img/bfg3.png" alt="Some description" class="some-class" style="some-style">
+<p>Experimente o BFG e garanta que suas informações confidenciais estejam protegidas no histórico de commits.</p>
 
     </article>
   </div>
