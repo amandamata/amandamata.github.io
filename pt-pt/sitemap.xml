@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://amandamata.github.io/pt-pt/</loc>
-    <lastmod>2023-05-30T14:01:29-03:00</lastmod>
+    <lastmod>2023-11-13T18:19:29-03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -13,6 +13,58 @@
                 rel="alternate"
                 hreflang="pt-pt"
                 href="https://amandamata.github.io/pt-pt/"
+                />
+  </url><url>
+    <loc>https://amandamata.github.io/pt-pt/post/</loc>
+    <lastmod>2023-11-13T18:19:29-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://amandamata.github.io/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt-pt"
+                href="https://amandamata.github.io/pt-pt/post/"
+                />
+  </url><url>
+    <loc>https://amandamata.github.io/pt-pt/tags/</loc>
+    <lastmod>2023-11-13T18:19:29-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://amandamata.github.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt-pt"
+                href="https://amandamata.github.io/pt-pt/tags/"
+                />
+  </url><url>
+    <loc>https://amandamata.github.io/pt-pt/tags/telemetry/</loc>
+    <lastmod>2023-11-13T18:19:29-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://amandamata.github.io/tags/telemetry/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt-pt"
+                href="https://amandamata.github.io/pt-pt/tags/telemetry/"
+                />
+  </url><url>
+    <loc>https://amandamata.github.io/pt-pt/telemetry/</loc>
+    <lastmod>2023-11-13T18:19:29-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://amandamata.github.io/telemetry/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt-pt"
+                href="https://amandamata.github.io/pt-pt/telemetry/"
                 />
   </url><url>
     <loc>https://amandamata.github.io/pt-pt/bfg/</loc>
@@ -39,32 +91,6 @@
                 rel="alternate"
                 hreflang="pt-pt"
                 href="https://amandamata.github.io/pt-pt/tags/git/"
-                />
-  </url><url>
-    <loc>https://amandamata.github.io/pt-pt/post/</loc>
-    <lastmod>2023-05-30T14:01:29-03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://amandamata.github.io/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-pt"
-                href="https://amandamata.github.io/pt-pt/post/"
-                />
-  </url><url>
-    <loc>https://amandamata.github.io/pt-pt/tags/</loc>
-    <lastmod>2023-05-30T14:01:29-03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://amandamata.github.io/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-pt"
-                href="https://amandamata.github.io/pt-pt/tags/"
                 />
   </url><url>
     <loc>https://amandamata.github.io/pt-pt/tags/cache/</loc>

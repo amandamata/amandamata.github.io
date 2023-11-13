@@ -6,43 +6,45 @@
     <description>Recent content in Posts on amandamata</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-pt</language>
-    <lastBuildDate>Tue, 30 May 2023 14:01:29 -0300</lastBuildDate><atom:link href="https://amandamata.github.io/pt-pt/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Nov 2023 18:19:29 -0300</lastBuildDate>
+    <atom:link href="https://amandamata.github.io/pt-pt/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Um jeito fácil de medir a performance do seu método</title>
+      <link>https://amandamata.github.io/pt-pt/telemetry/</link>
+      <pubDate>Mon, 13 Nov 2023 18:19:29 -0300</pubDate>
+      <guid>https://amandamata.github.io/pt-pt/telemetry/</guid>
+      <description>E se você quiser medir o tempo de execução de um método? Existem várias razões para isso, seja para login, profiling, medição de desempenho geral ou rastreamento de degradação ao longo do tempo. A coleta dessas métricas é um aspecto crucial de qualquer aplicação em produção.
+Existem diversos métodos para fazer isso, incluindo diferentes bibliotecas que agregam dados de telemetria. Embora ofereçam insights abrangentes, às vezes você pode preferir uma abordagem mais direta.</description>
+    </item>
     <item>
       <title>Como apagar uma informação sensível do histórico de commits</title>
       <link>https://amandamata.github.io/pt-pt/bfg/</link>
       <pubDate>Tue, 30 May 2023 14:01:29 -0300</pubDate>
-      
       <guid>https://amandamata.github.io/pt-pt/bfg/</guid>
       <description>Hoje aprendi algo extremamente útil: como remover informações sensíveis do histórico de commits de forma eficiente.
 Acredito que em algum momento todos nós cometemos o erro de enviar acidentalmente informações sensíveis para um repositório no GitHub, e simplesmente apagar a informação não resolve o problema, uma vez que o histórico de commits ainda mostrará a versão anterior com essas informações.
 Para solucionar essa questão, as pessoas costumam utilizar o git-filter-branch. No entanto, gostaria de apresentar uma alternativa ainda melhor: o BFG.</description>
     </item>
-    
     <item>
       <title>Implementando cache Redis com dotnet</title>
       <link>https://amandamata.github.io/pt-pt/redis/</link>
       <pubDate>Tue, 25 Apr 2023 07:42:55 -0300</pubDate>
-      
       <guid>https://amandamata.github.io/pt-pt/redis/</guid>
       <description>Recentemente tive que implementar um cache em uma aplicação para evitar consultas desnecessárias ao banco de dados, e isso foi muito legal. Já trabalhei com Redis no passado, mas acho que fiz da maneira errada porque implementar um cache com Redis nunca foi tão legal. Redis x Mem cached O Redis é quase como um banco noSql, mas ele é ainda melhor pois armazena os dados com chave e valor e com isso fica muito mais fácil de utilizar ele como um cache.</description>
     </item>
-    
     <item>
       <title>Implementando um publisher e consumer SQS usando dotnet</title>
       <link>https://amandamata.github.io/pt-pt/queue-csharp-sqs/</link>
       <pubDate>Wed, 22 Feb 2023 07:19:25 -0300</pubDate>
-      
       <guid>https://amandamata.github.io/pt-pt/queue-csharp-sqs/</guid>
       <description>Nesse post, eu passei a introdução de uma fila e como utilizá-la. Agora, eu vou explicar como implementar um consumer e sqs publisher usando c# dotnet. SQS O que é SQS?
 SQS (Simple Queue Service) é um serviço da Amazon que permite que você envie, salve, e receba mensagens entre aplicações, sem que você perca essas mensagens caso o serviço esteja indisponível.
 A melhor parte de tudo isso é que, para você pagar por esse serviço, você teria que enviar mais de um milhão de requisições por mês, para que a amazon te envie uma cobrança.</description>
     </item>
-    
     <item>
       <title>Colchetes em uma nova linha no vscode</title>
       <link>https://amandamata.github.io/pt-pt/curly-brace/</link>
       <pubDate>Sat, 18 Feb 2023 06:12:47 -0300</pubDate>
-      
       <guid>https://amandamata.github.io/pt-pt/curly-brace/</guid>
       <description>Essa última semana eu levantei cedo todos os dias, tentando fazer apenas uma coisa: fazer o Visual Studio Code inserir uma nova linha antes dos colchetes {}.
 Eu tenho isso:
@@ -50,27 +52,22 @@ if (true){ // do something } e quero formatar dessa forma:
 if (true) { // do something } Não foi tão facil como parece ser.
 A mesma questão foi encontrada em vários sites, e no stack overflow, e as pessoas desapontadas sem uma solução.</description>
     </item>
-    
     <item>
       <title>Ententendo as pastas no linux</title>
       <link>https://amandamata.github.io/pt-pt/folders-in-linux/</link>
       <pubDate>Thu, 09 Feb 2023 07:52:10 -0300</pubDate>
-      
       <guid>https://amandamata.github.io/pt-pt/folders-in-linux/</guid>
       <description>Você acabou de instalar o linux e está acostumado com a estrutura do windows e seus diretórios, então você vai dar uma olhada no seu gestor de arquivos procurando pelo disco C: e não encontra.. Conhecer os diretórios do linux pode ajudar a administrar o sistema e entender como ele funciona.
 Se a gente for analisar o windows e o linux acabaram evoluindo de forma diferente com relação a estrutura de diretórios.</description>
     </item>
-    
     <item>
       <title>Usos para uma fila</title>
       <link>https://amandamata.github.io/pt-pt/queue/</link>
       <pubDate>Wed, 08 Feb 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://amandamata.github.io/pt-pt/queue/</guid>
       <description>O que é uma fila? Uma fila é uma estrutura de dados dinâmica que admite remoção de elementos e inserção de novos objetos. Mais especificamente, uma fila (= queue) é uma estrutura sujeita à seguinte regra de operação: sempre que houver uma remoção, o elemento removido é o que está na estrutura há mais tempo.
 Imagine que temos uma api de usuários
 Com essa API, podemos criar usuários no sistema e receber uma resposta dessa criação, talvez até atualizar ou deletar o usuário, enviar um email para o usuário e fazer uma requisição para outra API.</description>
     </item>
-    
   </channel>
 </rss>

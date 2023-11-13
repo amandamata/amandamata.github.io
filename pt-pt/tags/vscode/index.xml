@@ -6,12 +6,12 @@
     <description>Recent content in vscode on amandamata</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-pt</language>
-    <lastBuildDate>Sat, 18 Feb 2023 06:12:47 -0300</lastBuildDate><atom:link href="https://amandamata.github.io/pt-pt/tags/vscode/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Feb 2023 06:12:47 -0300</lastBuildDate>
+    <atom:link href="https://amandamata.github.io/pt-pt/tags/vscode/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Colchetes em uma nova linha no vscode</title>
       <link>https://amandamata.github.io/pt-pt/curly-brace/</link>
       <pubDate>Sat, 18 Feb 2023 06:12:47 -0300</pubDate>
-      
       <guid>https://amandamata.github.io/pt-pt/curly-brace/</guid>
       <description>Essa última semana eu levantei cedo todos os dias, tentando fazer apenas uma coisa: fazer o Visual Studio Code inserir uma nova linha antes dos colchetes {}.
 Eu tenho isso:
@@ -19,6 +19,5 @@ if (true){ // do something } e quero formatar dessa forma:
 if (true) { // do something } Não foi tão facil como parece ser.
 A mesma questão foi encontrada em vários sites, e no stack overflow, e as pessoas desapontadas sem uma solução.</description>
     </item>
-    
   </channel>
 </rss>

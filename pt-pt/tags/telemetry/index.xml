@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>telemetry on amandamata</title>
+    <link>https://amandamata.github.io/pt-pt/tags/telemetry/</link>
+    <description>Recent content in telemetry on amandamata</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-pt</language>
+    <lastBuildDate>Mon, 13 Nov 2023 18:19:29 -0300</lastBuildDate>
+    <atom:link href="https://amandamata.github.io/pt-pt/tags/telemetry/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Um jeito fácil de medir a performance do seu método</title>
+      <link>https://amandamata.github.io/pt-pt/telemetry/</link>
+      <pubDate>Mon, 13 Nov 2023 18:19:29 -0300</pubDate>
+      <guid>https://amandamata.github.io/pt-pt/telemetry/</guid>
+      <description>E se você quiser medir o tempo de execução de um método? Existem várias razões para isso, seja para login, profiling, medição de desempenho geral ou rastreamento de degradação ao longo do tempo. A coleta dessas métricas é um aspecto crucial de qualquer aplicação em produção.
+Existem diversos métodos para fazer isso, incluindo diferentes bibliotecas que agregam dados de telemetria. Embora ofereçam insights abrangentes, às vezes você pode preferir uma abordagem mais direta.</description>
+    </item>
+  </channel>
+</rss>

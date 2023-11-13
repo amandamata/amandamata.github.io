@@ -6,18 +6,17 @@
     <description>Recent content in vscode on amandamata</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 18 Feb 2023 06:13:07 -0300</lastBuildDate><atom:link href="https://amandamata.github.io/tags/vscode/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Feb 2023 06:13:07 -0300</lastBuildDate>
+    <atom:link href="https://amandamata.github.io/tags/vscode/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Curly braces on new line in vscode</title>
       <link>https://amandamata.github.io/curly-brace/</link>
       <pubDate>Sat, 18 Feb 2023 06:13:07 -0300</pubDate>
-      
       <guid>https://amandamata.github.io/curly-brace/</guid>
       <description>This pass week I wake up early every day trying to do only one thing: make Visual Studio Code insert a new line before a curly bracket, braces {}.
 I have this:
 if (true){ // do something } and I want to format it like this:
 if (true) { // do something } Was not as easy thing as may seem. Many sites and stack overflow have the same question, with many disappointing people without a resolution.</description>
     </item>
-    
   </channel>
 </rss>

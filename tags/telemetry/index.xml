@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>telemetry on amandamata</title>
+    <link>https://amandamata.github.io/tags/telemetry/</link>
+    <description>Recent content in telemetry on amandamata</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 13 Nov 2023 18:19:29 -0300</lastBuildDate>
+    <atom:link href="https://amandamata.github.io/tags/telemetry/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>An easy way to measure your method performance</title>
+      <link>https://amandamata.github.io/telemetry/</link>
+      <pubDate>Mon, 13 Nov 2023 18:19:29 -0300</pubDate>
+      <guid>https://amandamata.github.io/telemetry/</guid>
+      <description>What if you wish to measure the execution time of a method? There are various reasons for this—be it for login, profiling, general performance measurement, or tracking degradation over time. The collection of such metrics is a crucial aspect of any production application.
+Numerous methods exist for accomplishing this, including different libraries that aggregate telemetry data. While they offer comprehensive insights, sometimes you might prefer a more straightforward approach. One way to achieve this is by using a try and finally block in conjunction with a stopwatch.</description>
+    </item>
+  </channel>
+</rss>

@@ -6,32 +6,28 @@
     <description>Recent content in dotnet on amandamata</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-pt</language>
-    <lastBuildDate>Tue, 25 Apr 2023 07:42:55 -0300</lastBuildDate><atom:link href="https://amandamata.github.io/pt-pt/tags/dotnet/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 25 Apr 2023 07:42:55 -0300</lastBuildDate>
+    <atom:link href="https://amandamata.github.io/pt-pt/tags/dotnet/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Implementando cache Redis com dotnet</title>
       <link>https://amandamata.github.io/pt-pt/redis/</link>
       <pubDate>Tue, 25 Apr 2023 07:42:55 -0300</pubDate>
-      
       <guid>https://amandamata.github.io/pt-pt/redis/</guid>
       <description>Recentemente tive que implementar um cache em uma aplicação para evitar consultas desnecessárias ao banco de dados, e isso foi muito legal. Já trabalhei com Redis no passado, mas acho que fiz da maneira errada porque implementar um cache com Redis nunca foi tão legal. Redis x Mem cached O Redis é quase como um banco noSql, mas ele é ainda melhor pois armazena os dados com chave e valor e com isso fica muito mais fácil de utilizar ele como um cache.</description>
     </item>
-    
     <item>
       <title>Implementando um publisher e consumer SQS usando dotnet</title>
       <link>https://amandamata.github.io/pt-pt/queue-csharp-sqs/</link>
       <pubDate>Wed, 22 Feb 2023 07:19:25 -0300</pubDate>
-      
       <guid>https://amandamata.github.io/pt-pt/queue-csharp-sqs/</guid>
       <description>Nesse post, eu passei a introdução de uma fila e como utilizá-la. Agora, eu vou explicar como implementar um consumer e sqs publisher usando c# dotnet. SQS O que é SQS?
 SQS (Simple Queue Service) é um serviço da Amazon que permite que você envie, salve, e receba mensagens entre aplicações, sem que você perca essas mensagens caso o serviço esteja indisponível.
 A melhor parte de tudo isso é que, para você pagar por esse serviço, você teria que enviar mais de um milhão de requisições por mês, para que a amazon te envie uma cobrança.</description>
     </item>
-    
     <item>
       <title>Colchetes em uma nova linha no vscode</title>
       <link>https://amandamata.github.io/pt-pt/curly-brace/</link>
       <pubDate>Sat, 18 Feb 2023 06:12:47 -0300</pubDate>
-      
       <guid>https://amandamata.github.io/pt-pt/curly-brace/</guid>
       <description>Essa última semana eu levantei cedo todos os dias, tentando fazer apenas uma coisa: fazer o Visual Studio Code inserir uma nova linha antes dos colchetes {}.
 Eu tenho isso:
@@ -39,6 +35,5 @@ if (true){ // do something } e quero formatar dessa forma:
 if (true) { // do something } Não foi tão facil como parece ser.
 A mesma questão foi encontrada em vários sites, e no stack overflow, e as pessoas desapontadas sem uma solução.</description>
     </item>
-    
   </channel>
 </rss>

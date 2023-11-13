@@ -6,16 +6,15 @@
     <description>Recent content in linux on amandamata</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 09 Feb 2023 07:55:10 -0300</lastBuildDate><atom:link href="https://amandamata.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 09 Feb 2023 07:55:10 -0300</lastBuildDate>
+    <atom:link href="https://amandamata.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Understanding folders in linux</title>
       <link>https://amandamata.github.io/folders-in-linux/</link>
       <pubDate>Thu, 09 Feb 2023 07:55:10 -0300</pubDate>
-      
       <guid>https://amandamata.github.io/folders-in-linux/</guid>
       <description>You&amp;rsquo;ve just installed linux and you&amp;rsquo;re used to the structure of windows and its directories, so you&amp;rsquo;ll take a look in your file manager looking for the disk C: and you can&amp;rsquo;t find it&amp;hellip; Knowing Linux directories can help administer the system and understand how it works.
 If we analyze windows and linux, they ended up evolving differently in terms of directory structure. Linux is much more like any other system with unix roots like macOS.</description>
     </item>
-    
   </channel>
 </rss>

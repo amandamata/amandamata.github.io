@@ -6,17 +6,16 @@
     <description>Recent content in git on amandamata</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-pt</language>
-    <lastBuildDate>Tue, 30 May 2023 14:01:29 -0300</lastBuildDate><atom:link href="https://amandamata.github.io/pt-pt/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 30 May 2023 14:01:29 -0300</lastBuildDate>
+    <atom:link href="https://amandamata.github.io/pt-pt/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Como apagar uma informação sensível do histórico de commits</title>
       <link>https://amandamata.github.io/pt-pt/bfg/</link>
       <pubDate>Tue, 30 May 2023 14:01:29 -0300</pubDate>
-      
       <guid>https://amandamata.github.io/pt-pt/bfg/</guid>
       <description>Hoje aprendi algo extremamente útil: como remover informações sensíveis do histórico de commits de forma eficiente.
 Acredito que em algum momento todos nós cometemos o erro de enviar acidentalmente informações sensíveis para um repositório no GitHub, e simplesmente apagar a informação não resolve o problema, uma vez que o histórico de commits ainda mostrará a versão anterior com essas informações.
 Para solucionar essa questão, as pessoas costumam utilizar o git-filter-branch. No entanto, gostaria de apresentar uma alternativa ainda melhor: o BFG.</description>
     </item>
-    
   </channel>
 </rss>

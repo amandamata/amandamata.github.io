@@ -6,28 +6,25 @@
     <description>Recent content in queue on amandamata</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-pt</language>
-    <lastBuildDate>Wed, 22 Feb 2023 07:19:25 -0300</lastBuildDate><atom:link href="https://amandamata.github.io/pt-pt/tags/queue/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Feb 2023 07:19:25 -0300</lastBuildDate>
+    <atom:link href="https://amandamata.github.io/pt-pt/tags/queue/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Implementando um publisher e consumer SQS usando dotnet</title>
       <link>https://amandamata.github.io/pt-pt/queue-csharp-sqs/</link>
       <pubDate>Wed, 22 Feb 2023 07:19:25 -0300</pubDate>
-      
       <guid>https://amandamata.github.io/pt-pt/queue-csharp-sqs/</guid>
       <description>Nesse post, eu passei a introdução de uma fila e como utilizá-la. Agora, eu vou explicar como implementar um consumer e sqs publisher usando c# dotnet. SQS O que é SQS?
 SQS (Simple Queue Service) é um serviço da Amazon que permite que você envie, salve, e receba mensagens entre aplicações, sem que você perca essas mensagens caso o serviço esteja indisponível.
 A melhor parte de tudo isso é que, para você pagar por esse serviço, você teria que enviar mais de um milhão de requisições por mês, para que a amazon te envie uma cobrança.</description>
     </item>
-    
     <item>
       <title>Usos para uma fila</title>
       <link>https://amandamata.github.io/pt-pt/queue/</link>
       <pubDate>Wed, 08 Feb 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://amandamata.github.io/pt-pt/queue/</guid>
       <description>O que é uma fila? Uma fila é uma estrutura de dados dinâmica que admite remoção de elementos e inserção de novos objetos. Mais especificamente, uma fila (= queue) é uma estrutura sujeita à seguinte regra de operação: sempre que houver uma remoção, o elemento removido é o que está na estrutura há mais tempo.
 Imagine que temos uma api de usuários
 Com essa API, podemos criar usuários no sistema e receber uma resposta dessa criação, talvez até atualizar ou deletar o usuário, enviar um email para o usuário e fazer uma requisição para outra API.</description>
     </item>
-    
   </channel>
 </rss>

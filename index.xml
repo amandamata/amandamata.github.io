@@ -6,76 +6,72 @@
     <description>Recent content on amandamata</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 30 May 2023 14:01:29 -0300</lastBuildDate><atom:link href="https://amandamata.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Nov 2023 18:19:29 -0300</lastBuildDate>
+    <atom:link href="https://amandamata.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>An easy way to measure your method performance</title>
+      <link>https://amandamata.github.io/telemetry/</link>
+      <pubDate>Mon, 13 Nov 2023 18:19:29 -0300</pubDate>
+      <guid>https://amandamata.github.io/telemetry/</guid>
+      <description>What if you wish to measure the execution time of a method? There are various reasons for this—be it for login, profiling, general performance measurement, or tracking degradation over time. The collection of such metrics is a crucial aspect of any production application.
+Numerous methods exist for accomplishing this, including different libraries that aggregate telemetry data. While they offer comprehensive insights, sometimes you might prefer a more straightforward approach. One way to achieve this is by using a try and finally block in conjunction with a stopwatch.</description>
+    </item>
     <item>
       <title>How to remove sensitive information from commit history</title>
       <link>https://amandamata.github.io/bfg/</link>
       <pubDate>Tue, 30 May 2023 14:01:29 -0300</pubDate>
-      
       <guid>https://amandamata.github.io/bfg/</guid>
       <description>Today I learned something extremely useful: how to efficiently remove sensitive information from commit history.
 I believe that at some point, we have all made the mistake of accidentally pushing sensitive information to a repository on GitHub. Simply deleting the information does not solve the problem because the commit history will still show the previous version with that sensitive information.
 To address this issue, people often use git-filter-branch. However, I would like to introduce an even better alternative: BFG.</description>
     </item>
-    
     <item>
       <title>Implementing Redis caching with dotnet</title>
       <link>https://amandamata.github.io/redis/</link>
       <pubDate>Tue, 25 Apr 2023 07:42:55 -0300</pubDate>
-      
       <guid>https://amandamata.github.io/redis/</guid>
       <description>I recently had to implement a cache in an application to avoid unnecessary database queries, and that was cool. I&amp;rsquo;ve worked with Redis in the past, but I think I&amp;rsquo;ve done it the wrong way because implementing a cache with Redis has never been so cool. Redis vs Mem cached Redis is almost like a NoSql database, but it is even better because it stores data with key and values and with that, it is much easier to use it as a cache.</description>
     </item>
-    
     <item>
       <title>Implementing a sqs publisher and consumer using dotnet</title>
       <link>https://amandamata.github.io/queue-csharp-sqs/</link>
       <pubDate>Wed, 22 Feb 2023 07:19:25 -0300</pubDate>
-      
       <guid>https://amandamata.github.io/queue-csharp-sqs/</guid>
       <description>In this post, I pass an introduction to a queue and how to use it. Now I gonna explain how to implement an sqs consumer and publisher using c# dotnet. SQS What is SQS?
 SQS (Simple Queue Service) is an Amazon service that lets you send, store, and receive messages between software components at any volume, without losing messages or requiring other services to be available.
 The best part is free, actually to pay for this service you gonna need to send over 1 million requests per month then amazon is going to bill you.</description>
     </item>
-    
     <item>
       <title>Curly braces on new line in vscode</title>
       <link>https://amandamata.github.io/curly-brace/</link>
       <pubDate>Sat, 18 Feb 2023 06:13:07 -0300</pubDate>
-      
       <guid>https://amandamata.github.io/curly-brace/</guid>
       <description>This pass week I wake up early every day trying to do only one thing: make Visual Studio Code insert a new line before a curly bracket, braces {}.
 I have this:
 if (true){ // do something } and I want to format it like this:
 if (true) { // do something } Was not as easy thing as may seem. Many sites and stack overflow have the same question, with many disappointing people without a resolution.</description>
     </item>
-    
     <item>
       <title>Understanding folders in linux</title>
       <link>https://amandamata.github.io/folders-in-linux/</link>
       <pubDate>Thu, 09 Feb 2023 07:55:10 -0300</pubDate>
-      
       <guid>https://amandamata.github.io/folders-in-linux/</guid>
       <description>You&amp;rsquo;ve just installed linux and you&amp;rsquo;re used to the structure of windows and its directories, so you&amp;rsquo;ll take a look in your file manager looking for the disk C: and you can&amp;rsquo;t find it&amp;hellip; Knowing Linux directories can help administer the system and understand how it works.
 If we analyze windows and linux, they ended up evolving differently in terms of directory structure. Linux is much more like any other system with unix roots like macOS.</description>
     </item>
-    
     <item>
       <title>Application of queue</title>
       <link>https://amandamata.github.io/queue/</link>
       <pubDate>Wed, 08 Feb 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://amandamata.github.io/queue/</guid>
       <description>What is a queue? A queue is a collection of entities that are maintained in a sequence and can be modified by the addition of entities at one end of the sequence and the removal of entities from the other end of sequence. Wikipedia
 Imagine that we have a user&amp;rsquo;s API.
 We can create users in the system and then retrieve them back, maybe update and maybe delete them, send an email to the user, and also make a request to another API.</description>
     </item>
-    
     <item>
       <title>About</title>
       <link>https://amandamata.github.io/about/</link>
       <pubDate>Wed, 25 Jan 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://amandamata.github.io/about/</guid>
       <description>Hi! My name is Amanda, I&amp;rsquo;m 26 years old.
 I&amp;rsquo;ve been working with technology since 2014 and with programming since 2019.
@@ -84,6 +80,5 @@ Come on in and make yourself at home.
 My blog is a loose collection of things learned. Work I’m a Software Engineer at PagarMe.
 I&amp;rsquo;m graduated in Computer Science (but we all know the learning never ends). Contact Wanna get in touch? Email me at YW1hbmRhLm1hdGFAbGl2ZS5jb20= Decode that Base64 string here RSS Don&amp;rsquo;t miss any post, subscribe to this feed.</description>
     </item>
-    
   </channel>
 </rss>
