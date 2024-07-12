@@ -726,8 +726,7 @@ Para que isso aconteça será necessário que tenhamos um consumer service, que 
     Trabalho
 &lt;/div&gt;
 &lt;/h5&gt;
-&lt;p&gt;Sou Software Engineer na PagarMe.&lt;/p&gt;
-&lt;p&gt;Sou formada em Ciência da Computação (mas todos sabem que o aprendizado nunca acaba).
+&lt;p&gt;Sou formada em Ciência da Computação, e Software Engineer na PagarMe.
 &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h5 id=&#34;contato&#34; &gt;
 &lt;div&gt;
@@ -740,26 +739,6 @@ Para que isso aconteça será necessário que tenhamos um consumer service, que 
 &lt;p&gt;Quer entrar em contato? Me envie um e-mail &lt;strong&gt;YW1hbmRhLm1hdGFAbGl2ZS5jb20=&lt;/strong&gt;
 &lt;br/&gt;
 Decodifique a string Base64 &lt;a href=&#34;https://www.base64decode.org/&#34;&gt;aqui&lt;/a&gt;
-&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;h5 id=&#34;rss&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#rss&#34;&gt;
-        ####
-    &lt;/a&gt;
-    RSS
-&lt;/div&gt;
-&lt;/h5&gt;
-&lt;p&gt;Não perca nenhum post &lt;a href=&#34;https://amandamata.github.io/index.xml&#34;&gt;RSS feed&lt;/a&gt;
-&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;h5 id=&#34;tradução&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#tradu%c3%a7%c3%a3o&#34;&gt;
-        ####
-    &lt;/a&gt;
-    Tradução
-&lt;/div&gt;
-&lt;/h5&gt;
-&lt;p&gt;Pretendo postar tanto em inglês quanto em português, estou tentando melhorar minha escrita em inglês, e acho legal manter o conteúdo traduzido para português também.
 &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h5 id=&#34;disclaimer&#34; &gt;
 &lt;div&gt;
@@ -782,8 +761,6 @@ Decodifique a string Base64 &lt;a href=&#34;https://www.base64decode.org/&#34;&g
 &lt;p&gt;Carteira BTC: &lt;code&gt;bc1qjy622x7qh6k453tdgcu7hhhj7agv6nqnysfdlntx6uf0tp4g8ujs0vcd9a&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/wallet.png&#34; alt=&#34;wallet&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;/br&gt;&lt;/br&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;Esse blog foi feito utilizando o &lt;a href=&#34;https://gohugo.io/&#34;&gt;hugo framework&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

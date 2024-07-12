@@ -28,6 +28,8 @@
 
 
 
+    
+
 
 
     
@@ -173,7 +175,11 @@
 
 
 
+    
 
+
+
+    
 
 
 
@@ -200,7 +206,7 @@
 
     <script>
         const STORAGE_KEY = 'user-color-scheme'
-        const defaultTheme = "light"
+        const defaultTheme = "auto"
 
         let currentTheme
         let switchButton
@@ -273,6 +279,54 @@
         <ul class="social-icons noselect">
 
 
+    
+        
+        
+        <li>
+            <a href="https://github.com/amandamata" title="Github" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-github"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+    
+        <li>
+            <a href="https://www.linkedin.com/in/amanda-mata/" title="Linkedin" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /><path d="M8 11l0 5" /><path d="M8 8l0 .01" /><path d="M12 16l0 -5" /><path d="M16 16v-3a2 2 0 0 0 -4 0" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
 
 
 
@@ -309,10 +363,39 @@
 </div>
 
 
-    <nav></nav>
+    <nav class="noselect">
+        
+        
+        <a class=" active" href="https://amandamata.github.io/" title="amandamata">home</a>
+        
+        <a class="" href="https://amandamata.github.io/about" title="">about</a>
+        
+    </nav>
 
 
 
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 
 
@@ -363,6 +446,10 @@
 Numerous methods exist for accomplishing this, including different libraries that aggregate telemetry data. While they offer comprehensive insights, sometimes you might prefer a more straightforward approach. One way to achieve this is by using a try and finally block in conjunction with a stopwatch.
         </div>
     
+    
+        <div class="read-more">
+            <a class="u-url" href="/post/telemetry/">Read more</a>
+        </div>
     
 
     
@@ -434,6 +521,10 @@ To address this issue, people often use git-filter-branch. However, I would like
         </div>
     
     
+        <div class="read-more">
+            <a class="u-url" href="/post/bfg/">Read more</a>
+        </div>
+    
 
     
 
@@ -501,6 +592,10 @@ To address this issue, people often use git-filter-branch. However, I would like
             I recently had to implement a cache in an application to avoid unnecessary database queries, and that was cool. I&rsquo;ve worked with Redis in the past, but I think I&rsquo;ve done it the wrong way because implementing a cache with Redis has never been so cool. #### Redis vs Mem cached Redis is almost like a NoSql database, but it is even better because it stores data with key and values and with that, it is much easier to use it as a cache.
         </div>
     
+    
+        <div class="read-more">
+            <a class="u-url" href="/post/redis/">Read more</a>
+        </div>
     
 
     
@@ -577,6 +672,10 @@ SQS (Simple Queue Service) is an Amazon service that lets you send, store, and r
 The best part is free, actually to pay for this service you gonna need to send over 1 million requests per month then amazon is going to bill you.
         </div>
     
+    
+        <div class="read-more">
+            <a class="u-url" href="/post/queue-csharp-sqs/">Read more</a>
+        </div>
     
 
     
@@ -658,6 +757,10 @@ if (true) { // do something } Was not as easy thing as may seem. Many sites and 
         </div>
     
     
+        <div class="read-more">
+            <a class="u-url" href="/post/curly-brace/">Read more</a>
+        </div>
+    
 
     
 
@@ -736,6 +839,10 @@ If we analyze windows and linux, they ended up evolving differently in terms of 
         </div>
     
     
+        <div class="read-more">
+            <a class="u-url" href="/post/folders-in-linux/">Read more</a>
+        </div>
+    
 
     
 
@@ -805,6 +912,10 @@ Imagine that we have a user&rsquo;s API.
 We can create users in the system and then retrieve them back, maybe update and maybe delete them, send an email to the user, and also make a request to another API.
         </div>
     
+    
+        <div class="read-more">
+            <a class="u-url" href="/post/queue/">Read more</a>
+        </div>
     
 
     

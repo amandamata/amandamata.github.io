@@ -300,17 +300,5 @@
           hreflang="en"
           href="https://amandamata.github.io/about/"
         />
-      </url><url>
-        <loc>https://amandamata.github.io/categories/</loc>
-        <xhtml:link
-          rel="alternate"
-          hreflang="pt-pt"
-          href="https://amandamata.github.io/pt-pt/categories/"
-        />
-        <xhtml:link
-          rel="alternate"
-          hreflang="en"
-          href="https://amandamata.github.io/categories/"
-        />
       </url>
 </urlset>

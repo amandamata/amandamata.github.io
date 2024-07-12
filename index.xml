@@ -728,8 +728,7 @@ We could instead of making all those things sync, make only the crucial sync and
     Work
 &lt;/div&gt;
 &lt;/h5&gt;
-&lt;p&gt;I’m a Software Engineer at PagarMe.&lt;/p&gt;
-&lt;p&gt;I&amp;rsquo;m graduated in Computer Science (but we all know the learning never ends).
+&lt;p&gt;I’m graduated in Computer Science, and Software Engineer at PagarMe.
 &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h5 id=&#34;contact&#34; &gt;
 &lt;div&gt;
@@ -742,26 +741,6 @@ We could instead of making all those things sync, make only the crucial sync and
 &lt;p&gt;Wanna get in touch? Email me at &lt;strong&gt;YW1hbmRhLm1hdGFAbGl2ZS5jb20=&lt;/strong&gt;
 &lt;br/&gt;
 Decode that Base64 string &lt;a href=&#34;https://www.base64decode.org/&#34;&gt;here&lt;/a&gt;
-&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;h5 id=&#34;rss&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#rss&#34;&gt;
-        ####
-    &lt;/a&gt;
-    RSS
-&lt;/div&gt;
-&lt;/h5&gt;
-&lt;p&gt;Don&amp;rsquo;t miss any post, &lt;a href=&#34;https://amandamata.github.io/index.xml&#34;&gt;subscribe to this feed&lt;/a&gt;.
-&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;h5 id=&#34;translate&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#translate&#34;&gt;
-        ####
-    &lt;/a&gt;
-    Translate
-&lt;/div&gt;
-&lt;/h5&gt;
-&lt;p&gt;I pretend to post in both languages, English and Portuguese.
 &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h5 id=&#34;disclaimer&#34; &gt;
 &lt;div&gt;
@@ -784,8 +763,6 @@ Decode that Base64 string &lt;a href=&#34;https://www.base64decode.org/&#34;&gt;
 &lt;p&gt;BTC Wallet: &lt;code&gt;bc1qjy622x7qh6k453tdgcu7hhhj7agv6nqnysfdlntx6uf0tp4g8ujs0vcd9a&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/wallet.png&#34; alt=&#34;wallet&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;/br&gt;&lt;/br&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;This blog was made using &lt;a href=&#34;https://gohugo.io/&#34;&gt;hugo framework&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
