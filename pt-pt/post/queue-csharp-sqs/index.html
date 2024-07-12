@@ -440,13 +440,7 @@ A melhor parte de tudo isso é que, para você pagar por esse serviço, você te
                     <li><a href="/pt-pt/tags/queue/">#queue</a></li>
                 
                     
-                    <li><a href="/pt-pt/tags/sqs/">#sqs</a></li>
-                
-                    
                     <li><a href="/pt-pt/tags/dotnet/">#dotnet</a></li>
-                
-                    
-                    <li><a href="/pt-pt/tags/aws/">#aws</a></li>
                 
             </ul>
         
@@ -513,20 +507,20 @@ A melhor parte de tudo isso é que, para você pagar por esse serviço, você te
 </h4>
 <p>A AWS Command Line Interface permite que façamos mudanças e requisições diretamente pelo console localmente, sem a necessidade de acessar o AWS console no navegador.</p>
 <p>Se por exemplo quisermos listar os buckets:</p>
-<pre tabindex="0"><code>aws s3api list-buckets
-</code></pre><p>Para conseguirmos fazer isso, é necessário instalar o cli, o tutorial para Windows, Linux e macOs está <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">aqui</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>aws s3api list-buckets
+</span></span></code></pre></div><p>Para conseguirmos fazer isso, é necessário instalar o cli, o tutorial para Windows, Linux e macOs está <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">aqui</a>.</p>
 <p>Depois da instalação, é necessário autenticar sua máquina na aws.</p>
 <p>Na aws console, clique em seu nome e vá até Security Credentials, lá você precisa criar uma Access Key.</p>
 <p>Então em seu console você vai digitar:</p>
-<pre tabindex="0"><code>aws configure
-</code></pre><p>Então coloque a sua access key e token quando solicitado.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>aws configure
+</span></span></code></pre></div><p>Então coloque a sua access key e token quando solicitado.</p>
 <blockquote>
 <p>Importante, no console da aws você possui uma região, a minha é us-east-1, você pode ver a sua consultando a url: https://<em><strong>us-east-1</strong></em>.console.aws.amazon.com/</p>
 </blockquote>
 <p>Essa região deve ser passada durante a configuração aws no console, para que consiga utilizar completamente as features via console localmente.</p>
 <p>Depois da configuração finalizada, você poderá executar a listagem de buckets.</p>
-<pre tabindex="0"><code>aws s3api list-buckets
-</code></pre><br/>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>aws s3api list-buckets
+</span></span></code></pre></div><br/>
 <h4 id="publisher" >
 <div>
     <a href="#publisher">
@@ -542,58 +536,58 @@ No exemplo que utilizei no post sobre a fila, o publisher estava dentro da API, 
 <p>Para deixar simples, o exemplo aqui vai ser apenas o publisher, então você pode pegar a implementação e aplicar na sua API.</p>
 <p>Vamos utilizar o Console App</p>
 <p>Crie uma nova pasta:</p>
-<pre tabindex="0"><code>mkdir publisher
-</code></pre><p>Entre na pasta:</p>
-<pre tabindex="0"><code>cd publisher
-</code></pre><p>Crie o projeto:</p>
-<pre tabindex="0"><code>dotnet new console
-</code></pre><p>Um modelo é necessário:</p>
-<pre tabindex="0"><code>public class CustomerCreated
-{
-  public Guid Id { get; init; }
-  public string FullName { get; init; }
-  public string Email { get; init; }
-  public DateTime DateOfBirth { get; init; }
-}
-</code></pre><p>E instale o <a href="https://www.nuget.org/packages/AWSSDK.SQS">AWS SDK</a></p>
-<pre tabindex="0"><code>dotnet add package AWSSDK.SQS --version 3.7.100.78
-</code></pre><p>Então na classe Program precisamos criar o request e enviá-lo:</p>
-<pre tabindex="0"><code>using System.Text.Json;
-using Amazon.SQS;
-using Amazon.SQS.Model;
-
-var sqsCLient = new AmazonSQSClient();
-
-var customer = new CustomerCreated
-{
-  Id = Guid.NewGuid(),
-  FullName = &#34;Amanda Mata&#34;,
-  Email = &#34;email@email.com&#34;,
-  DateOfBirth = new DateTime(1996, 06, 18)
-};
-
-var queueUrlResponse = await sqsCLient.GetQueueUrlAsync(&#34;customers&#34;);
-
-var sendMessageRequest = new SendMessageRequest
-{
-  QueueUrl = queueUrlResponse.QueueUrl, 
-  MessageBody = JsonSerializer.Serialize(customer),
-  MessageAttributes = new Dictionary&lt;string, MessageAttributeValue&gt;
-  {
-      {
-          &#34;MessageType&#34;, new MessageAttributeValue
-          {
-              DataType = &#34;String&#34;, 
-              StringValue = nameof(CustomerCreated)
-          }
-      }
-  }
-};
-
-var response = await sqsCLient.SendMessageAsync(sendMessageRequest);
-
-Console.WriteLine();
-</code></pre><blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir publisher
+</span></span></code></pre></div><p>Entre na pasta:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#ff5c57">cd</span> publisher
+</span></span></code></pre></div><p>Crie o projeto:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>dotnet new console
+</span></span></code></pre></div><p>Um modelo é necessário:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">CustomerCreated</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">public</span> Guid Id { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">public</span> <span style="color:#9aedfe">string</span> FullName { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">public</span> <span style="color:#9aedfe">string</span> Email { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">public</span> DateTime DateOfBirth { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>E instale o <a href="https://www.nuget.org/packages/AWSSDK.SQS">AWS SDK</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>dotnet add package AWSSDK.SQS --version 3.7.100.78
+</span></span></code></pre></div><p>Então na classe Program precisamos criar o request e enviá-lo:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">using</span> System.Text.Json;
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">using</span> Amazon.SQS;
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">using</span> Amazon.SQS.Model;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9aedfe">var</span> sqsCLient = <span style="color:#ff6ac1">new</span> AmazonSQSClient();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9aedfe">var</span> customer = <span style="color:#ff6ac1">new</span> CustomerCreated
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  Id = Guid.NewGuid(),
+</span></span><span style="display:flex;"><span>  FullName = <span style="color:#5af78e">&#34;Amanda Mata&#34;</span>,
+</span></span><span style="display:flex;"><span>  Email = <span style="color:#5af78e">&#34;email@email.com&#34;</span>,
+</span></span><span style="display:flex;"><span>  DateOfBirth = <span style="color:#ff6ac1">new</span> DateTime(<span style="color:#ff9f43">1996</span>, <span style="color:#ff9f43">06</span>, <span style="color:#ff9f43">18</span>)
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9aedfe">var</span> queueUrlResponse = <span style="color:#ff6ac1">await</span> sqsCLient.GetQueueUrlAsync(<span style="color:#5af78e">&#34;customers&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9aedfe">var</span> sendMessageRequest = <span style="color:#ff6ac1">new</span> SendMessageRequest
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  QueueUrl = queueUrlResponse.QueueUrl, 
+</span></span><span style="display:flex;"><span>  MessageBody = JsonSerializer.Serialize(customer),
+</span></span><span style="display:flex;"><span>  MessageAttributes = <span style="color:#ff6ac1">new</span> Dictionary&lt;<span style="color:#9aedfe">string</span>, MessageAttributeValue&gt;
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>          <span style="color:#5af78e">&#34;MessageType&#34;</span>, <span style="color:#ff6ac1">new</span> MessageAttributeValue
+</span></span><span style="display:flex;"><span>          {
+</span></span><span style="display:flex;"><span>              DataType = <span style="color:#5af78e">&#34;String&#34;</span>, 
+</span></span><span style="display:flex;"><span>              StringValue = nameof(CustomerCreated)
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9aedfe">var</span> response = <span style="color:#ff6ac1">await</span> sqsCLient.SendMessageAsync(sendMessageRequest);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Console.WriteLine();
+</span></span></code></pre></div><blockquote>
 <p>No sqsCLient.GetQueueUrlAsync(&ldquo;customers&rdquo;) eu utilizei &ldquo;customers&rdquo; porque esse é o nome da minha fila</p>
 </blockquote>
 <br/>
@@ -609,49 +603,49 @@ Console.WriteLine();
 <p>Um consumer é o serviço que irá escutar a fila.</p>
 <p>Vamos utilizar o Console App</p>
 <p>Crie uma nova pasta:</p>
-<pre tabindex="0"><code>mkdir consumer
-</code></pre><p>Entre na pasta:</p>
-<pre tabindex="0"><code>cd consumer
-</code></pre><p>Crie o projeto:</p>
-<pre tabindex="0"><code>dotnet new console
-</code></pre><p>Um modelo é necessário:</p>
-<pre tabindex="0"><code>public class CustomerCreated
-{
-  public Guid Id { get; init; }
-  public string FullName { get; init; }
-  public string Email { get; init; }
-  public DateTime DateOfBirth { get; init; }
-}
-</code></pre><p>E instale o <a href="https://www.nuget.org/packages/AWSSDK.SQS">AWS SDK</a></p>
-<pre tabindex="0"><code>dotnet add package AWSSDK.SQS --version 3.7.100.78
-</code></pre><p>Então na classe Program precisamos receber a requisição:</p>
-<pre tabindex="0"><code>using Amazon.SQS;
-using Amazon.SQS.Model;
-	 
-var cts = new CancellationTokenSource();
-var sqsCLient = new AmazonSQSClient();
-var queueUrlResponse = await sqsCLient.GetQueueUrlAsync(&#34;customers&#34;);
-var receiveMessageRequest = new ReceiveMessageRequest
-{
-  QueueUrl = queueUrlResponse.QueueUrl,
-  AttributeNames = new List&lt;string&gt;{ &#34;All&#34; },
-  MessageAttributeNames = new List&lt;string&gt;{ &#34;All&#34; }
-};
-	 
-while(!cts.IsCancellationRequested)
-{
-  var response = await sqsCLient.ReceiveMessageAsync(receiveMessageRequest, cts.Token);
-  response.Messages.ForEach(async message =&gt; {
-    Console.WriteLine($&#34;Message Id: { message.MessageId }&#34;);
-    Console.WriteLine($&#34;Message Body: { message.Body }&#34;);
-    await sqsCLient.DeleteMessageAsync(queueUrlResponse.QueueUrl, message.ReceiptHandle);
-  });
-
-  await Task.Delay(3000);
-}
-
-Console.WriteLine();
-</code></pre><br/>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir consumer
+</span></span></code></pre></div><p>Entre na pasta:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#ff5c57">cd</span> consumer
+</span></span></code></pre></div><p>Crie o projeto:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>dotnet new console
+</span></span></code></pre></div><p>Um modelo é necessário:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">CustomerCreated</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">public</span> Guid Id { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">public</span> <span style="color:#9aedfe">string</span> FullName { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">public</span> <span style="color:#9aedfe">string</span> Email { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">public</span> DateTime DateOfBirth { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>E instale o <a href="https://www.nuget.org/packages/AWSSDK.SQS">AWS SDK</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>dotnet add package AWSSDK.SQS --version 3.7.100.78
+</span></span></code></pre></div><p>Então na classe Program precisamos receber a requisição:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">using</span> Amazon.SQS;
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">using</span> Amazon.SQS.Model;
+</span></span><span style="display:flex;"><span>	 
+</span></span><span style="display:flex;"><span><span style="color:#9aedfe">var</span> cts = <span style="color:#ff6ac1">new</span> CancellationTokenSource();
+</span></span><span style="display:flex;"><span><span style="color:#9aedfe">var</span> sqsCLient = <span style="color:#ff6ac1">new</span> AmazonSQSClient();
+</span></span><span style="display:flex;"><span><span style="color:#9aedfe">var</span> queueUrlResponse = <span style="color:#ff6ac1">await</span> sqsCLient.GetQueueUrlAsync(<span style="color:#5af78e">&#34;customers&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#9aedfe">var</span> receiveMessageRequest = <span style="color:#ff6ac1">new</span> ReceiveMessageRequest
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  QueueUrl = queueUrlResponse.QueueUrl,
+</span></span><span style="display:flex;"><span>  AttributeNames = <span style="color:#ff6ac1">new</span> List&lt;<span style="color:#9aedfe">string</span>&gt;{ <span style="color:#5af78e">&#34;All&#34;</span> },
+</span></span><span style="display:flex;"><span>  MessageAttributeNames = <span style="color:#ff6ac1">new</span> List&lt;<span style="color:#9aedfe">string</span>&gt;{ <span style="color:#5af78e">&#34;All&#34;</span> }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>	 
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">while</span>(!cts.IsCancellationRequested)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#9aedfe">var</span> response = <span style="color:#ff6ac1">await</span> sqsCLient.ReceiveMessageAsync(receiveMessageRequest, cts.Token);
+</span></span><span style="display:flex;"><span>  response.Messages.ForEach(<span style="color:#ff6ac1">async</span> message =&gt; {
+</span></span><span style="display:flex;"><span>    Console.WriteLine(<span style="color:#5af78e">$&#34;Message Id: { message.MessageId }&#34;</span>);
+</span></span><span style="display:flex;"><span>    Console.WriteLine(<span style="color:#5af78e">$&#34;Message Body: { message.Body }&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">await</span> sqsCLient.DeleteMessageAsync(queueUrlResponse.QueueUrl, message.ReceiptHandle);
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">await</span> Task.Delay(<span style="color:#ff9f43">3000</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Console.WriteLine();
+</span></span></code></pre></div><br/>
 <p>Agora o publisher e o consumer estão criados, você pode verificar as mensagens no aws console, mas apenas executando o publisher e o consumer você vai conseguir ver as mensagens sendo enviadas e sendo recebidas.</p>
 <hr>
 <p>Eu criei esse post para meus estudos, os aprendizados passados aqui foram obtidos através do curso <a href="https://nickchapsas.com/p/cloud-fundamentals-aws-services-for-c-developers">Cloud Fundamentals: AWS Services for C# Developers course</a>.</p>

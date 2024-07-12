@@ -438,9 +438,6 @@
                     <li><a href="/tags/cache/">#cache</a></li>
                 
                     
-                    <li><a href="/tags/redis/">#redis</a></li>
-                
-                    
                     <li><a href="/tags/dotnet/">#dotnet</a></li>
                 
             </ul>
@@ -543,116 +540,116 @@ We have the scenario, let&rsquo;s move on to implementation.
 <p>Explanation and problem presentations, let&rsquo;s implement!
 For this implementation we will follow a pattern called Decorator, with this pattern it is possible to add a cache layer without adding more complexity to the repository layer, and we will follow the S principle of SOLID, [Single-responsibility principle](https:// g.co/kgs/phLumf).</p>
 <p>Let&rsquo;s work with dotnet, and install the packages <a href="https://www.nuget.org/packages/scrutor/">Scrutor</a> and <a href="https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis/7.0.5">StackExchangeRedis</a></p>
-<pre tabindex="0"><code>dotnet add package Scrutor --version 4.2.2
-</code></pre><pre tabindex="0"><code>dotnet add package Microsoft.Extensions.Caching.StackExchangeRedis --version 7.0.5
-</code></pre><p>Scrutor will help us during the implementation of the caching layer without taking the single responsibility away from the repository. And StackExchangeRedis is Microsoft&rsquo;s client package for using Redis with . NET.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>dotnet add package Scrutor --version 4.2.2
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>dotnet add package Microsoft.Extensions.Caching.StackExchangeRedis --version 7.0.5
+</span></span></code></pre></div><p>Scrutor will help us during the implementation of the caching layer without taking the single responsibility away from the repository. And StackExchangeRedis is Microsoft&rsquo;s client package for using Redis with . NET.</p>
 <p>Let&rsquo;s create a Service to handle everything related to Redis.
 <br/>
 Service:</p>
-<pre tabindex="0"><code>public class CacheService : ICacheService
-{
-    private readonly IDistributedCache _distributedCache;
-    private readonly DistributedCacheEntryOptions _options;
-
-    public CacheService(IDistributedCache distributedCache)
-    {
-        _distributedCache = distributedCache;
-        _options = new DistributedCacheEntryOptions
-        {
-            AbsoluteExpirationRelativeToNow = 150
-        };
-    }
-
-    public async Task&lt;T&gt; GetAsync&lt;T&gt;(string key)
-    {
-        try
-        {
-            var cached = await _distributedCache.GetStringAsync(key);
-            if (cached is not null)
-                return JsonConvert.DeserializeObject&lt;T&gt;(cached);
-        }
-        catch (Exception exception)
-        { 
-            // Log exception 
-        }
-
-        return default(T);
-    }
-
-    public async Task SetAsync&lt;T&gt;(string key, T value)
-    {
-        try
-        {
-            if (value is not null)
-                await _distributedCache.SetStringAsync(key, JsonConvert.SerializeObject(value), _options);
-        }
-        catch (Exception exception)
-        { 
-            // Log exception
-        }
-    }
-
-    public async Task RemoveAsync(string key)
-    {
-        try
-        {
-            await _distributedCache.RemoveAsync(key);
-        }
-        catch (Exception exception)
-        {
-            // Log exception
-    	}
-    }
-}
-</code></pre><p>Let&rsquo;s create a Repository to handle the query request to the database that will &ldquo;intercept&rdquo; and go first in Redis.
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">CacheService</span> : ICacheService
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">private</span> <span style="color:#ff6ac1">readonly</span> IDistributedCache _distributedCache;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">private</span> <span style="color:#ff6ac1">readonly</span> DistributedCacheEntryOptions _options;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">public</span> CacheService(IDistributedCache distributedCache)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _distributedCache = distributedCache;
+</span></span><span style="display:flex;"><span>        _options = <span style="color:#ff6ac1">new</span> DistributedCacheEntryOptions
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            AbsoluteExpirationRelativeToNow = <span style="color:#ff9f43">150</span>
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">async</span> Task&lt;T&gt; GetAsync&lt;T&gt;(<span style="color:#9aedfe">string</span> key)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">try</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#9aedfe">var</span> cached = <span style="color:#ff6ac1">await</span> _distributedCache.GetStringAsync(key);
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">if</span> (cached <span style="color:#ff6ac1">is</span> not <span style="color:#ff6ac1">null</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">return</span> JsonConvert.DeserializeObject&lt;T&gt;(cached);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">catch</span> (Exception exception)
+</span></span><span style="display:flex;"><span>        { 
+</span></span><span style="display:flex;"><span>            <span style="color:#78787e">// Log exception </span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">default</span>(T);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">async</span> Task SetAsync&lt;T&gt;(<span style="color:#9aedfe">string</span> key, T <span style="color:#ff6ac1">value</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">try</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">if</span> (<span style="color:#ff6ac1">value</span> <span style="color:#ff6ac1">is</span> not <span style="color:#ff6ac1">null</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">await</span> _distributedCache.SetStringAsync(key, JsonConvert.SerializeObject(<span style="color:#ff6ac1">value</span>), _options);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">catch</span> (Exception exception)
+</span></span><span style="display:flex;"><span>        { 
+</span></span><span style="display:flex;"><span>            <span style="color:#78787e">// Log exception</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">async</span> Task RemoveAsync(<span style="color:#9aedfe">string</span> key)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">try</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">await</span> _distributedCache.RemoveAsync(key);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">catch</span> (Exception exception)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#78787e">// Log exception</span>
+</span></span><span style="display:flex;"><span>    	}
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Let&rsquo;s create a Repository to handle the query request to the database that will &ldquo;intercept&rdquo; and go first in Redis.
 <br/>
 Repository:</p>
-<pre tabindex="0"><code>public class CachedAlugatorRepository : IAlugatorRepository
-{
-    private readonly IAlugatorRepository _alugatorRepository;
-    private readonly ICacheService _cache;
-
-    public CachedAlugatorRepository(IAlugatorRepository alugatorRepository, ICacheService cache)
-    {
-        _alugatorRepository = alugatorRepository;
-        _cache = cache;
-    }
-
-    public async Task&lt;bool&gt; DeleteAsync(string id)
-    {
-        var alugator = await _alugatorRepository.GetAsync(id);
-        if (alugator is not null)
-        {
- 	    await _cache.RemoveAsync(alugator.documentId);
-            return await _alugatorRepository.DeleteAsync(id);
-        }
-
-        return true;
-    }
-
-    public async Task&lt;Alugator&gt; GetAsync(string id)
-    {
-        var alugator = await _cache.GetAsync&lt;Alugator&gt;(id);
-        if (alugator is not null)
-            return alugator;
-
-        alugator = await _alugatorRepository.GetAsync(id);
-
-        await _cache.SetAsync&lt;Alugator&gt;(alugator);
-        return alugator;
-    }
-
-    public async Task&lt;bool&gt; UpsertAsync(Alugator alugator)
-    {
-        await _cache.SetAsync(alugator.documentId, alugator);
-
-        return await _alugatorRepository.UpsertAsync(alugator);
-    }
-}
-</code></pre><p>The ace in the hole is in the way we are going to configure the Repository in the Program class:</p>
-<pre tabindex="0"><code>services.AddSingleton&lt;IAlugatorRepository, AlugatorRepository&gt;();
-services.Decorate&lt;IAlugatorRepository, CachedAlugatorRepository&gt;();
-</code></pre><p>This Decorate does the magic, because now when calling the AlugatorRepository the CachedAlugatorRepository will be &ldquo;called&rdquo; first, so every call to the repository will initially be made to the Cache Repository that contains the query logic to Redis through service. With that we keep the AlugatorRepository clean, we have a specific repository for the CachedAlugatorRepository cache and we don&rsquo;t hurt the Single Responsibility Principle.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">CachedAlugatorRepository</span> : IAlugatorRepository
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">private</span> <span style="color:#ff6ac1">readonly</span> IAlugatorRepository _alugatorRepository;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">private</span> <span style="color:#ff6ac1">readonly</span> ICacheService _cache;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">public</span> CachedAlugatorRepository(IAlugatorRepository alugatorRepository, ICacheService cache)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _alugatorRepository = alugatorRepository;
+</span></span><span style="display:flex;"><span>        _cache = cache;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">async</span> Task&lt;<span style="color:#9aedfe">bool</span>&gt; DeleteAsync(<span style="color:#9aedfe">string</span> id)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> alugator = <span style="color:#ff6ac1">await</span> _alugatorRepository.GetAsync(id);
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> (alugator <span style="color:#ff6ac1">is</span> not <span style="color:#ff6ac1">null</span>)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span> 	    <span style="color:#ff6ac1">await</span> _cache.RemoveAsync(alugator.documentId);
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">await</span> _alugatorRepository.DeleteAsync(id);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">true</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">async</span> Task&lt;Alugator&gt; GetAsync(<span style="color:#9aedfe">string</span> id)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> alugator = <span style="color:#ff6ac1">await</span> _cache.GetAsync&lt;Alugator&gt;(id);
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> (alugator <span style="color:#ff6ac1">is</span> not <span style="color:#ff6ac1">null</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">return</span> alugator;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        alugator = <span style="color:#ff6ac1">await</span> _alugatorRepository.GetAsync(id);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">await</span> _cache.SetAsync&lt;Alugator&gt;(alugator);
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> alugator;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">async</span> Task&lt;<span style="color:#9aedfe">bool</span>&gt; UpsertAsync(Alugator alugator)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">await</span> _cache.SetAsync(alugator.documentId, alugator);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">await</span> _alugatorRepository.UpsertAsync(alugator);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The ace in the hole is in the way we are going to configure the Repository in the Program class:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>services.AddSingleton&lt;IAlugatorRepository, AlugatorRepository&gt;();
+</span></span><span style="display:flex;"><span>services.Decorate&lt;IAlugatorRepository, CachedAlugatorRepository&gt;();
+</span></span></code></pre></div><p>This Decorate does the magic, because now when calling the AlugatorRepository the CachedAlugatorRepository will be &ldquo;called&rdquo; first, so every call to the repository will initially be made to the Cache Repository that contains the query logic to Redis through service. With that we keep the AlugatorRepository clean, we have a specific repository for the CachedAlugatorRepository cache and we don&rsquo;t hurt the Single Responsibility Principle.</p>
 
         </div>
 

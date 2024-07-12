@@ -523,28 +523,28 @@ Para solucionar essa questão, muitos recorrem ao git-filter-branch. No entanto,
 <p>Faça um clone do repositório usando o comando:</p>
 </li>
 </ol>
-<pre tabindex="0"><code>git clone git@github.com:amandamata/how-to-use-bfg.git --mirror
-</code></pre><ol>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git clone git@github.com:amandamata/how-to-use-bfg.git --mirror
+</span></span></code></pre></div><ol>
 <li>Crie um arquivo de referência contendo o valor que você deseja remover do histórico de commits. Por exemplo:</li>
 </ol>
-<pre tabindex="0"><code>echo *VyieIqbij35MYV5&amp;bIakKmq1Z &gt; auth.txt
-</code></pre><ol>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#ff5c57">echo</span> *VyieIqbij35MYV5&amp;bIakKmq1Z &gt; auth.txt
+</span></span></code></pre></div><ol>
 <li>Execute o BFG, passando o valor de referência, usando o seguinte comando:</li>
 </ol>
-<pre tabindex="0"><code>java -jar ~/Downloads/bfg-1.14.0.jar --replace-text auth.txt how-to-use-bfg.git
-</code></pre><ol>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>java -jar ~/Downloads/bfg-1.14.0.jar --replace-text auth.txt how-to-use-bfg.git
+</span></span></code></pre></div><ol>
 <li>Acesse o diretório do repositório clonado:</li>
 </ol>
-<pre tabindex="0"><code>cd how-to-use-bfg.git
-</code></pre><ol>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#ff5c57">cd</span> how-to-use-bfg.git
+</span></span></code></pre></div><ol>
 <li>Execute o seguinte comando:</li>
 </ol>
-<pre tabindex="0"><code>git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive
-</code></pre><ol>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git reflog expire --expire<span style="color:#ff6ac1">=</span>now --all <span style="color:#ff6ac1">&amp;&amp;</span> git gc --prune<span style="color:#ff6ac1">=</span>now --aggressive
+</span></span></code></pre></div><ol>
 <li>Faça o push das alterações:</li>
 </ol>
-<pre tabindex="0"><code>git push
-</code></pre><p>Após seguir esses passos, o histórico de commit do seu repositório será atualizado e os dados sensiveis serão removidos.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git push
+</span></span></code></pre></div><p>Após seguir esses passos, o histórico de commit do seu repositório será atualizado e os dados sensiveis serão removidos.</p>
 <p><img src="/img/bfg3.png" alt="bfg3"></p>
 <h4 id="conclusão" >
 <div>
