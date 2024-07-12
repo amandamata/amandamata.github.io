@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>amandamata</title>
+    <title>amandaintech</title>
     <link>/</link>
-    <description>amandamata</description>
+    <description>amandaintech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 13 Nov 2023 18:19:29 -0300</lastBuildDate>
@@ -17,23 +17,43 @@
       <pubDate>Mon, 13 Nov 2023 18:19:29 -0300</pubDate>
       
       <guid>/post/telemetry/</guid>
-      <description>&lt;p&gt;What if you wish to measure the execution time of a method?
-There are various reasons for this—be it for login, profiling, general performance measurement, or tracking degradation over time. The collection of such metrics is a crucial aspect of any production application.&lt;/p&gt;
-&lt;p&gt;Numerous methods exist for accomplishing this, including different libraries that aggregate telemetry data. While they offer comprehensive insights, sometimes you might prefer a more straightforward approach. One way to achieve this is by using a try and finally block in conjunction with a stopwatch.&lt;/p&gt;
-&lt;p&gt;However, this approach, despite being cleaner, still necessitates the addition of measurement code into the methods you wish to evaluate.&lt;/p&gt;
-&lt;p&gt;Here&amp;rsquo;s a simpler solution: the MethodTimer.Fody library. Once installed, all you need to do is add the [Time] attribute above the method you want to assess for performance. Run your code, check the debug output, and voila—your measurements are right there.&lt;/p&gt;
-&lt;p&gt;To understand how it works, you can explore the library&amp;rsquo;s repository &lt;a href=&#34;https://github.com/Fody/MethodTimer&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The magic lies in how our code transforms, mirroring the initial approach. The code under test:&lt;/p&gt;
+      <description>&lt;h4 id=&#34;introduction&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#introduction&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Introduction
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;Measuring method execution time is essential for optimizing applications, whether for profiling, performance monitoring, or detecting degradation over time. Although there are many tools and libraries available for this purpose, we often seek straightforward and non-intrusive solutions.&lt;/p&gt;
+&lt;h4 id=&#34;the-solution-methodtimerfody&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#the-solution-methodtimerfody&#34;&gt;
+        ###
+    &lt;/a&gt;
+    The Solution: MethodTimer.Fody
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;One of the most efficient and cleanest ways to measure method performance in C# is by using the MethodTimer.Fody library. This tool automatically adds timers to the desired methods through a simple attribute, without modifying the existing code.&lt;/p&gt;
+&lt;h4 id=&#34;how-it-works&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#how-it-works&#34;&gt;
+        ###
+    &lt;/a&gt;
+    How it works
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;After installing the &lt;a href=&#34;https://github.com/Fody/MethodTimer&#34;&gt;MethodTimer&lt;/a&gt; library in your project, simply add the [Time] attribute above any method you want to monitor. See an example:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;MyClass&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#57c7ff&#34;&gt;    [Time]&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;void&lt;/span&gt; MyMethod()
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#78787e&#34;&gt;// Some code you are curious about in terms of execution time&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#78787e&#34;&gt;// Your code here&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Console.WriteLine(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;Hello&amp;#34;&lt;/span&gt;);
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After compilation, it looks like this:&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;When you run your code, the library automatically injects the timing logic, and the debug output will show the method&amp;rsquo;s execution time.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;MyClass&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;void&lt;/span&gt; MyMethod()
@@ -41,7 +61,7 @@ There are various reasons for this—be it for login, profiling, general perform
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#9aedfe&#34;&gt;var&lt;/span&gt; stopwatch = Stopwatch.StartNew();
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;try&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#78787e&#34;&gt;// Some code you are curious about in terms of execution time&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#78787e&#34;&gt;// Your code here&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            Console.WriteLine(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;Hello&amp;#34;&lt;/span&gt;);
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;finally&lt;/span&gt;
@@ -51,7 +71,7 @@ There are various reasons for this—be it for login, profiling, general perform
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, you might wonder, &amp;ldquo;What can I do with this information, available only in the debug console?&amp;rdquo; Here&amp;rsquo;s a suggestion: create a utility class like the one below.&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, you might be wondering: &amp;ldquo;What can I do with this information, available only in the debug console?&amp;rdquo; Here&amp;rsquo;s a suggestion: create a utility class like the one below.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;using&lt;/span&gt; System.Reflection;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;namespace&lt;/span&gt; JokerCharge
@@ -65,10 +85,10 @@ There are various reasons for this—be it for login, profiling, general perform
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Don&amp;rsquo;t forget to add this to your program class:&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Don&amp;rsquo;t forget to add this to your Program class:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#9aedfe&#34;&gt;var&lt;/span&gt; app = builder.Build();
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;MethodTimeLogger.Logger = app.Logger;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And update your app settings to log to trace:&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And update the appSettings to log in trace:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff6ac1&#34;&gt;&amp;#34;Logging&amp;#34;&lt;/span&gt;: {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;&amp;#34;LogLevel&amp;#34;&lt;/span&gt;: {
@@ -77,21 +97,43 @@ There are various reasons for this—be it for login, profiling, general perform
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;With everything set up, you can log and inject whatever information you desire.&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;With everything configured, you can log and inject the information you want.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/telemetry.png&#34; alt=&#34;telemetry&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;benefits&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#benefits&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Benefits
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Simplicity: No need to write additional timing code.&lt;/li&gt;
+&lt;li&gt;Automation: Performance measurement is added at compile time, keeping your code clean.&lt;/li&gt;
+&lt;li&gt;Ease of Use: Just add an attribute to the desired method.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;conclusion&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#conclusion&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Conclusion
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;MethodTimer.Fody is a powerful tool for developers looking for an efficient and uncomplicated way to measure the performance of their methods in C#. With easy integration and minimal impact on existing code, it is an excellent choice for any project.&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>How to remove sensitive information from commit history</title>
+      <title>Removing sensitive data from commit history</title>
       <link>/post/bfg/</link>
       <pubDate>Tue, 30 May 2023 14:01:29 -0300</pubDate>
       
       <guid>/post/bfg/</guid>
-      <description>&lt;p&gt;Today I learned something extremely useful: how to efficiently remove sensitive information from commit history.&lt;/p&gt;
-&lt;p&gt;I believe that at some point, we have all made the mistake of accidentally pushing sensitive information to a repository on GitHub. Simply deleting the information does not solve the problem because the commit history will still show the previous version with that sensitive information.&lt;/p&gt;
-&lt;p&gt;To address this issue, people often use git-filter-branch. However, I would like to introduce an even better alternative: BFG.&lt;/p&gt;
-&lt;p&gt;BFG is a powerful and user-friendly tool that allows you to securely remove confidential information from your repository&amp;rsquo;s commit history. It provides a faster and more efficient solution compared to git-filter-branch.&lt;/br&gt;&lt;/p&gt;
+      <description>&lt;p&gt;Today, I learned something extremely useful: how to efficiently remove sensitive information from commit history.&lt;/p&gt;
+&lt;p&gt;At some point, many of us make the mistake of accidentally pushing sensitive information to a GitHub repository. Simply deleting the information from the current repository does not solve the problem, as the commit history will still show the previous version with that information.&lt;/p&gt;
+&lt;p&gt;To address this issue, many turn to &lt;code&gt;git-filter-branch&lt;/code&gt;. However, I want to introduce an even better alternative: BFG.&lt;/p&gt;
+&lt;p&gt;BFG is a powerful and easy-to-use tool that allows you to remove confidential information from your repository&amp;rsquo;s commit history safely. It offers a quicker and more efficient solution compared to &lt;code&gt;git-filter-branch&lt;/code&gt;.&lt;/p&gt;
 &lt;h4 id=&#34;scenario&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#scenario&#34;&gt;
@@ -100,12 +142,23 @@ There are various reasons for this—be it for login, profiling, general perform
     Scenario
 &lt;/div&gt;
 &lt;/h4&gt;
-&lt;p&gt;We have the repository how-to-use-bfg.&lt;/p&gt;
-&lt;p&gt;In this repository, there was an appsettings.json file with sensitive information:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg1.png&#34; alt=&#34;bfg&#34;&gt;&lt;/p&gt;
-&lt;p&gt;I deleted this sensitive information, made the commit and push, but the sensitive information still appears in the commit history:&lt;/p&gt;
+&lt;p&gt;We have the repository &lt;a href=&#34;https://github.com/amandamata/how-to-use-bfg&#34;&gt;how-to-use-bfg&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In this repository, there was an &lt;code&gt;appsettings.json&lt;/code&gt; with sensitive information.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg1.png&#34; alt=&#34;bfg1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;I deleted this sensitive information, made the commit and push, but the sensitive information still appears in the history.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg2.png&#34; alt=&#34;bfg2&#34;&gt;&lt;/p&gt;
-&lt;/br&gt;
+&lt;h4 id=&#34;prerequisites&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#prerequisites&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Prerequisites
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Git installed on your machine.&lt;/li&gt;
+&lt;li&gt;Java Runtime Environment (JRE) installed to run the BFG &lt;code&gt;.jar&lt;/code&gt; file.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h4 id=&#34;how-to-use&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#how-to-use&#34;&gt;
@@ -114,8 +167,7 @@ There are various reasons for this—be it for login, profiling, general perform
     How to Use
 &lt;/div&gt;
 &lt;/h4&gt;
-&lt;p&gt;The tutorial on the BFG website is not difficult, but I will describe it here in more detail to make the process easier to understand.&lt;/p&gt;
-&lt;p&gt;To use BFG, follow these steps:&lt;/p&gt;
+&lt;p&gt;The tutorial on the BFG website is quite straightforward, but here is a more detailed description to facilitate the process:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Download the .jar file from the &lt;a href=&#34;https://rtyley.github.io/bfg-repo-cleaner/&#34;&gt;BFG&lt;/a&gt; website.&lt;/li&gt;
 &lt;li&gt;Clone the current repository using the command:
@@ -137,9 +189,19 @@ There are various reasons for this—be it for login, profiling, general perform
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git push
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;/br&gt;
-After following these steps, your repository&#39;s commit history will be updated, and the sensitive information will be removed.
+&lt;p&gt;After following these steps, your repository&amp;rsquo;s commit history will be updated, and the sensitive information will be removed.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg3.png&#34; alt=&#34;bfg3&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;conclusion&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#conclusion&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Conclusion
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;Conclusion
+Removing sensitive information from the commit history is crucial for maintaining the security and privacy of your project. The BFG Repo-Cleaner offers an efficient and quick way to do this. If you have any questions or would like to share your experience using BFG, feel free to leave a comment below.&lt;/p&gt;
+&lt;p&gt;I hope this guide has been helpful. Good luck with cleaning your repository!&lt;/p&gt;
 </description>
     </item>
     
@@ -708,27 +770,23 @@ We could instead of making all those things sync, make only the crucial sync and
     </item>
     
     <item>
-      <title>About</title>
+      <title>About Me</title>
       <link>/about/</link>
       <pubDate>Wed, 25 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>/about/</guid>
-      <description>&lt;p&gt;Hi! My name is Amanda, I&amp;rsquo;m 28 years old.&lt;/p&gt;
-&lt;p&gt;I&amp;rsquo;ve been working with technology since 2014 and with programming since 2019.&lt;/p&gt;
-&lt;p&gt;Welcome to my corner of the internet.&lt;/p&gt;
-&lt;p&gt;Come on in and make yourself at home.&lt;/p&gt;
-&lt;p&gt;My blog is a loose collection of things learned.
-&lt;br/&gt;&lt;/p&gt;
-&lt;h4 id=&#34;work&#34; &gt;
+      <description>&lt;p&gt;Hello! I&amp;rsquo;m Amanda, and I&amp;rsquo;m 28 years old.&lt;/p&gt;
+&lt;p&gt;Since 2014, I&amp;rsquo;ve been immersed in the world of technology, and since 2019, I&amp;rsquo;ve ventured into the universe of programming. Here in my little corner of the internet, you&amp;rsquo;ll find a collection of learnings, experiences, and projects I&amp;rsquo;ve worked on.&lt;/p&gt;
+&lt;p&gt;Feel free to explore and, who knows, find something that resonates with you.&lt;/p&gt;
+&lt;h4 id=&#34;my-journey&#34; &gt;
 &lt;div&gt;
-    &lt;a href=&#34;#work&#34;&gt;
+    &lt;a href=&#34;#my-journey&#34;&gt;
         ###
     &lt;/a&gt;
-    Work
+    My Journey
 &lt;/div&gt;
 &lt;/h4&gt;
-&lt;p&gt;I’m graduated in Computer Science, and Software Engineer at PagarMe.
-&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;I have a degree in Computer Science and currently work as a Software Engineer at PagarMe. Over the years, I&amp;rsquo;ve worked with various technologies, including C#, JavaScript, Go, and modern frameworks like Node.js. Each project I&amp;rsquo;ve worked on has taught me something new, and I&amp;rsquo;m always looking for new challenges.&lt;/p&gt;
 &lt;h4 id=&#34;contact&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#contact&#34;&gt;
@@ -737,31 +795,27 @@ We could instead of making all those things sync, make only the crucial sync and
     Contact
 &lt;/div&gt;
 &lt;/h4&gt;
-&lt;p&gt;Wanna get in touch? Email me at &lt;strong&gt;YW1hbmRhLm1hdGFAbGl2ZS5jb20=&lt;/strong&gt;
-&lt;br/&gt;
-Decode that Base64 string &lt;a href=&#34;https://www.base64decode.org/&#34;&gt;here&lt;/a&gt;
-&lt;br/&gt;&lt;/p&gt;
-&lt;h4 id=&#34;disclaimer&#34; &gt;
+&lt;p&gt;Want to chat? Send me an email: &lt;strong&gt;&lt;a href=&#34;mailto:amanda.mata@live.com&#34;&gt;amanda.mata@live.com&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;opinions&#34; &gt;
 &lt;div&gt;
-    &lt;a href=&#34;#disclaimer&#34;&gt;
+    &lt;a href=&#34;#opinions&#34;&gt;
         ###
     &lt;/a&gt;
-    Disclaimer
+    Opinions
 &lt;/div&gt;
 &lt;/h4&gt;
-&lt;p&gt;Opinions expressed here are my own and not those of my employer or any past employer.
-&lt;br/&gt;&lt;/p&gt;
-&lt;h4 id=&#34;buy-me-a-coffee&#34; &gt;
+&lt;p&gt;The opinions expressed here are personal and do not represent those of my current employer or any previous employer.&lt;/p&gt;
+&lt;h4 id=&#34;support-my-work&#34; &gt;
 &lt;div&gt;
-    &lt;a href=&#34;#buy-me-a-coffee&#34;&gt;
+    &lt;a href=&#34;#support-my-work&#34;&gt;
         ###
     &lt;/a&gt;
-    Buy me a coffee
+    Support My Work
 &lt;/div&gt;
 &lt;/h4&gt;
+&lt;p&gt;If you like the content I create and want to support me, consider buying me a coffee. Any contribution is greatly appreciated and helps me continue producing content.&lt;/p&gt;
 &lt;p&gt;BTC Wallet: &lt;code&gt;bc1qjy622x7qh6k453tdgcu7hhhj7agv6nqnysfdlntx6uf0tp4g8ujs0vcd9a&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/wallet.png&#34; alt=&#34;wallet&#34;&gt;&lt;/p&gt;
-&lt;/br&gt;
 </description>
     </item>
     

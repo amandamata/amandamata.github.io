@@ -10,11 +10,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer-when-downgrade">
 
-<title>Como apagar uma informação sensível do histórico de commits - amandamata</title>
+<title>Removendo dados sensíveis do histórico de commits - amandaintech</title>
 
 <meta name="description" content="Hoje aprendi algo extremamente útil: como remover informações sensíveis do histórico de commits de forma eficiente.
-Acredito que em algum momento todos nós cometemos o erro de enviar acidentalmente informações sensíveis para um repositório no GitHub, e simplesmente apagar a informação não resolve o problema, uma vez que o histórico de commits ainda mostrará a versão anterior com essas informações.
-Para solucionar essa questão, as pessoas costumam utilizar o git-filter-branch. No entanto, gostaria de apresentar uma alternativa ainda melhor: o BFG.">
+Em algum momento, muitos de nós cometemos o erro de enviar acidentalmente informações sensíveis para um repositório no GitHub. Simplesmente apagar a informação do repositório atual não resolve o problema, pois o histórico de commits ainda mostrará a versão anterior com essas informações.
+Para solucionar essa questão, muitos recorrem ao git-filter-branch. No entanto, quero apresentar uma alternativa ainda melhor: o BFG.">
 
 
 
@@ -168,7 +168,7 @@ Para solucionar essa questão, as pessoas costumam utilizar o git-filter-branch.
                 <div class="header-top">
     <div class="header-top-left">
         <h1 class="site-title noselect">
-    <a href="/pt-pt">amandamata</a>
+    <a href="/pt-pt">amandaintech</a>
 </h1>
 
         
@@ -366,7 +366,7 @@ Para solucionar essa questão, as pessoas costumam utilizar o git-filter-branch.
     <nav class="noselect">
         
         
-        <a class="" href="https://amandamata.github.io/pt-pt/" title="amandamata">home</a>
+        <a class="" href="https://amandamata.github.io/pt-pt/" title="amandaintech">home</a>
         
         <a class="" href="https://amandamata.github.io/pt-pt/about" title="">about</a>
         
@@ -374,28 +374,6 @@ Para solucionar essa questão, as pessoas costumam utilizar o git-filter-branch.
 
 
 
-<script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$','$$'], ['\\[', '\\]']],
-      processEscapes: true,
-      processEnvironments: true
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-    }
-  };
-
-  window.addEventListener('load', (event) => {
-      document.querySelectorAll("mjx-container").forEach(function(x){
-        x.parentElement.classList += 'has-jax'})
-    });
-
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 
 
@@ -410,7 +388,7 @@ Para solucionar essa questão, as pessoas costumam utilizar o git-filter-branch.
     <article class="post h-entry">
         <div class="post-header">
             <header>
-                <h1 class="p-name post-title">Como apagar uma informação sensível do histórico de commits</h1>
+                <h1 class="p-name post-title">Removendo dados sensíveis do histórico de commits</h1>
                 
     
     <span>
@@ -496,9 +474,9 @@ Para solucionar essa questão, as pessoas costumam utilizar o git-filter-branch.
 
         <div class="content e-content">
             <p>Hoje aprendi algo extremamente útil: como remover informações sensíveis do histórico de commits de forma eficiente.</p>
-<p>Acredito que em algum momento todos nós cometemos o erro de enviar acidentalmente informações sensíveis para um repositório no GitHub, e simplesmente apagar a informação não resolve o problema, uma vez que o histórico de commits ainda mostrará a versão anterior com essas informações.</p>
-<p>Para solucionar essa questão, as pessoas costumam utilizar o git-filter-branch. No entanto, gostaria de apresentar uma alternativa ainda melhor: o BFG.</p>
-<p>O BFG é uma ferramenta poderosa e fácil de usar que permite remover informações confidenciais do histórico de commits do seu repositório de forma segura. Ele oferece uma solução mais rápida e eficiente em comparação com o git-filter-branch.</br></p>
+<p>Em algum momento, muitos de nós cometemos o erro de enviar acidentalmente informações sensíveis para um repositório no GitHub. Simplesmente apagar a informação do repositório atual não resolve o problema, pois o histórico de commits ainda mostrará a versão anterior com essas informações.</p>
+<p>Para solucionar essa questão, muitos recorrem ao <code>git-filter-branch</code>. No entanto, quero apresentar uma alternativa ainda melhor: o BFG.</p>
+<p>O BFG é uma ferramenta poderosa e fácil de usar que permite remover informações confidenciais do histórico de commits do seu repositório de forma segura. Ele oferece uma solução mais rápida e eficiente em comparação com o <code>git-filter-branch</code>.</p>
 <h4 id="cenário" >
 <div>
     <a href="#cen%c3%a1rio">
@@ -507,12 +485,23 @@ Para solucionar essa questão, as pessoas costumam utilizar o git-filter-branch.
     Cenário
 </div>
 </h4>
-<p>Temos o repositório <a href="https://github.com/amandamata/how-to-use-bfg">how-to-use-bfg</a></p>
-<p>Nesse repositório existia um appsettings.json com informações sensiveis</p>
+<p>Temos o repositório <a href="https://github.com/amandamata/how-to-use-bfg">how-to-use-bfg</a>.</p>
+<p>Nesse repositório existia um <code>appsettings.json</code> com informações sensíveis.</p>
 <p><img src="/img/bfg1.png" alt="bfg1"></p>
-<p>Eu exclui essa informação sensivel, fiz o commit e push, mas no histórico essa informação sensivel ainda aparece</p>
+<p>Eu excluí essa informação sensível, fiz o commit e push, mas no histórico essa informação sensível ainda aparece.</p>
 <p><img src="/img/bfg2.png" alt="bfg2"></p>
-</br>
+<h4 id="pré-requisitos" >
+<div>
+    <a href="#pr%c3%a9-requisitos">
+        ###
+    </a>
+    Pré-requisitos
+</div>
+</h4>
+<ul>
+<li>Git instalado na sua máquina.</li>
+<li>Java Runtime Environment (JRE) instalado para executar o arquivo <code>.jar</code> do BFG.</li>
+</ul>
 <h4 id="como-utilizar" >
 <div>
     <a href="#como-utilizar">
@@ -521,32 +510,48 @@ Para solucionar essa questão, as pessoas costumam utilizar o git-filter-branch.
     Como utilizar
 </div>
 </h4>
-<p>O tutorial no site do BFG não é difícil, mas vou descrever aqui de forma mais detalhada para tornar o processo mais compreensível e simples de seguir.</p>
-<p>Para utilizar o BFG, siga estes passos:</p>
+<p>O tutorial no site do BFG é bastante direto, mas aqui está uma descrição mais detalhada para facilitar o processo:</p>
 <ol>
-<li>Baixe o arquivo .jar do site do <a href="https://rtyley.github.io/bfg-repo-cleaner/">BFG</a>.</li>
-<li>Faça um clone do repositório atual usando o comando:
-<pre tabindex="0"><code>git clone git@github.com:amandamata/how-to-use-bfg.git --mirror
-</code></pre></li>
-<li>Crie um arquivo de referência contendo o valor que deseja remover do histórico de commits. Por exemplo:
-<pre tabindex="0"><code>echo *VyieIqbij35MYV5&amp;bIakKmq1Z &gt; auth.txt
-</code></pre></li>
-<li>Execute o BFG, passando o valor de referência, usando o seguinte comando:
-<pre tabindex="0"><code>java -jar ~/Downloads/bfg-1.14.0.jar --replace-text auth.txt how-to-use-bfg.git
-</code></pre></li>
-<li>Acesse o diretório do repositório clonado:
-<pre tabindex="0"><code>cd how-to-use-bfg.git
-</code></pre></li>
-<li>Execute o seguinte comando:
-<pre tabindex="0"><code>git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive
-</code></pre></li>
-<li>Faça o push das alterações:
-<pre tabindex="0"><code>git push
-</code></pre></li>
+<li>
+<p>Baixe o arquivo <code>.jar</code> do BFG do site oficial: <a href="https://rtyley.github.io/bfg-repo-cleaner/">BFG Repo-Cleaner</a>.</p>
+</li>
+<li>
+<p>Faça um clone do repositório usando o comando:</p>
+</li>
 </ol>
-</br>
-Após seguir esses passos, o histórico de commits do seu repositório será atualizado e as informações sensíveis serão removidas.
+<pre tabindex="0"><code>git clone git@github.com:amandamata/how-to-use-bfg.git --mirror
+</code></pre><ol>
+<li>Crie um arquivo de referência contendo o valor que você deseja remover do histórico de commits. Por exemplo:</li>
+</ol>
+<pre tabindex="0"><code>echo *VyieIqbij35MYV5&amp;bIakKmq1Z &gt; auth.txt
+</code></pre><ol>
+<li>Execute o BFG, passando o valor de referência, usando o seguinte comando:</li>
+</ol>
+<pre tabindex="0"><code>java -jar ~/Downloads/bfg-1.14.0.jar --replace-text auth.txt how-to-use-bfg.git
+</code></pre><ol>
+<li>Acesse o diretório do repositório clonado:</li>
+</ol>
+<pre tabindex="0"><code>cd how-to-use-bfg.git
+</code></pre><ol>
+<li>Execute o seguinte comando:</li>
+</ol>
+<pre tabindex="0"><code>git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive
+</code></pre><ol>
+<li>Faça o push das alterações:</li>
+</ol>
+<pre tabindex="0"><code>git push
+</code></pre><p>Após seguir esses passos, o histórico de commit do seu repositório será atualizado e os dados sensiveis serão removidos.</p>
 <p><img src="/img/bfg3.png" alt="bfg3"></p>
+<h4 id="conclusão" >
+<div>
+    <a href="#conclus%c3%a3o">
+        ###
+    </a>
+    Conclusão
+</div>
+</h4>
+<p>Remover informações sensíveis do histórico de commits é crucial para manter a segurança e privacidade do seu projeto. O BFG Repo-Cleaner oferece uma maneira eficiente e rápida de fazer isso. Se você tiver alguma dúvida ou quiser compartilhar sua experiência usando o BFG, sinta-se à vontade para deixar um comentário abaixo.</p>
+<p>Espero que este guia tenha sido útil. Boa sorte com a limpeza do seu repositório!</p>
 
         </div>
 

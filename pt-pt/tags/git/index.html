@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer-when-downgrade">
 
-<title>git - amandamata</title>
+<title>git - amandaintech</title>
 
 <meta name="description" content="">
 
@@ -18,7 +18,7 @@
 
 
 
-<link rel="alternate" type="application/rss+xml" href="/pt-pt/tags/git/index.xml" title="amandamata" />
+<link rel="alternate" type="application/rss+xml" href="/pt-pt/tags/git/index.xml" title="amandaintech" />
 <link rel="icon" type="image/x-icon" href="https://amandamata.github.io/favicon.ico">
 <link rel="apple-touch-icon-precomposed" href="https://amandamata.github.io/favicon.png">
 
@@ -167,7 +167,7 @@
                 <div class="header-top">
     <div class="header-top-left">
         <h1 class="site-title noselect">
-    <a href="/pt-pt">amandamata</a>
+    <a href="/pt-pt">amandaintech</a>
 </h1>
 
         
@@ -365,7 +365,7 @@
     <nav class="noselect">
         
         
-        <a class="" href="https://amandamata.github.io/pt-pt/" title="amandamata">home</a>
+        <a class="" href="https://amandamata.github.io/pt-pt/" title="amandaintech">home</a>
         
         <a class="" href="https://amandamata.github.io/pt-pt/about" title="">about</a>
         
@@ -373,28 +373,6 @@
 
 
 
-<script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$','$$'], ['\\[', '\\]']],
-      processEscapes: true,
-      processEnvironments: true
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-    }
-  };
-
-  window.addEventListener('load', (event) => {
-      document.querySelectorAll("mjx-container").forEach(function(x){
-        x.parentElement.classList += 'has-jax'})
-    });
-
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 
 
@@ -413,7 +391,7 @@
         <article class="post-list h-feed post-card">
     <div class="post-header">
         <header>
-            <h1 class="p-name post-title"><a class="u-url" href="/pt-pt/post/bfg/">Como apagar uma informação sensível do histórico de commits</a></h1>
+            <h1 class="p-name post-title"><a class="u-url" href="/pt-pt/post/bfg/">Removendo dados sensíveis do histórico de commits</a></h1>
         </header>
         
     
@@ -441,14 +419,10 @@
     
         <div class="content post-summary p-summary">
             Hoje aprendi algo extremamente útil: como remover informações sensíveis do histórico de commits de forma eficiente.
-Acredito que em algum momento todos nós cometemos o erro de enviar acidentalmente informações sensíveis para um repositório no GitHub, e simplesmente apagar a informação não resolve o problema, uma vez que o histórico de commits ainda mostrará a versão anterior com essas informações.
-Para solucionar essa questão, as pessoas costumam utilizar o git-filter-branch. No entanto, gostaria de apresentar uma alternativa ainda melhor: o BFG.
+Em algum momento, muitos de nós cometemos o erro de enviar acidentalmente informações sensíveis para um repositório no GitHub. Simplesmente apagar a informação do repositório atual não resolve o problema, pois o histórico de commits ainda mostrará a versão anterior com essas informações.
+Para solucionar essa questão, muitos recorrem ao git-filter-branch. No entanto, quero apresentar uma alternativa ainda melhor: o BFG.
         </div>
     
-    
-        <div class="read-more">
-            <a class="u-url" href="/pt-pt/post/bfg/">Read more</a>
-        </div>
     
 
     

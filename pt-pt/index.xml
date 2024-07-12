@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>amandamata</title>
+    <title>amandaintech</title>
     <link>/pt-pt/</link>
-    <description>amandamata</description>
+    <description>amandaintech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-pt</language>
     <lastBuildDate>Mon, 13 Nov 2023 18:19:29 -0300</lastBuildDate>
@@ -17,23 +17,43 @@
       <pubDate>Mon, 13 Nov 2023 18:19:29 -0300</pubDate>
       
       <guid>/pt-pt/post/telemetry/</guid>
-      <description>&lt;p&gt;E se você quiser medir o tempo de execução de um método?
-Existem várias razões para isso, seja para login, profiling, medição de desempenho geral ou rastreamento de degradação ao longo do tempo. A coleta dessas métricas é um aspecto crucial de qualquer aplicação em produção.&lt;/p&gt;
-&lt;p&gt;Existem diversos métodos para fazer isso, incluindo diferentes bibliotecas que agregam dados de telemetria. Embora ofereçam insights abrangentes, às vezes você pode preferir uma abordagem mais direta. Uma maneira de fazer isso é usando um bloco try e finally em conjunto com um cronômetro (stopwatch).&lt;/p&gt;
-&lt;p&gt;No entanto, essa abordagem, apesar de mais limpa, ainda exige a adição de código de medição nos métodos que você deseja testar.&lt;/p&gt;
-&lt;p&gt;Aqui está uma solução mais simples: a biblioteca MethodTimer.Fody. Uma vez instalada, tudo o que você precisa fazer é adicionar o atributo [Time] acima do método que deseja mensurar o desempenho. Execute seu código, verifique a saída de debug e pronto.&lt;/p&gt;
-&lt;p&gt;Para entender como isso funciona, você pode explorar o repositório da biblioteca &lt;a href=&#34;https://github.com/Fody/MethodTimer&#34;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;A mágica está em como nosso código se transforma, refletindo a abordagem inicial. O código sob teste:&lt;/p&gt;
+      <description>&lt;h4 id=&#34;introdução&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#introdu%c3%a7%c3%a3o&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Introdução
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;Medir o tempo de execução de métodos é essencial para otimizar aplicações, seja para profiling, monitoramento de performance ou detecção de degradações ao longo do tempo. Embora existam várias ferramentas e bibliotecas disponíveis para essa finalidade, muitas vezes procuramos soluções que sejam diretas e não intrusivas.&lt;/p&gt;
+&lt;h4 id=&#34;a-solução-methodtimerfody&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#a-solu%c3%a7%c3%a3o-methodtimerfody&#34;&gt;
+        ###
+    &lt;/a&gt;
+    A Solução: MethodTimer.Fody
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;Uma das maneiras mais eficientes e limpas de medir a performance de métodos em C# é utilizando a biblioteca MethodTimer.Fody. Essa ferramenta permite adicionar automaticamente cronômetros aos métodos desejados através de um simples atributo, sem a necessidade de modificar o código existente.&lt;/p&gt;
+&lt;h4 id=&#34;como-funciona&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#como-funciona&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Como funciona
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;Após instalar a biblioteca &lt;a href=&#34;https://github.com/Fody/MethodTimer&#34;&gt;MethodTimer&lt;/a&gt; no seu projeto, basta adicionar o atributo &lt;code&gt;[Time]&lt;/code&gt; acima de qualquer método que você deseja monitorar. Veja um exemplo:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;MyClass&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#57c7ff&#34;&gt;    [Time]&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;void&lt;/span&gt; MyMethod()
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#78787e&#34;&gt;// Algum código sobre o qual você está curioso em termos de tempo de execução&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Console.WriteLine(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;Olá&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#78787e&#34;&gt;// Seu código aqui&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Console.WriteLine(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;Executando método monitorado.&amp;#34;&lt;/span&gt;);
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Após a compilação, fica assim:&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Quando você executa seu código, a biblioteca automaticamente injeta a lógica de cronometragem, e a saída de debug mostrará o tempo de execução do método.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;MyClass&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;void&lt;/span&gt; MyMethod()
@@ -41,8 +61,8 @@ Existem várias razões para isso, seja para login, profiling, medição de dese
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#9aedfe&#34;&gt;var&lt;/span&gt; cronometro = Stopwatch.StartNew();
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;try&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#78787e&#34;&gt;// Algum código sobre o qual você está curioso em termos de tempo de execução&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            Console.WriteLine(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;Olá&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#78787e&#34;&gt;// Seu código aqui&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            Console.WriteLine(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;Executando método monitorado.&amp;#34;&lt;/span&gt;);
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;finally&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
@@ -79,19 +99,41 @@ Existem várias razões para isso, seja para login, profiling, medição de dese
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Com tudo configurado, você pode logar e injetar as informações que desejar.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/telemetry.png&#34; alt=&#34;telemetry&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;benefícios&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#benef%c3%adcios&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Benefícios
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Simplicidade: Não é necessário escrever código adicional de cronometragem.&lt;/li&gt;
+&lt;li&gt;Automatização: A medição de performance é adicionada em tempo de compilação, mantendo seu código limpo.&lt;/li&gt;
+&lt;li&gt;Facilidade de Uso: Basta adicionar um atributo ao método desejado.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;conclusão&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#conclus%c3%a3o&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Conclusão
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;MethodTimer.Fody é uma ferramenta poderosa para desenvolvedores que buscam uma maneira eficiente e descomplicada de medir a performance de seus métodos em C#. Com a facilidade de integração e o mínimo impacto no código existente, é uma excelente escolha para qualquer projeto.&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>Como apagar uma informação sensível do histórico de commits</title>
+      <title>Removendo dados sensíveis do histórico de commits</title>
       <link>/pt-pt/post/bfg/</link>
       <pubDate>Tue, 30 May 2023 14:01:29 -0300</pubDate>
       
       <guid>/pt-pt/post/bfg/</guid>
       <description>&lt;p&gt;Hoje aprendi algo extremamente útil: como remover informações sensíveis do histórico de commits de forma eficiente.&lt;/p&gt;
-&lt;p&gt;Acredito que em algum momento todos nós cometemos o erro de enviar acidentalmente informações sensíveis para um repositório no GitHub, e simplesmente apagar a informação não resolve o problema, uma vez que o histórico de commits ainda mostrará a versão anterior com essas informações.&lt;/p&gt;
-&lt;p&gt;Para solucionar essa questão, as pessoas costumam utilizar o git-filter-branch. No entanto, gostaria de apresentar uma alternativa ainda melhor: o BFG.&lt;/p&gt;
-&lt;p&gt;O BFG é uma ferramenta poderosa e fácil de usar que permite remover informações confidenciais do histórico de commits do seu repositório de forma segura. Ele oferece uma solução mais rápida e eficiente em comparação com o git-filter-branch.&lt;/br&gt;&lt;/p&gt;
+&lt;p&gt;Em algum momento, muitos de nós cometemos o erro de enviar acidentalmente informações sensíveis para um repositório no GitHub. Simplesmente apagar a informação do repositório atual não resolve o problema, pois o histórico de commits ainda mostrará a versão anterior com essas informações.&lt;/p&gt;
+&lt;p&gt;Para solucionar essa questão, muitos recorrem ao &lt;code&gt;git-filter-branch&lt;/code&gt;. No entanto, quero apresentar uma alternativa ainda melhor: o BFG.&lt;/p&gt;
+&lt;p&gt;O BFG é uma ferramenta poderosa e fácil de usar que permite remover informações confidenciais do histórico de commits do seu repositório de forma segura. Ele oferece uma solução mais rápida e eficiente em comparação com o &lt;code&gt;git-filter-branch&lt;/code&gt;.&lt;/p&gt;
 &lt;h4 id=&#34;cenário&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#cen%c3%a1rio&#34;&gt;
@@ -100,12 +142,23 @@ Existem várias razões para isso, seja para login, profiling, medição de dese
     Cenário
 &lt;/div&gt;
 &lt;/h4&gt;
-&lt;p&gt;Temos o repositório &lt;a href=&#34;https://github.com/amandamata/how-to-use-bfg&#34;&gt;how-to-use-bfg&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Nesse repositório existia um appsettings.json com informações sensiveis&lt;/p&gt;
+&lt;p&gt;Temos o repositório &lt;a href=&#34;https://github.com/amandamata/how-to-use-bfg&#34;&gt;how-to-use-bfg&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Nesse repositório existia um &lt;code&gt;appsettings.json&lt;/code&gt; com informações sensíveis.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg1.png&#34; alt=&#34;bfg1&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Eu exclui essa informação sensivel, fiz o commit e push, mas no histórico essa informação sensivel ainda aparece&lt;/p&gt;
+&lt;p&gt;Eu excluí essa informação sensível, fiz o commit e push, mas no histórico essa informação sensível ainda aparece.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg2.png&#34; alt=&#34;bfg2&#34;&gt;&lt;/p&gt;
-&lt;/br&gt;
+&lt;h4 id=&#34;pré-requisitos&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#pr%c3%a9-requisitos&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Pré-requisitos
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Git instalado na sua máquina.&lt;/li&gt;
+&lt;li&gt;Java Runtime Environment (JRE) instalado para executar o arquivo &lt;code&gt;.jar&lt;/code&gt; do BFG.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h4 id=&#34;como-utilizar&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#como-utilizar&#34;&gt;
@@ -114,32 +167,48 @@ Existem várias razões para isso, seja para login, profiling, medição de dese
     Como utilizar
 &lt;/div&gt;
 &lt;/h4&gt;
-&lt;p&gt;O tutorial no site do BFG não é difícil, mas vou descrever aqui de forma mais detalhada para tornar o processo mais compreensível e simples de seguir.&lt;/p&gt;
-&lt;p&gt;Para utilizar o BFG, siga estes passos:&lt;/p&gt;
+&lt;p&gt;O tutorial no site do BFG é bastante direto, mas aqui está uma descrição mais detalhada para facilitar o processo:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Baixe o arquivo .jar do site do &lt;a href=&#34;https://rtyley.github.io/bfg-repo-cleaner/&#34;&gt;BFG&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Faça um clone do repositório atual usando o comando:
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git clone git@github.com:amandamata/how-to-use-bfg.git --mirror
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;Crie um arquivo de referência contendo o valor que deseja remover do histórico de commits. Por exemplo:
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;echo *VyieIqbij35MYV5&amp;amp;bIakKmq1Z &amp;gt; auth.txt
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;Execute o BFG, passando o valor de referência, usando o seguinte comando:
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;java -jar ~/Downloads/bfg-1.14.0.jar --replace-text auth.txt how-to-use-bfg.git
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;Acesse o diretório do repositório clonado:
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd how-to-use-bfg.git
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;Execute o seguinte comando:
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git reflog expire --expire=now --all &amp;amp;&amp;amp; git gc --prune=now --aggressive
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;Faça o push das alterações:
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git push
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Baixe o arquivo &lt;code&gt;.jar&lt;/code&gt; do BFG do site oficial: &lt;a href=&#34;https://rtyley.github.io/bfg-repo-cleaner/&#34;&gt;BFG Repo-Cleaner&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Faça um clone do repositório usando o comando:&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
-&lt;/br&gt;
-Após seguir esses passos, o histórico de commits do seu repositório será atualizado e as informações sensíveis serão removidas.
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git clone git@github.com:amandamata/how-to-use-bfg.git --mirror
+&lt;/code&gt;&lt;/pre&gt;&lt;ol&gt;
+&lt;li&gt;Crie um arquivo de referência contendo o valor que você deseja remover do histórico de commits. Por exemplo:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;echo *VyieIqbij35MYV5&amp;amp;bIakKmq1Z &amp;gt; auth.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;ol&gt;
+&lt;li&gt;Execute o BFG, passando o valor de referência, usando o seguinte comando:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;java -jar ~/Downloads/bfg-1.14.0.jar --replace-text auth.txt how-to-use-bfg.git
+&lt;/code&gt;&lt;/pre&gt;&lt;ol&gt;
+&lt;li&gt;Acesse o diretório do repositório clonado:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd how-to-use-bfg.git
+&lt;/code&gt;&lt;/pre&gt;&lt;ol&gt;
+&lt;li&gt;Execute o seguinte comando:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git reflog expire --expire=now --all &amp;amp;&amp;amp; git gc --prune=now --aggressive
+&lt;/code&gt;&lt;/pre&gt;&lt;ol&gt;
+&lt;li&gt;Faça o push das alterações:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git push
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Após seguir esses passos, o histórico de commit do seu repositório será atualizado e os dados sensiveis serão removidos.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg3.png&#34; alt=&#34;bfg3&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;conclusão&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#conclus%c3%a3o&#34;&gt;
+        ###
+    &lt;/a&gt;
+    Conclusão
+&lt;/div&gt;
+&lt;/h4&gt;
+&lt;p&gt;Remover informações sensíveis do histórico de commits é crucial para manter a segurança e privacidade do seu projeto. O BFG Repo-Cleaner oferece uma maneira eficiente e rápida de fazer isso. Se você tiver alguma dúvida ou quiser compartilhar sua experiência usando o BFG, sinta-se à vontade para deixar um comentário abaixo.&lt;/p&gt;
+&lt;p&gt;Espero que este guia tenha sido útil. Boa sorte com a limpeza do seu repositório!&lt;/p&gt;
 </description>
     </item>
     
@@ -707,26 +776,23 @@ Para que isso aconteça será necessário que tenhamos um consumer service, que 
     </item>
     
     <item>
-      <title>Sobre</title>
+      <title>Sobre Mim</title>
       <link>/pt-pt/about/</link>
       <pubDate>Wed, 25 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>/pt-pt/about/</guid>
-      <description>&lt;p&gt;Oi! Meu nome é Amanda, tenho 28 anos.&lt;/p&gt;
-&lt;p&gt;Trabalho com tecnologia desde 2014 e com programação desde 2019.&lt;/p&gt;
-&lt;p&gt;Seja bem vindo ao meu cantinho na internet.&lt;/p&gt;
-&lt;p&gt;Meu blog é uma coleção solta de coisas que eu aprendo.
-&lt;br/&gt;&lt;/p&gt;
-&lt;h4 id=&#34;trabalho&#34; &gt;
+      <description>&lt;p&gt;Olá! Sou a Amanda, tenho 28 anos.&lt;/p&gt;
+&lt;p&gt;Desde 2014, estou imersa no mundo da tecnologia, e desde 2019, me aventurei no universo da programação. Aqui no meu cantinho da internet, você encontrará uma coleção de aprendizados, experiências e projetos nos quais trabalhei.&lt;/p&gt;
+&lt;p&gt;Sinta-se à vontade para explorar e, quem sabe, encontrar algo que ressoe com você.&lt;/p&gt;
+&lt;h4 id=&#34;minha-jornada&#34; &gt;
 &lt;div&gt;
-    &lt;a href=&#34;#trabalho&#34;&gt;
+    &lt;a href=&#34;#minha-jornada&#34;&gt;
         ###
     &lt;/a&gt;
-    Trabalho
+    Minha Jornada
 &lt;/div&gt;
 &lt;/h4&gt;
-&lt;p&gt;Sou formada em Ciência da Computação, e Software Engineer na PagarMe.
-&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;Sou formada em Ciência da Computação e atualmente trabalho como Engenheira de Software na PagarMe. Ao longo dos anos, trabalhei com diversas tecnologias, incluindo C#, JavaScript, Go e frameworks modernos como Node.js. Cada projeto em que trabalhei me ensinou algo novo, e estou sempre em busca de novos desafios.&lt;/p&gt;
 &lt;h4 id=&#34;contato&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#contato&#34;&gt;
@@ -735,31 +801,28 @@ Para que isso aconteça será necessário que tenhamos um consumer service, que 
     Contato
 &lt;/div&gt;
 &lt;/h4&gt;
-&lt;p&gt;Quer entrar em contato? Me envie um e-mail &lt;strong&gt;YW1hbmRhLm1hdGFAbGl2ZS5jb20=&lt;/strong&gt;
-&lt;br/&gt;
-Decodifique a string Base64 &lt;a href=&#34;https://www.base64decode.org/&#34;&gt;aqui&lt;/a&gt;
-&lt;br/&gt;&lt;/p&gt;
-&lt;h4 id=&#34;disclaimer&#34; &gt;
+&lt;p&gt;Quer conversar? Me mande um e-mail: &lt;strong&gt;&lt;a href=&#34;mailto:amanda.mata@live.com&#34;&gt;amanda.mata@live.com&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;opiniões&#34; &gt;
 &lt;div&gt;
-    &lt;a href=&#34;#disclaimer&#34;&gt;
+    &lt;a href=&#34;#opini%c3%b5es&#34;&gt;
         ###
     &lt;/a&gt;
-    Disclaimer
+    Opiniões
 &lt;/div&gt;
 &lt;/h4&gt;
-&lt;p&gt;As opiniões expressadas aqui são minhas, e não dos meus empregadores atuais ou passados.
-&lt;br/&gt;&lt;/p&gt;
-&lt;h4 id=&#34;me-compre-um-café&#34; &gt;
+&lt;p&gt;As opiniões expressas aqui são pessoais e não representam as de meu empregador atual ou de qualquer empregador anterior.&lt;/p&gt;
+&lt;h4 id=&#34;apoie-meu-trabalho&#34; &gt;
 &lt;div&gt;
-    &lt;a href=&#34;#me-compre-um-caf%c3%a9&#34;&gt;
+    &lt;a href=&#34;#apoie-meu-trabalho&#34;&gt;
         ###
     &lt;/a&gt;
-    Me compre um café
+    Apoie meu trabalho
 &lt;/div&gt;
 &lt;/h4&gt;
-&lt;p&gt;Carteira BTC: &lt;code&gt;bc1qjy622x7qh6k453tdgcu7hhhj7agv6nqnysfdlntx6uf0tp4g8ujs0vcd9a&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Se você gosta do conteúdo que eu crio e quer me apoiar, considere me comprar um café. Qualquer contribuição é muito apreciada e me ajuda a continuar produzindo conteúdo.&lt;/p&gt;
+&lt;p&gt;BTC Wallet: &lt;code&gt;bc1qjy622x7qh6k453tdgcu7hhhj7agv6nqnysfdlntx6uf0tp4g8ujs0vcd9a&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/wallet.png&#34; alt=&#34;wallet&#34;&gt;&lt;/p&gt;
-&lt;/br&gt;</description>
+</description>
     </item>
     
   </channel>

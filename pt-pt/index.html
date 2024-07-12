@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer-when-downgrade">
 
-<title>amandamata</title>
+<title>amandaintech</title>
 
 <meta name="description" content="">
 
@@ -19,7 +19,7 @@
 
 
 
-<link rel="alternate" type="application/rss+xml" href="/pt-pt/index.xml" title="amandamata" />
+<link rel="alternate" type="application/rss+xml" href="/pt-pt/index.xml" title="amandaintech" />
 <link rel="icon" type="image/x-icon" href="https://amandamata.github.io/favicon.ico">
 <link rel="apple-touch-icon-precomposed" href="https://amandamata.github.io/favicon.png">
 
@@ -168,7 +168,7 @@
                 <div class="header-top">
     <div class="header-top-left">
         <h1 class="site-title noselect">
-    <a href="/pt-pt">amandamata</a>
+    <a href="/pt-pt">amandaintech</a>
 </h1>
 
         
@@ -366,7 +366,7 @@
     <nav class="noselect">
         
         
-        <a class="" href="https://amandamata.github.io/pt-pt/" title="amandamata">home</a>
+        <a class="" href="https://amandamata.github.io/pt-pt/" title="amandaintech">home</a>
         
         <a class="" href="https://amandamata.github.io/pt-pt/about" title="">about</a>
         
@@ -374,28 +374,6 @@
 
 
 
-<script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$','$$'], ['\\[', '\\]']],
-      processEscapes: true,
-      processEnvironments: true
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-    }
-  };
-
-  window.addEventListener('load', (event) => {
-      document.querySelectorAll("mjx-container").forEach(function(x){
-        x.parentElement.classList += 'has-jax'})
-    });
-
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 
 
@@ -442,14 +420,10 @@
 
     
         <div class="content post-summary p-summary">
-            E se você quiser medir o tempo de execução de um método? Existem várias razões para isso, seja para login, profiling, medição de desempenho geral ou rastreamento de degradação ao longo do tempo. A coleta dessas métricas é um aspecto crucial de qualquer aplicação em produção.
-Existem diversos métodos para fazer isso, incluindo diferentes bibliotecas que agregam dados de telemetria. Embora ofereçam insights abrangentes, às vezes você pode preferir uma abordagem mais direta.
+            ### Introdução Medir o tempo de execução de métodos é essencial para otimizar aplicações, seja para profiling, monitoramento de performance ou detecção de degradações ao longo do tempo. Embora existam várias ferramentas e bibliotecas disponíveis para essa finalidade, muitas vezes procuramos soluções que sejam diretas e não intrusivas.
+### A Solução: MethodTimer.Fody Uma das maneiras mais eficientes e limpas de medir a performance de métodos em C# é utilizando a biblioteca MethodTimer.
         </div>
     
-    
-        <div class="read-more">
-            <a class="u-url" href="/pt-pt/post/telemetry/">Read more</a>
-        </div>
     
 
     
@@ -476,6 +450,12 @@ Existem diversos métodos para fazer isso, incluindo diferentes bibliotecas que 
                     
                     <li><a href="/pt-pt/tags/telemetry/">#telemetry</a></li>
                 
+                    
+                    <li><a href="/pt-pt/tags/performance/">#performance</a></li>
+                
+                    
+                    <li><a href="">#C#</a></li>
+                
             </ul>
         
         
@@ -488,7 +468,7 @@ Existem diversos métodos para fazer isso, incluindo diferentes bibliotecas que 
             <article class="post-list h-feed post-card">
     <div class="post-header">
         <header>
-            <h1 class="p-name post-title"><a class="u-url" href="/pt-pt/post/bfg/">Como apagar uma informação sensível do histórico de commits</a></h1>
+            <h1 class="p-name post-title"><a class="u-url" href="/pt-pt/post/bfg/">Removendo dados sensíveis do histórico de commits</a></h1>
         </header>
         
     
@@ -516,14 +496,10 @@ Existem diversos métodos para fazer isso, incluindo diferentes bibliotecas que 
     
         <div class="content post-summary p-summary">
             Hoje aprendi algo extremamente útil: como remover informações sensíveis do histórico de commits de forma eficiente.
-Acredito que em algum momento todos nós cometemos o erro de enviar acidentalmente informações sensíveis para um repositório no GitHub, e simplesmente apagar a informação não resolve o problema, uma vez que o histórico de commits ainda mostrará a versão anterior com essas informações.
-Para solucionar essa questão, as pessoas costumam utilizar o git-filter-branch. No entanto, gostaria de apresentar uma alternativa ainda melhor: o BFG.
+Em algum momento, muitos de nós cometemos o erro de enviar acidentalmente informações sensíveis para um repositório no GitHub. Simplesmente apagar a informação do repositório atual não resolve o problema, pois o histórico de commits ainda mostrará a versão anterior com essas informações.
+Para solucionar essa questão, muitos recorrem ao git-filter-branch. No entanto, quero apresentar uma alternativa ainda melhor: o BFG.
         </div>
     
-    
-        <div class="read-more">
-            <a class="u-url" href="/pt-pt/post/bfg/">Read more</a>
-        </div>
     
 
     
@@ -592,10 +568,6 @@ Para solucionar essa questão, as pessoas costumam utilizar o git-filter-branch.
             Recentemente tive que implementar um cache em uma aplicação para evitar consultas desnecessárias ao banco de dados, e isso foi muito legal. Já trabalhei com Redis no passado, mas acho que fiz da maneira errada porque implementar um cache com Redis nunca foi tão legal. ### Redis x Mem cached O Redis é quase como um banco noSql, mas ele é ainda melhor pois armazena os dados com chave e valor e com isso fica muito mais fácil de utilizar ele como um cache.
         </div>
     
-    
-        <div class="read-more">
-            <a class="u-url" href="/pt-pt/post/redis/">Read more</a>
-        </div>
     
 
     
@@ -672,10 +644,6 @@ SQS (Simple Queue Service) é um serviço da Amazon que permite que você envie,
 A melhor parte de tudo isso é que, para você pagar por esse serviço, você teria que enviar mais de um milhão de requisições por mês, para que a amazon te envie uma cobrança.
         </div>
     
-    
-        <div class="read-more">
-            <a class="u-url" href="/pt-pt/post/queue-csharp-sqs/">Read more</a>
-        </div>
     
 
     
@@ -758,10 +726,6 @@ A mesma questão foi encontrada em vários sites, e no stack overflow, e as pess
         </div>
     
     
-        <div class="read-more">
-            <a class="u-url" href="/pt-pt/post/curly-brace/">Read more</a>
-        </div>
-    
 
     
 
@@ -840,10 +804,6 @@ Se a gente for analisar o windows e o linux acabaram evoluindo de forma diferent
         </div>
     
     
-        <div class="read-more">
-            <a class="u-url" href="/pt-pt/post/folders-in-linux/">Read more</a>
-        </div>
-    
 
     
 
@@ -913,10 +873,6 @@ Imagine que temos uma api de usuários
 Com essa API, podemos criar usuários no sistema e receber uma resposta dessa criação, talvez até atualizar ou deletar o usuário, enviar um email para o usuário e fazer uma requisição para outra API.
         </div>
     
-    
-        <div class="read-more">
-            <a class="u-url" href="/pt-pt/post/queue/">Read more</a>
-        </div>
     
 
     

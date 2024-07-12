@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer-when-downgrade">
 
-<title>amandamata</title>
+<title>amandaintech</title>
 
 <meta name="description" content="">
 
@@ -19,7 +19,7 @@
 
 
 
-<link rel="alternate" type="application/rss+xml" href="/index.xml" title="amandamata" />
+<link rel="alternate" type="application/rss+xml" href="/index.xml" title="amandaintech" />
 <link rel="icon" type="image/x-icon" href="https://amandamata.github.io/favicon.ico">
 <link rel="apple-touch-icon-precomposed" href="https://amandamata.github.io/favicon.png">
 
@@ -168,7 +168,7 @@
                 <div class="header-top">
     <div class="header-top-left">
         <h1 class="site-title noselect">
-    <a href="/">amandamata</a>
+    <a href="/">amandaintech</a>
 </h1>
 
         
@@ -366,7 +366,7 @@
     <nav class="noselect">
         
         
-        <a class=" active" href="https://amandamata.github.io/" title="amandamata">home</a>
+        <a class=" active" href="https://amandamata.github.io/" title="amandaintech">home</a>
         
         <a class="" href="https://amandamata.github.io/about" title="">about</a>
         
@@ -374,28 +374,6 @@
 
 
 
-<script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$','$$'], ['\\[', '\\]']],
-      processEscapes: true,
-      processEnvironments: true
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-    }
-  };
-
-  window.addEventListener('load', (event) => {
-      document.querySelectorAll("mjx-container").forEach(function(x){
-        x.parentElement.classList += 'has-jax'})
-    });
-
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 
 
@@ -442,14 +420,10 @@
 
     
         <div class="content post-summary p-summary">
-            What if you wish to measure the execution time of a method? There are various reasons for this—be it for login, profiling, general performance measurement, or tracking degradation over time. The collection of such metrics is a crucial aspect of any production application.
-Numerous methods exist for accomplishing this, including different libraries that aggregate telemetry data. While they offer comprehensive insights, sometimes you might prefer a more straightforward approach. One way to achieve this is by using a try and finally block in conjunction with a stopwatch.
+            ### Introduction Measuring method execution time is essential for optimizing applications, whether for profiling, performance monitoring, or detecting degradation over time. Although there are many tools and libraries available for this purpose, we often seek straightforward and non-intrusive solutions.
+### The Solution: MethodTimer.Fody One of the most efficient and cleanest ways to measure method performance in C# is by using the MethodTimer.Fody library. This tool automatically adds timers to the desired methods through a simple attribute, without modifying the existing code.
         </div>
     
-    
-        <div class="read-more">
-            <a class="u-url" href="/post/telemetry/">Read more</a>
-        </div>
     
 
     
@@ -488,7 +462,7 @@ Numerous methods exist for accomplishing this, including different libraries tha
             <article class="post-list h-feed post-card">
     <div class="post-header">
         <header>
-            <h1 class="p-name post-title"><a class="u-url" href="/post/bfg/">How to remove sensitive information from commit history</a></h1>
+            <h1 class="p-name post-title"><a class="u-url" href="/post/bfg/">Removing sensitive data from commit history</a></h1>
         </header>
         
     
@@ -515,15 +489,11 @@ Numerous methods exist for accomplishing this, including different libraries tha
 
     
         <div class="content post-summary p-summary">
-            Today I learned something extremely useful: how to efficiently remove sensitive information from commit history.
-I believe that at some point, we have all made the mistake of accidentally pushing sensitive information to a repository on GitHub. Simply deleting the information does not solve the problem because the commit history will still show the previous version with that sensitive information.
-To address this issue, people often use git-filter-branch. However, I would like to introduce an even better alternative: BFG.
+            Today, I learned something extremely useful: how to efficiently remove sensitive information from commit history.
+At some point, many of us make the mistake of accidentally pushing sensitive information to a GitHub repository. Simply deleting the information from the current repository does not solve the problem, as the commit history will still show the previous version with that information.
+To address this issue, many turn to git-filter-branch. However, I want to introduce an even better alternative: BFG.
         </div>
     
-    
-        <div class="read-more">
-            <a class="u-url" href="/post/bfg/">Read more</a>
-        </div>
     
 
     
@@ -592,10 +562,6 @@ To address this issue, people often use git-filter-branch. However, I would like
             I recently had to implement a cache in an application to avoid unnecessary database queries, and that was cool. I&rsquo;ve worked with Redis in the past, but I think I&rsquo;ve done it the wrong way because implementing a cache with Redis has never been so cool. ### Redis vs Mem cached Redis is almost like a NoSql database, but it is even better because it stores data with key and values and with that, it is much easier to use it as a cache.
         </div>
     
-    
-        <div class="read-more">
-            <a class="u-url" href="/post/redis/">Read more</a>
-        </div>
     
 
     
@@ -672,10 +638,6 @@ SQS (Simple Queue Service) is an Amazon service that lets you send, store, and r
 The best part is free, actually to pay for this service you gonna need to send over 1 million requests per month then amazon is going to bill you.
         </div>
     
-    
-        <div class="read-more">
-            <a class="u-url" href="/post/queue-csharp-sqs/">Read more</a>
-        </div>
     
 
     
@@ -757,10 +719,6 @@ if (true) { // do something } Was not as easy thing as may seem. Many sites and 
         </div>
     
     
-        <div class="read-more">
-            <a class="u-url" href="/post/curly-brace/">Read more</a>
-        </div>
-    
 
     
 
@@ -839,10 +797,6 @@ If we analyze windows and linux, they ended up evolving differently in terms of 
         </div>
     
     
-        <div class="read-more">
-            <a class="u-url" href="/post/folders-in-linux/">Read more</a>
-        </div>
-    
 
     
 
@@ -912,10 +866,6 @@ Imagine that we have a user&rsquo;s API.
 We can create users in the system and then retrieve them back, maybe update and maybe delete them, send an email to the user, and also make a request to another API.
         </div>
     
-    
-        <div class="read-more">
-            <a class="u-url" href="/post/queue/">Read more</a>
-        </div>
     
 
     

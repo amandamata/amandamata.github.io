@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer-when-downgrade">
 
-<title>telemetry - amandamata</title>
+<title>telemetry - amandaintech</title>
 
 <meta name="description" content="">
 
@@ -18,7 +18,7 @@
 
 
 
-<link rel="alternate" type="application/rss+xml" href="/tags/telemetry/index.xml" title="amandamata" />
+<link rel="alternate" type="application/rss+xml" href="/tags/telemetry/index.xml" title="amandaintech" />
 <link rel="icon" type="image/x-icon" href="https://amandamata.github.io/favicon.ico">
 <link rel="apple-touch-icon-precomposed" href="https://amandamata.github.io/favicon.png">
 
@@ -167,7 +167,7 @@
                 <div class="header-top">
     <div class="header-top-left">
         <h1 class="site-title noselect">
-    <a href="/">amandamata</a>
+    <a href="/">amandaintech</a>
 </h1>
 
         
@@ -365,7 +365,7 @@
     <nav class="noselect">
         
         
-        <a class="" href="https://amandamata.github.io/" title="amandamata">home</a>
+        <a class="" href="https://amandamata.github.io/" title="amandaintech">home</a>
         
         <a class="" href="https://amandamata.github.io/about" title="">about</a>
         
@@ -373,28 +373,6 @@
 
 
 
-<script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$','$$'], ['\\[', '\\]']],
-      processEscapes: true,
-      processEnvironments: true
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-    }
-  };
-
-  window.addEventListener('load', (event) => {
-      document.querySelectorAll("mjx-container").forEach(function(x){
-        x.parentElement.classList += 'has-jax'})
-    });
-
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 
 
@@ -440,14 +418,10 @@
 
     
         <div class="content post-summary p-summary">
-            What if you wish to measure the execution time of a method? There are various reasons for this—be it for login, profiling, general performance measurement, or tracking degradation over time. The collection of such metrics is a crucial aspect of any production application.
-Numerous methods exist for accomplishing this, including different libraries that aggregate telemetry data. While they offer comprehensive insights, sometimes you might prefer a more straightforward approach. One way to achieve this is by using a try and finally block in conjunction with a stopwatch.
+            ### Introduction Measuring method execution time is essential for optimizing applications, whether for profiling, performance monitoring, or detecting degradation over time. Although there are many tools and libraries available for this purpose, we often seek straightforward and non-intrusive solutions.
+### The Solution: MethodTimer.Fody One of the most efficient and cleanest ways to measure method performance in C# is by using the MethodTimer.Fody library. This tool automatically adds timers to the desired methods through a simple attribute, without modifying the existing code.
         </div>
     
-    
-        <div class="read-more">
-            <a class="u-url" href="/post/telemetry/">Read more</a>
-        </div>
     
 
     

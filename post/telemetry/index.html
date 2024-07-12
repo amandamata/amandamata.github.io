@@ -10,10 +10,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer-when-downgrade">
 
-<title>An easy way to measure your method performance - amandamata</title>
+<title>An easy way to measure your method performance - amandaintech</title>
 
-<meta name="description" content="What if you wish to measure the execution time of a method? There are various reasons for this—be it for login, profiling, general performance measurement, or tracking degradation over time. The collection of such metrics is a crucial aspect of any production application.
-Numerous methods exist for accomplishing this, including different libraries that aggregate telemetry data. While they offer comprehensive insights, sometimes you might prefer a more straightforward approach. One way to achieve this is by using a try and finally block in conjunction with a stopwatch.">
+<meta name="description" content="### Introduction Measuring method execution time is essential for optimizing applications, whether for profiling, performance monitoring, or detecting degradation over time. Although there are many tools and libraries available for this purpose, we often seek straightforward and non-intrusive solutions.
+### The Solution: MethodTimer.Fody One of the most efficient and cleanest ways to measure method performance in C# is by using the MethodTimer.Fody library. This tool automatically adds timers to the desired methods through a simple attribute, without modifying the existing code.">
 
 
 
@@ -167,7 +167,7 @@ Numerous methods exist for accomplishing this, including different libraries tha
                 <div class="header-top">
     <div class="header-top-left">
         <h1 class="site-title noselect">
-    <a href="/">amandamata</a>
+    <a href="/">amandaintech</a>
 </h1>
 
         
@@ -365,7 +365,7 @@ Numerous methods exist for accomplishing this, including different libraries tha
     <nav class="noselect">
         
         
-        <a class="" href="https://amandamata.github.io/" title="amandamata">home</a>
+        <a class="" href="https://amandamata.github.io/" title="amandaintech">home</a>
         
         <a class="" href="https://amandamata.github.io/about" title="">about</a>
         
@@ -373,28 +373,6 @@ Numerous methods exist for accomplishing this, including different libraries tha
 
 
 
-<script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$','$$'], ['\\[', '\\]']],
-      processEscapes: true,
-      processEnvironments: true
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-    }
-  };
-
-  window.addEventListener('load', (event) => {
-      document.querySelectorAll("mjx-container").forEach(function(x){
-        x.parentElement.classList += 'has-jax'})
-    });
-
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 
 
@@ -494,23 +472,43 @@ Numerous methods exist for accomplishing this, including different libraries tha
 </script>
 
         <div class="content e-content">
-            <p>What if you wish to measure the execution time of a method?
-There are various reasons for this—be it for login, profiling, general performance measurement, or tracking degradation over time. The collection of such metrics is a crucial aspect of any production application.</p>
-<p>Numerous methods exist for accomplishing this, including different libraries that aggregate telemetry data. While they offer comprehensive insights, sometimes you might prefer a more straightforward approach. One way to achieve this is by using a try and finally block in conjunction with a stopwatch.</p>
-<p>However, this approach, despite being cleaner, still necessitates the addition of measurement code into the methods you wish to evaluate.</p>
-<p>Here&rsquo;s a simpler solution: the MethodTimer.Fody library. Once installed, all you need to do is add the [Time] attribute above the method you want to assess for performance. Run your code, check the debug output, and voila—your measurements are right there.</p>
-<p>To understand how it works, you can explore the library&rsquo;s repository <a href="https://github.com/Fody/MethodTimer">here</a>.</p>
-<p>The magic lies in how our code transforms, mirroring the initial approach. The code under test:</p>
+            <h4 id="introduction" >
+<div>
+    <a href="#introduction">
+        ###
+    </a>
+    Introduction
+</div>
+</h4>
+<p>Measuring method execution time is essential for optimizing applications, whether for profiling, performance monitoring, or detecting degradation over time. Although there are many tools and libraries available for this purpose, we often seek straightforward and non-intrusive solutions.</p>
+<h4 id="the-solution-methodtimerfody" >
+<div>
+    <a href="#the-solution-methodtimerfody">
+        ###
+    </a>
+    The Solution: MethodTimer.Fody
+</div>
+</h4>
+<p>One of the most efficient and cleanest ways to measure method performance in C# is by using the MethodTimer.Fody library. This tool automatically adds timers to the desired methods through a simple attribute, without modifying the existing code.</p>
+<h4 id="how-it-works" >
+<div>
+    <a href="#how-it-works">
+        ###
+    </a>
+    How it works
+</div>
+</h4>
+<p>After installing the <a href="https://github.com/Fody/MethodTimer">MethodTimer</a> library in your project, simply add the [Time] attribute above any method you want to monitor. See an example:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">MyClass</span>
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span><span style="color:#57c7ff">    [Time]</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">void</span> MyMethod()
 </span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#78787e">// Some code you are curious about in terms of execution time</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e">// Your code here</span>
 </span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#5af78e">&#34;Hello&#34;</span>);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>After compilation, it looks like this:</p>
+</span></span></code></pre></div><p>When you run your code, the library automatically injects the timing logic, and the debug output will show the method&rsquo;s execution time.</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">MyClass</span>
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">void</span> MyMethod()
@@ -518,7 +516,7 @@ There are various reasons for this—be it for login, profiling, general perform
 </span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> stopwatch = Stopwatch.StartNew();
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">try</span>
 </span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            <span style="color:#78787e">// Some code you are curious about in terms of execution time</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#78787e">// Your code here</span>
 </span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#5af78e">&#34;Hello&#34;</span>);
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">finally</span>
@@ -528,7 +526,7 @@ There are various reasons for this—be it for login, profiling, general perform
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Now, you might wonder, &ldquo;What can I do with this information, available only in the debug console?&rdquo; Here&rsquo;s a suggestion: create a utility class like the one below.</p>
+</span></span></code></pre></div><p>Now, you might be wondering: &ldquo;What can I do with this information, available only in the debug console?&rdquo; Here&rsquo;s a suggestion: create a utility class like the one below.</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">using</span> System.Reflection;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">namespace</span> JokerCharge
@@ -542,10 +540,10 @@ There are various reasons for this—be it for login, profiling, general perform
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Don&rsquo;t forget to add this to your program class:</p>
+</span></span></code></pre></div><p>Don&rsquo;t forget to add this to your Program class:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#9aedfe">var</span> app = builder.Build();
 </span></span><span style="display:flex;"><span>MethodTimeLogger.Logger = app.Logger;
-</span></span></code></pre></div><p>And update your app settings to log to trace:</p>
+</span></span></code></pre></div><p>And update the appSettings to log in trace:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">&#34;Logging&#34;</span>: {
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&#34;LogLevel&#34;</span>: {
@@ -554,8 +552,30 @@ There are various reasons for this—be it for login, profiling, general perform
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>With everything set up, you can log and inject whatever information you desire.</p>
+</span></span></code></pre></div><p>With everything configured, you can log and inject the information you want.</p>
 <p><img src="/img/telemetry.png" alt="telemetry"></p>
+<h4 id="benefits" >
+<div>
+    <a href="#benefits">
+        ###
+    </a>
+    Benefits
+</div>
+</h4>
+<ul>
+<li>Simplicity: No need to write additional timing code.</li>
+<li>Automation: Performance measurement is added at compile time, keeping your code clean.</li>
+<li>Ease of Use: Just add an attribute to the desired method.</li>
+</ul>
+<h4 id="conclusion" >
+<div>
+    <a href="#conclusion">
+        ###
+    </a>
+    Conclusion
+</div>
+</h4>
+<p>MethodTimer.Fody is a powerful tool for developers looking for an efficient and uncomplicated way to measure the performance of their methods in C#. With easy integration and minimal impact on existing code, it is an excellent choice for any project.</p>
 
         </div>
 

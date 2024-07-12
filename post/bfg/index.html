@@ -10,11 +10,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer-when-downgrade">
 
-<title>How to remove sensitive information from commit history - amandamata</title>
+<title>Removing sensitive data from commit history - amandaintech</title>
 
-<meta name="description" content="Today I learned something extremely useful: how to efficiently remove sensitive information from commit history.
-I believe that at some point, we have all made the mistake of accidentally pushing sensitive information to a repository on GitHub. Simply deleting the information does not solve the problem because the commit history will still show the previous version with that sensitive information.
-To address this issue, people often use git-filter-branch. However, I would like to introduce an even better alternative: BFG.">
+<meta name="description" content="Today, I learned something extremely useful: how to efficiently remove sensitive information from commit history.
+At some point, many of us make the mistake of accidentally pushing sensitive information to a GitHub repository. Simply deleting the information from the current repository does not solve the problem, as the commit history will still show the previous version with that information.
+To address this issue, many turn to git-filter-branch. However, I want to introduce an even better alternative: BFG.">
 
 
 
@@ -168,7 +168,7 @@ To address this issue, people often use git-filter-branch. However, I would like
                 <div class="header-top">
     <div class="header-top-left">
         <h1 class="site-title noselect">
-    <a href="/">amandamata</a>
+    <a href="/">amandaintech</a>
 </h1>
 
         
@@ -366,7 +366,7 @@ To address this issue, people often use git-filter-branch. However, I would like
     <nav class="noselect">
         
         
-        <a class="" href="https://amandamata.github.io/" title="amandamata">home</a>
+        <a class="" href="https://amandamata.github.io/" title="amandaintech">home</a>
         
         <a class="" href="https://amandamata.github.io/about" title="">about</a>
         
@@ -374,28 +374,6 @@ To address this issue, people often use git-filter-branch. However, I would like
 
 
 
-<script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$','$$'], ['\\[', '\\]']],
-      processEscapes: true,
-      processEnvironments: true
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-    }
-  };
-
-  window.addEventListener('load', (event) => {
-      document.querySelectorAll("mjx-container").forEach(function(x){
-        x.parentElement.classList += 'has-jax'})
-    });
-
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 
 
@@ -410,7 +388,7 @@ To address this issue, people often use git-filter-branch. However, I would like
     <article class="post h-entry">
         <div class="post-header">
             <header>
-                <h1 class="p-name post-title">How to remove sensitive information from commit history</h1>
+                <h1 class="p-name post-title">Removing sensitive data from commit history</h1>
                 
     
     <span>
@@ -495,10 +473,10 @@ To address this issue, people often use git-filter-branch. However, I would like
 </script>
 
         <div class="content e-content">
-            <p>Today I learned something extremely useful: how to efficiently remove sensitive information from commit history.</p>
-<p>I believe that at some point, we have all made the mistake of accidentally pushing sensitive information to a repository on GitHub. Simply deleting the information does not solve the problem because the commit history will still show the previous version with that sensitive information.</p>
-<p>To address this issue, people often use git-filter-branch. However, I would like to introduce an even better alternative: BFG.</p>
-<p>BFG is a powerful and user-friendly tool that allows you to securely remove confidential information from your repository&rsquo;s commit history. It provides a faster and more efficient solution compared to git-filter-branch.</br></p>
+            <p>Today, I learned something extremely useful: how to efficiently remove sensitive information from commit history.</p>
+<p>At some point, many of us make the mistake of accidentally pushing sensitive information to a GitHub repository. Simply deleting the information from the current repository does not solve the problem, as the commit history will still show the previous version with that information.</p>
+<p>To address this issue, many turn to <code>git-filter-branch</code>. However, I want to introduce an even better alternative: BFG.</p>
+<p>BFG is a powerful and easy-to-use tool that allows you to remove confidential information from your repository&rsquo;s commit history safely. It offers a quicker and more efficient solution compared to <code>git-filter-branch</code>.</p>
 <h4 id="scenario" >
 <div>
     <a href="#scenario">
@@ -507,12 +485,23 @@ To address this issue, people often use git-filter-branch. However, I would like
     Scenario
 </div>
 </h4>
-<p>We have the repository how-to-use-bfg.</p>
-<p>In this repository, there was an appsettings.json file with sensitive information:</p>
-<p><img src="/img/bfg1.png" alt="bfg"></p>
-<p>I deleted this sensitive information, made the commit and push, but the sensitive information still appears in the commit history:</p>
+<p>We have the repository <a href="https://github.com/amandamata/how-to-use-bfg">how-to-use-bfg</a>.</p>
+<p>In this repository, there was an <code>appsettings.json</code> with sensitive information.</p>
+<p><img src="/img/bfg1.png" alt="bfg1"></p>
+<p>I deleted this sensitive information, made the commit and push, but the sensitive information still appears in the history.</p>
 <p><img src="/img/bfg2.png" alt="bfg2"></p>
-</br>
+<h4 id="prerequisites" >
+<div>
+    <a href="#prerequisites">
+        ###
+    </a>
+    Prerequisites
+</div>
+</h4>
+<ul>
+<li>Git installed on your machine.</li>
+<li>Java Runtime Environment (JRE) installed to run the BFG <code>.jar</code> file.</li>
+</ul>
 <h4 id="how-to-use" >
 <div>
     <a href="#how-to-use">
@@ -521,8 +510,7 @@ To address this issue, people often use git-filter-branch. However, I would like
     How to Use
 </div>
 </h4>
-<p>The tutorial on the BFG website is not difficult, but I will describe it here in more detail to make the process easier to understand.</p>
-<p>To use BFG, follow these steps:</p>
+<p>The tutorial on the BFG website is quite straightforward, but here is a more detailed description to facilitate the process:</p>
 <ol>
 <li>Download the .jar file from the <a href="https://rtyley.github.io/bfg-repo-cleaner/">BFG</a> website.</li>
 <li>Clone the current repository using the command:
@@ -544,9 +532,19 @@ To address this issue, people often use git-filter-branch. However, I would like
 <pre tabindex="0"><code>git push
 </code></pre></li>
 </ol>
-</br>
-After following these steps, your repository's commit history will be updated, and the sensitive information will be removed.
+<p>After following these steps, your repository&rsquo;s commit history will be updated, and the sensitive information will be removed.</p>
 <p><img src="/img/bfg3.png" alt="bfg3"></p>
+<h4 id="conclusion" >
+<div>
+    <a href="#conclusion">
+        ###
+    </a>
+    Conclusion
+</div>
+</h4>
+<p>Conclusion
+Removing sensitive information from the commit history is crucial for maintaining the security and privacy of your project. The BFG Repo-Cleaner offers an efficient and quick way to do this. If you have any questions or would like to share your experience using BFG, feel free to leave a comment below.</p>
+<p>I hope this guide has been helpful. Good luck with cleaning your repository!</p>
 
         </div>
 
