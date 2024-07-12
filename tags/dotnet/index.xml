@@ -2,37 +2,481 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>dotnet on amandamata</title>
-    <link>https://amandamata.github.io/tags/dotnet/</link>
-    <description>Recent content in dotnet on amandamata</description>
+    <link>/tags/dotnet/</link>
+    <description>amandamata (dotnet)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 25 Apr 2023 07:42:55 -0300</lastBuildDate>
-    <atom:link href="https://amandamata.github.io/tags/dotnet/index.xml" rel="self" type="application/rss+xml" />
+    
+    <atom:link href="/tags/dotnet/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Implementing Redis caching with dotnet</title>
-      <link>https://amandamata.github.io/redis/</link>
+      <link>/post/redis/</link>
       <pubDate>Tue, 25 Apr 2023 07:42:55 -0300</pubDate>
-      <guid>https://amandamata.github.io/redis/</guid>
-      <description>I recently had to implement a cache in an application to avoid unnecessary database queries, and that was cool. I&amp;rsquo;ve worked with Redis in the past, but I think I&amp;rsquo;ve done it the wrong way because implementing a cache with Redis has never been so cool. Redis vs Mem cached Redis is almost like a NoSql database, but it is even better because it stores data with key and values and with that, it is much easier to use it as a cache.</description>
+      
+      <guid>/post/redis/</guid>
+      <description>&lt;p&gt;I recently had to implement a cache in an application to avoid unnecessary database queries, and that was cool. I&amp;rsquo;ve worked with Redis in the past, but I think I&amp;rsquo;ve done it the wrong way because implementing a cache with Redis has never been so cool.
+&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;redis-vs-mem-cached&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#redis-vs-mem-cached&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Redis vs Mem cached
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;Redis is almost like a NoSql database, but it is even better because it stores data with key and values and with that, it is much easier to use it as a cache.
+But the main point in this comparison is: it depends, it depends on how and how much data will be used in this cache. If you&amp;rsquo;re not sure how to store session information, MemCache makes sense. But if we&amp;rsquo;re talking about a lot of queries with bigger data, like the data we store in the database, Redis does a better job. This is because when using MemCache we are using the application&amp;rsquo;s memory to save that information, since Redis is a distributed cache, it has nothing to do with the application&amp;rsquo;s memory and it is possible to use more than one Redis database, scaling this service vertically according to demand grow up.&lt;/p&gt;
+&lt;p&gt;The first time it is necessary to use the cache, the information will not be there, so it is necessary to consult the database and save it in the cache, the second time it is no longer necessary to go to the database, as the information will be in the cache. And this makes the application take less time to respond to a request, as going to the bank takes much longer than going to Redis.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/redis.png&#34; alt=&#34;redis&#34;&gt;
+&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;why-use&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#why-use&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Why use
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Reduce response time
+Improve the end-user experience with the application, making him wait less for each click or action.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Raise availability
+Since it is necessary to consume less computational resources, because it is already in the cache and I return it faster to the end user, it is then possible to have more users accessing the application simultaneously.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Reduce computational costs
+When we are talking about the cloud, we are reducing the consumption of lambdas and resources where the monthly bill can be cheaper.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The cost of a cache is high, so it has to be expensive on the server side to make this migration to the cache. For example, problems with the delay in response to the end customer can be costly, the end customer can simply give up using the application due to the delay, and many other problems that this delay can generate. To reduce both the cost of losing a customer and the cost of consulting the bank, the cache is then used to solve these problems.
+&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;problem&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#problem&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Problem
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;Suppose there is an application that makes many calls to the database, but always consulting the same information, when the application was developed the developers did not think it could grow so much, and a cache was not implemented to avoid these queries to the database.
+The application is for car rental for companies, and the query is simple, with each request received at the rental endpoint, it is necessary to check whether the company (document) informed in the rental request is the same as the one in the bank.
+We have the scenario, let&amp;rsquo;s move on to implementation.
+&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;implementation&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#implementation&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Implementation
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;Explanation and problem presentations, let&amp;rsquo;s implement!
+For this implementation we will follow a pattern called Decorator, with this pattern it is possible to add a cache layer without adding more complexity to the repository layer, and we will follow the S principle of SOLID, [Single-responsibility principle](https:// g.co/kgs/phLumf).&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s work with dotnet, and install the packages &lt;a href=&#34;https://www.nuget.org/packages/scrutor/&#34;&gt;Scrutor&lt;/a&gt; and &lt;a href=&#34;https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis/7.0.5&#34;&gt;StackExchangeRedis&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet add package Scrutor --version 4.2.2
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet add package Microsoft.Extensions.Caching.StackExchangeRedis --version 7.0.5
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Scrutor will help us during the implementation of the caching layer without taking the single responsibility away from the repository. And StackExchangeRedis is Microsoft&amp;rsquo;s client package for using Redis with . NET.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s create a Service to handle everything related to Redis.
+&lt;br/&gt;
+Service:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;public class CacheService : ICacheService
+{
+    private readonly IDistributedCache _distributedCache;
+    private readonly DistributedCacheEntryOptions _options;
+
+    public CacheService(IDistributedCache distributedCache)
+    {
+        _distributedCache = distributedCache;
+        _options = new DistributedCacheEntryOptions
+        {
+            AbsoluteExpirationRelativeToNow = 150
+        };
+    }
+
+    public async Task&amp;lt;T&amp;gt; GetAsync&amp;lt;T&amp;gt;(string key)
+    {
+        try
+        {
+            var cached = await _distributedCache.GetStringAsync(key);
+            if (cached is not null)
+                return JsonConvert.DeserializeObject&amp;lt;T&amp;gt;(cached);
+        }
+        catch (Exception exception)
+        { 
+            // Log exception 
+        }
+
+        return default(T);
+    }
+
+    public async Task SetAsync&amp;lt;T&amp;gt;(string key, T value)
+    {
+        try
+        {
+            if (value is not null)
+                await _distributedCache.SetStringAsync(key, JsonConvert.SerializeObject(value), _options);
+        }
+        catch (Exception exception)
+        { 
+            // Log exception
+        }
+    }
+
+    public async Task RemoveAsync(string key)
+    {
+        try
+        {
+            await _distributedCache.RemoveAsync(key);
+        }
+        catch (Exception exception)
+        {
+            // Log exception
+    	}
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Let&amp;rsquo;s create a Repository to handle the query request to the database that will &amp;ldquo;intercept&amp;rdquo; and go first in Redis.
+&lt;br/&gt;
+Repository:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;public class CachedAlugatorRepository : IAlugatorRepository
+{
+    private readonly IAlugatorRepository _alugatorRepository;
+    private readonly ICacheService _cache;
+
+    public CachedAlugatorRepository(IAlugatorRepository alugatorRepository, ICacheService cache)
+    {
+        _alugatorRepository = alugatorRepository;
+        _cache = cache;
+    }
+
+    public async Task&amp;lt;bool&amp;gt; DeleteAsync(string id)
+    {
+        var alugator = await _alugatorRepository.GetAsync(id);
+        if (alugator is not null)
+        {
+ 	    await _cache.RemoveAsync(alugator.documentId);
+            return await _alugatorRepository.DeleteAsync(id);
+        }
+
+        return true;
+    }
+
+    public async Task&amp;lt;Alugator&amp;gt; GetAsync(string id)
+    {
+        var alugator = await _cache.GetAsync&amp;lt;Alugator&amp;gt;(id);
+        if (alugator is not null)
+            return alugator;
+
+        alugator = await _alugatorRepository.GetAsync(id);
+
+        await _cache.SetAsync&amp;lt;Alugator&amp;gt;(alugator);
+        return alugator;
+    }
+
+    public async Task&amp;lt;bool&amp;gt; UpsertAsync(Alugator alugator)
+    {
+        await _cache.SetAsync(alugator.documentId, alugator);
+
+        return await _alugatorRepository.UpsertAsync(alugator);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The ace in the hole is in the way we are going to configure the Repository in the Program class:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;services.AddSingleton&amp;lt;IAlugatorRepository, AlugatorRepository&amp;gt;();
+services.Decorate&amp;lt;IAlugatorRepository, CachedAlugatorRepository&amp;gt;();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This Decorate does the magic, because now when calling the AlugatorRepository the CachedAlugatorRepository will be &amp;ldquo;called&amp;rdquo; first, so every call to the repository will initially be made to the Cache Repository that contains the query logic to Redis through service. With that we keep the AlugatorRepository clean, we have a specific repository for the CachedAlugatorRepository cache and we don&amp;rsquo;t hurt the Single Responsibility Principle.&lt;/p&gt;
+</description>
     </item>
+    
     <item>
       <title>Implementing a sqs publisher and consumer using dotnet</title>
-      <link>https://amandamata.github.io/queue-csharp-sqs/</link>
+      <link>/post/queue-csharp-sqs/</link>
       <pubDate>Wed, 22 Feb 2023 07:19:25 -0300</pubDate>
-      <guid>https://amandamata.github.io/queue-csharp-sqs/</guid>
-      <description>In this post, I pass an introduction to a queue and how to use it. Now I gonna explain how to implement an sqs consumer and publisher using c# dotnet. SQS What is SQS?
-SQS (Simple Queue Service) is an Amazon service that lets you send, store, and receive messages between software components at any volume, without losing messages or requiring other services to be available.
-The best part is free, actually to pay for this service you gonna need to send over 1 million requests per month then amazon is going to bill you.</description>
+      
+      <guid>/post/queue-csharp-sqs/</guid>
+      <description>&lt;p&gt;In this &lt;a href=&#34;https://amandamata.github.io/queue&#34;&gt;post&lt;/a&gt;, I pass an introduction to a queue and how to use it. Now I gonna explain how to implement an sqs consumer and publisher using c# dotnet.
+&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;sqs&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#sqs&#34;&gt;
+        ####
+    &lt;/a&gt;
+    SQS
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;What is SQS?&lt;/p&gt;
+&lt;p&gt;SQS (Simple Queue Service) is an Amazon service that lets you send, store, and receive messages between software components at any volume, without losing messages or requiring other services to be available.&lt;/p&gt;
+&lt;p&gt;The best part is free, actually to pay for this service you gonna need to send over 1 million requests per month then amazon is going to bill you.&lt;/p&gt;
+&lt;p&gt;To start, it&amp;rsquo;s necessary to create an account in &lt;a href=&#34;https://aws.amazon.com/&#34;&gt;aws&lt;/a&gt; and go to &lt;a href=&#34;https://console.aws.amazon.com&#34;&gt;console&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In the console area, type SQS in search and enter the first option Simple Queue Service.
+Click on Create queue, add a name to the queue and go to the end of the page and click Create queue. You can change the default values, but for now, all the settings are ok.
+&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;aws-command-line-interface&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#aws-command-line-interface&#34;&gt;
+        ####
+    &lt;/a&gt;
+    AWS Command Line Interface
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;The AWS Command Line Interface allows us to make changes directly from the console without the need to access the AWS console.
+For example, if we need to list the buckets:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;aws s3api list-buckets
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;To be able to do that we need to install the cli, the tutorial for Windows, Linux, and macOS is &lt;a href=&#34;https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;After the installation, it&amp;rsquo;s necessary to authenticate your machine against aws.&lt;/p&gt;
+&lt;p&gt;In aws console, click in your name and go to Security Credentials, there, you need to create an Access Key.&lt;/p&gt;
+&lt;p&gt;In your console you gonna type:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;aws configure
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Then pass your access key and token when requested.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Important, in the aws console you have a region, mine is us-east-1, you can see yours by checking on url: https://&lt;em&gt;&lt;strong&gt;us-east-1&lt;/strong&gt;&lt;/em&gt;.console.aws.amazon.com/&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;That region needs to be passed during aws configuration, to be able to access aws features locally.&lt;/p&gt;
+&lt;p&gt;After the configuration, you&amp;rsquo;re gonna able to execute the list buckets.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;aws s3api list-buckets
+&lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;
+&lt;h5 id=&#34;publisher&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#publisher&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Publisher
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;What is a publisher?&lt;/p&gt;
+&lt;p&gt;A publisher it&amp;rsquo;s a service that gonna get the information that something changes and sends to the queue a request.
+In the example used in the queue post, the publisher is inside the API, and after a new user was created the request was sent to the queue.&lt;/p&gt;
+&lt;p&gt;So with everything configured, it&amp;rsquo;s time to create the publisher.&lt;/p&gt;
+&lt;p&gt;In order to simplify, the example here it&amp;rsquo;s gonna be only the publisher, then you can take the implementation and use it in your API.&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;re gonna use a Console App&lt;/p&gt;
+&lt;p&gt;Create a new folder:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;mkdir publisher
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Go inside the folder:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd publisher
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Create the project:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet new console
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It&amp;rsquo;s necessary a model:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;public class CustomerCreated
+{
+  public Guid Id { get; init; }
+  public string FullName { get; init; }
+  public string Email { get; init; }
+  public DateTime DateOfBirth { get; init; }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;And install the &lt;a href=&#34;https://www.nuget.org/packages/AWSSDK.SQS&#34;&gt;AWS SDK&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet add package AWSSDK.SQS --version 3.7.100.78
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After that, in the Program we need to create a request and send it:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;using System.Text.Json;
+using Amazon.SQS;
+using Amazon.SQS.Model;
+
+var sqsCLient = new AmazonSQSClient();
+
+var customer = new CustomerCreated
+{
+  Id = Guid.NewGuid(),
+  FullName = &amp;#34;Amanda Mata&amp;#34;,
+  Email = &amp;#34;email@email.com&amp;#34;,
+  DateOfBirth = new DateTime(1996, 06, 18)
+};
+
+var queueUrlResponse = await sqsCLient.GetQueueUrlAsync(&amp;#34;customers&amp;#34;);
+
+var sendMessageRequest = new SendMessageRequest
+{
+  QueueUrl = queueUrlResponse.QueueUrl, 
+  MessageBody = JsonSerializer.Serialize(customer),
+  MessageAttributes = new Dictionary&amp;lt;string, MessageAttributeValue&amp;gt;
+  {
+      {
+          &amp;#34;MessageType&amp;#34;, new MessageAttributeValue
+          {
+              DataType = &amp;#34;String&amp;#34;, 
+              StringValue = nameof(CustomerCreated)
+          }
+      }
+  }
+};
+
+var response = await sqsCLient.SendMessageAsync(sendMessageRequest);
+
+Console.WriteLine();
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;In the sqsCLient.GetQueueUrlAsync(&amp;ldquo;customers&amp;rdquo;) I used &amp;ldquo;customers&amp;rdquo; cuz that is the name of my queue&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;br/&gt;
+&lt;h5 id=&#34;consumer&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#consumer&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Consumer
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;What it&amp;rsquo;s a consumer?&lt;/p&gt;
+&lt;p&gt;A consumer it&amp;rsquo;s the service that will be listening the queue.&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;re gonna use a Console App&lt;/p&gt;
+&lt;p&gt;Create a new folder:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;mkdir consumer
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Go inside the folder:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd consumer
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Create the project:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet new console
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It&amp;rsquo;s necessary a model:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;public class CustomerCreated
+{
+  public Guid Id { get; init; }
+  public string FullName { get; init; }
+  public string Email { get; init; }
+  public DateTime DateOfBirth { get; init; }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;And install the &lt;a href=&#34;https://www.nuget.org/packages/AWSSDK.SQS&#34;&gt;AWS SDK&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet add package AWSSDK.SQS --version 3.7.100.78
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After that, in the Program we need to receive the request:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;using Amazon.SQS;
+using Amazon.SQS.Model;
+	 
+var cts = new CancellationTokenSource();
+var sqsCLient = new AmazonSQSClient();
+var queueUrlResponse = await sqsCLient.GetQueueUrlAsync(&amp;#34;customers&amp;#34;);
+var receiveMessageRequest = new ReceiveMessageRequest
+{
+  QueueUrl = queueUrlResponse.QueueUrl,
+  AttributeNames = new List&amp;lt;string&amp;gt;{ &amp;#34;All&amp;#34; },
+  MessageAttributeNames = new List&amp;lt;string&amp;gt;{ &amp;#34;All&amp;#34; }
+};
+	 
+while(!cts.IsCancellationRequested)
+{
+  var response = await sqsCLient.ReceiveMessageAsync(receiveMessageRequest, cts.Token);
+  response.Messages.ForEach(async message =&amp;gt; {
+    Console.WriteLine($&amp;#34;Message Id: { message.MessageId }&amp;#34;);
+    Console.WriteLine($&amp;#34;Message Body: { message.Body }&amp;#34;);
+    await sqsCLient.DeleteMessageAsync(queueUrlResponse.QueueUrl, message.ReceiptHandle);
+  });
+
+  await Task.Delay(3000);
+}
+
+Console.WriteLine();
+&lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;
+&lt;p&gt;Now the publisher and the consumer It&amp;rsquo;s created, you can pull for messages inside the aws console, but just running the publisher and the consumer you&amp;rsquo;re gonna be able to see the sending and receiving messages.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;I create this post for my studying purpose, the learnings I posted here were driven by the &lt;a href=&#34;https://nickchapsas.com/p/cloud-fundamentals-aws-services-for-c-developers&#34;&gt;Cloud Fundamentals: AWS Services for C# Developers course&lt;/a&gt;.&lt;/p&gt;
+</description>
     </item>
+    
     <item>
       <title>Curly braces on new line in vscode</title>
-      <link>https://amandamata.github.io/curly-brace/</link>
+      <link>/post/curly-brace/</link>
       <pubDate>Sat, 18 Feb 2023 06:13:07 -0300</pubDate>
-      <guid>https://amandamata.github.io/curly-brace/</guid>
-      <description>This pass week I wake up early every day trying to do only one thing: make Visual Studio Code insert a new line before a curly bracket, braces {}.
-I have this:
-if (true){ // do something } and I want to format it like this:
-if (true) { // do something } Was not as easy thing as may seem. Many sites and stack overflow have the same question, with many disappointing people without a resolution.</description>
+      
+      <guid>/post/curly-brace/</guid>
+      <description>&lt;p&gt;This pass week I wake up early every day trying to do only one thing: make Visual Studio Code insert a new line before a curly bracket, braces {}.&lt;/p&gt;
+&lt;p&gt;I have this:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;if (true){
+  // do something
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and I want to format it like this:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;if (true)
+{
+  // do something
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Was not as easy thing as may seem.
+Many sites and stack overflow have the same question, with many disappointing people without a resolution. So today I gonna share what I found.&lt;/p&gt;
+&lt;p&gt;First things first, you gonna need:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Latest Visual Studio Code&lt;/li&gt;
+&lt;li&gt;Latest C# Extension&lt;/li&gt;
+&lt;li&gt;Updated OS&lt;/li&gt;
+&lt;li&gt;omnisharp.json file&lt;/li&gt;
+&lt;li&gt;settings.json modifications&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;omnisharp&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#omnisharp&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Omnisharp
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;You can find your omnisharp location by checking on %USERPROFILE%/.omnisharp/&lt;/p&gt;
+&lt;p&gt;Mine is in /home/amanda/.omnisharp/omnisharp.json&lt;/p&gt;
+&lt;p&gt;This is my omnisharp config:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
+    &amp;#34;FormattingOptions&amp;#34;: {
+        &amp;#34;newLine&amp;#34;: &amp;#34;\n&amp;#34;,
+        &amp;#34;useTabs&amp;#34;: false,
+        &amp;#34;tabSize&amp;#34;: 4,
+        &amp;#34;indentationSize&amp;#34;: 4,
+
+        &amp;#34;NewLinesForBracesInTypes&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInMethods&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInProperties&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInAccessors&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInAnonymousMethods&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInControlBlocks&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInAnonymousTypes&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInObjectCollectionArrayInitializers&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInLambdaExpressionBody&amp;#34;: true,
+
+        &amp;#34;NewLineForElse&amp;#34;: true,
+        &amp;#34;NewLineForCatch&amp;#34;: true,
+        &amp;#34;NewLineForFinally&amp;#34;: true,
+        &amp;#34;NewLineForMembersInObjectInit&amp;#34;: true,
+        &amp;#34;NewLineForMembersInAnonymousTypes&amp;#34;: true,
+        &amp;#34;NewLineForClausesInQuery&amp;#34;: true,
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Based on &lt;a href=&#34;https://github.com/OmniSharp/omnisharp-vscode/issues/1506#issuecomment-303390666&#34;&gt;this comment&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&#34;vscode-settings&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#vscode-settings&#34;&gt;
+        ####
+    &lt;/a&gt;
+    VSCode Settings
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;You can find your settings.json location by checking on ~/.config/Code/User&lt;/p&gt;
+&lt;p&gt;Mine is in /home/amanda/.config/Code/User/settings.json&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve inserted these lines in my settings.json:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;    &amp;#34;omnisharp.json&amp;#34;: &amp;#34;/home/amanda/.omnisharp&amp;#34;,
+    &amp;#34;omnisharp.enableEditorConfigSupport&amp;#34;: false,
+    &amp;#34;omnisharp.useEditorFormattingSettings&amp;#34;: true,
+    &amp;#34;omnisharp.path&amp;#34;: &amp;#34;latest&amp;#34;,
+    &amp;#34;editor.formatOnType&amp;#34;: true,
+    &amp;#34;editor.formatOnSave&amp;#34;: true,
+    &amp;#34;editor.formatOnPaste&amp;#34;: true,
+    &amp;#34;editor.defaultFormatter&amp;#34;: &amp;#34;ms-dotnettools.csharp&amp;#34;,
+    &amp;#34;[csharp]&amp;#34;: {&amp;#34;editor.defaultFormatter&amp;#34;: &amp;#34;ms-dotnettools.csharp&amp;#34;}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;For this config work it&amp;rsquo;s necessary to have the c# extension installed and enable and after these changes, restart omnisharp.&lt;/p&gt;
+&lt;p&gt;Extension&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/brace1.png&#34; alt=&#34;brace1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/br&gt;&lt;/br&gt;
+Restart omnisharp
+Ctrl+Shift+p&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/brace2.png&#34; alt=&#34;brace2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/br&gt;&lt;/br&gt;
+After all of these changes, you can start using your visual studio code and enjoy braces in the new line. BUT&lt;/p&gt;
+&lt;p&gt;The thing that takes me out of bed is, the auto format on type it&amp;rsquo;s not working. So probably you make all of these changes by yourself, and still not working&amp;hellip; is because to work you need to use Format Document in Visual Studio Code.
+&lt;img src=&#34;https://amandamata.github.io/img/brace3.png&#34; alt=&#34;brace3&#34;&gt;
+&lt;/br&gt;&lt;/br&gt;
+But I don&amp;rsquo;t want to use this option all the time.&lt;/p&gt;
+&lt;p&gt;After a lot of searching, I&amp;rsquo;ve found this editor settings&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;editor.formatOnSave&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;editor.formatOnPaste&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;editor.formatOnType&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With this settings, when save and on past the format will be done automatically.&lt;/p&gt;
+&lt;p&gt;BUT&lt;/p&gt;
+&lt;p&gt;Format on type still not working&amp;hellip; Then I&amp;rsquo;ve found an &lt;a href=&#34;https://github.com/microsoft/vscode-cpptools/issues/1419&#34;&gt;issue in Github&lt;/a&gt; on vscode saying that &lt;em&gt;&lt;strong&gt;formatOnType&lt;/strong&gt;&lt;/em&gt; was not working for c#, because this feature work by checking &lt;code&gt;;&lt;/code&gt; (most used in js). They have this fix in roadmap, but until they fix, format on save will do the job.&lt;/p&gt;
+</description>
     </item>
+    
   </channel>
 </rss>

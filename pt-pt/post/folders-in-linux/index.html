@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+
+
+<html lang="pt-pt" data-theme="">
+<head>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<title>Ententendo as pastas no linux - amandamata</title>
+
+<meta name="description" content="Você acabou de instalar o linux e está acostumado com a estrutura do windows e seus diretórios, então você vai dar uma olhada no seu gestor de arquivos procurando pelo disco C: e não encontra.. Conhecer os diretórios do linux pode ajudar a administrar o sistema e entender como ele funciona.
+Se a gente for analisar o windows e o linux acabaram evoluindo de forma diferente com relação a estrutura de diretórios.">
+
+
+
+
+
+<link rel="icon" type="image/x-icon" href="https://amandamata.github.io/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="https://amandamata.github.io/favicon.png">
+
+
+
+
+
+
+
+
+    
+
+
+
+<style>
+  body {
+    visibility: hidden;
+    opacity: 0;
+  }
+</style>
+
+<noscript>
+  <style>
+    body {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</noscript>
+
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.min.184a655c5ad8596648622468e6696abf0cf0a2cf8266df17b4f7a36fe9c97551.css" integrity="sha256-GEplXFrYWWZIYiRo5mlqvwzwos&#43;CZt8XtPejb&#43;nJdVE=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.min.c4c04b3ef88e3d619ad4c7ee5e03048422bc55c4fefdc1f07657c1133670aa22.css" integrity="sha256-xMBLPviOPWGa1MfuXgMEhCK8VcT&#43;/cHwdlfBEzZwqiI=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.min.21c5d8fe0a79d623b0adc1ce4bd4f6dd2c05cd939c9aaaa966ba7186b1464f4d.css" integrity="sha256-IcXY/gp51iOwrcHOS9T23SwFzZOcmqqpZrpxhrFGT00=">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <script src="/js/script.min.08f04d96386c73c9bf4d160333f8f448c05a6e01c06770542ee0e013954ce930.js" type="text/javascript" charset="utf-8" integrity="sha256-CPBNljhsc8m/TRYDM/j0SMBabgHAZ3BULuDgE5VM6TA="></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <div class="container">
+        <header class="common-header">
+            
+                <div class="header-top">
+    <div class="header-top-left">
+        <h1 class="site-title noselect">
+    <a href="/pt-pt">amandamata</a>
+</h1>
+
+        
+
+
+
+
+
+
+
+    
+        <div class="theme-switcher">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
+
+
+</span>
+
+        </div>
+    
+
+    <script>
+        const STORAGE_KEY = 'user-color-scheme'
+        const defaultTheme = "light"
+
+        let currentTheme
+        let switchButton
+        let autoDefinedScheme = window.matchMedia('(prefers-color-scheme: dark)')
+
+        function switchTheme(e) {
+            currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+            if (localStorage) localStorage.setItem(STORAGE_KEY, currentTheme);
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        const autoChangeScheme = e => {
+            currentTheme = e.matches ? 'dark' : 'light'
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            switchButton = document.querySelector('.theme-switcher')
+            currentTheme = detectCurrentScheme()
+
+            if (currentTheme === 'auto') {
+                autoChangeScheme(autoDefinedScheme);
+                autoDefinedScheme.addListener(autoChangeScheme);
+            } else {
+                document.documentElement.setAttribute('data-theme', currentTheme)
+            }
+
+            if (switchButton) {
+                switchButton.addEventListener('click', switchTheme, false)
+            }
+
+            showContent();
+        })
+
+        function detectCurrentScheme() {
+            if (localStorage !== null && localStorage.getItem(STORAGE_KEY)) {
+                return localStorage.getItem(STORAGE_KEY)
+            }
+            if (defaultTheme) {
+                return defaultTheme
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function showContent() {
+            document.body.style.visibility = 'visible';
+            document.body.style.opacity = 1;
+        }
+
+        function changeGiscusTheme (theme) {
+            function sendMessage(message) {
+              const iframe = document.querySelector('iframe.giscus-frame');
+              if (!iframe) return;
+              iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+            }
+
+            sendMessage({
+              setConfig: {
+                theme: theme
+              }
+            });
+        }
+    </script>
+
+
+        <ul class="social-icons noselect">
+
+
+
+
+
+
+
+    <li>
+            <a href="/pt-pt/index.xml" title="RSS" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+</ul>
+
+    </div>
+    <div class="header-top-right">
+
+    </div>
+</div>
+
+
+    <nav></nav>
+
+
+
+
+
+
+
+
+            
+        </header>
+        <main id="main" tabindex="-1">
+            
+    
+
+    <article class="post h-entry">
+        <div class="post-header">
+            <header>
+                <h1 class="p-name post-title">Ententendo as pastas no linux</h1>
+                
+    
+    <span>
+        <ul class="post-translations">
+            
+                
+                    <li>
+                        <a href="/post/folders-in-linux/">EN</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        PT-PT
+                    </li>
+                
+            
+        </ul>
+    </span>
+
+
+            </header>
+            
+
+
+
+<div class="post-info noselect">
+    
+        <div class="post-date dt-published">
+            <time datetime="2023-02-09">2023-02-09</time>
+            
+        </div>
+    
+
+    <a class="post-hidden-url u-url" href="/pt-pt/post/folders-in-linux/">/pt-pt/post/folders-in-linux/</a>
+    <a href="https://amandamata.github.io" class="p-name p-author post-hidden-author h-card" rel="me"></a>
+
+
+    <div class="post-taxonomies">
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="/pt-pt/tags/linux/">#linux</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+        </div>
+        
+
+  
+  
+
+
+
+
+  
+  
+
+
+
+<script>
+  var toc = document.querySelector(".toc");
+  if (toc) {
+    toc.addEventListener("click", function () {
+      if (event.target.tagName !== "A") {
+        event.preventDefault();
+        if (this.open) {
+          this.open = false;
+          this.classList.remove("expanded");
+        } else {
+          this.open = true;
+          this.classList.add("expanded");
+        }
+      }
+    });
+  }
+</script>
+
+        <div class="content e-content">
+            <p>Você acabou de instalar o linux e está acostumado com a estrutura do windows e seus diretórios, então você vai dar uma olhada no seu gestor de arquivos procurando pelo disco C: e não encontra..
+Conhecer os diretórios do linux pode ajudar a administrar o sistema e entender como ele funciona.</p>
+<p>Se a gente for analisar o windows e o linux acabaram evoluindo de forma diferente com relação a estrutura de diretórios. O linux inclusive é muito mais parecido com qualquer outro sistema com raízes unix como o macOS. Na verdade, o windows, considerando a maior parte dos sistemas operacionais existentes, é o que tem a organização mais diferente.</p>
+<p>A hierarquia de diretórios do linux não é mais difícil e também não é mais fácil é simplesmente diferente, tanto o disco C: do windows quanto a raiz do linux servem para a mesma coisa mas fazem isso de forma diferente.</p>
+<p>Os sistemas linux possuem a hierarquia de sistema <strong>FHS</strong>, Filesystem hierarchy standard, padrão mantido pela linux foundation.</p>
+<p>Existem pastas que possuem uma seta e outras que possuem um x.
+As pastas que possuem a seta são chamadas de links simbólicos, que são atalhos para outras pastas ou arquivos, essas pastas podem ser acessadas mas quando você entra neles você está entrando em outro diretório. Como exemplo o /bin, se observar as propriedades dele vai ver que tem como destino a pasta /usr/bin, dessa forma se você for utilizar o terminal para fazer um shell script ou executar o bash, não é preciso executar o comando /usr/bin/bash e sim /bash.</p>
+<p>Já as pastas que contém o x significa que não podem ser acessadas sem que esteja navegando como root, o usuário comum não tem permissão de escrita em nenhuma pasta com x.</p>
+<p>Vamos observar a funcionalidade das pastas que compõem a raiz do linux.</p>
+<p><strong>/</strong></p>
+<p>O diretório <strong>/</strong> é oque chamamos de diretório raiz, é onde todos os outros diretórios e subdiretórios vão se abrigar.</p>
+<p><strong>/bin</strong></p>
+<p>Binaries ou binários
+Nesse diretório você encontra os executáveis de diversos programas do sistema operacional, como o bash, cat, ls e etc. Encontrando também links simbólicos e shell script. Essa pasta é comparável com a pasta disco C: arquivos e programas do windows.</p>
+<p><strong>/boot</strong></p>
+<p>Contém os arquivos necessários para o sistema operacional iniciar.</p>
+<p><strong>/cdroom</strong></p>
+<p>Diretório legado, a imagem do disco será montada neste diretório.</p>
+<p><strong>/dev</strong></p>
+<p>Devices</p>
+<p>Dentro dessa pasta você encontra arquivos que correspondem ao seu hardware, arquivos que podem ser configuráveis e mudar a forma que um determinado device funciona. É por isso que as unidades de discos são chamadas de <strong>/dev/sda</strong> e algum número. O número só aparece se houver partições nesse disco.</p>
+<p>Curiosidade: <strong>/dev/null</strong> é um diretorio buraco negro, que perde todas as informações que são enviadas para ele.</p>
+<p><strong>/etc</strong></p>
+<p>Edit to config ou et cetera</p>
+<p>A função dessa pasta é manter os arquivos de configuração do sistema, de forma system wide, ou seja, para todos os usuários do sistema e não configurações específicas de um usuário, essas configurações específicas ficam em /home.</p>
+<p><strong>/home</strong></p>
+<p>Onde ficam os usuários comuns dos sistema, dentro de cada pasta de usuário, é possível ter configurações específicas de aplicativos para o usuário em questão.</p>
+<p><strong>/lib</strong></p>
+<p>Library</p>
+<p><strong>/lib lib32 lib64 libx32</strong></p>
+<p>Todas elas são pastas que contém bibliotecas de software para o sistema operacional e os aplicativos instalados, um novo programa instalado pode adicionar libs nessas pastas são comparadas com dlls do windows.</p>
+<p><strong>/media</strong></p>
+<p>É a pasta onde vão ser montados automaticamente as unidades removíveis do sistema, como pendrive, hd externo ou outro disco incluindo unidades de rede mapeados pelo samba por exemplo.</p>
+<p><strong>/mnt</strong></p>
+<p>Mount</p>
+<p>Pensado para ser um ponto de montagem de unidades de disco, quando feito manualmente pelo usuário utilizando o fstab.</p>
+<p><strong>/opt</strong></p>
+<p>Optional</p>
+<p>Nessa pasta onde encontra-se softwares instalados por fabricantes que enviam computadores com linux ou por softwares proprietários por exemplo.</p>
+<p><strong>/proc</strong></p>
+<p>Processes</p>
+<p>Onde encontra-se arquivos que contêm informações sobre o sistema e processos dele. É um diretório virtual, não existem realmente no disco, são criados toda vez que inicia o computador.</p>
+<p><strong>/root</strong></p>
+<p>Como o diretório home, mas para o usuário root.</p>
+<p><strong>/run</strong></p>
+<p>Runtime</p>
+<p>É um diretório virtual, carregado na memória do computador e apagado ao desligar. Contém informações como usuários logados, daemons rodando etc.</p>
+<p><strong>/sbin</strong></p>
+<p>System binaries</p>
+<p>Armazena binários também, programas que só podem ser utilizados pelo administrador do sistema sudo root.</p>
+<p><strong>/snap</strong></p>
+<p>Encontra diretórios para pacotes snaps, é uma forma de empacotamento diferente. O suporte a pacote snap é padrão no ubuntu.</p>
+<p><strong>/srv</strong></p>
+<p>Services
+Se utilizar algum servidor web ou sftp é possível armazenar aqui arquivos que vão ser acessíveis para outros usuários. É possível montar ela a partir de um disco externo.</p>
+<p><strong>/sys</strong></p>
+<p>System</p>
+<p>Aqui armazena-se arquivos que interagem diretamente com o kernel, como drivers e firmwares. Também é temporario.</p>
+<p><strong>/tmp</strong></p>
+<p>Temp</p>
+<p>Arquivos são apagados durante o reboot.</p>
+<p><strong>/usr</strong></p>
+<p>Diretório que mudou de função. Usr pode significar duas coisas, user ou unix system resources. Hoje em dia contém arquivos de programas e libs.</p>
+<p><strong>/var</strong></p>
+<p>Variable</p>
+<p>Diretório de variáveis, arquivos que são esperados que aumentem de tamanho, arquivos de backup, log, cache do sistema por exemplo.</p>
+
+        </div>
+
+    </article>
+
+    
+    
+
+    
+        
+        
+    
+
+    
+
+    
+        
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+        </main>
+        
+            <footer class="common-footer noselect">
+    
+    
+        <ul class="language-select">
+    
+    
+    
+
+    
+        
+            <li><a href="/post/folders-in-linux/">en</a></li>
+        
+    
+        
+            <li>pt</li>
+        
+    
+</ul>
+
+    
+
+    <div class="common-footer-bottom">
+        
+
+        <div style="display: flex; align-items: center; gap:8px">
+            © amanda, 2024
+            
+        </div>
+        <div style="display:flex;align-items: center">
+            
+            
+            
+            
+            
+            
+        </div>
+        <div>
+            Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/Junyi-99/hugo-theme-anubis2">Anubis2</a>.<br>
+            
+
+        </div>
+    </div>
+
+    <p class="h-card vcard">
+
+    <a href=https://amandamata.github.io class="p-name u-url url fn" rel="me"></a>
+
+    
+
+    
+</p>
+
+</footer>
+
+        
+    </div>
+</body>
+</html>

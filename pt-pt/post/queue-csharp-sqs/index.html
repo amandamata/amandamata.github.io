@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+
+
+<html lang="pt-pt" data-theme="">
+<head>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<title>Implementando um publisher e consumer SQS usando dotnet - amandamata</title>
+
+<meta name="description" content="Nesse post, eu passei a introdução de uma fila e como utilizá-la. Agora, eu vou explicar como implementar um consumer e sqs publisher usando c# dotnet. #### SQS O que é SQS?
+SQS (Simple Queue Service) é um serviço da Amazon que permite que você envie, salve, e receba mensagens entre aplicações, sem que você perca essas mensagens caso o serviço esteja indisponível.
+A melhor parte de tudo isso é que, para você pagar por esse serviço, você teria que enviar mais de um milhão de requisições por mês, para que a amazon te envie uma cobrança.">
+
+
+
+
+
+<link rel="icon" type="image/x-icon" href="https://amandamata.github.io/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="https://amandamata.github.io/favicon.png">
+
+
+
+
+
+
+
+
+    
+
+
+
+<style>
+  body {
+    visibility: hidden;
+    opacity: 0;
+  }
+</style>
+
+<noscript>
+  <style>
+    body {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</noscript>
+
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.min.184a655c5ad8596648622468e6696abf0cf0a2cf8266df17b4f7a36fe9c97551.css" integrity="sha256-GEplXFrYWWZIYiRo5mlqvwzwos&#43;CZt8XtPejb&#43;nJdVE=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.min.c4c04b3ef88e3d619ad4c7ee5e03048422bc55c4fefdc1f07657c1133670aa22.css" integrity="sha256-xMBLPviOPWGa1MfuXgMEhCK8VcT&#43;/cHwdlfBEzZwqiI=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.min.21c5d8fe0a79d623b0adc1ce4bd4f6dd2c05cd939c9aaaa966ba7186b1464f4d.css" integrity="sha256-IcXY/gp51iOwrcHOS9T23SwFzZOcmqqpZrpxhrFGT00=">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <script src="/js/script.min.08f04d96386c73c9bf4d160333f8f448c05a6e01c06770542ee0e013954ce930.js" type="text/javascript" charset="utf-8" integrity="sha256-CPBNljhsc8m/TRYDM/j0SMBabgHAZ3BULuDgE5VM6TA="></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <div class="container">
+        <header class="common-header">
+            
+                <div class="header-top">
+    <div class="header-top-left">
+        <h1 class="site-title noselect">
+    <a href="/pt-pt">amandamata</a>
+</h1>
+
+        
+
+
+
+
+
+
+
+    
+        <div class="theme-switcher">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
+
+
+</span>
+
+        </div>
+    
+
+    <script>
+        const STORAGE_KEY = 'user-color-scheme'
+        const defaultTheme = "light"
+
+        let currentTheme
+        let switchButton
+        let autoDefinedScheme = window.matchMedia('(prefers-color-scheme: dark)')
+
+        function switchTheme(e) {
+            currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+            if (localStorage) localStorage.setItem(STORAGE_KEY, currentTheme);
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        const autoChangeScheme = e => {
+            currentTheme = e.matches ? 'dark' : 'light'
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            switchButton = document.querySelector('.theme-switcher')
+            currentTheme = detectCurrentScheme()
+
+            if (currentTheme === 'auto') {
+                autoChangeScheme(autoDefinedScheme);
+                autoDefinedScheme.addListener(autoChangeScheme);
+            } else {
+                document.documentElement.setAttribute('data-theme', currentTheme)
+            }
+
+            if (switchButton) {
+                switchButton.addEventListener('click', switchTheme, false)
+            }
+
+            showContent();
+        })
+
+        function detectCurrentScheme() {
+            if (localStorage !== null && localStorage.getItem(STORAGE_KEY)) {
+                return localStorage.getItem(STORAGE_KEY)
+            }
+            if (defaultTheme) {
+                return defaultTheme
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function showContent() {
+            document.body.style.visibility = 'visible';
+            document.body.style.opacity = 1;
+        }
+
+        function changeGiscusTheme (theme) {
+            function sendMessage(message) {
+              const iframe = document.querySelector('iframe.giscus-frame');
+              if (!iframe) return;
+              iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+            }
+
+            sendMessage({
+              setConfig: {
+                theme: theme
+              }
+            });
+        }
+    </script>
+
+
+        <ul class="social-icons noselect">
+
+
+
+
+
+
+
+    <li>
+            <a href="/pt-pt/index.xml" title="RSS" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+</ul>
+
+    </div>
+    <div class="header-top-right">
+
+    </div>
+</div>
+
+
+    <nav></nav>
+
+
+
+
+
+
+
+
+            
+        </header>
+        <main id="main" tabindex="-1">
+            
+    
+
+    <article class="post h-entry">
+        <div class="post-header">
+            <header>
+                <h1 class="p-name post-title">Implementando um publisher e consumer SQS usando dotnet</h1>
+                
+    
+    <span>
+        <ul class="post-translations">
+            
+                
+                    <li>
+                        <a href="/post/queue-csharp-sqs/">EN</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        PT-PT
+                    </li>
+                
+            
+        </ul>
+    </span>
+
+
+            </header>
+            
+
+
+
+<div class="post-info noselect">
+    
+        <div class="post-date dt-published">
+            <time datetime="2023-02-22">2023-02-22</time>
+            
+        </div>
+    
+
+    <a class="post-hidden-url u-url" href="/pt-pt/post/queue-csharp-sqs/">/pt-pt/post/queue-csharp-sqs/</a>
+    <a href="https://amandamata.github.io" class="p-name p-author post-hidden-author h-card" rel="me"></a>
+
+
+    <div class="post-taxonomies">
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="/pt-pt/tags/queue/">#queue</a></li>
+                
+                    
+                    <li><a href="/pt-pt/tags/sqs/">#sqs</a></li>
+                
+                    
+                    <li><a href="/pt-pt/tags/dotnet/">#dotnet</a></li>
+                
+                    
+                    <li><a href="/pt-pt/tags/aws/">#aws</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+        </div>
+        
+
+  
+  
+
+
+
+
+  
+  
+  
+  <details class="toc noselect">
+    <summary>Table of Contents</summary>
+    <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+  </details>
+  
+
+
+
+<script>
+  var toc = document.querySelector(".toc");
+  if (toc) {
+    toc.addEventListener("click", function () {
+      if (event.target.tagName !== "A") {
+        event.preventDefault();
+        if (this.open) {
+          this.open = false;
+          this.classList.remove("expanded");
+        } else {
+          this.open = true;
+          this.classList.add("expanded");
+        }
+      }
+    });
+  }
+</script>
+
+        <div class="content e-content">
+            <p>Nesse <a href="/pt-pt/queue">post</a>, eu passei a introdução de uma fila e como utilizá-la. Agora, eu vou explicar como implementar um consumer e sqs publisher usando c# dotnet.
+<br/><br/></p>
+<h5 id="sqs" >
+<div>
+    <a href="#sqs">
+        ####
+    </a>
+    SQS
+</div>
+</h5>
+<p>O que é SQS?</p>
+<p>SQS (Simple Queue Service) é um serviço da Amazon que permite que você envie, salve, e receba mensagens entre aplicações, sem que você perca essas mensagens caso o serviço esteja indisponível.</p>
+<p>A melhor parte de tudo isso é que, para você pagar por esse serviço, você teria que enviar mais de um milhão de requisições por mês, para que a amazon te envie uma cobrança.</p>
+<p>Para começar pe necessário criar uma conta na <a href="https://aws.amazon.com/">aws</a> e então ir para o <a href="https://console.aws.amazon.com">console</a>.</p>
+<p>Na área do console, digite SQS no campo de busca e entre na primeira opção, Simple Queue Service.</p>
+<p>Clique em Create queue, e adicione o nome para a fila, e então vá para o final da página e clique em Create queue. Você pode alterar os valores que vem por padrão, mas para esse exemplos o padrão já está de acordo.
+<br/><br/></p>
+<h5 id="aws-command-line-interface" >
+<div>
+    <a href="#aws-command-line-interface">
+        ####
+    </a>
+    AWS Command Line Interface
+</div>
+</h5>
+<p>A AWS Command Line Interface permite que façamos mudanças e requisições diretamente pelo console localmente, sem a necessidade de acessar o AWS console no navegador.</p>
+<p>Se por exemplo quisermos listar os buckets:</p>
+<pre tabindex="0"><code>aws s3api list-buckets
+</code></pre><p>Para conseguirmos fazer isso, é necessário instalar o cli, o tutorial para Windows, Linux e macOs está <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">aqui</a>.</p>
+<p>Depois da instalação, é necessário autenticar sua máquina na aws.</p>
+<p>Na aws console, clique em seu nome e vá até Security Credentials, lá você precisa criar uma Access Key.</p>
+<p>Então em seu console você vai digitar:</p>
+<pre tabindex="0"><code>aws configure
+</code></pre><p>Então coloque a sua access key e token quando solicitado.</p>
+<blockquote>
+<p>Importante, no console da aws você possui uma região, a minha é us-east-1, você pode ver a sua consultando a url: https://<em><strong>us-east-1</strong></em>.console.aws.amazon.com/</p>
+</blockquote>
+<p>Essa região deve ser passada durante a configuração aws no console, para que consiga utilizar completamente as features via console localmente.</p>
+<p>Depois da configuração finalizada, você poderá executar a listagem de buckets.</p>
+<pre tabindex="0"><code>aws s3api list-buckets
+</code></pre><br/>
+<h5 id="publisher" >
+<div>
+    <a href="#publisher">
+        ####
+    </a>
+    Publisher
+</div>
+</h5>
+<p>O que é um publisher?</p>
+<p>Um publisher é um serviço que vai pegar uma informação que algo mudou por exemplo e enviar essa informação para a fila.
+No exemplo que utilizei no post sobre a fila, o publisher estava dentro da API, e quando um novo usuário era criado a informação era enviada para a fila.</p>
+<p>Então com tudo configurado, agora vamos criar o publisher.</p>
+<p>Para deixar simples, o exemplo aqui vai ser apenas o publisher, então você pode pegar a implementação e aplicar na sua API.</p>
+<p>Vamos utilizar o Console App</p>
+<p>Crie uma nova pasta:</p>
+<pre tabindex="0"><code>mkdir publisher
+</code></pre><p>Entre na pasta:</p>
+<pre tabindex="0"><code>cd publisher
+</code></pre><p>Crie o projeto:</p>
+<pre tabindex="0"><code>dotnet new console
+</code></pre><p>Um modelo é necessário:</p>
+<pre tabindex="0"><code>public class CustomerCreated
+{
+  public Guid Id { get; init; }
+  public string FullName { get; init; }
+  public string Email { get; init; }
+  public DateTime DateOfBirth { get; init; }
+}
+</code></pre><p>E instale o <a href="https://www.nuget.org/packages/AWSSDK.SQS">AWS SDK</a></p>
+<pre tabindex="0"><code>dotnet add package AWSSDK.SQS --version 3.7.100.78
+</code></pre><p>Então na classe Program precisamos criar o request e enviá-lo:</p>
+<pre tabindex="0"><code>using System.Text.Json;
+using Amazon.SQS;
+using Amazon.SQS.Model;
+
+var sqsCLient = new AmazonSQSClient();
+
+var customer = new CustomerCreated
+{
+  Id = Guid.NewGuid(),
+  FullName = &#34;Amanda Mata&#34;,
+  Email = &#34;email@email.com&#34;,
+  DateOfBirth = new DateTime(1996, 06, 18)
+};
+
+var queueUrlResponse = await sqsCLient.GetQueueUrlAsync(&#34;customers&#34;);
+
+var sendMessageRequest = new SendMessageRequest
+{
+  QueueUrl = queueUrlResponse.QueueUrl, 
+  MessageBody = JsonSerializer.Serialize(customer),
+  MessageAttributes = new Dictionary&lt;string, MessageAttributeValue&gt;
+  {
+      {
+          &#34;MessageType&#34;, new MessageAttributeValue
+          {
+              DataType = &#34;String&#34;, 
+              StringValue = nameof(CustomerCreated)
+          }
+      }
+  }
+};
+
+var response = await sqsCLient.SendMessageAsync(sendMessageRequest);
+
+Console.WriteLine();
+</code></pre><blockquote>
+<p>No sqsCLient.GetQueueUrlAsync(&ldquo;customers&rdquo;) eu utilizei &ldquo;customers&rdquo; porque esse é o nome da minha fila</p>
+</blockquote>
+<br/>
+<h5 id="consumer" >
+<div>
+    <a href="#consumer">
+        ####
+    </a>
+    Consumer
+</div>
+</h5>
+<p>O que é um consumer?</p>
+<p>Um consumer é o serviço que irá escutar a fila.</p>
+<p>Vamos utilizar o Console App</p>
+<p>Crie uma nova pasta:</p>
+<pre tabindex="0"><code>mkdir consumer
+</code></pre><p>Entre na pasta:</p>
+<pre tabindex="0"><code>cd consumer
+</code></pre><p>Crie o projeto:</p>
+<pre tabindex="0"><code>dotnet new console
+</code></pre><p>Um modelo é necessário:</p>
+<pre tabindex="0"><code>public class CustomerCreated
+{
+  public Guid Id { get; init; }
+  public string FullName { get; init; }
+  public string Email { get; init; }
+  public DateTime DateOfBirth { get; init; }
+}
+</code></pre><p>E instale o <a href="https://www.nuget.org/packages/AWSSDK.SQS">AWS SDK</a></p>
+<pre tabindex="0"><code>dotnet add package AWSSDK.SQS --version 3.7.100.78
+</code></pre><p>Então na classe Program precisamos receber a requisição:</p>
+<pre tabindex="0"><code>using Amazon.SQS;
+using Amazon.SQS.Model;
+	 
+var cts = new CancellationTokenSource();
+var sqsCLient = new AmazonSQSClient();
+var queueUrlResponse = await sqsCLient.GetQueueUrlAsync(&#34;customers&#34;);
+var receiveMessageRequest = new ReceiveMessageRequest
+{
+  QueueUrl = queueUrlResponse.QueueUrl,
+  AttributeNames = new List&lt;string&gt;{ &#34;All&#34; },
+  MessageAttributeNames = new List&lt;string&gt;{ &#34;All&#34; }
+};
+	 
+while(!cts.IsCancellationRequested)
+{
+  var response = await sqsCLient.ReceiveMessageAsync(receiveMessageRequest, cts.Token);
+  response.Messages.ForEach(async message =&gt; {
+    Console.WriteLine($&#34;Message Id: { message.MessageId }&#34;);
+    Console.WriteLine($&#34;Message Body: { message.Body }&#34;);
+    await sqsCLient.DeleteMessageAsync(queueUrlResponse.QueueUrl, message.ReceiptHandle);
+  });
+
+  await Task.Delay(3000);
+}
+
+Console.WriteLine();
+</code></pre><br/>
+<p>Agora o publisher e o consumer estão criados, você pode verificar as mensagens no aws console, mas apenas executando o publisher e o consumer você vai conseguir ver as mensagens sendo enviadas e sendo recebidas.</p>
+<hr>
+<p>Eu criei esse post para meus estudos, os aprendizados passados aqui foram obtidos através do curso <a href="https://nickchapsas.com/p/cloud-fundamentals-aws-services-for-c-developers">Cloud Fundamentals: AWS Services for C# Developers course</a>.</p>
+
+        </div>
+
+    </article>
+
+    
+    
+
+    
+        
+        
+            <h3 class="read-next-title noselect">Read next</h3>
+            <ul class="read-next-posts noselect">
+                
+                <li><a href="/pt-pt/post/curly-brace/">Colchetes em uma nova linha no vscode</a></li>
+                
+                <li><a href="/pt-pt/post/queue/">Usos para uma fila</a></li>
+                
+            </ul>
+        
+    
+
+    
+
+    
+        
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+        </main>
+        
+            <footer class="common-footer noselect">
+    
+    
+        <ul class="language-select">
+    
+    
+    
+
+    
+        
+            <li>pt</li>
+        
+    
+        
+            <li><a href="/post/queue-csharp-sqs/">en</a></li>
+        
+    
+</ul>
+
+    
+
+    <div class="common-footer-bottom">
+        
+
+        <div style="display: flex; align-items: center; gap:8px">
+            © amanda, 2024
+            
+        </div>
+        <div style="display:flex;align-items: center">
+            
+            
+            
+            
+            
+            
+        </div>
+        <div>
+            Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/Junyi-99/hugo-theme-anubis2">Anubis2</a>.<br>
+            
+
+        </div>
+    </div>
+
+    <p class="h-card vcard">
+
+    <a href=https://amandamata.github.io class="p-name u-url url fn" rel="me"></a>
+
+    
+
+    
+</p>
+
+</footer>
+
+        
+    </div>
+</body>
+</html>

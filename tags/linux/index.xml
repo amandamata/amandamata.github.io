@@ -2,19 +2,89 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>linux on amandamata</title>
-    <link>https://amandamata.github.io/tags/linux/</link>
-    <description>Recent content in linux on amandamata</description>
+    <link>/tags/linux/</link>
+    <description>amandamata (linux)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 09 Feb 2023 07:55:10 -0300</lastBuildDate>
-    <atom:link href="https://amandamata.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    <atom:link href="/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Understanding folders in linux</title>
-      <link>https://amandamata.github.io/folders-in-linux/</link>
+      <link>/post/folders-in-linux/</link>
       <pubDate>Thu, 09 Feb 2023 07:55:10 -0300</pubDate>
-      <guid>https://amandamata.github.io/folders-in-linux/</guid>
-      <description>You&amp;rsquo;ve just installed linux and you&amp;rsquo;re used to the structure of windows and its directories, so you&amp;rsquo;ll take a look in your file manager looking for the disk C: and you can&amp;rsquo;t find it&amp;hellip; Knowing Linux directories can help administer the system and understand how it works.
-If we analyze windows and linux, they ended up evolving differently in terms of directory structure. Linux is much more like any other system with unix roots like macOS.</description>
+      
+      <guid>/post/folders-in-linux/</guid>
+      <description>&lt;p&gt;You&amp;rsquo;ve just installed linux and you&amp;rsquo;re used to the structure of windows and its directories, so you&amp;rsquo;ll take a look in your file manager looking for the disk C: and you can&amp;rsquo;t find it&amp;hellip;
+Knowing Linux directories can help administer the system and understand how it works.&lt;/p&gt;
+&lt;p&gt;If we analyze windows and linux, they ended up evolving differently in terms of directory structure. Linux is much more like any other system with unix roots like macOS. In fact, windows, considering most existing operating systems, is the one with the most different organization.&lt;/p&gt;
+&lt;p&gt;The linux directory hierarchy is not more difficult nor is it easier it is simply different, both the windows C: disk and the linux root serve the same thing but do it differently.&lt;/p&gt;
+&lt;p&gt;Linux systems have the &lt;strong&gt;FHS&lt;/strong&gt;, Filesystem hierarchy standard system hierarchy, a standard maintained by the Linux foundation.&lt;/p&gt;
+&lt;p&gt;There are folders that have an arrow and others that have an x.
+The folders that have the arrow are called symbolic links, which are shortcuts to other folders or files, these folders can be accessed but when you enter them you are entering another directory. As an example, /bin, if you look at its properties, you will see that it is destined for the /usr/bin folder, so if you are going to use the terminal to make a shell script or run bash, you do not need to run the /usr command /bin/bash and yes /bash.&lt;/p&gt;
+&lt;p&gt;The folders that contain the x mean that they cannot be accessed without navigating as root, the common user does not have permission to write in any folder with x.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s look at the functionality of the folders&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;/&lt;/strong&gt; directory is what we call the root directory, it is where all other directories and subdirectories will be housed.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/bin&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Binaries&lt;/p&gt;
+&lt;p&gt;In this directory you will find the executables of various operating system programs, such as bash, cat, ls, etc. Also finding symlinks and shell script. This folder is comparable to the Disk C: Windows Files and Programs folder.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/boot&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Contains files needed for the operating system to start.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/cdroom&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Legacy directory, disk image will be mounted in this directory.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/dev&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Devices&lt;/p&gt;
+&lt;p&gt;Inside that folder you will find files that correspond to your hardware, files that can be configurable and change the way a certain device works. That&amp;rsquo;s why disk drives are called &lt;strong&gt;/dev/sda&lt;/strong&gt; and some number. The number only appears if there are partitions on that disk.&lt;/p&gt;
+&lt;p&gt;Curiosity: &lt;strong&gt;/dev/null&lt;/strong&gt; is a black hole directory, which loses all information that is sent to it.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/etc&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Edit to config or et cetera&lt;/p&gt;
+&lt;p&gt;The function of this folder is to keep the system configuration files, in a system wide way, that is, for all users of the system and not specific configurations of a user, these specific configurations are in /home.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/home&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Where common system users are located, within each user folder, it is possible to have application-specific settings for the user in question.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/lib&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Library&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/lib lib32 lib64 libx32&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;All of them are folders that contain software libraries for the operating system and installed applications, a newly installed program can add libs in these folders are compared with windows dlls.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/media&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;It is the folder where the system&amp;rsquo;s removable drives will be automatically mounted, such as a pendrive, external hard drive or other disk including network drives mapped by samba for example.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/mnt&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Mount&lt;/p&gt;
+&lt;p&gt;Intended to be a mount point for disk drives, when done manually by the user using fstab.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/opt&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Optional&lt;/p&gt;
+&lt;p&gt;In that folder where you can find software installed by manufacturers that ship computers with Linux or by proprietary software, for example.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/proc&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Processes&lt;/p&gt;
+&lt;p&gt;Where are files that contain information about the system and its processes. It&amp;rsquo;s a virtual directory, they don&amp;rsquo;t really exist on disk, they are created every time you start your computer.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/root&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Like the home directory, but for the root user.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/run&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Runtime&lt;/p&gt;
+&lt;p&gt;It is a virtual directory, loaded into the computer&amp;rsquo;s memory and erased when shutting down. Contains information such as logged in users, running daemons, etc.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/sbin&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;System binaries&lt;/p&gt;
+&lt;p&gt;It also stores binaries, programs that can only be used by the system administrator sudo root.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/snap&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Finds directories for snaps packages, it&amp;rsquo;s a different form of packaging. Snap package support is standard in ubuntu.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/srv&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Services&lt;/p&gt;
+&lt;p&gt;If you use a web or sftp server, you can store files here that will be accessible to other users. It is possible to mount it from an external disk.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/sys&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;System&lt;/p&gt;
+&lt;p&gt;Here, files that interact directly with the kernel are stored, such as drivers and firmware. It is also temporary.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/tmp&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Temp&lt;/p&gt;
+&lt;p&gt;Files are erased during reboot.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/usr&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Directory that changed function. Usr can mean two things, user or unix system resources. Nowadays it contains program files and libs.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/var&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Variable&lt;/p&gt;
+&lt;p&gt;Variables directory, files that are expected to grow in size, backup files, log, system cache for example.&lt;/p&gt;
+</description>
     </item>
+    
   </channel>
 </rss>

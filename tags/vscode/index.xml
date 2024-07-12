@@ -2,21 +2,122 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>vscode on amandamata</title>
-    <link>https://amandamata.github.io/tags/vscode/</link>
-    <description>Recent content in vscode on amandamata</description>
+    <link>/tags/vscode/</link>
+    <description>amandamata (vscode)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 18 Feb 2023 06:13:07 -0300</lastBuildDate>
-    <atom:link href="https://amandamata.github.io/tags/vscode/index.xml" rel="self" type="application/rss+xml" />
+    
+    <atom:link href="/tags/vscode/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Curly braces on new line in vscode</title>
-      <link>https://amandamata.github.io/curly-brace/</link>
+      <link>/post/curly-brace/</link>
       <pubDate>Sat, 18 Feb 2023 06:13:07 -0300</pubDate>
-      <guid>https://amandamata.github.io/curly-brace/</guid>
-      <description>This pass week I wake up early every day trying to do only one thing: make Visual Studio Code insert a new line before a curly bracket, braces {}.
-I have this:
-if (true){ // do something } and I want to format it like this:
-if (true) { // do something } Was not as easy thing as may seem. Many sites and stack overflow have the same question, with many disappointing people without a resolution.</description>
+      
+      <guid>/post/curly-brace/</guid>
+      <description>&lt;p&gt;This pass week I wake up early every day trying to do only one thing: make Visual Studio Code insert a new line before a curly bracket, braces {}.&lt;/p&gt;
+&lt;p&gt;I have this:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;if (true){
+  // do something
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and I want to format it like this:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;if (true)
+{
+  // do something
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Was not as easy thing as may seem.
+Many sites and stack overflow have the same question, with many disappointing people without a resolution. So today I gonna share what I found.&lt;/p&gt;
+&lt;p&gt;First things first, you gonna need:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Latest Visual Studio Code&lt;/li&gt;
+&lt;li&gt;Latest C# Extension&lt;/li&gt;
+&lt;li&gt;Updated OS&lt;/li&gt;
+&lt;li&gt;omnisharp.json file&lt;/li&gt;
+&lt;li&gt;settings.json modifications&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;omnisharp&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#omnisharp&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Omnisharp
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;You can find your omnisharp location by checking on %USERPROFILE%/.omnisharp/&lt;/p&gt;
+&lt;p&gt;Mine is in /home/amanda/.omnisharp/omnisharp.json&lt;/p&gt;
+&lt;p&gt;This is my omnisharp config:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
+    &amp;#34;FormattingOptions&amp;#34;: {
+        &amp;#34;newLine&amp;#34;: &amp;#34;\n&amp;#34;,
+        &amp;#34;useTabs&amp;#34;: false,
+        &amp;#34;tabSize&amp;#34;: 4,
+        &amp;#34;indentationSize&amp;#34;: 4,
+
+        &amp;#34;NewLinesForBracesInTypes&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInMethods&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInProperties&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInAccessors&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInAnonymousMethods&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInControlBlocks&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInAnonymousTypes&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInObjectCollectionArrayInitializers&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInLambdaExpressionBody&amp;#34;: true,
+
+        &amp;#34;NewLineForElse&amp;#34;: true,
+        &amp;#34;NewLineForCatch&amp;#34;: true,
+        &amp;#34;NewLineForFinally&amp;#34;: true,
+        &amp;#34;NewLineForMembersInObjectInit&amp;#34;: true,
+        &amp;#34;NewLineForMembersInAnonymousTypes&amp;#34;: true,
+        &amp;#34;NewLineForClausesInQuery&amp;#34;: true,
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Based on &lt;a href=&#34;https://github.com/OmniSharp/omnisharp-vscode/issues/1506#issuecomment-303390666&#34;&gt;this comment&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&#34;vscode-settings&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#vscode-settings&#34;&gt;
+        ####
+    &lt;/a&gt;
+    VSCode Settings
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;You can find your settings.json location by checking on ~/.config/Code/User&lt;/p&gt;
+&lt;p&gt;Mine is in /home/amanda/.config/Code/User/settings.json&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve inserted these lines in my settings.json:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;    &amp;#34;omnisharp.json&amp;#34;: &amp;#34;/home/amanda/.omnisharp&amp;#34;,
+    &amp;#34;omnisharp.enableEditorConfigSupport&amp;#34;: false,
+    &amp;#34;omnisharp.useEditorFormattingSettings&amp;#34;: true,
+    &amp;#34;omnisharp.path&amp;#34;: &amp;#34;latest&amp;#34;,
+    &amp;#34;editor.formatOnType&amp;#34;: true,
+    &amp;#34;editor.formatOnSave&amp;#34;: true,
+    &amp;#34;editor.formatOnPaste&amp;#34;: true,
+    &amp;#34;editor.defaultFormatter&amp;#34;: &amp;#34;ms-dotnettools.csharp&amp;#34;,
+    &amp;#34;[csharp]&amp;#34;: {&amp;#34;editor.defaultFormatter&amp;#34;: &amp;#34;ms-dotnettools.csharp&amp;#34;}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;For this config work it&amp;rsquo;s necessary to have the c# extension installed and enable and after these changes, restart omnisharp.&lt;/p&gt;
+&lt;p&gt;Extension&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/brace1.png&#34; alt=&#34;brace1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/br&gt;&lt;/br&gt;
+Restart omnisharp
+Ctrl+Shift+p&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/brace2.png&#34; alt=&#34;brace2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/br&gt;&lt;/br&gt;
+After all of these changes, you can start using your visual studio code and enjoy braces in the new line. BUT&lt;/p&gt;
+&lt;p&gt;The thing that takes me out of bed is, the auto format on type it&amp;rsquo;s not working. So probably you make all of these changes by yourself, and still not working&amp;hellip; is because to work you need to use Format Document in Visual Studio Code.
+&lt;img src=&#34;https://amandamata.github.io/img/brace3.png&#34; alt=&#34;brace3&#34;&gt;
+&lt;/br&gt;&lt;/br&gt;
+But I don&amp;rsquo;t want to use this option all the time.&lt;/p&gt;
+&lt;p&gt;After a lot of searching, I&amp;rsquo;ve found this editor settings&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;editor.formatOnSave&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;editor.formatOnPaste&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;editor.formatOnType&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With this settings, when save and on past the format will be done automatically.&lt;/p&gt;
+&lt;p&gt;BUT&lt;/p&gt;
+&lt;p&gt;Format on type still not working&amp;hellip; Then I&amp;rsquo;ve found an &lt;a href=&#34;https://github.com/microsoft/vscode-cpptools/issues/1419&#34;&gt;issue in Github&lt;/a&gt; on vscode saying that &lt;em&gt;&lt;strong&gt;formatOnType&lt;/strong&gt;&lt;/em&gt; was not working for c#, because this feature work by checking &lt;code&gt;;&lt;/code&gt; (most used in js). They have this fix in roadmap, but until they fix, format on save will do the job.&lt;/p&gt;
+</description>
     </item>
+    
   </channel>
 </rss>

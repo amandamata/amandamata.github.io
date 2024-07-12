@@ -2,38 +2,480 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>dotnet on amandamata</title>
-    <link>https://amandamata.github.io/pt-pt/tags/dotnet/</link>
-    <description>Recent content in dotnet on amandamata</description>
+    <link>/pt-pt/tags/dotnet/</link>
+    <description>amandamata (dotnet)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-pt</language>
     <lastBuildDate>Tue, 25 Apr 2023 07:42:55 -0300</lastBuildDate>
-    <atom:link href="https://amandamata.github.io/pt-pt/tags/dotnet/index.xml" rel="self" type="application/rss+xml" />
+    
+    <atom:link href="/pt-pt/tags/dotnet/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Implementando cache Redis com dotnet</title>
-      <link>https://amandamata.github.io/pt-pt/redis/</link>
+      <link>/pt-pt/post/redis/</link>
       <pubDate>Tue, 25 Apr 2023 07:42:55 -0300</pubDate>
-      <guid>https://amandamata.github.io/pt-pt/redis/</guid>
-      <description>Recentemente tive que implementar um cache em uma aplicação para evitar consultas desnecessárias ao banco de dados, e isso foi muito legal. Já trabalhei com Redis no passado, mas acho que fiz da maneira errada porque implementar um cache com Redis nunca foi tão legal. Redis x Mem cached O Redis é quase como um banco noSql, mas ele é ainda melhor pois armazena os dados com chave e valor e com isso fica muito mais fácil de utilizar ele como um cache.</description>
+      
+      <guid>/pt-pt/post/redis/</guid>
+      <description>&lt;p&gt;Recentemente tive que implementar um cache em uma aplicação para evitar consultas desnecessárias ao banco de dados, e isso foi muito legal. Já trabalhei com Redis no passado, mas acho que fiz da maneira errada porque implementar um cache com Redis nunca foi tão legal.
+&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;redis-x-mem-cached&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#redis-x-mem-cached&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Redis x Mem cached
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;O Redis é quase como um banco noSql, mas ele é ainda melhor pois armazena os dados com chave e valor e com isso fica muito mais fácil de utilizar ele como um cache.
+Mas o ponto principal nessa comparação é: depende, depende de como e quanto dado será utilizado nesse cache. Se for pouco dado como guardar informações de uma sessão, o MemCache faz sentido. Mas se estamos falando de muitas consultas com dados maiores, como os dados que armazenamos no banco, o Redis faz um melhor trabalho. Isso porque ao utilizar o MemCache estamos utilizando da memória da aplicação pra salvar aquelas informações, já o Redis é um cache distribuído, não tem relação nenhuma com a memória da aplicação e é possível utilizar mais de um Redis database escalando verticalmente esse serviço conforme a demanda cresce.&lt;/p&gt;
+&lt;p&gt;A primeira vez que for necessário usar o cache a informação não vai estar lá, então é necessário consultar no banco e salvar no cache, a segunda vez já não é necessário ir ao banco, pois a informação estará no cache. E isso faz com que a aplicação demore menos tempo para responder uma requisição, pois a ida ao banco demora muito mais que a ida ao redis.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/redis.png&#34; alt=&#34;redis&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;porque-utilizar&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#porque-utilizar&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Porque utilizar
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Reduzir o tempo de resposta
+Melhorar a experiência do usuário final com a aplicação, fazendo ele esperar menos em cada clique ou ação.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Elevar a disponibilidade
+Uma vez que é preciso consumir menos recursos computacionais, porque já está no cache e devolvo mais rápido para o usuário final, é possível então ter mais usuários acessando simultaneamente a aplicação.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Reduzir custos computacionais
+Quando estamos falando de cloud, estamos reduzindo o consumo de lambdas e recursos onde a fatura mensal pode ser mais barata.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;O custo de um cache é alto, portanto, tem que estar custando caro no server side pra fazer essa migração para o cache. Por exemplo, problemas com demora de resposta para o cliente final podem custar caro, o cliente final pode simplesmente desistir de utilizar a aplicação pela demora, e muitos outros problemas que essa demora pode gerar. Para reduzir tanto esse custo de perda de cliente quanto o custo de consulta ao banco, utiliza-se então o cache para resolver esses problemas.
+&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;problema&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#problema&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Problema
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;Suponhamos que existe uma aplicação que faz muitas idas ao banco, mas sempre consultando as mesmas informações, quando a aplicação foi desenvolvida os desenvolvedores não achavam que ela poderia crescer tanto, e não foi implementado um cache para evitar essas consultas ao banco.
+A aplicação é de aluguel de carro para empresas, e a consulta é simples, a cada requisição recebida no endpoint aluguél é necessário consultar se a empresa(cnpj) informada na solicitação de aluguel é a mesma que existe no banco.
+Temos o cenário, vamos para a implementação.
+&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;implementação&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#implementa%c3%a7%c3%a3o&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Implementação
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;Explicação  e problema apresentações, vamos a implementação!
+Para essa implementação vamos seguir um padrão chamado Decorator, com esse padrão é possível adicionar uma camada de cache sem adicionar complexidade a mais na camada de repositório, e vamos seguir o principio S do SOLID, &lt;a href=&#34;https://g.co/kgs/phLumf&#34;&gt;Single-responsibility principle&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Vamos trabalhar com dotnet, e instalar os pacotes &lt;a href=&#34;https://www.nuget.org/packages/scrutor/&#34;&gt;Scrutor&lt;/a&gt; e &lt;a href=&#34;https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis/7.0.5&#34;&gt;StackExchangeRedis&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet add package Scrutor --version 4.2.2
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet add package Microsoft.Extensions.Caching.StackExchangeRedis --version 7.0.5
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;O Scrutor vai nos auxiliar durante a implementação da camada de cache sem tirar a responsabilidade única do repositório. E o StackExchangeRedis é o pacote client da Microsoft para fazermos o uso do redis com .NET.&lt;/p&gt;
+&lt;p&gt;Vamos criar uma Service para lidar com tudo referente ao Redis.
+&lt;br/&gt;
+Service:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;public class CacheService : ICacheService
+{
+    private readonly IDistributedCache _distributedCache;
+    private readonly DistributedCacheEntryOptions _options;
+
+    public CacheService(IDistributedCache distributedCache)
+    {
+        _distributedCache = distributedCache;
+        _options = new DistributedCacheEntryOptions
+        {
+            AbsoluteExpirationRelativeToNow = 150
+        };
+    }
+
+    public async Task&amp;lt;T&amp;gt; GetAsync&amp;lt;T&amp;gt;(string key)
+    {
+        try
+        {
+            var cached = await _distributedCache.GetStringAsync(key);
+            if (cached is not null)
+                return JsonConvert.DeserializeObject&amp;lt;T&amp;gt;(cached);
+        }
+        catch (Exception exception)
+        { 
+            // Log exception 
+        }
+
+        return default(T);
+    }
+
+    public async Task SetAsync&amp;lt;T&amp;gt;(string key, T value)
+    {
+        try
+        {
+            if (value is not null)
+                await _distributedCache.SetStringAsync(key, JsonConvert.SerializeObject(value), _options);
+        }
+        catch (Exception exception)
+        { 
+            // Log exception
+        }
+    }
+
+    public async Task RemoveAsync(string key)
+    {
+        try
+        {
+            await _distributedCache.RemoveAsync(key);
+        }
+        catch (Exception exception)
+        {
+            // Log exception
+    	}
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Vamos criar um Repository para lidar com a requisição de consulta ao banco que irá &amp;ldquo;interceptar&amp;rdquo; e ir primeiro no redis.
+&lt;br/&gt;
+Repository:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;public class CachedAlugatorRepository : IAlugatorRepository
+{
+    private readonly IAlugatorRepository _alugatorRepository;
+    private readonly ICacheService _cache;
+
+    public CachedAlugatorRepository(IAlugatorRepository alugatorRepository, ICacheService cache)
+    {
+        _alugatorRepository = alugatorRepository;
+        _cache = cache;
+    }
+
+    public async Task&amp;lt;bool&amp;gt; DeleteAsync(string id)
+    {
+        var alugator = await _alugatorRepository.GetAsync(id);
+        if (alugator is not null)
+        {
+ 	    await _cache.RemoveAsync(alugator.documentId);
+            return await _alugatorRepository.DeleteAsync(id);
+        }
+
+        return true;
+    }
+
+    public async Task&amp;lt;Alugator&amp;gt; GetAsync(string id)
+    {
+        var alugator = await _cache.GetAsync&amp;lt;Alugator&amp;gt;(id);
+        if (alugator is not null)
+            return alugator;
+
+        alugator = await _alugatorRepository.GetAsync(id);
+
+        await _cache.SetAsync&amp;lt;Alugator&amp;gt;(alugator);
+        return alugator;
+    }
+
+    public async Task&amp;lt;bool&amp;gt; UpsertAsync(Alugator alugator)
+    {
+        await _cache.SetAsync(alugator.documentId, alugator);
+
+        return await _alugatorRepository.UpsertAsync(alugator);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;O pulo do gato está na forma como iremos configurar o Repository na classe Program:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;services.AddSingleton&amp;lt;IAlugatorRepository, AlugatorRepository&amp;gt;();
+services.Decorate&amp;lt;IAlugatorRepository, CachedAlugatorRepository&amp;gt;();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Esse Decorate faz a mágica, pois, agora ao chamar a AlugatorRepository a CachedAlugatorRepository será &amp;ldquo;chamado&amp;rdquo; primeiro, então, toda chamada ao repositório será feita inicialmente para o Repositório de cache que contém a lógica da consulta ao Redis através da service. Com isso mantemos a AlugatorRepository limpa, temos uma repository específica para o cache CachedAlugatorRepository e não ferimos o Single Responsability Principle.&lt;/p&gt;
+</description>
     </item>
+    
     <item>
       <title>Implementando um publisher e consumer SQS usando dotnet</title>
-      <link>https://amandamata.github.io/pt-pt/queue-csharp-sqs/</link>
+      <link>/pt-pt/post/queue-csharp-sqs/</link>
       <pubDate>Wed, 22 Feb 2023 07:19:25 -0300</pubDate>
-      <guid>https://amandamata.github.io/pt-pt/queue-csharp-sqs/</guid>
-      <description>Nesse post, eu passei a introdução de uma fila e como utilizá-la. Agora, eu vou explicar como implementar um consumer e sqs publisher usando c# dotnet. SQS O que é SQS?
-SQS (Simple Queue Service) é um serviço da Amazon que permite que você envie, salve, e receba mensagens entre aplicações, sem que você perca essas mensagens caso o serviço esteja indisponível.
-A melhor parte de tudo isso é que, para você pagar por esse serviço, você teria que enviar mais de um milhão de requisições por mês, para que a amazon te envie uma cobrança.</description>
+      
+      <guid>/pt-pt/post/queue-csharp-sqs/</guid>
+      <description>&lt;p&gt;Nesse &lt;a href=&#34;https://amandamata.github.io/pt-pt/queue&#34;&gt;post&lt;/a&gt;, eu passei a introdução de uma fila e como utilizá-la. Agora, eu vou explicar como implementar um consumer e sqs publisher usando c# dotnet.
+&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;sqs&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#sqs&#34;&gt;
+        ####
+    &lt;/a&gt;
+    SQS
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;O que é SQS?&lt;/p&gt;
+&lt;p&gt;SQS (Simple Queue Service) é um serviço da Amazon que permite que você envie, salve, e receba mensagens entre aplicações, sem que você perca essas mensagens caso o serviço esteja indisponível.&lt;/p&gt;
+&lt;p&gt;A melhor parte de tudo isso é que, para você pagar por esse serviço, você teria que enviar mais de um milhão de requisições por mês, para que a amazon te envie uma cobrança.&lt;/p&gt;
+&lt;p&gt;Para começar pe necessário criar uma conta na &lt;a href=&#34;https://aws.amazon.com/&#34;&gt;aws&lt;/a&gt; e então ir para o &lt;a href=&#34;https://console.aws.amazon.com&#34;&gt;console&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Na área do console, digite SQS no campo de busca e entre na primeira opção, Simple Queue Service.&lt;/p&gt;
+&lt;p&gt;Clique em Create queue, e adicione o nome para a fila, e então vá para o final da página e clique em Create queue. Você pode alterar os valores que vem por padrão, mas para esse exemplos o padrão já está de acordo.
+&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;aws-command-line-interface&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#aws-command-line-interface&#34;&gt;
+        ####
+    &lt;/a&gt;
+    AWS Command Line Interface
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;A AWS Command Line Interface permite que façamos mudanças e requisições diretamente pelo console localmente, sem a necessidade de acessar o AWS console no navegador.&lt;/p&gt;
+&lt;p&gt;Se por exemplo quisermos listar os buckets:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;aws s3api list-buckets
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Para conseguirmos fazer isso, é necessário instalar o cli, o tutorial para Windows, Linux e macOs está &lt;a href=&#34;https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html&#34;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Depois da instalação, é necessário autenticar sua máquina na aws.&lt;/p&gt;
+&lt;p&gt;Na aws console, clique em seu nome e vá até Security Credentials, lá você precisa criar uma Access Key.&lt;/p&gt;
+&lt;p&gt;Então em seu console você vai digitar:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;aws configure
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Então coloque a sua access key e token quando solicitado.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Importante, no console da aws você possui uma região, a minha é us-east-1, você pode ver a sua consultando a url: https://&lt;em&gt;&lt;strong&gt;us-east-1&lt;/strong&gt;&lt;/em&gt;.console.aws.amazon.com/&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Essa região deve ser passada durante a configuração aws no console, para que consiga utilizar completamente as features via console localmente.&lt;/p&gt;
+&lt;p&gt;Depois da configuração finalizada, você poderá executar a listagem de buckets.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;aws s3api list-buckets
+&lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;
+&lt;h5 id=&#34;publisher&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#publisher&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Publisher
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;O que é um publisher?&lt;/p&gt;
+&lt;p&gt;Um publisher é um serviço que vai pegar uma informação que algo mudou por exemplo e enviar essa informação para a fila.
+No exemplo que utilizei no post sobre a fila, o publisher estava dentro da API, e quando um novo usuário era criado a informação era enviada para a fila.&lt;/p&gt;
+&lt;p&gt;Então com tudo configurado, agora vamos criar o publisher.&lt;/p&gt;
+&lt;p&gt;Para deixar simples, o exemplo aqui vai ser apenas o publisher, então você pode pegar a implementação e aplicar na sua API.&lt;/p&gt;
+&lt;p&gt;Vamos utilizar o Console App&lt;/p&gt;
+&lt;p&gt;Crie uma nova pasta:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;mkdir publisher
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Entre na pasta:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd publisher
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Crie o projeto:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet new console
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Um modelo é necessário:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;public class CustomerCreated
+{
+  public Guid Id { get; init; }
+  public string FullName { get; init; }
+  public string Email { get; init; }
+  public DateTime DateOfBirth { get; init; }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;E instale o &lt;a href=&#34;https://www.nuget.org/packages/AWSSDK.SQS&#34;&gt;AWS SDK&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet add package AWSSDK.SQS --version 3.7.100.78
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Então na classe Program precisamos criar o request e enviá-lo:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;using System.Text.Json;
+using Amazon.SQS;
+using Amazon.SQS.Model;
+
+var sqsCLient = new AmazonSQSClient();
+
+var customer = new CustomerCreated
+{
+  Id = Guid.NewGuid(),
+  FullName = &amp;#34;Amanda Mata&amp;#34;,
+  Email = &amp;#34;email@email.com&amp;#34;,
+  DateOfBirth = new DateTime(1996, 06, 18)
+};
+
+var queueUrlResponse = await sqsCLient.GetQueueUrlAsync(&amp;#34;customers&amp;#34;);
+
+var sendMessageRequest = new SendMessageRequest
+{
+  QueueUrl = queueUrlResponse.QueueUrl, 
+  MessageBody = JsonSerializer.Serialize(customer),
+  MessageAttributes = new Dictionary&amp;lt;string, MessageAttributeValue&amp;gt;
+  {
+      {
+          &amp;#34;MessageType&amp;#34;, new MessageAttributeValue
+          {
+              DataType = &amp;#34;String&amp;#34;, 
+              StringValue = nameof(CustomerCreated)
+          }
+      }
+  }
+};
+
+var response = await sqsCLient.SendMessageAsync(sendMessageRequest);
+
+Console.WriteLine();
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;No sqsCLient.GetQueueUrlAsync(&amp;ldquo;customers&amp;rdquo;) eu utilizei &amp;ldquo;customers&amp;rdquo; porque esse é o nome da minha fila&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;br/&gt;
+&lt;h5 id=&#34;consumer&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#consumer&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Consumer
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;O que é um consumer?&lt;/p&gt;
+&lt;p&gt;Um consumer é o serviço que irá escutar a fila.&lt;/p&gt;
+&lt;p&gt;Vamos utilizar o Console App&lt;/p&gt;
+&lt;p&gt;Crie uma nova pasta:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;mkdir consumer
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Entre na pasta:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd consumer
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Crie o projeto:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet new console
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Um modelo é necessário:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;public class CustomerCreated
+{
+  public Guid Id { get; init; }
+  public string FullName { get; init; }
+  public string Email { get; init; }
+  public DateTime DateOfBirth { get; init; }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;E instale o &lt;a href=&#34;https://www.nuget.org/packages/AWSSDK.SQS&#34;&gt;AWS SDK&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet add package AWSSDK.SQS --version 3.7.100.78
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Então na classe Program precisamos receber a requisição:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;using Amazon.SQS;
+using Amazon.SQS.Model;
+	 
+var cts = new CancellationTokenSource();
+var sqsCLient = new AmazonSQSClient();
+var queueUrlResponse = await sqsCLient.GetQueueUrlAsync(&amp;#34;customers&amp;#34;);
+var receiveMessageRequest = new ReceiveMessageRequest
+{
+  QueueUrl = queueUrlResponse.QueueUrl,
+  AttributeNames = new List&amp;lt;string&amp;gt;{ &amp;#34;All&amp;#34; },
+  MessageAttributeNames = new List&amp;lt;string&amp;gt;{ &amp;#34;All&amp;#34; }
+};
+	 
+while(!cts.IsCancellationRequested)
+{
+  var response = await sqsCLient.ReceiveMessageAsync(receiveMessageRequest, cts.Token);
+  response.Messages.ForEach(async message =&amp;gt; {
+    Console.WriteLine($&amp;#34;Message Id: { message.MessageId }&amp;#34;);
+    Console.WriteLine($&amp;#34;Message Body: { message.Body }&amp;#34;);
+    await sqsCLient.DeleteMessageAsync(queueUrlResponse.QueueUrl, message.ReceiptHandle);
+  });
+
+  await Task.Delay(3000);
+}
+
+Console.WriteLine();
+&lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;
+&lt;p&gt;Agora o publisher e o consumer estão criados, você pode verificar as mensagens no aws console, mas apenas executando o publisher e o consumer você vai conseguir ver as mensagens sendo enviadas e sendo recebidas.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Eu criei esse post para meus estudos, os aprendizados passados aqui foram obtidos através do curso &lt;a href=&#34;https://nickchapsas.com/p/cloud-fundamentals-aws-services-for-c-developers&#34;&gt;Cloud Fundamentals: AWS Services for C# Developers course&lt;/a&gt;.&lt;/p&gt;
+</description>
     </item>
+    
     <item>
       <title>Colchetes em uma nova linha no vscode</title>
-      <link>https://amandamata.github.io/pt-pt/curly-brace/</link>
+      <link>/pt-pt/post/curly-brace/</link>
       <pubDate>Sat, 18 Feb 2023 06:12:47 -0300</pubDate>
-      <guid>https://amandamata.github.io/pt-pt/curly-brace/</guid>
-      <description>Essa última semana eu levantei cedo todos os dias, tentando fazer apenas uma coisa: fazer o Visual Studio Code inserir uma nova linha antes dos colchetes {}.
-Eu tenho isso:
-if (true){ // do something } e quero formatar dessa forma:
-if (true) { // do something } Não foi tão facil como parece ser.
-A mesma questão foi encontrada em vários sites, e no stack overflow, e as pessoas desapontadas sem uma solução.</description>
+      
+      <guid>/pt-pt/post/curly-brace/</guid>
+      <description>&lt;p&gt;Essa última semana eu levantei cedo todos os dias, tentando fazer apenas uma coisa: fazer o Visual Studio Code inserir uma nova linha antes dos colchetes {}.&lt;/p&gt;
+&lt;p&gt;Eu tenho isso:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;if (true){
+  // do something
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;e quero formatar dessa forma:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;if (true)
+{
+  // do something
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Não foi tão facil como parece ser.&lt;/p&gt;
+&lt;p&gt;A mesma questão foi encontrada em vários sites, e no stack overflow, e as pessoas desapontadas sem uma solução. Então hoje eu vou compartilhar o que eu encontrei.&lt;/p&gt;
+&lt;p&gt;Primeiro você vai precisar:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Visual Studio Code atualizado&lt;/li&gt;
+&lt;li&gt;C# Extension atualizada&lt;/li&gt;
+&lt;li&gt;Sistema operacional atualizado&lt;/li&gt;
+&lt;li&gt;arquivo omnisharp.json&lt;/li&gt;
+&lt;li&gt;alterações no settings.json&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;omnisharp&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#omnisharp&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Omnisharp
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;Você pode encontrar a localização do seu omnisharp em %USERPROFILE%/.omnisharp/&lt;/p&gt;
+&lt;p&gt;O meu omnisharp está em /home/amanda/.omnisharp/omnisharp.json&lt;/p&gt;
+&lt;p&gt;Essa é a minha configuração do omnisharp:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
+    &amp;#34;FormattingOptions&amp;#34;: {
+        &amp;#34;newLine&amp;#34;: &amp;#34;\n&amp;#34;,
+        &amp;#34;useTabs&amp;#34;: false,
+        &amp;#34;tabSize&amp;#34;: 4,
+        &amp;#34;indentationSize&amp;#34;: 4,
+
+        &amp;#34;NewLinesForBracesInTypes&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInMethods&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInProperties&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInAccessors&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInAnonymousMethods&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInControlBlocks&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInAnonymousTypes&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInObjectCollectionArrayInitializers&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInLambdaExpressionBody&amp;#34;: true,
+
+        &amp;#34;NewLineForElse&amp;#34;: true,
+        &amp;#34;NewLineForCatch&amp;#34;: true,
+        &amp;#34;NewLineForFinally&amp;#34;: true,
+        &amp;#34;NewLineForMembersInObjectInit&amp;#34;: true,
+        &amp;#34;NewLineForMembersInAnonymousTypes&amp;#34;: true,
+        &amp;#34;NewLineForClausesInQuery&amp;#34;: true,
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Baseado &lt;a href=&#34;https://github.com/OmniSharp/omnisharp-vscode/issues/1506#issuecomment-303390666&#34;&gt;nesse comentário&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&#34;vscode-settings&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#vscode-settings&#34;&gt;
+        ####
+    &lt;/a&gt;
+    VSCode Settings
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;Você pode encontrar o arquivo settings.json em ~/.config/Code/User&lt;/p&gt;
+&lt;p&gt;O meu arquivo está em /home/amanda/.config/Code/User/settings.json&lt;/p&gt;
+&lt;p&gt;Eu inseri essas linhas a mais no settings.json:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;    &amp;#34;omnisharp.json&amp;#34;: &amp;#34;/home/amanda/.omnisharp&amp;#34;,
+    &amp;#34;omnisharp.enableEditorConfigSupport&amp;#34;: false,
+    &amp;#34;omnisharp.useEditorFormattingSettings&amp;#34;: true,
+    &amp;#34;omnisharp.path&amp;#34;: &amp;#34;latest&amp;#34;,
+    &amp;#34;editor.formatOnType&amp;#34;: true,
+    &amp;#34;editor.formatOnSave&amp;#34;: true,
+    &amp;#34;editor.formatOnPaste&amp;#34;: true,
+    &amp;#34;editor.defaultFormatter&amp;#34;: &amp;#34;ms-dotnettools.csharp&amp;#34;,
+    &amp;#34;[csharp]&amp;#34;: {&amp;#34;editor.defaultFormatter&amp;#34;: &amp;#34;ms-dotnettools.csharp&amp;#34;}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Para essas configurações funcionarem, é necessário ter a extensão c# instalada e habilitada, e depois de tudo isso, reiniciar o omnisharp.&lt;/p&gt;
+&lt;p&gt;Extension&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/brace1.png&#34; alt=&#34;brace1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/br&gt;&lt;/br&gt;
+Restart omnisharp
+Ctrl+Shift+p&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/brace2.png&#34; alt=&#34;brace2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/br&gt;&lt;/br&gt;
+Depois de todas essas alterações, você pode começar a utilizar o visual studio code e aproveitar os colchetes sendo inseridos em uma nova linha. MAS&lt;/p&gt;
+&lt;p&gt;O que me deixou fora da cama pela manhã foi, a formatação automática durante a digitação não está funcionando. Então, provavelmente você fez todas essas alterações sozinho mas também não funcionou&amp;hellip; Para funcionar você precisa utilizar a opção Format Document no Visual Studio Code.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/brace3.png&#34; alt=&#34;brace3&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/br&gt;&lt;/br&gt;&lt;/p&gt;
+&lt;p&gt;Mas eu não queria ficar utilizando essa opção toda vez, então, depois de muita busca, eu encontrei essas configurações para o editor&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;editor.formatOnSave&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;editor.formatOnPaste&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;editor.formatOnType&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Com essas configurações, quando salvar o arquivo e colar um código, a formatação será feita automaticamente.&lt;/p&gt;
+&lt;p&gt;MAS&lt;/p&gt;
+&lt;p&gt;A opção para formatar ao digitar &lt;em&gt;&lt;strong&gt;formatOnType&lt;/strong&gt;&lt;/em&gt; ainda não funciona&amp;hellip; Então eu encontrei uma &lt;a href=&#34;https://github.com/microsoft/vscode-cpptools/issues/1419&#34;&gt;issue no Github&lt;/a&gt; falando sobre o problema, que o &lt;em&gt;&lt;strong&gt;formatOnType&lt;/strong&gt;&lt;/em&gt; não funciona para o c#, porque essa feature funciona validando o &lt;code&gt;;&lt;/code&gt; (mais usado no js). Eles possuem essa correção no roadmap, mas até a correção sair o &lt;strong&gt;formatOnSave&lt;/strong&gt;* vai fazer o trabalho.&lt;/p&gt;
+</description>
     </item>
+    
   </channel>
 </rss>

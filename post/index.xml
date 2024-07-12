@@ -2,71 +2,711 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on amandamata</title>
-    <link>https://amandamata.github.io/post/</link>
-    <description>Recent content in Posts on amandamata</description>
+    <link>/post/</link>
+    <description>amandamata (Posts)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 13 Nov 2023 18:19:29 -0300</lastBuildDate>
-    <atom:link href="https://amandamata.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>An easy way to measure your method performance</title>
-      <link>https://amandamata.github.io/telemetry/</link>
+      <link>/post/telemetry/</link>
       <pubDate>Mon, 13 Nov 2023 18:19:29 -0300</pubDate>
-      <guid>https://amandamata.github.io/telemetry/</guid>
-      <description>What if you wish to measure the execution time of a method? There are various reasons for this—be it for login, profiling, general performance measurement, or tracking degradation over time. The collection of such metrics is a crucial aspect of any production application.
-Numerous methods exist for accomplishing this, including different libraries that aggregate telemetry data. While they offer comprehensive insights, sometimes you might prefer a more straightforward approach. One way to achieve this is by using a try and finally block in conjunction with a stopwatch.</description>
+      
+      <guid>/post/telemetry/</guid>
+      <description>&lt;p&gt;What if you wish to measure the execution time of a method?
+There are various reasons for this—be it for login, profiling, general performance measurement, or tracking degradation over time. The collection of such metrics is a crucial aspect of any production application.&lt;/p&gt;
+&lt;p&gt;Numerous methods exist for accomplishing this, including different libraries that aggregate telemetry data. While they offer comprehensive insights, sometimes you might prefer a more straightforward approach. One way to achieve this is by using a try and finally block in conjunction with a stopwatch.&lt;/p&gt;
+&lt;p&gt;However, this approach, despite being cleaner, still necessitates the addition of measurement code into the methods you wish to evaluate.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s a simpler solution: the MethodTimer.Fody library. Once installed, all you need to do is add the [Time] attribute above the method you want to assess for performance. Run your code, check the debug output, and voila—your measurements are right there.&lt;/p&gt;
+&lt;p&gt;To understand how it works, you can explore the library&amp;rsquo;s repository &lt;a href=&#34;https://github.com/Fody/MethodTimer&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The magic lies in how our code transforms, mirroring the initial approach. The code under test:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;MyClass&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#57c7ff&#34;&gt;    [Time]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;void&lt;/span&gt; MyMethod()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#78787e&#34;&gt;// Some code you are curious about in terms of execution time&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Console.WriteLine(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;Hello&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After compilation, it looks like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;MyClass&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;void&lt;/span&gt; MyMethod()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#9aedfe&#34;&gt;var&lt;/span&gt; stopwatch = Stopwatch.StartNew();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;try&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#78787e&#34;&gt;// Some code you are curious about in terms of execution time&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            Console.WriteLine(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;Hello&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;finally&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            stopwatch.Stop();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            Trace.WriteLine(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;MyClass.MyMethod &amp;#34;&lt;/span&gt; + stopwatch.ElapsedMilliseconds + &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;ms&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, you might wonder, &amp;ldquo;What can I do with this information, available only in the debug console?&amp;rdquo; Here&amp;rsquo;s a suggestion: create a utility class like the one below.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;using&lt;/span&gt; System.Reflection;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;namespace&lt;/span&gt; JokerCharge
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;MethodTimeLogger&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;static&lt;/span&gt; ILogger Logger;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;void&lt;/span&gt; Log(MethodBase methodBase, TimeSpan elapsed, &lt;span style=&#34;color:#9aedfe&#34;&gt;string&lt;/span&gt; message)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            Logger.LogTrace(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;{Class}.{Method} {Duration}&amp;#34;&lt;/span&gt;, methodBase.DeclaringType!.Name, methodBase.Name, elapsed);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Don&amp;rsquo;t forget to add this to your program class:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#9aedfe&#34;&gt;var&lt;/span&gt; app = builder.Build();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;MethodTimeLogger.Logger = app.Logger;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And update your app settings to log to trace:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff6ac1&#34;&gt;&amp;#34;Logging&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;&amp;#34;LogLevel&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#ff6ac1&#34;&gt;&amp;#34;Default&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;Trace&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#ff6ac1&#34;&gt;&amp;#34;Microsoft.AspNetCore&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;Warning&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;With everything set up, you can log and inject whatever information you desire.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/telemetry.png&#34; alt=&#34;telemetry&#34;&gt;&lt;/p&gt;
+</description>
     </item>
+    
     <item>
       <title>How to remove sensitive information from commit history</title>
-      <link>https://amandamata.github.io/bfg/</link>
+      <link>/post/bfg/</link>
       <pubDate>Tue, 30 May 2023 14:01:29 -0300</pubDate>
-      <guid>https://amandamata.github.io/bfg/</guid>
-      <description>Today I learned something extremely useful: how to efficiently remove sensitive information from commit history.
-I believe that at some point, we have all made the mistake of accidentally pushing sensitive information to a repository on GitHub. Simply deleting the information does not solve the problem because the commit history will still show the previous version with that sensitive information.
-To address this issue, people often use git-filter-branch. However, I would like to introduce an even better alternative: BFG.</description>
+      
+      <guid>/post/bfg/</guid>
+      <description>&lt;p&gt;Today I learned something extremely useful: how to efficiently remove sensitive information from commit history.&lt;/p&gt;
+&lt;p&gt;I believe that at some point, we have all made the mistake of accidentally pushing sensitive information to a repository on GitHub. Simply deleting the information does not solve the problem because the commit history will still show the previous version with that sensitive information.&lt;/p&gt;
+&lt;p&gt;To address this issue, people often use git-filter-branch. However, I would like to introduce an even better alternative: BFG.&lt;/p&gt;
+&lt;p&gt;BFG is a powerful and user-friendly tool that allows you to securely remove confidential information from your repository&amp;rsquo;s commit history. It provides a faster and more efficient solution compared to git-filter-branch.&lt;/br&gt;&lt;/br&gt;&lt;/p&gt;
+&lt;h5 id=&#34;scenario&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#scenario&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Scenario
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;We have the repository how-to-use-bfg.&lt;/p&gt;
+&lt;p&gt;In this repository, there was an appsettings.json file with sensitive information:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg1.png&#34; alt=&#34;bfg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;I deleted this sensitive information, made the commit and push, but the sensitive information still appears in the commit history:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg2.png&#34; alt=&#34;bfg2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/br&gt;&lt;/br&gt;&lt;/p&gt;
+&lt;h5 id=&#34;how-to-use&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#how-to-use&#34;&gt;
+        ####
+    &lt;/a&gt;
+    How to Use
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;The tutorial on the BFG website is not difficult, but I will describe it here in more detail to make the process easier to understand.&lt;/p&gt;
+&lt;p&gt;To use BFG, follow these steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Download the .jar file from the &lt;a href=&#34;https://rtyley.github.io/bfg-repo-cleaner/&#34;&gt;BFG&lt;/a&gt; website.&lt;/li&gt;
+&lt;li&gt;Clone the current repository using the command:
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git clone git@github.com:amandamata/how-to-use-bfg.git --mirror
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;Create a reference file containing the value you want to remove from the commit history. For example:
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;echo *VyieIqbij35MYV5&amp;amp;bIakKmq1Z &amp;gt; auth.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;Run BFG, passing the reference value, using the following command:
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;java -jar ~/Downloads/bfg-1.14.0.jar --replace-text auth.txt how-to-use-bfg.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;Access the cloned repository directory:
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd how-to-use-bfg.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;Run the following command:
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git reflog expire --expire=now --all &amp;amp;&amp;amp; git gc --prune=now --aggressive
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;Push the changes:
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git push
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;After following these steps, your repository&amp;rsquo;s commit history will be updated, and the sensitive information will be removed.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg3.png&#34; alt=&#34;bfg3&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Give BFG a try and ensure that your confidential information is protected in the commit history.&lt;/p&gt;
+</description>
     </item>
+    
     <item>
       <title>Implementing Redis caching with dotnet</title>
-      <link>https://amandamata.github.io/redis/</link>
+      <link>/post/redis/</link>
       <pubDate>Tue, 25 Apr 2023 07:42:55 -0300</pubDate>
-      <guid>https://amandamata.github.io/redis/</guid>
-      <description>I recently had to implement a cache in an application to avoid unnecessary database queries, and that was cool. I&amp;rsquo;ve worked with Redis in the past, but I think I&amp;rsquo;ve done it the wrong way because implementing a cache with Redis has never been so cool. Redis vs Mem cached Redis is almost like a NoSql database, but it is even better because it stores data with key and values and with that, it is much easier to use it as a cache.</description>
+      
+      <guid>/post/redis/</guid>
+      <description>&lt;p&gt;I recently had to implement a cache in an application to avoid unnecessary database queries, and that was cool. I&amp;rsquo;ve worked with Redis in the past, but I think I&amp;rsquo;ve done it the wrong way because implementing a cache with Redis has never been so cool.
+&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;redis-vs-mem-cached&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#redis-vs-mem-cached&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Redis vs Mem cached
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;Redis is almost like a NoSql database, but it is even better because it stores data with key and values and with that, it is much easier to use it as a cache.
+But the main point in this comparison is: it depends, it depends on how and how much data will be used in this cache. If you&amp;rsquo;re not sure how to store session information, MemCache makes sense. But if we&amp;rsquo;re talking about a lot of queries with bigger data, like the data we store in the database, Redis does a better job. This is because when using MemCache we are using the application&amp;rsquo;s memory to save that information, since Redis is a distributed cache, it has nothing to do with the application&amp;rsquo;s memory and it is possible to use more than one Redis database, scaling this service vertically according to demand grow up.&lt;/p&gt;
+&lt;p&gt;The first time it is necessary to use the cache, the information will not be there, so it is necessary to consult the database and save it in the cache, the second time it is no longer necessary to go to the database, as the information will be in the cache. And this makes the application take less time to respond to a request, as going to the bank takes much longer than going to Redis.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/redis.png&#34; alt=&#34;redis&#34;&gt;
+&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;why-use&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#why-use&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Why use
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Reduce response time
+Improve the end-user experience with the application, making him wait less for each click or action.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Raise availability
+Since it is necessary to consume less computational resources, because it is already in the cache and I return it faster to the end user, it is then possible to have more users accessing the application simultaneously.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Reduce computational costs
+When we are talking about the cloud, we are reducing the consumption of lambdas and resources where the monthly bill can be cheaper.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The cost of a cache is high, so it has to be expensive on the server side to make this migration to the cache. For example, problems with the delay in response to the end customer can be costly, the end customer can simply give up using the application due to the delay, and many other problems that this delay can generate. To reduce both the cost of losing a customer and the cost of consulting the bank, the cache is then used to solve these problems.
+&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;problem&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#problem&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Problem
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;Suppose there is an application that makes many calls to the database, but always consulting the same information, when the application was developed the developers did not think it could grow so much, and a cache was not implemented to avoid these queries to the database.
+The application is for car rental for companies, and the query is simple, with each request received at the rental endpoint, it is necessary to check whether the company (document) informed in the rental request is the same as the one in the bank.
+We have the scenario, let&amp;rsquo;s move on to implementation.
+&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;implementation&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#implementation&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Implementation
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;Explanation and problem presentations, let&amp;rsquo;s implement!
+For this implementation we will follow a pattern called Decorator, with this pattern it is possible to add a cache layer without adding more complexity to the repository layer, and we will follow the S principle of SOLID, [Single-responsibility principle](https:// g.co/kgs/phLumf).&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s work with dotnet, and install the packages &lt;a href=&#34;https://www.nuget.org/packages/scrutor/&#34;&gt;Scrutor&lt;/a&gt; and &lt;a href=&#34;https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis/7.0.5&#34;&gt;StackExchangeRedis&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet add package Scrutor --version 4.2.2
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet add package Microsoft.Extensions.Caching.StackExchangeRedis --version 7.0.5
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Scrutor will help us during the implementation of the caching layer without taking the single responsibility away from the repository. And StackExchangeRedis is Microsoft&amp;rsquo;s client package for using Redis with . NET.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s create a Service to handle everything related to Redis.
+&lt;br/&gt;
+Service:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;public class CacheService : ICacheService
+{
+    private readonly IDistributedCache _distributedCache;
+    private readonly DistributedCacheEntryOptions _options;
+
+    public CacheService(IDistributedCache distributedCache)
+    {
+        _distributedCache = distributedCache;
+        _options = new DistributedCacheEntryOptions
+        {
+            AbsoluteExpirationRelativeToNow = 150
+        };
+    }
+
+    public async Task&amp;lt;T&amp;gt; GetAsync&amp;lt;T&amp;gt;(string key)
+    {
+        try
+        {
+            var cached = await _distributedCache.GetStringAsync(key);
+            if (cached is not null)
+                return JsonConvert.DeserializeObject&amp;lt;T&amp;gt;(cached);
+        }
+        catch (Exception exception)
+        { 
+            // Log exception 
+        }
+
+        return default(T);
+    }
+
+    public async Task SetAsync&amp;lt;T&amp;gt;(string key, T value)
+    {
+        try
+        {
+            if (value is not null)
+                await _distributedCache.SetStringAsync(key, JsonConvert.SerializeObject(value), _options);
+        }
+        catch (Exception exception)
+        { 
+            // Log exception
+        }
+    }
+
+    public async Task RemoveAsync(string key)
+    {
+        try
+        {
+            await _distributedCache.RemoveAsync(key);
+        }
+        catch (Exception exception)
+        {
+            // Log exception
+    	}
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Let&amp;rsquo;s create a Repository to handle the query request to the database that will &amp;ldquo;intercept&amp;rdquo; and go first in Redis.
+&lt;br/&gt;
+Repository:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;public class CachedAlugatorRepository : IAlugatorRepository
+{
+    private readonly IAlugatorRepository _alugatorRepository;
+    private readonly ICacheService _cache;
+
+    public CachedAlugatorRepository(IAlugatorRepository alugatorRepository, ICacheService cache)
+    {
+        _alugatorRepository = alugatorRepository;
+        _cache = cache;
+    }
+
+    public async Task&amp;lt;bool&amp;gt; DeleteAsync(string id)
+    {
+        var alugator = await _alugatorRepository.GetAsync(id);
+        if (alugator is not null)
+        {
+ 	    await _cache.RemoveAsync(alugator.documentId);
+            return await _alugatorRepository.DeleteAsync(id);
+        }
+
+        return true;
+    }
+
+    public async Task&amp;lt;Alugator&amp;gt; GetAsync(string id)
+    {
+        var alugator = await _cache.GetAsync&amp;lt;Alugator&amp;gt;(id);
+        if (alugator is not null)
+            return alugator;
+
+        alugator = await _alugatorRepository.GetAsync(id);
+
+        await _cache.SetAsync&amp;lt;Alugator&amp;gt;(alugator);
+        return alugator;
+    }
+
+    public async Task&amp;lt;bool&amp;gt; UpsertAsync(Alugator alugator)
+    {
+        await _cache.SetAsync(alugator.documentId, alugator);
+
+        return await _alugatorRepository.UpsertAsync(alugator);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The ace in the hole is in the way we are going to configure the Repository in the Program class:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;services.AddSingleton&amp;lt;IAlugatorRepository, AlugatorRepository&amp;gt;();
+services.Decorate&amp;lt;IAlugatorRepository, CachedAlugatorRepository&amp;gt;();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This Decorate does the magic, because now when calling the AlugatorRepository the CachedAlugatorRepository will be &amp;ldquo;called&amp;rdquo; first, so every call to the repository will initially be made to the Cache Repository that contains the query logic to Redis through service. With that we keep the AlugatorRepository clean, we have a specific repository for the CachedAlugatorRepository cache and we don&amp;rsquo;t hurt the Single Responsibility Principle.&lt;/p&gt;
+</description>
     </item>
+    
     <item>
       <title>Implementing a sqs publisher and consumer using dotnet</title>
-      <link>https://amandamata.github.io/queue-csharp-sqs/</link>
+      <link>/post/queue-csharp-sqs/</link>
       <pubDate>Wed, 22 Feb 2023 07:19:25 -0300</pubDate>
-      <guid>https://amandamata.github.io/queue-csharp-sqs/</guid>
-      <description>In this post, I pass an introduction to a queue and how to use it. Now I gonna explain how to implement an sqs consumer and publisher using c# dotnet. SQS What is SQS?
-SQS (Simple Queue Service) is an Amazon service that lets you send, store, and receive messages between software components at any volume, without losing messages or requiring other services to be available.
-The best part is free, actually to pay for this service you gonna need to send over 1 million requests per month then amazon is going to bill you.</description>
+      
+      <guid>/post/queue-csharp-sqs/</guid>
+      <description>&lt;p&gt;In this &lt;a href=&#34;https://amandamata.github.io/queue&#34;&gt;post&lt;/a&gt;, I pass an introduction to a queue and how to use it. Now I gonna explain how to implement an sqs consumer and publisher using c# dotnet.
+&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;sqs&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#sqs&#34;&gt;
+        ####
+    &lt;/a&gt;
+    SQS
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;What is SQS?&lt;/p&gt;
+&lt;p&gt;SQS (Simple Queue Service) is an Amazon service that lets you send, store, and receive messages between software components at any volume, without losing messages or requiring other services to be available.&lt;/p&gt;
+&lt;p&gt;The best part is free, actually to pay for this service you gonna need to send over 1 million requests per month then amazon is going to bill you.&lt;/p&gt;
+&lt;p&gt;To start, it&amp;rsquo;s necessary to create an account in &lt;a href=&#34;https://aws.amazon.com/&#34;&gt;aws&lt;/a&gt; and go to &lt;a href=&#34;https://console.aws.amazon.com&#34;&gt;console&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In the console area, type SQS in search and enter the first option Simple Queue Service.
+Click on Create queue, add a name to the queue and go to the end of the page and click Create queue. You can change the default values, but for now, all the settings are ok.
+&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;aws-command-line-interface&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#aws-command-line-interface&#34;&gt;
+        ####
+    &lt;/a&gt;
+    AWS Command Line Interface
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;The AWS Command Line Interface allows us to make changes directly from the console without the need to access the AWS console.
+For example, if we need to list the buckets:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;aws s3api list-buckets
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;To be able to do that we need to install the cli, the tutorial for Windows, Linux, and macOS is &lt;a href=&#34;https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;After the installation, it&amp;rsquo;s necessary to authenticate your machine against aws.&lt;/p&gt;
+&lt;p&gt;In aws console, click in your name and go to Security Credentials, there, you need to create an Access Key.&lt;/p&gt;
+&lt;p&gt;In your console you gonna type:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;aws configure
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Then pass your access key and token when requested.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Important, in the aws console you have a region, mine is us-east-1, you can see yours by checking on url: https://&lt;em&gt;&lt;strong&gt;us-east-1&lt;/strong&gt;&lt;/em&gt;.console.aws.amazon.com/&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;That region needs to be passed during aws configuration, to be able to access aws features locally.&lt;/p&gt;
+&lt;p&gt;After the configuration, you&amp;rsquo;re gonna able to execute the list buckets.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;aws s3api list-buckets
+&lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;
+&lt;h5 id=&#34;publisher&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#publisher&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Publisher
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;What is a publisher?&lt;/p&gt;
+&lt;p&gt;A publisher it&amp;rsquo;s a service that gonna get the information that something changes and sends to the queue a request.
+In the example used in the queue post, the publisher is inside the API, and after a new user was created the request was sent to the queue.&lt;/p&gt;
+&lt;p&gt;So with everything configured, it&amp;rsquo;s time to create the publisher.&lt;/p&gt;
+&lt;p&gt;In order to simplify, the example here it&amp;rsquo;s gonna be only the publisher, then you can take the implementation and use it in your API.&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;re gonna use a Console App&lt;/p&gt;
+&lt;p&gt;Create a new folder:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;mkdir publisher
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Go inside the folder:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd publisher
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Create the project:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet new console
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It&amp;rsquo;s necessary a model:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;public class CustomerCreated
+{
+  public Guid Id { get; init; }
+  public string FullName { get; init; }
+  public string Email { get; init; }
+  public DateTime DateOfBirth { get; init; }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;And install the &lt;a href=&#34;https://www.nuget.org/packages/AWSSDK.SQS&#34;&gt;AWS SDK&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet add package AWSSDK.SQS --version 3.7.100.78
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After that, in the Program we need to create a request and send it:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;using System.Text.Json;
+using Amazon.SQS;
+using Amazon.SQS.Model;
+
+var sqsCLient = new AmazonSQSClient();
+
+var customer = new CustomerCreated
+{
+  Id = Guid.NewGuid(),
+  FullName = &amp;#34;Amanda Mata&amp;#34;,
+  Email = &amp;#34;email@email.com&amp;#34;,
+  DateOfBirth = new DateTime(1996, 06, 18)
+};
+
+var queueUrlResponse = await sqsCLient.GetQueueUrlAsync(&amp;#34;customers&amp;#34;);
+
+var sendMessageRequest = new SendMessageRequest
+{
+  QueueUrl = queueUrlResponse.QueueUrl, 
+  MessageBody = JsonSerializer.Serialize(customer),
+  MessageAttributes = new Dictionary&amp;lt;string, MessageAttributeValue&amp;gt;
+  {
+      {
+          &amp;#34;MessageType&amp;#34;, new MessageAttributeValue
+          {
+              DataType = &amp;#34;String&amp;#34;, 
+              StringValue = nameof(CustomerCreated)
+          }
+      }
+  }
+};
+
+var response = await sqsCLient.SendMessageAsync(sendMessageRequest);
+
+Console.WriteLine();
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;In the sqsCLient.GetQueueUrlAsync(&amp;ldquo;customers&amp;rdquo;) I used &amp;ldquo;customers&amp;rdquo; cuz that is the name of my queue&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;br/&gt;
+&lt;h5 id=&#34;consumer&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#consumer&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Consumer
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;What it&amp;rsquo;s a consumer?&lt;/p&gt;
+&lt;p&gt;A consumer it&amp;rsquo;s the service that will be listening the queue.&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;re gonna use a Console App&lt;/p&gt;
+&lt;p&gt;Create a new folder:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;mkdir consumer
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Go inside the folder:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd consumer
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Create the project:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet new console
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It&amp;rsquo;s necessary a model:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;public class CustomerCreated
+{
+  public Guid Id { get; init; }
+  public string FullName { get; init; }
+  public string Email { get; init; }
+  public DateTime DateOfBirth { get; init; }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;And install the &lt;a href=&#34;https://www.nuget.org/packages/AWSSDK.SQS&#34;&gt;AWS SDK&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet add package AWSSDK.SQS --version 3.7.100.78
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After that, in the Program we need to receive the request:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;using Amazon.SQS;
+using Amazon.SQS.Model;
+	 
+var cts = new CancellationTokenSource();
+var sqsCLient = new AmazonSQSClient();
+var queueUrlResponse = await sqsCLient.GetQueueUrlAsync(&amp;#34;customers&amp;#34;);
+var receiveMessageRequest = new ReceiveMessageRequest
+{
+  QueueUrl = queueUrlResponse.QueueUrl,
+  AttributeNames = new List&amp;lt;string&amp;gt;{ &amp;#34;All&amp;#34; },
+  MessageAttributeNames = new List&amp;lt;string&amp;gt;{ &amp;#34;All&amp;#34; }
+};
+	 
+while(!cts.IsCancellationRequested)
+{
+  var response = await sqsCLient.ReceiveMessageAsync(receiveMessageRequest, cts.Token);
+  response.Messages.ForEach(async message =&amp;gt; {
+    Console.WriteLine($&amp;#34;Message Id: { message.MessageId }&amp;#34;);
+    Console.WriteLine($&amp;#34;Message Body: { message.Body }&amp;#34;);
+    await sqsCLient.DeleteMessageAsync(queueUrlResponse.QueueUrl, message.ReceiptHandle);
+  });
+
+  await Task.Delay(3000);
+}
+
+Console.WriteLine();
+&lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;
+&lt;p&gt;Now the publisher and the consumer It&amp;rsquo;s created, you can pull for messages inside the aws console, but just running the publisher and the consumer you&amp;rsquo;re gonna be able to see the sending and receiving messages.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;I create this post for my studying purpose, the learnings I posted here were driven by the &lt;a href=&#34;https://nickchapsas.com/p/cloud-fundamentals-aws-services-for-c-developers&#34;&gt;Cloud Fundamentals: AWS Services for C# Developers course&lt;/a&gt;.&lt;/p&gt;
+</description>
     </item>
+    
     <item>
       <title>Curly braces on new line in vscode</title>
-      <link>https://amandamata.github.io/curly-brace/</link>
+      <link>/post/curly-brace/</link>
       <pubDate>Sat, 18 Feb 2023 06:13:07 -0300</pubDate>
-      <guid>https://amandamata.github.io/curly-brace/</guid>
-      <description>This pass week I wake up early every day trying to do only one thing: make Visual Studio Code insert a new line before a curly bracket, braces {}.
-I have this:
-if (true){ // do something } and I want to format it like this:
-if (true) { // do something } Was not as easy thing as may seem. Many sites and stack overflow have the same question, with many disappointing people without a resolution.</description>
+      
+      <guid>/post/curly-brace/</guid>
+      <description>&lt;p&gt;This pass week I wake up early every day trying to do only one thing: make Visual Studio Code insert a new line before a curly bracket, braces {}.&lt;/p&gt;
+&lt;p&gt;I have this:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;if (true){
+  // do something
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and I want to format it like this:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;if (true)
+{
+  // do something
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Was not as easy thing as may seem.
+Many sites and stack overflow have the same question, with many disappointing people without a resolution. So today I gonna share what I found.&lt;/p&gt;
+&lt;p&gt;First things first, you gonna need:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Latest Visual Studio Code&lt;/li&gt;
+&lt;li&gt;Latest C# Extension&lt;/li&gt;
+&lt;li&gt;Updated OS&lt;/li&gt;
+&lt;li&gt;omnisharp.json file&lt;/li&gt;
+&lt;li&gt;settings.json modifications&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;omnisharp&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#omnisharp&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Omnisharp
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;You can find your omnisharp location by checking on %USERPROFILE%/.omnisharp/&lt;/p&gt;
+&lt;p&gt;Mine is in /home/amanda/.omnisharp/omnisharp.json&lt;/p&gt;
+&lt;p&gt;This is my omnisharp config:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
+    &amp;#34;FormattingOptions&amp;#34;: {
+        &amp;#34;newLine&amp;#34;: &amp;#34;\n&amp;#34;,
+        &amp;#34;useTabs&amp;#34;: false,
+        &amp;#34;tabSize&amp;#34;: 4,
+        &amp;#34;indentationSize&amp;#34;: 4,
+
+        &amp;#34;NewLinesForBracesInTypes&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInMethods&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInProperties&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInAccessors&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInAnonymousMethods&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInControlBlocks&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInAnonymousTypes&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInObjectCollectionArrayInitializers&amp;#34;: true,
+        &amp;#34;NewLinesForBracesInLambdaExpressionBody&amp;#34;: true,
+
+        &amp;#34;NewLineForElse&amp;#34;: true,
+        &amp;#34;NewLineForCatch&amp;#34;: true,
+        &amp;#34;NewLineForFinally&amp;#34;: true,
+        &amp;#34;NewLineForMembersInObjectInit&amp;#34;: true,
+        &amp;#34;NewLineForMembersInAnonymousTypes&amp;#34;: true,
+        &amp;#34;NewLineForClausesInQuery&amp;#34;: true,
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Based on &lt;a href=&#34;https://github.com/OmniSharp/omnisharp-vscode/issues/1506#issuecomment-303390666&#34;&gt;this comment&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&#34;vscode-settings&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#vscode-settings&#34;&gt;
+        ####
+    &lt;/a&gt;
+    VSCode Settings
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;You can find your settings.json location by checking on ~/.config/Code/User&lt;/p&gt;
+&lt;p&gt;Mine is in /home/amanda/.config/Code/User/settings.json&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve inserted these lines in my settings.json:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;    &amp;#34;omnisharp.json&amp;#34;: &amp;#34;/home/amanda/.omnisharp&amp;#34;,
+    &amp;#34;omnisharp.enableEditorConfigSupport&amp;#34;: false,
+    &amp;#34;omnisharp.useEditorFormattingSettings&amp;#34;: true,
+    &amp;#34;omnisharp.path&amp;#34;: &amp;#34;latest&amp;#34;,
+    &amp;#34;editor.formatOnType&amp;#34;: true,
+    &amp;#34;editor.formatOnSave&amp;#34;: true,
+    &amp;#34;editor.formatOnPaste&amp;#34;: true,
+    &amp;#34;editor.defaultFormatter&amp;#34;: &amp;#34;ms-dotnettools.csharp&amp;#34;,
+    &amp;#34;[csharp]&amp;#34;: {&amp;#34;editor.defaultFormatter&amp;#34;: &amp;#34;ms-dotnettools.csharp&amp;#34;}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;For this config work it&amp;rsquo;s necessary to have the c# extension installed and enable and after these changes, restart omnisharp.&lt;/p&gt;
+&lt;p&gt;Extension&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/brace1.png&#34; alt=&#34;brace1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/br&gt;&lt;/br&gt;
+Restart omnisharp
+Ctrl+Shift+p&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/brace2.png&#34; alt=&#34;brace2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/br&gt;&lt;/br&gt;
+After all of these changes, you can start using your visual studio code and enjoy braces in the new line. BUT&lt;/p&gt;
+&lt;p&gt;The thing that takes me out of bed is, the auto format on type it&amp;rsquo;s not working. So probably you make all of these changes by yourself, and still not working&amp;hellip; is because to work you need to use Format Document in Visual Studio Code.
+&lt;img src=&#34;https://amandamata.github.io/img/brace3.png&#34; alt=&#34;brace3&#34;&gt;
+&lt;/br&gt;&lt;/br&gt;
+But I don&amp;rsquo;t want to use this option all the time.&lt;/p&gt;
+&lt;p&gt;After a lot of searching, I&amp;rsquo;ve found this editor settings&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;editor.formatOnSave&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;editor.formatOnPaste&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;editor.formatOnType&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With this settings, when save and on past the format will be done automatically.&lt;/p&gt;
+&lt;p&gt;BUT&lt;/p&gt;
+&lt;p&gt;Format on type still not working&amp;hellip; Then I&amp;rsquo;ve found an &lt;a href=&#34;https://github.com/microsoft/vscode-cpptools/issues/1419&#34;&gt;issue in Github&lt;/a&gt; on vscode saying that &lt;em&gt;&lt;strong&gt;formatOnType&lt;/strong&gt;&lt;/em&gt; was not working for c#, because this feature work by checking &lt;code&gt;;&lt;/code&gt; (most used in js). They have this fix in roadmap, but until they fix, format on save will do the job.&lt;/p&gt;
+</description>
     </item>
+    
     <item>
       <title>Understanding folders in linux</title>
-      <link>https://amandamata.github.io/folders-in-linux/</link>
+      <link>/post/folders-in-linux/</link>
       <pubDate>Thu, 09 Feb 2023 07:55:10 -0300</pubDate>
-      <guid>https://amandamata.github.io/folders-in-linux/</guid>
-      <description>You&amp;rsquo;ve just installed linux and you&amp;rsquo;re used to the structure of windows and its directories, so you&amp;rsquo;ll take a look in your file manager looking for the disk C: and you can&amp;rsquo;t find it&amp;hellip; Knowing Linux directories can help administer the system and understand how it works.
-If we analyze windows and linux, they ended up evolving differently in terms of directory structure. Linux is much more like any other system with unix roots like macOS.</description>
+      
+      <guid>/post/folders-in-linux/</guid>
+      <description>&lt;p&gt;You&amp;rsquo;ve just installed linux and you&amp;rsquo;re used to the structure of windows and its directories, so you&amp;rsquo;ll take a look in your file manager looking for the disk C: and you can&amp;rsquo;t find it&amp;hellip;
+Knowing Linux directories can help administer the system and understand how it works.&lt;/p&gt;
+&lt;p&gt;If we analyze windows and linux, they ended up evolving differently in terms of directory structure. Linux is much more like any other system with unix roots like macOS. In fact, windows, considering most existing operating systems, is the one with the most different organization.&lt;/p&gt;
+&lt;p&gt;The linux directory hierarchy is not more difficult nor is it easier it is simply different, both the windows C: disk and the linux root serve the same thing but do it differently.&lt;/p&gt;
+&lt;p&gt;Linux systems have the &lt;strong&gt;FHS&lt;/strong&gt;, Filesystem hierarchy standard system hierarchy, a standard maintained by the Linux foundation.&lt;/p&gt;
+&lt;p&gt;There are folders that have an arrow and others that have an x.
+The folders that have the arrow are called symbolic links, which are shortcuts to other folders or files, these folders can be accessed but when you enter them you are entering another directory. As an example, /bin, if you look at its properties, you will see that it is destined for the /usr/bin folder, so if you are going to use the terminal to make a shell script or run bash, you do not need to run the /usr command /bin/bash and yes /bash.&lt;/p&gt;
+&lt;p&gt;The folders that contain the x mean that they cannot be accessed without navigating as root, the common user does not have permission to write in any folder with x.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s look at the functionality of the folders&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;/&lt;/strong&gt; directory is what we call the root directory, it is where all other directories and subdirectories will be housed.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/bin&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Binaries&lt;/p&gt;
+&lt;p&gt;In this directory you will find the executables of various operating system programs, such as bash, cat, ls, etc. Also finding symlinks and shell script. This folder is comparable to the Disk C: Windows Files and Programs folder.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/boot&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Contains files needed for the operating system to start.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/cdroom&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Legacy directory, disk image will be mounted in this directory.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/dev&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Devices&lt;/p&gt;
+&lt;p&gt;Inside that folder you will find files that correspond to your hardware, files that can be configurable and change the way a certain device works. That&amp;rsquo;s why disk drives are called &lt;strong&gt;/dev/sda&lt;/strong&gt; and some number. The number only appears if there are partitions on that disk.&lt;/p&gt;
+&lt;p&gt;Curiosity: &lt;strong&gt;/dev/null&lt;/strong&gt; is a black hole directory, which loses all information that is sent to it.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/etc&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Edit to config or et cetera&lt;/p&gt;
+&lt;p&gt;The function of this folder is to keep the system configuration files, in a system wide way, that is, for all users of the system and not specific configurations of a user, these specific configurations are in /home.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/home&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Where common system users are located, within each user folder, it is possible to have application-specific settings for the user in question.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/lib&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Library&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/lib lib32 lib64 libx32&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;All of them are folders that contain software libraries for the operating system and installed applications, a newly installed program can add libs in these folders are compared with windows dlls.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/media&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;It is the folder where the system&amp;rsquo;s removable drives will be automatically mounted, such as a pendrive, external hard drive or other disk including network drives mapped by samba for example.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/mnt&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Mount&lt;/p&gt;
+&lt;p&gt;Intended to be a mount point for disk drives, when done manually by the user using fstab.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/opt&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Optional&lt;/p&gt;
+&lt;p&gt;In that folder where you can find software installed by manufacturers that ship computers with Linux or by proprietary software, for example.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/proc&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Processes&lt;/p&gt;
+&lt;p&gt;Where are files that contain information about the system and its processes. It&amp;rsquo;s a virtual directory, they don&amp;rsquo;t really exist on disk, they are created every time you start your computer.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/root&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Like the home directory, but for the root user.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/run&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Runtime&lt;/p&gt;
+&lt;p&gt;It is a virtual directory, loaded into the computer&amp;rsquo;s memory and erased when shutting down. Contains information such as logged in users, running daemons, etc.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/sbin&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;System binaries&lt;/p&gt;
+&lt;p&gt;It also stores binaries, programs that can only be used by the system administrator sudo root.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/snap&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Finds directories for snaps packages, it&amp;rsquo;s a different form of packaging. Snap package support is standard in ubuntu.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/srv&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Services&lt;/p&gt;
+&lt;p&gt;If you use a web or sftp server, you can store files here that will be accessible to other users. It is possible to mount it from an external disk.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/sys&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;System&lt;/p&gt;
+&lt;p&gt;Here, files that interact directly with the kernel are stored, such as drivers and firmware. It is also temporary.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/tmp&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Temp&lt;/p&gt;
+&lt;p&gt;Files are erased during reboot.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/usr&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Directory that changed function. Usr can mean two things, user or unix system resources. Nowadays it contains program files and libs.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/var&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Variable&lt;/p&gt;
+&lt;p&gt;Variables directory, files that are expected to grow in size, backup files, log, system cache for example.&lt;/p&gt;
+</description>
     </item>
+    
     <item>
       <title>Application of queue</title>
-      <link>https://amandamata.github.io/queue/</link>
+      <link>/post/queue/</link>
       <pubDate>Wed, 08 Feb 2023 00:00:00 +0000</pubDate>
-      <guid>https://amandamata.github.io/queue/</guid>
-      <description>What is a queue? A queue is a collection of entities that are maintained in a sequence and can be modified by the addition of entities at one end of the sequence and the removal of entities from the other end of sequence. Wikipedia
-Imagine that we have a user&amp;rsquo;s API.
-We can create users in the system and then retrieve them back, maybe update and maybe delete them, send an email to the user, and also make a request to another API.</description>
+      
+      <guid>/post/queue/</guid>
+      <description>&lt;p&gt;What is a queue?
+A queue is a collection of entities that are maintained in a sequence and can be modified by the addition of entities at one end of the sequence and the removal of entities from the other end of sequence. Wikipedia&lt;/p&gt;
+&lt;p&gt;Imagine that we have a user&amp;rsquo;s API.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/queue2.png&#34; alt=&#34;queue2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We can create users in the system and then retrieve them back, maybe update and maybe delete them, send an email to the user, and also make a request to another API.
+In this scenario, if when sending an email and that email fails, that entire request fails and it&amp;rsquo;s necessary to make another request to have the entire process done.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/queue1.png&#34; alt=&#34;queue1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;But that does not need to be like this, cuz sending an email and making the request to another API for this flow it&amp;rsquo;s not crucial and could be done later async.&lt;/p&gt;
+&lt;p&gt;Here enter the queue concept.
+We could instead of making all those things sync, make only the crucial sync and the rest async by adding in a queue what could be done later.&lt;/p&gt;
+&lt;p&gt;To get this done it&amp;rsquo;s necessary to have a consumer service, that will be listening to the queue and do something with the information in the queue, like sending an email.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/queue3.png&#34; alt=&#34;queue3&#34;&gt;&lt;/p&gt;
+&lt;p&gt;That makes your system more resilient if something fails to process, it&amp;rsquo;s going back to the queue and then will be reprocessed later.&lt;/p&gt;
+&lt;p&gt;See more about queue &lt;a href=&#34;https://amandamata.github.io/queue-csharp-sqs&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
+    
   </channel>
 </rss>

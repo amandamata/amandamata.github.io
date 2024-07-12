@@ -2,20 +2,192 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>aws on amandamata</title>
-    <link>https://amandamata.github.io/pt-pt/tags/aws/</link>
-    <description>Recent content in aws on amandamata</description>
+    <link>/pt-pt/tags/aws/</link>
+    <description>amandamata (aws)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-pt</language>
     <lastBuildDate>Wed, 22 Feb 2023 07:19:25 -0300</lastBuildDate>
-    <atom:link href="https://amandamata.github.io/pt-pt/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    
+    <atom:link href="/pt-pt/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Implementando um publisher e consumer SQS usando dotnet</title>
-      <link>https://amandamata.github.io/pt-pt/queue-csharp-sqs/</link>
+      <link>/pt-pt/post/queue-csharp-sqs/</link>
       <pubDate>Wed, 22 Feb 2023 07:19:25 -0300</pubDate>
-      <guid>https://amandamata.github.io/pt-pt/queue-csharp-sqs/</guid>
-      <description>Nesse post, eu passei a introdução de uma fila e como utilizá-la. Agora, eu vou explicar como implementar um consumer e sqs publisher usando c# dotnet. SQS O que é SQS?
-SQS (Simple Queue Service) é um serviço da Amazon que permite que você envie, salve, e receba mensagens entre aplicações, sem que você perca essas mensagens caso o serviço esteja indisponível.
-A melhor parte de tudo isso é que, para você pagar por esse serviço, você teria que enviar mais de um milhão de requisições por mês, para que a amazon te envie uma cobrança.</description>
+      
+      <guid>/pt-pt/post/queue-csharp-sqs/</guid>
+      <description>&lt;p&gt;Nesse &lt;a href=&#34;https://amandamata.github.io/pt-pt/queue&#34;&gt;post&lt;/a&gt;, eu passei a introdução de uma fila e como utilizá-la. Agora, eu vou explicar como implementar um consumer e sqs publisher usando c# dotnet.
+&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;sqs&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#sqs&#34;&gt;
+        ####
+    &lt;/a&gt;
+    SQS
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;O que é SQS?&lt;/p&gt;
+&lt;p&gt;SQS (Simple Queue Service) é um serviço da Amazon que permite que você envie, salve, e receba mensagens entre aplicações, sem que você perca essas mensagens caso o serviço esteja indisponível.&lt;/p&gt;
+&lt;p&gt;A melhor parte de tudo isso é que, para você pagar por esse serviço, você teria que enviar mais de um milhão de requisições por mês, para que a amazon te envie uma cobrança.&lt;/p&gt;
+&lt;p&gt;Para começar pe necessário criar uma conta na &lt;a href=&#34;https://aws.amazon.com/&#34;&gt;aws&lt;/a&gt; e então ir para o &lt;a href=&#34;https://console.aws.amazon.com&#34;&gt;console&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Na área do console, digite SQS no campo de busca e entre na primeira opção, Simple Queue Service.&lt;/p&gt;
+&lt;p&gt;Clique em Create queue, e adicione o nome para a fila, e então vá para o final da página e clique em Create queue. Você pode alterar os valores que vem por padrão, mas para esse exemplos o padrão já está de acordo.
+&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;aws-command-line-interface&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#aws-command-line-interface&#34;&gt;
+        ####
+    &lt;/a&gt;
+    AWS Command Line Interface
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;A AWS Command Line Interface permite que façamos mudanças e requisições diretamente pelo console localmente, sem a necessidade de acessar o AWS console no navegador.&lt;/p&gt;
+&lt;p&gt;Se por exemplo quisermos listar os buckets:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;aws s3api list-buckets
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Para conseguirmos fazer isso, é necessário instalar o cli, o tutorial para Windows, Linux e macOs está &lt;a href=&#34;https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html&#34;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Depois da instalação, é necessário autenticar sua máquina na aws.&lt;/p&gt;
+&lt;p&gt;Na aws console, clique em seu nome e vá até Security Credentials, lá você precisa criar uma Access Key.&lt;/p&gt;
+&lt;p&gt;Então em seu console você vai digitar:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;aws configure
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Então coloque a sua access key e token quando solicitado.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Importante, no console da aws você possui uma região, a minha é us-east-1, você pode ver a sua consultando a url: https://&lt;em&gt;&lt;strong&gt;us-east-1&lt;/strong&gt;&lt;/em&gt;.console.aws.amazon.com/&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Essa região deve ser passada durante a configuração aws no console, para que consiga utilizar completamente as features via console localmente.&lt;/p&gt;
+&lt;p&gt;Depois da configuração finalizada, você poderá executar a listagem de buckets.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;aws s3api list-buckets
+&lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;
+&lt;h5 id=&#34;publisher&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#publisher&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Publisher
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;O que é um publisher?&lt;/p&gt;
+&lt;p&gt;Um publisher é um serviço que vai pegar uma informação que algo mudou por exemplo e enviar essa informação para a fila.
+No exemplo que utilizei no post sobre a fila, o publisher estava dentro da API, e quando um novo usuário era criado a informação era enviada para a fila.&lt;/p&gt;
+&lt;p&gt;Então com tudo configurado, agora vamos criar o publisher.&lt;/p&gt;
+&lt;p&gt;Para deixar simples, o exemplo aqui vai ser apenas o publisher, então você pode pegar a implementação e aplicar na sua API.&lt;/p&gt;
+&lt;p&gt;Vamos utilizar o Console App&lt;/p&gt;
+&lt;p&gt;Crie uma nova pasta:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;mkdir publisher
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Entre na pasta:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd publisher
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Crie o projeto:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet new console
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Um modelo é necessário:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;public class CustomerCreated
+{
+  public Guid Id { get; init; }
+  public string FullName { get; init; }
+  public string Email { get; init; }
+  public DateTime DateOfBirth { get; init; }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;E instale o &lt;a href=&#34;https://www.nuget.org/packages/AWSSDK.SQS&#34;&gt;AWS SDK&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet add package AWSSDK.SQS --version 3.7.100.78
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Então na classe Program precisamos criar o request e enviá-lo:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;using System.Text.Json;
+using Amazon.SQS;
+using Amazon.SQS.Model;
+
+var sqsCLient = new AmazonSQSClient();
+
+var customer = new CustomerCreated
+{
+  Id = Guid.NewGuid(),
+  FullName = &amp;#34;Amanda Mata&amp;#34;,
+  Email = &amp;#34;email@email.com&amp;#34;,
+  DateOfBirth = new DateTime(1996, 06, 18)
+};
+
+var queueUrlResponse = await sqsCLient.GetQueueUrlAsync(&amp;#34;customers&amp;#34;);
+
+var sendMessageRequest = new SendMessageRequest
+{
+  QueueUrl = queueUrlResponse.QueueUrl, 
+  MessageBody = JsonSerializer.Serialize(customer),
+  MessageAttributes = new Dictionary&amp;lt;string, MessageAttributeValue&amp;gt;
+  {
+      {
+          &amp;#34;MessageType&amp;#34;, new MessageAttributeValue
+          {
+              DataType = &amp;#34;String&amp;#34;, 
+              StringValue = nameof(CustomerCreated)
+          }
+      }
+  }
+};
+
+var response = await sqsCLient.SendMessageAsync(sendMessageRequest);
+
+Console.WriteLine();
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;No sqsCLient.GetQueueUrlAsync(&amp;ldquo;customers&amp;rdquo;) eu utilizei &amp;ldquo;customers&amp;rdquo; porque esse é o nome da minha fila&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;br/&gt;
+&lt;h5 id=&#34;consumer&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#consumer&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Consumer
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;O que é um consumer?&lt;/p&gt;
+&lt;p&gt;Um consumer é o serviço que irá escutar a fila.&lt;/p&gt;
+&lt;p&gt;Vamos utilizar o Console App&lt;/p&gt;
+&lt;p&gt;Crie uma nova pasta:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;mkdir consumer
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Entre na pasta:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd consumer
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Crie o projeto:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet new console
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Um modelo é necessário:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;public class CustomerCreated
+{
+  public Guid Id { get; init; }
+  public string FullName { get; init; }
+  public string Email { get; init; }
+  public DateTime DateOfBirth { get; init; }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;E instale o &lt;a href=&#34;https://www.nuget.org/packages/AWSSDK.SQS&#34;&gt;AWS SDK&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet add package AWSSDK.SQS --version 3.7.100.78
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Então na classe Program precisamos receber a requisição:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;using Amazon.SQS;
+using Amazon.SQS.Model;
+	 
+var cts = new CancellationTokenSource();
+var sqsCLient = new AmazonSQSClient();
+var queueUrlResponse = await sqsCLient.GetQueueUrlAsync(&amp;#34;customers&amp;#34;);
+var receiveMessageRequest = new ReceiveMessageRequest
+{
+  QueueUrl = queueUrlResponse.QueueUrl,
+  AttributeNames = new List&amp;lt;string&amp;gt;{ &amp;#34;All&amp;#34; },
+  MessageAttributeNames = new List&amp;lt;string&amp;gt;{ &amp;#34;All&amp;#34; }
+};
+	 
+while(!cts.IsCancellationRequested)
+{
+  var response = await sqsCLient.ReceiveMessageAsync(receiveMessageRequest, cts.Token);
+  response.Messages.ForEach(async message =&amp;gt; {
+    Console.WriteLine($&amp;#34;Message Id: { message.MessageId }&amp;#34;);
+    Console.WriteLine($&amp;#34;Message Body: { message.Body }&amp;#34;);
+    await sqsCLient.DeleteMessageAsync(queueUrlResponse.QueueUrl, message.ReceiptHandle);
+  });
+
+  await Task.Delay(3000);
+}
+
+Console.WriteLine();
+&lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;
+&lt;p&gt;Agora o publisher e o consumer estão criados, você pode verificar as mensagens no aws console, mas apenas executando o publisher e o consumer você vai conseguir ver as mensagens sendo enviadas e sendo recebidas.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Eu criei esse post para meus estudos, os aprendizados passados aqui foram obtidos através do curso &lt;a href=&#34;https://nickchapsas.com/p/cloud-fundamentals-aws-services-for-c-developers&#34;&gt;Cloud Fundamentals: AWS Services for C# Developers course&lt;/a&gt;.&lt;/p&gt;
+</description>
     </item>
+    
   </channel>
 </rss>

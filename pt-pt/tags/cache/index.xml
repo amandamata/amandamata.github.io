@@ -2,18 +2,195 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>cache on amandamata</title>
-    <link>https://amandamata.github.io/pt-pt/tags/cache/</link>
-    <description>Recent content in cache on amandamata</description>
+    <link>/pt-pt/tags/cache/</link>
+    <description>amandamata (cache)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-pt</language>
     <lastBuildDate>Tue, 25 Apr 2023 07:42:55 -0300</lastBuildDate>
-    <atom:link href="https://amandamata.github.io/pt-pt/tags/cache/index.xml" rel="self" type="application/rss+xml" />
+    
+    <atom:link href="/pt-pt/tags/cache/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Implementando cache Redis com dotnet</title>
-      <link>https://amandamata.github.io/pt-pt/redis/</link>
+      <link>/pt-pt/post/redis/</link>
       <pubDate>Tue, 25 Apr 2023 07:42:55 -0300</pubDate>
-      <guid>https://amandamata.github.io/pt-pt/redis/</guid>
-      <description>Recentemente tive que implementar um cache em uma aplicação para evitar consultas desnecessárias ao banco de dados, e isso foi muito legal. Já trabalhei com Redis no passado, mas acho que fiz da maneira errada porque implementar um cache com Redis nunca foi tão legal. Redis x Mem cached O Redis é quase como um banco noSql, mas ele é ainda melhor pois armazena os dados com chave e valor e com isso fica muito mais fácil de utilizar ele como um cache.</description>
+      
+      <guid>/pt-pt/post/redis/</guid>
+      <description>&lt;p&gt;Recentemente tive que implementar um cache em uma aplicação para evitar consultas desnecessárias ao banco de dados, e isso foi muito legal. Já trabalhei com Redis no passado, mas acho que fiz da maneira errada porque implementar um cache com Redis nunca foi tão legal.
+&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;redis-x-mem-cached&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#redis-x-mem-cached&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Redis x Mem cached
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;O Redis é quase como um banco noSql, mas ele é ainda melhor pois armazena os dados com chave e valor e com isso fica muito mais fácil de utilizar ele como um cache.
+Mas o ponto principal nessa comparação é: depende, depende de como e quanto dado será utilizado nesse cache. Se for pouco dado como guardar informações de uma sessão, o MemCache faz sentido. Mas se estamos falando de muitas consultas com dados maiores, como os dados que armazenamos no banco, o Redis faz um melhor trabalho. Isso porque ao utilizar o MemCache estamos utilizando da memória da aplicação pra salvar aquelas informações, já o Redis é um cache distribuído, não tem relação nenhuma com a memória da aplicação e é possível utilizar mais de um Redis database escalando verticalmente esse serviço conforme a demanda cresce.&lt;/p&gt;
+&lt;p&gt;A primeira vez que for necessário usar o cache a informação não vai estar lá, então é necessário consultar no banco e salvar no cache, a segunda vez já não é necessário ir ao banco, pois a informação estará no cache. E isso faz com que a aplicação demore menos tempo para responder uma requisição, pois a ida ao banco demora muito mais que a ida ao redis.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/redis.png&#34; alt=&#34;redis&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;porque-utilizar&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#porque-utilizar&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Porque utilizar
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Reduzir o tempo de resposta
+Melhorar a experiência do usuário final com a aplicação, fazendo ele esperar menos em cada clique ou ação.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Elevar a disponibilidade
+Uma vez que é preciso consumir menos recursos computacionais, porque já está no cache e devolvo mais rápido para o usuário final, é possível então ter mais usuários acessando simultaneamente a aplicação.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Reduzir custos computacionais
+Quando estamos falando de cloud, estamos reduzindo o consumo de lambdas e recursos onde a fatura mensal pode ser mais barata.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;O custo de um cache é alto, portanto, tem que estar custando caro no server side pra fazer essa migração para o cache. Por exemplo, problemas com demora de resposta para o cliente final podem custar caro, o cliente final pode simplesmente desistir de utilizar a aplicação pela demora, e muitos outros problemas que essa demora pode gerar. Para reduzir tanto esse custo de perda de cliente quanto o custo de consulta ao banco, utiliza-se então o cache para resolver esses problemas.
+&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;problema&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#problema&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Problema
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;Suponhamos que existe uma aplicação que faz muitas idas ao banco, mas sempre consultando as mesmas informações, quando a aplicação foi desenvolvida os desenvolvedores não achavam que ela poderia crescer tanto, e não foi implementado um cache para evitar essas consultas ao banco.
+A aplicação é de aluguel de carro para empresas, e a consulta é simples, a cada requisição recebida no endpoint aluguél é necessário consultar se a empresa(cnpj) informada na solicitação de aluguel é a mesma que existe no banco.
+Temos o cenário, vamos para a implementação.
+&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h5 id=&#34;implementação&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#implementa%c3%a7%c3%a3o&#34;&gt;
+        ####
+    &lt;/a&gt;
+    Implementação
+&lt;/div&gt;
+&lt;/h5&gt;
+&lt;p&gt;Explicação  e problema apresentações, vamos a implementação!
+Para essa implementação vamos seguir um padrão chamado Decorator, com esse padrão é possível adicionar uma camada de cache sem adicionar complexidade a mais na camada de repositório, e vamos seguir o principio S do SOLID, &lt;a href=&#34;https://g.co/kgs/phLumf&#34;&gt;Single-responsibility principle&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Vamos trabalhar com dotnet, e instalar os pacotes &lt;a href=&#34;https://www.nuget.org/packages/scrutor/&#34;&gt;Scrutor&lt;/a&gt; e &lt;a href=&#34;https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis/7.0.5&#34;&gt;StackExchangeRedis&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet add package Scrutor --version 4.2.2
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet add package Microsoft.Extensions.Caching.StackExchangeRedis --version 7.0.5
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;O Scrutor vai nos auxiliar durante a implementação da camada de cache sem tirar a responsabilidade única do repositório. E o StackExchangeRedis é o pacote client da Microsoft para fazermos o uso do redis com .NET.&lt;/p&gt;
+&lt;p&gt;Vamos criar uma Service para lidar com tudo referente ao Redis.
+&lt;br/&gt;
+Service:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;public class CacheService : ICacheService
+{
+    private readonly IDistributedCache _distributedCache;
+    private readonly DistributedCacheEntryOptions _options;
+
+    public CacheService(IDistributedCache distributedCache)
+    {
+        _distributedCache = distributedCache;
+        _options = new DistributedCacheEntryOptions
+        {
+            AbsoluteExpirationRelativeToNow = 150
+        };
+    }
+
+    public async Task&amp;lt;T&amp;gt; GetAsync&amp;lt;T&amp;gt;(string key)
+    {
+        try
+        {
+            var cached = await _distributedCache.GetStringAsync(key);
+            if (cached is not null)
+                return JsonConvert.DeserializeObject&amp;lt;T&amp;gt;(cached);
+        }
+        catch (Exception exception)
+        { 
+            // Log exception 
+        }
+
+        return default(T);
+    }
+
+    public async Task SetAsync&amp;lt;T&amp;gt;(string key, T value)
+    {
+        try
+        {
+            if (value is not null)
+                await _distributedCache.SetStringAsync(key, JsonConvert.SerializeObject(value), _options);
+        }
+        catch (Exception exception)
+        { 
+            // Log exception
+        }
+    }
+
+    public async Task RemoveAsync(string key)
+    {
+        try
+        {
+            await _distributedCache.RemoveAsync(key);
+        }
+        catch (Exception exception)
+        {
+            // Log exception
+    	}
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Vamos criar um Repository para lidar com a requisição de consulta ao banco que irá &amp;ldquo;interceptar&amp;rdquo; e ir primeiro no redis.
+&lt;br/&gt;
+Repository:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;public class CachedAlugatorRepository : IAlugatorRepository
+{
+    private readonly IAlugatorRepository _alugatorRepository;
+    private readonly ICacheService _cache;
+
+    public CachedAlugatorRepository(IAlugatorRepository alugatorRepository, ICacheService cache)
+    {
+        _alugatorRepository = alugatorRepository;
+        _cache = cache;
+    }
+
+    public async Task&amp;lt;bool&amp;gt; DeleteAsync(string id)
+    {
+        var alugator = await _alugatorRepository.GetAsync(id);
+        if (alugator is not null)
+        {
+ 	    await _cache.RemoveAsync(alugator.documentId);
+            return await _alugatorRepository.DeleteAsync(id);
+        }
+
+        return true;
+    }
+
+    public async Task&amp;lt;Alugator&amp;gt; GetAsync(string id)
+    {
+        var alugator = await _cache.GetAsync&amp;lt;Alugator&amp;gt;(id);
+        if (alugator is not null)
+            return alugator;
+
+        alugator = await _alugatorRepository.GetAsync(id);
+
+        await _cache.SetAsync&amp;lt;Alugator&amp;gt;(alugator);
+        return alugator;
+    }
+
+    public async Task&amp;lt;bool&amp;gt; UpsertAsync(Alugator alugator)
+    {
+        await _cache.SetAsync(alugator.documentId, alugator);
+
+        return await _alugatorRepository.UpsertAsync(alugator);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;O pulo do gato está na forma como iremos configurar o Repository na classe Program:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;services.AddSingleton&amp;lt;IAlugatorRepository, AlugatorRepository&amp;gt;();
+services.Decorate&amp;lt;IAlugatorRepository, CachedAlugatorRepository&amp;gt;();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Esse Decorate faz a mágica, pois, agora ao chamar a AlugatorRepository a CachedAlugatorRepository será &amp;ldquo;chamado&amp;rdquo; primeiro, então, toda chamada ao repositório será feita inicialmente para o Repositório de cache que contém a lógica da consulta ao Redis através da service. Com isso mantemos a AlugatorRepository limpa, temos uma repository específica para o cache CachedAlugatorRepository e não ferimos o Single Responsability Principle.&lt;/p&gt;
+</description>
     </item>
+    
   </channel>
 </rss>
