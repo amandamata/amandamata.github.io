@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>git on amandaintech</title>
+    <title>git on amandabytes</title>
     <link>/tags/git/</link>
-    <description>amandaintech (git)</description>
+    <description>amandabytes (git)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 30 May 2023 14:01:29 -0300</lastBuildDate>

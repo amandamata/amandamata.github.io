@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>redis on amandaintech</title>
+    <title>redis on amandabytes</title>
     <link>/tags/redis/</link>
-    <description>amandaintech (redis)</description>
+    <description>amandabytes (redis)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 25 Apr 2023 07:42:55 -0300</lastBuildDate>
