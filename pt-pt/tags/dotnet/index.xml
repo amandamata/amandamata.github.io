@@ -17,32 +17,32 @@
       <pubDate>Mon, 13 Nov 2023 18:19:29 -0300</pubDate>
       
       <guid>/pt-pt/post/telemetry/</guid>
-      <description>&lt;h4 id=&#34;introdução&#34; &gt;
+      <description>&lt;h2 id=&#34;introdução&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#introdu%c3%a7%c3%a3o&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Introdução
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;Medir o tempo de execução de métodos é essencial para otimizar aplicações, seja para profiling, monitoramento de performance ou detecção de degradações ao longo do tempo. Embora existam várias ferramentas e bibliotecas disponíveis para essa finalidade, muitas vezes procuramos soluções que sejam diretas e não intrusivas.&lt;/p&gt;
-&lt;h4 id=&#34;a-solução-methodtimerfody&#34; &gt;
+&lt;h2 id=&#34;a-solução-methodtimer&#34; &gt;
 &lt;div&gt;
-    &lt;a href=&#34;#a-solu%c3%a7%c3%a3o-methodtimerfody&#34;&gt;
-        ###
+    &lt;a href=&#34;#a-solu%c3%a7%c3%a3o-methodtimer&#34;&gt;
+        #
     &lt;/a&gt;
-    A Solução: MethodTimer.Fody
+    A Solução: MethodTimer
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;Uma das maneiras mais eficientes e limpas de medir a performance de métodos em C# é utilizando a biblioteca MethodTimer.Fody. Essa ferramenta permite adicionar automaticamente cronômetros aos métodos desejados através de um simples atributo, sem a necessidade de modificar o código existente.&lt;/p&gt;
-&lt;h4 id=&#34;como-funciona&#34; &gt;
+&lt;h2 id=&#34;como-funciona&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#como-funciona&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Como funciona
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;Após instalar a biblioteca &lt;a href=&#34;https://github.com/Fody/MethodTimer&#34;&gt;MethodTimer&lt;/a&gt; no seu projeto, basta adicionar o atributo &lt;code&gt;[Time]&lt;/code&gt; acima de qualquer método que você deseja monitorar. Veja um exemplo:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;MyClass&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
@@ -99,27 +99,27 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Com tudo configurado, você pode logar e injetar as informações que desejar.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/telemetry.png&#34; alt=&#34;telemetry&#34;&gt;&lt;/p&gt;
-&lt;h4 id=&#34;benefícios&#34; &gt;
+&lt;h2 id=&#34;benefícios&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#benef%c3%adcios&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Benefícios
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Simplicidade: Não é necessário escrever código adicional de cronometragem.&lt;/li&gt;
 &lt;li&gt;Automatização: A medição de performance é adicionada em tempo de compilação, mantendo seu código limpo.&lt;/li&gt;
 &lt;li&gt;Facilidade de Uso: Basta adicionar um atributo ao método desejado.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;conclusão&#34; &gt;
+&lt;h2 id=&#34;conclusão&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#conclus%c3%a3o&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Conclusão
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;MethodTimer.Fody é uma ferramenta poderosa para desenvolvedores que buscam uma maneira eficiente e descomplicada de medir a performance de seus métodos em C#. Com a facilidade de integração e o mínimo impacto no código existente, é uma excelente escolha para qualquer projeto.&lt;/p&gt;
 </description>
     </item>
@@ -132,27 +132,27 @@
       <guid>/pt-pt/post/redis/</guid>
       <description>&lt;p&gt;Recentemente tive que implementar um cache em uma aplicação para evitar consultas desnecessárias ao banco de dados, e isso foi muito legal. Já trabalhei com Redis no passado, mas acho que fiz da maneira errada porque implementar um cache com Redis nunca foi tão legal.
 &lt;br/&gt;&lt;/p&gt;
-&lt;h4 id=&#34;redis-x-mem-cached&#34; &gt;
+&lt;h2 id=&#34;redis-x-mem-cached&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#redis-x-mem-cached&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Redis x Mem cached
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;O Redis é quase como um banco noSql, mas ele é ainda melhor pois armazena os dados com chave e valor e com isso fica muito mais fácil de utilizar ele como um cache.
 Mas o ponto principal nessa comparação é: depende, depende de como e quanto dado será utilizado nesse cache. Se for pouco dado como guardar informações de uma sessão, o MemCache faz sentido. Mas se estamos falando de muitas consultas com dados maiores, como os dados que armazenamos no banco, o Redis faz um melhor trabalho. Isso porque ao utilizar o MemCache estamos utilizando da memória da aplicação pra salvar aquelas informações, já o Redis é um cache distribuído, não tem relação nenhuma com a memória da aplicação e é possível utilizar mais de um Redis database escalando verticalmente esse serviço conforme a demanda cresce.&lt;/p&gt;
 &lt;p&gt;A primeira vez que for necessário usar o cache a informação não vai estar lá, então é necessário consultar no banco e salvar no cache, a segunda vez já não é necessário ir ao banco, pois a informação estará no cache. E isso faz com que a aplicação demore menos tempo para responder uma requisição, pois a ida ao banco demora muito mais que a ida ao redis.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/redis.png&#34; alt=&#34;redis&#34;&gt;&lt;/p&gt;
 &lt;br/&gt;
-&lt;h4 id=&#34;porque-utilizar&#34; &gt;
+&lt;h2 id=&#34;porque-utilizar&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#porque-utilizar&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Porque utilizar
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Reduzir o tempo de resposta
@@ -169,26 +169,26 @@ Quando estamos falando de cloud, estamos reduzindo o consumo de lambdas e recurs
 &lt;/ul&gt;
 &lt;p&gt;O custo de um cache é alto, portanto, tem que estar custando caro no server side pra fazer essa migração para o cache. Por exemplo, problemas com demora de resposta para o cliente final podem custar caro, o cliente final pode simplesmente desistir de utilizar a aplicação pela demora, e muitos outros problemas que essa demora pode gerar. Para reduzir tanto esse custo de perda de cliente quanto o custo de consulta ao banco, utiliza-se então o cache para resolver esses problemas.
 &lt;br/&gt;&lt;/p&gt;
-&lt;h4 id=&#34;problema&#34; &gt;
+&lt;h2 id=&#34;problema&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#problema&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Problema
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;Suponhamos que existe uma aplicação que faz muitas idas ao banco, mas sempre consultando as mesmas informações, quando a aplicação foi desenvolvida os desenvolvedores não achavam que ela poderia crescer tanto, e não foi implementado um cache para evitar essas consultas ao banco.
 A aplicação é de aluguel de carro para empresas, e a consulta é simples, a cada requisição recebida no endpoint aluguél é necessário consultar se a empresa(cnpj) informada na solicitação de aluguel é a mesma que existe no banco.
 Temos o cenário, vamos para a implementação.
 &lt;br/&gt;&lt;/p&gt;
-&lt;h4 id=&#34;implementação&#34; &gt;
+&lt;h2 id=&#34;implementação&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#implementa%c3%a7%c3%a3o&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Implementação
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;Explicação  e problema apresentações, vamos a implementação!
 Para essa implementação vamos seguir um padrão chamado Decorator, com esse padrão é possível adicionar uma camada de cache sem adicionar complexidade a mais na camada de repositório, e vamos seguir o principio S do SOLID, &lt;a href=&#34;https://g.co/kgs/phLumf&#34;&gt;Single-responsibility principle&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Vamos trabalhar com dotnet, e instalar os pacotes &lt;a href=&#34;https://www.nuget.org/packages/scrutor/&#34;&gt;Scrutor&lt;/a&gt; e &lt;a href=&#34;https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis/7.0.5&#34;&gt;StackExchangeRedis&lt;/a&gt;&lt;/p&gt;
@@ -313,14 +313,14 @@ Repository:&lt;/p&gt;
       <guid>/pt-pt/post/queue-csharp-sqs/</guid>
       <description>&lt;p&gt;Nesse &lt;a href=&#34;https://amandamata.github.io/pt-pt/queue&#34;&gt;post&lt;/a&gt;, eu passei a introdução de uma fila e como utilizá-la. Agora, eu vou explicar como implementar um consumer e sqs publisher usando c# dotnet.
 &lt;br/&gt;&lt;/p&gt;
-&lt;h4 id=&#34;sqs&#34; &gt;
+&lt;h2 id=&#34;sqs&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#sqs&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     SQS
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;O que é SQS?&lt;/p&gt;
 &lt;p&gt;SQS (Simple Queue Service) é um serviço da Amazon que permite que você envie, salve, e receba mensagens entre aplicações, sem que você perca essas mensagens caso o serviço esteja indisponível.&lt;/p&gt;
 &lt;p&gt;A melhor parte de tudo isso é que, para você pagar por esse serviço, você teria que enviar mais de um milhão de requisições por mês, para que a amazon te envie uma cobrança.&lt;/p&gt;
@@ -328,14 +328,14 @@ Repository:&lt;/p&gt;
 &lt;p&gt;Na área do console, digite SQS no campo de busca e entre na primeira opção, Simple Queue Service.&lt;/p&gt;
 &lt;p&gt;Clique em Create queue, e adicione o nome para a fila, e então vá para o final da página e clique em Create queue. Você pode alterar os valores que vem por padrão, mas para esse exemplos o padrão já está de acordo.
 &lt;br/&gt;&lt;/p&gt;
-&lt;h4 id=&#34;aws-command-line-interface&#34; &gt;
+&lt;h2 id=&#34;aws-command-line-interface&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#aws-command-line-interface&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     AWS Command Line Interface
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;A AWS Command Line Interface permite que façamos mudanças e requisições diretamente pelo console localmente, sem a necessidade de acessar o AWS console no navegador.&lt;/p&gt;
 &lt;p&gt;Se por exemplo quisermos listar os buckets:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;aws s3api list-buckets
@@ -352,14 +352,14 @@ Repository:&lt;/p&gt;
 &lt;p&gt;Depois da configuração finalizada, você poderá executar a listagem de buckets.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;aws s3api list-buckets
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
-&lt;h4 id=&#34;publisher&#34; &gt;
+&lt;h2 id=&#34;publisher&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#publisher&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Publisher
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;O que é um publisher?&lt;/p&gt;
 &lt;p&gt;Um publisher é um serviço que vai pegar uma informação que algo mudou por exemplo e enviar essa informação para a fila.
 No exemplo que utilizei no post sobre a fila, o publisher estava dentro da API, e quando um novo usuário era criado a informação era enviada para a fila.&lt;/p&gt;
@@ -422,14 +422,14 @@ No exemplo que utilizei no post sobre a fila, o publisher estava dentro da API, 
 &lt;p&gt;No sqsCLient.GetQueueUrlAsync(&amp;ldquo;customers&amp;rdquo;) eu utilizei &amp;ldquo;customers&amp;rdquo; porque esse é o nome da minha fila&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;br/&gt;
-&lt;h4 id=&#34;consumer&#34; &gt;
+&lt;h2 id=&#34;consumer&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#consumer&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Consumer
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;O que é um consumer?&lt;/p&gt;
 &lt;p&gt;Um consumer é o serviço que irá escutar a fila.&lt;/p&gt;
 &lt;p&gt;Vamos utilizar o Console App&lt;/p&gt;
@@ -509,14 +509,14 @@ No exemplo que utilizei no post sobre a fila, o publisher estava dentro da API, 
 &lt;li&gt;arquivo omnisharp.json&lt;/li&gt;
 &lt;li&gt;alterações no settings.json&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;omnisharp&#34; &gt;
+&lt;h2 id=&#34;omnisharp&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#omnisharp&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Omnisharp
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;Você pode encontrar a localização do seu omnisharp em %USERPROFILE%/.omnisharp/&lt;/p&gt;
 &lt;p&gt;O meu omnisharp está em /home/amanda/.omnisharp/omnisharp.json&lt;/p&gt;
 &lt;p&gt;Essa é a minha configuração do omnisharp:&lt;/p&gt;
@@ -546,14 +546,14 @@ No exemplo que utilizei no post sobre a fila, o publisher estava dentro da API, 
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Baseado &lt;a href=&#34;https://github.com/OmniSharp/omnisharp-vscode/issues/1506#issuecomment-303390666&#34;&gt;nesse comentário&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;vscode-settings&#34; &gt;
+&lt;h2 id=&#34;vscode-settings&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#vscode-settings&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     VSCode Settings
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;Você pode encontrar o arquivo settings.json em ~/.config/Code/User&lt;/p&gt;
 &lt;p&gt;O meu arquivo está em /home/amanda/.config/Code/User/settings.json&lt;/p&gt;
 &lt;p&gt;Eu inseri essas linhas a mais no settings.json:&lt;/p&gt;

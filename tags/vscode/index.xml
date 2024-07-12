@@ -37,14 +37,14 @@ Many sites and stack overflow have the same question, with many disappointing pe
 &lt;li&gt;omnisharp.json file&lt;/li&gt;
 &lt;li&gt;settings.json modifications&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;omnisharp&#34; &gt;
+&lt;h2 id=&#34;omnisharp&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#omnisharp&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Omnisharp
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;You can find your omnisharp location by checking on %USERPROFILE%/.omnisharp/&lt;/p&gt;
 &lt;p&gt;Mine is in /home/amanda/.omnisharp/omnisharp.json&lt;/p&gt;
 &lt;p&gt;This is my omnisharp config:&lt;/p&gt;
@@ -74,14 +74,14 @@ Many sites and stack overflow have the same question, with many disappointing pe
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Based on &lt;a href=&#34;https://github.com/OmniSharp/omnisharp-vscode/issues/1506#issuecomment-303390666&#34;&gt;this comment&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;vscode-settings&#34; &gt;
+&lt;h2 id=&#34;vscode-settings&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#vscode-settings&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     VSCode Settings
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;You can find your settings.json location by checking on ~/.config/Code/User&lt;/p&gt;
 &lt;p&gt;Mine is in /home/amanda/.config/Code/User/settings.json&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;ve inserted these lines in my settings.json:&lt;/p&gt;

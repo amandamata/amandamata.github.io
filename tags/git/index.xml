@@ -21,39 +21,39 @@
 &lt;p&gt;At some point, many of us make the mistake of accidentally pushing sensitive information to a GitHub repository. Simply deleting the information from the current repository does not solve the problem, as the commit history will still show the previous version with that information.&lt;/p&gt;
 &lt;p&gt;To address this issue, many turn to &lt;code&gt;git-filter-branch&lt;/code&gt;. However, I want to introduce an even better alternative: BFG.&lt;/p&gt;
 &lt;p&gt;BFG is a powerful and easy-to-use tool that allows you to remove confidential information from your repository&amp;rsquo;s commit history safely. It offers a quicker and more efficient solution compared to &lt;code&gt;git-filter-branch&lt;/code&gt;.&lt;/p&gt;
-&lt;h4 id=&#34;scenario&#34; &gt;
+&lt;h2 id=&#34;scenario&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#scenario&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Scenario
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;We have the repository &lt;a href=&#34;https://github.com/amandamata/how-to-use-bfg&#34;&gt;how-to-use-bfg&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;In this repository, there was an &lt;code&gt;appsettings.json&lt;/code&gt; with sensitive information.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg1.png&#34; alt=&#34;bfg1&#34;&gt;&lt;/p&gt;
 &lt;p&gt;I deleted this sensitive information, made the commit and push, but the sensitive information still appears in the history.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg2.png&#34; alt=&#34;bfg2&#34;&gt;&lt;/p&gt;
-&lt;h4 id=&#34;prerequisites&#34; &gt;
+&lt;h2 id=&#34;prerequisites&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#prerequisites&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Prerequisites
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Git installed on your machine.&lt;/li&gt;
 &lt;li&gt;Java Runtime Environment (JRE) installed to run the BFG &lt;code&gt;.jar&lt;/code&gt; file.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;how-to-use&#34; &gt;
+&lt;h2 id=&#34;how-to-use&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#how-to-use&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     How to Use
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;The tutorial on the BFG website is quite straightforward, but here is a more detailed description to facilitate the process:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Download the .jar file from the &lt;a href=&#34;https://rtyley.github.io/bfg-repo-cleaner/&#34;&gt;BFG&lt;/a&gt; website.&lt;/li&gt;
@@ -78,14 +78,14 @@
 &lt;/ol&gt;
 &lt;p&gt;After following these steps, your repository&amp;rsquo;s commit history will be updated, and the sensitive information will be removed.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg3.png&#34; alt=&#34;bfg3&#34;&gt;&lt;/p&gt;
-&lt;h4 id=&#34;conclusion&#34; &gt;
+&lt;h2 id=&#34;conclusion&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#conclusion&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Conclusion
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;Conclusion
 Removing sensitive information from the commit history is crucial for maintaining the security and privacy of your project. The BFG Repo-Cleaner offers an efficient and quick way to do this. If you have any questions or would like to share your experience using BFG, feel free to leave a comment below.&lt;/p&gt;
 &lt;p&gt;I hope this guide has been helpful. Good luck with cleaning your repository!&lt;/p&gt;

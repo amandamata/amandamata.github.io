@@ -332,27 +332,6 @@ Para solucionar essa questão, muitos recorrem ao git-filter-branch. No entanto,
 
 
 
-    <li>
-            <a href="/pt-pt/index.xml" title="RSS" rel="me">
-            <span class="inline-svg">
-
-    
-
-
-    
-    
-    
-    
-    
-
-    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
-
-
-</span>
-
-            </a>
-        </li>
-    
 
 </ul>
 
@@ -450,11 +429,25 @@ Para solucionar essa questão, muitos recorrem ao git-filter-branch. No entanto,
 
   
   
-    
+
+
+
+
   
-
-
-
+  
+  
+  <details class="toc noselect">
+    <summary>Table of Contents</summary>
+    <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#cenário">Cenário</a></li>
+    <li><a href="#pré-requisitos">Pré-requisitos</a></li>
+    <li><a href="#como-utilizar">Como utilizar</a></li>
+    <li><a href="#conclusão">Conclusão</a></li>
+  </ul>
+</nav></div>
+  </details>
+  
 
 
 
@@ -481,39 +474,39 @@ Para solucionar essa questão, muitos recorrem ao git-filter-branch. No entanto,
 <p>Em algum momento, muitos de nós cometemos o erro de enviar acidentalmente informações sensíveis para um repositório no GitHub. Simplesmente apagar a informação do repositório atual não resolve o problema, pois o histórico de commits ainda mostrará a versão anterior com essas informações.</p>
 <p>Para solucionar essa questão, muitos recorrem ao <code>git-filter-branch</code>. No entanto, quero apresentar uma alternativa ainda melhor: o BFG.</p>
 <p>O BFG é uma ferramenta poderosa e fácil de usar que permite remover informações confidenciais do histórico de commits do seu repositório de forma segura. Ele oferece uma solução mais rápida e eficiente em comparação com o <code>git-filter-branch</code>.</p>
-<h4 id="cenário" >
+<h2 id="cenário" >
 <div>
     <a href="#cen%c3%a1rio">
-        ###
+        #
     </a>
     Cenário
 </div>
-</h4>
+</h2>
 <p>Temos o repositório <a href="https://github.com/amandamata/how-to-use-bfg">how-to-use-bfg</a>.</p>
 <p>Nesse repositório existia um <code>appsettings.json</code> com informações sensíveis.</p>
 <p><img src="/img/bfg1.png" alt="bfg1"></p>
 <p>Eu excluí essa informação sensível, fiz o commit e push, mas no histórico essa informação sensível ainda aparece.</p>
 <p><img src="/img/bfg2.png" alt="bfg2"></p>
-<h4 id="pré-requisitos" >
+<h2 id="pré-requisitos" >
 <div>
     <a href="#pr%c3%a9-requisitos">
-        ###
+        #
     </a>
     Pré-requisitos
 </div>
-</h4>
+</h2>
 <ul>
 <li>Git instalado na sua máquina.</li>
 <li>Java Runtime Environment (JRE) instalado para executar o arquivo <code>.jar</code> do BFG.</li>
 </ul>
-<h4 id="como-utilizar" >
+<h2 id="como-utilizar" >
 <div>
     <a href="#como-utilizar">
-        ###
+        #
     </a>
     Como utilizar
 </div>
-</h4>
+</h2>
 <p>O tutorial no site do BFG é bastante direto, mas aqui está uma descrição mais detalhada para facilitar o processo:</p>
 <ol>
 <li>
@@ -546,14 +539,14 @@ Para solucionar essa questão, muitos recorrem ao git-filter-branch. No entanto,
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git push
 </span></span></code></pre></div><p>Após seguir esses passos, o histórico de commit do seu repositório será atualizado e os dados sensiveis serão removidos.</p>
 <p><img src="/img/bfg3.png" alt="bfg3"></p>
-<h4 id="conclusão" >
+<h2 id="conclusão" >
 <div>
     <a href="#conclus%c3%a3o">
-        ###
+        #
     </a>
     Conclusão
 </div>
-</h4>
+</h2>
 <p>Remover informações sensíveis do histórico de commits é crucial para manter a segurança e privacidade do seu projeto. O BFG Repo-Cleaner oferece uma maneira eficiente e rápida de fazer isso. Se você tiver alguma dúvida ou quiser compartilhar sua experiência usando o BFG, sinta-se à vontade para deixar um comentário abaixo.</p>
 <p>Espero que este guia tenha sido útil. Boa sorte com a limpeza do seu repositório!</p>
 

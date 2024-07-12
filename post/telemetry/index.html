@@ -12,8 +12,8 @@
 
 <title>An easy way to measure your method performance - amandabytes</title>
 
-<meta name="description" content="### Introduction Measuring method execution time is essential for optimizing applications, whether for profiling, performance monitoring, or detecting degradation over time. Although there are many tools and libraries available for this purpose, we often seek straightforward and non-intrusive solutions.
-### The Solution: MethodTimer.Fody One of the most efficient and cleanest ways to measure method performance in C# is by using the MethodTimer.Fody library. This tool automatically adds timers to the desired methods through a simple attribute, without modifying the existing code.">
+<meta name="description" content="Measuring method execution time is essential for optimizing applications, whether for profiling, performance monitoring, or detecting degradation over time. Although there are many tools and libraries available for this purpose, we often seek straightforward and non-intrusive solutions.
+# The Solution: MethodTimer One of the most efficient and cleanest ways to measure method performance in C# is by using the MethodTimer.Fody library. This tool automatically adds timers to the desired methods through a simple attribute, without modifying the existing code.">
 
 
 
@@ -331,27 +331,6 @@
 
 
 
-    <li>
-            <a href="/index.xml" title="RSS" rel="me">
-            <span class="inline-svg">
-
-    
-
-
-    
-    
-    
-    
-    
-
-    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
-
-
-</span>
-
-            </a>
-        </li>
-    
 
 </ul>
 
@@ -452,11 +431,25 @@
 
   
   
-    
+
+
+
+
   
-
-
-
+  
+  
+  <details class="toc noselect">
+    <summary>Table of Contents</summary>
+    <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-solution-methodtimer">The Solution: MethodTimer</a></li>
+    <li><a href="#how-it-works">How it works</a></li>
+    <li><a href="#benefits">Benefits</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+  </details>
+  
 
 
 
@@ -479,32 +472,24 @@
 </script>
 
         <div class="content e-content">
-            <h4 id="introduction" >
+            <p>Measuring method execution time is essential for optimizing applications, whether for profiling, performance monitoring, or detecting degradation over time. Although there are many tools and libraries available for this purpose, we often seek straightforward and non-intrusive solutions.</p>
+<h2 id="the-solution-methodtimer" >
 <div>
-    <a href="#introduction">
-        ###
+    <a href="#the-solution-methodtimer">
+        #
     </a>
-    Introduction
+    The Solution: MethodTimer
 </div>
-</h4>
-<p>Measuring method execution time is essential for optimizing applications, whether for profiling, performance monitoring, or detecting degradation over time. Although there are many tools and libraries available for this purpose, we often seek straightforward and non-intrusive solutions.</p>
-<h4 id="the-solution-methodtimerfody" >
-<div>
-    <a href="#the-solution-methodtimerfody">
-        ###
-    </a>
-    The Solution: MethodTimer.Fody
-</div>
-</h4>
+</h2>
 <p>One of the most efficient and cleanest ways to measure method performance in C# is by using the MethodTimer.Fody library. This tool automatically adds timers to the desired methods through a simple attribute, without modifying the existing code.</p>
-<h4 id="how-it-works" >
+<h2 id="how-it-works" >
 <div>
     <a href="#how-it-works">
-        ###
+        #
     </a>
     How it works
 </div>
-</h4>
+</h2>
 <p>After installing the <a href="https://github.com/Fody/MethodTimer">MethodTimer</a> library in your project, simply add the [Time] attribute above any method you want to monitor. See an example:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">MyClass</span>
 </span></span><span style="display:flex;"><span>{
@@ -561,27 +546,27 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>With everything configured, you can log and inject the information you want.</p>
 <p><img src="/img/telemetry.png" alt="telemetry"></p>
-<h4 id="benefits" >
+<h2 id="benefits" >
 <div>
     <a href="#benefits">
-        ###
+        #
     </a>
     Benefits
 </div>
-</h4>
+</h2>
 <ul>
 <li>Simplicity: No need to write additional timing code.</li>
 <li>Automation: Performance measurement is added at compile time, keeping your code clean.</li>
 <li>Ease of Use: Just add an attribute to the desired method.</li>
 </ul>
-<h4 id="conclusion" >
+<h2 id="conclusion" >
 <div>
     <a href="#conclusion">
-        ###
+        #
     </a>
     Conclusion
 </div>
-</h4>
+</h2>
 <p>MethodTimer.Fody is a powerful tool for developers looking for an efficient and uncomplicated way to measure the performance of their methods in C#. With easy integration and minimal impact on existing code, it is an excellent choice for any project.</p>
 
         </div>

@@ -333,27 +333,6 @@ if (true) { // do something } Was not as easy thing as may seem. Many sites and 
 
 
 
-    <li>
-            <a href="/index.xml" title="RSS" rel="me">
-            <span class="inline-svg">
-
-    
-
-
-    
-    
-    
-    
-    
-
-    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
-
-
-</span>
-
-            </a>
-        </li>
-    
 
 </ul>
 
@@ -454,11 +433,23 @@ if (true) { // do something } Was not as easy thing as may seem. Many sites and 
 
   
   
-    
+
+
+
+
   
-
-
-
+  
+  
+  <details class="toc noselect">
+    <summary>Table of Contents</summary>
+    <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#omnisharp">Omnisharp</a></li>
+    <li><a href="#vscode-settings">VSCode Settings</a></li>
+  </ul>
+</nav></div>
+  </details>
+  
 
 
 
@@ -501,14 +492,14 @@ Many sites and stack overflow have the same question, with many disappointing pe
 <li>omnisharp.json file</li>
 <li>settings.json modifications</li>
 </ol>
-<h4 id="omnisharp" >
+<h2 id="omnisharp" >
 <div>
     <a href="#omnisharp">
-        ###
+        #
     </a>
     Omnisharp
 </div>
-</h4>
+</h2>
 <p>You can find your omnisharp location by checking on %USERPROFILE%/.omnisharp/</p>
 <p>Mine is in /home/amanda/.omnisharp/omnisharp.json</p>
 <p>This is my omnisharp config:</p>
@@ -538,14 +529,14 @@ Many sites and stack overflow have the same question, with many disappointing pe
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Based on <a href="https://github.com/OmniSharp/omnisharp-vscode/issues/1506#issuecomment-303390666">this comment</a></p>
-<h4 id="vscode-settings" >
+<h2 id="vscode-settings" >
 <div>
     <a href="#vscode-settings">
-        ###
+        #
     </a>
     VSCode Settings
 </div>
-</h4>
+</h2>
 <p>You can find your settings.json location by checking on ~/.config/Code/User</p>
 <p>Mine is in /home/amanda/.config/Code/User/settings.json</p>
 <p>I&rsquo;ve inserted these lines in my settings.json:</p>

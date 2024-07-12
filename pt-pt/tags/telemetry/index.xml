@@ -17,32 +17,32 @@
       <pubDate>Mon, 13 Nov 2023 18:19:29 -0300</pubDate>
       
       <guid>/pt-pt/post/telemetry/</guid>
-      <description>&lt;h4 id=&#34;introdução&#34; &gt;
+      <description>&lt;h2 id=&#34;introdução&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#introdu%c3%a7%c3%a3o&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Introdução
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;Medir o tempo de execução de métodos é essencial para otimizar aplicações, seja para profiling, monitoramento de performance ou detecção de degradações ao longo do tempo. Embora existam várias ferramentas e bibliotecas disponíveis para essa finalidade, muitas vezes procuramos soluções que sejam diretas e não intrusivas.&lt;/p&gt;
-&lt;h4 id=&#34;a-solução-methodtimerfody&#34; &gt;
+&lt;h2 id=&#34;a-solução-methodtimer&#34; &gt;
 &lt;div&gt;
-    &lt;a href=&#34;#a-solu%c3%a7%c3%a3o-methodtimerfody&#34;&gt;
-        ###
+    &lt;a href=&#34;#a-solu%c3%a7%c3%a3o-methodtimer&#34;&gt;
+        #
     &lt;/a&gt;
-    A Solução: MethodTimer.Fody
+    A Solução: MethodTimer
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;Uma das maneiras mais eficientes e limpas de medir a performance de métodos em C# é utilizando a biblioteca MethodTimer.Fody. Essa ferramenta permite adicionar automaticamente cronômetros aos métodos desejados através de um simples atributo, sem a necessidade de modificar o código existente.&lt;/p&gt;
-&lt;h4 id=&#34;como-funciona&#34; &gt;
+&lt;h2 id=&#34;como-funciona&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#como-funciona&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Como funciona
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;Após instalar a biblioteca &lt;a href=&#34;https://github.com/Fody/MethodTimer&#34;&gt;MethodTimer&lt;/a&gt; no seu projeto, basta adicionar o atributo &lt;code&gt;[Time]&lt;/code&gt; acima de qualquer método que você deseja monitorar. Veja um exemplo:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;MyClass&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
@@ -99,27 +99,27 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Com tudo configurado, você pode logar e injetar as informações que desejar.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/telemetry.png&#34; alt=&#34;telemetry&#34;&gt;&lt;/p&gt;
-&lt;h4 id=&#34;benefícios&#34; &gt;
+&lt;h2 id=&#34;benefícios&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#benef%c3%adcios&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Benefícios
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Simplicidade: Não é necessário escrever código adicional de cronometragem.&lt;/li&gt;
 &lt;li&gt;Automatização: A medição de performance é adicionada em tempo de compilação, mantendo seu código limpo.&lt;/li&gt;
 &lt;li&gt;Facilidade de Uso: Basta adicionar um atributo ao método desejado.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;conclusão&#34; &gt;
+&lt;h2 id=&#34;conclusão&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#conclus%c3%a3o&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Conclusão
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;MethodTimer.Fody é uma ferramenta poderosa para desenvolvedores que buscam uma maneira eficiente e descomplicada de medir a performance de seus métodos em C#. Com a facilidade de integração e o mínimo impacto no código existente, é uma excelente escolha para qualquer projeto.&lt;/p&gt;
 </description>
     </item>

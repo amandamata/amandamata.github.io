@@ -332,27 +332,6 @@ To address this issue, many turn to git-filter-branch. However, I want to introd
 
 
 
-    <li>
-            <a href="/index.xml" title="RSS" rel="me">
-            <span class="inline-svg">
-
-    
-
-
-    
-    
-    
-    
-    
-
-    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
-
-
-</span>
-
-            </a>
-        </li>
-    
 
 </ul>
 
@@ -450,11 +429,25 @@ To address this issue, many turn to git-filter-branch. However, I want to introd
 
   
   
-    
+
+
+
+
   
-
-
-
+  
+  
+  <details class="toc noselect">
+    <summary>Table of Contents</summary>
+    <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#scenario">Scenario</a></li>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#how-to-use">How to Use</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+  </details>
+  
 
 
 
@@ -481,39 +474,39 @@ To address this issue, many turn to git-filter-branch. However, I want to introd
 <p>At some point, many of us make the mistake of accidentally pushing sensitive information to a GitHub repository. Simply deleting the information from the current repository does not solve the problem, as the commit history will still show the previous version with that information.</p>
 <p>To address this issue, many turn to <code>git-filter-branch</code>. However, I want to introduce an even better alternative: BFG.</p>
 <p>BFG is a powerful and easy-to-use tool that allows you to remove confidential information from your repository&rsquo;s commit history safely. It offers a quicker and more efficient solution compared to <code>git-filter-branch</code>.</p>
-<h4 id="scenario" >
+<h2 id="scenario" >
 <div>
     <a href="#scenario">
-        ###
+        #
     </a>
     Scenario
 </div>
-</h4>
+</h2>
 <p>We have the repository <a href="https://github.com/amandamata/how-to-use-bfg">how-to-use-bfg</a>.</p>
 <p>In this repository, there was an <code>appsettings.json</code> with sensitive information.</p>
 <p><img src="/img/bfg1.png" alt="bfg1"></p>
 <p>I deleted this sensitive information, made the commit and push, but the sensitive information still appears in the history.</p>
 <p><img src="/img/bfg2.png" alt="bfg2"></p>
-<h4 id="prerequisites" >
+<h2 id="prerequisites" >
 <div>
     <a href="#prerequisites">
-        ###
+        #
     </a>
     Prerequisites
 </div>
-</h4>
+</h2>
 <ul>
 <li>Git installed on your machine.</li>
 <li>Java Runtime Environment (JRE) installed to run the BFG <code>.jar</code> file.</li>
 </ul>
-<h4 id="how-to-use" >
+<h2 id="how-to-use" >
 <div>
     <a href="#how-to-use">
-        ###
+        #
     </a>
     How to Use
 </div>
-</h4>
+</h2>
 <p>The tutorial on the BFG website is quite straightforward, but here is a more detailed description to facilitate the process:</p>
 <ol>
 <li>Download the .jar file from the <a href="https://rtyley.github.io/bfg-repo-cleaner/">BFG</a> website.</li>
@@ -538,14 +531,14 @@ To address this issue, many turn to git-filter-branch. However, I want to introd
 </ol>
 <p>After following these steps, your repository&rsquo;s commit history will be updated, and the sensitive information will be removed.</p>
 <p><img src="/img/bfg3.png" alt="bfg3"></p>
-<h4 id="conclusion" >
+<h2 id="conclusion" >
 <div>
     <a href="#conclusion">
-        ###
+        #
     </a>
     Conclusion
 </div>
-</h4>
+</h2>
 <p>Conclusion
 Removing sensitive information from the commit history is crucial for maintaining the security and privacy of your project. The BFG Repo-Cleaner offers an efficient and quick way to do this. If you have any questions or would like to share your experience using BFG, feel free to leave a comment below.</p>
 <p>I hope this guide has been helpful. Good luck with cleaning your repository!</p>

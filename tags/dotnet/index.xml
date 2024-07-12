@@ -17,32 +17,24 @@
       <pubDate>Mon, 13 Nov 2023 18:19:29 -0300</pubDate>
       
       <guid>/post/telemetry/</guid>
-      <description>&lt;h4 id=&#34;introduction&#34; &gt;
+      <description>&lt;p&gt;Measuring method execution time is essential for optimizing applications, whether for profiling, performance monitoring, or detecting degradation over time. Although there are many tools and libraries available for this purpose, we often seek straightforward and non-intrusive solutions.&lt;/p&gt;
+&lt;h2 id=&#34;the-solution-methodtimer&#34; &gt;
 &lt;div&gt;
-    &lt;a href=&#34;#introduction&#34;&gt;
-        ###
+    &lt;a href=&#34;#the-solution-methodtimer&#34;&gt;
+        #
     &lt;/a&gt;
-    Introduction
+    The Solution: MethodTimer
 &lt;/div&gt;
-&lt;/h4&gt;
-&lt;p&gt;Measuring method execution time is essential for optimizing applications, whether for profiling, performance monitoring, or detecting degradation over time. Although there are many tools and libraries available for this purpose, we often seek straightforward and non-intrusive solutions.&lt;/p&gt;
-&lt;h4 id=&#34;the-solution-methodtimerfody&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#the-solution-methodtimerfody&#34;&gt;
-        ###
-    &lt;/a&gt;
-    The Solution: MethodTimer.Fody
-&lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;One of the most efficient and cleanest ways to measure method performance in C# is by using the MethodTimer.Fody library. This tool automatically adds timers to the desired methods through a simple attribute, without modifying the existing code.&lt;/p&gt;
-&lt;h4 id=&#34;how-it-works&#34; &gt;
+&lt;h2 id=&#34;how-it-works&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#how-it-works&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     How it works
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;After installing the &lt;a href=&#34;https://github.com/Fody/MethodTimer&#34;&gt;MethodTimer&lt;/a&gt; library in your project, simply add the [Time] attribute above any method you want to monitor. See an example:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;MyClass&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
@@ -99,27 +91,27 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;With everything configured, you can log and inject the information you want.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/telemetry.png&#34; alt=&#34;telemetry&#34;&gt;&lt;/p&gt;
-&lt;h4 id=&#34;benefits&#34; &gt;
+&lt;h2 id=&#34;benefits&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#benefits&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Benefits
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Simplicity: No need to write additional timing code.&lt;/li&gt;
 &lt;li&gt;Automation: Performance measurement is added at compile time, keeping your code clean.&lt;/li&gt;
 &lt;li&gt;Ease of Use: Just add an attribute to the desired method.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;conclusion&#34; &gt;
+&lt;h2 id=&#34;conclusion&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#conclusion&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Conclusion
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;MethodTimer.Fody is a powerful tool for developers looking for an efficient and uncomplicated way to measure the performance of their methods in C#. With easy integration and minimal impact on existing code, it is an excellent choice for any project.&lt;/p&gt;
 </description>
     </item>
@@ -132,27 +124,27 @@
       <guid>/post/redis/</guid>
       <description>&lt;p&gt;I recently had to implement a cache in an application to avoid unnecessary database queries, and that was cool. I&amp;rsquo;ve worked with Redis in the past, but I think I&amp;rsquo;ve done it the wrong way because implementing a cache with Redis has never been so cool.
 &lt;br/&gt;&lt;/p&gt;
-&lt;h4 id=&#34;redis-vs-mem-cached&#34; &gt;
+&lt;h2 id=&#34;redis-vs-mem-cached&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#redis-vs-mem-cached&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Redis vs Mem cached
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;Redis is almost like a NoSql database, but it is even better because it stores data with key and values and with that, it is much easier to use it as a cache.
 But the main point in this comparison is: it depends, it depends on how and how much data will be used in this cache. If you&amp;rsquo;re not sure how to store session information, MemCache makes sense. But if we&amp;rsquo;re talking about a lot of queries with bigger data, like the data we store in the database, Redis does a better job. This is because when using MemCache we are using the application&amp;rsquo;s memory to save that information, since Redis is a distributed cache, it has nothing to do with the application&amp;rsquo;s memory and it is possible to use more than one Redis database, scaling this service vertically according to demand grow up.&lt;/p&gt;
 &lt;p&gt;The first time it is necessary to use the cache, the information will not be there, so it is necessary to consult the database and save it in the cache, the second time it is no longer necessary to go to the database, as the information will be in the cache. And this makes the application take less time to respond to a request, as going to the bank takes much longer than going to Redis.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/redis.png&#34; alt=&#34;redis&#34;&gt;
 &lt;br/&gt;&lt;/p&gt;
-&lt;h4 id=&#34;why-use&#34; &gt;
+&lt;h2 id=&#34;why-use&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#why-use&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Why use
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Reduce response time
@@ -169,26 +161,26 @@ When we are talking about the cloud, we are reducing the consumption of lambdas 
 &lt;/ul&gt;
 &lt;p&gt;The cost of a cache is high, so it has to be expensive on the server side to make this migration to the cache. For example, problems with the delay in response to the end customer can be costly, the end customer can simply give up using the application due to the delay, and many other problems that this delay can generate. To reduce both the cost of losing a customer and the cost of consulting the bank, the cache is then used to solve these problems.
 &lt;br/&gt;&lt;/p&gt;
-&lt;h4 id=&#34;problem&#34; &gt;
+&lt;h2 id=&#34;problem&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#problem&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Problem
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;Suppose there is an application that makes many calls to the database, but always consulting the same information, when the application was developed the developers did not think it could grow so much, and a cache was not implemented to avoid these queries to the database.
 The application is for car rental for companies, and the query is simple, with each request received at the rental endpoint, it is necessary to check whether the company (document) informed in the rental request is the same as the one in the bank.
 We have the scenario, let&amp;rsquo;s move on to implementation.
 &lt;br/&gt;&lt;/p&gt;
-&lt;h4 id=&#34;implementation&#34; &gt;
+&lt;h2 id=&#34;implementation&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#implementation&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Implementation
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;Explanation and problem presentations, let&amp;rsquo;s implement!
 For this implementation we will follow a pattern called Decorator, with this pattern it is possible to add a cache layer without adding more complexity to the repository layer, and we will follow the S principle of SOLID, [Single-responsibility principle](https:// g.co/kgs/phLumf).&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s work with dotnet, and install the packages &lt;a href=&#34;https://www.nuget.org/packages/scrutor/&#34;&gt;Scrutor&lt;/a&gt; and &lt;a href=&#34;https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis/7.0.5&#34;&gt;StackExchangeRedis&lt;/a&gt;&lt;/p&gt;
@@ -313,14 +305,14 @@ Repository:&lt;/p&gt;
       <guid>/post/queue-csharp-sqs/</guid>
       <description>&lt;p&gt;In this &lt;a href=&#34;https://amandamata.github.io/queue&#34;&gt;post&lt;/a&gt;, I pass an introduction to a queue and how to use it. Now I gonna explain how to implement an sqs consumer and publisher using c# dotnet.
 &lt;br/&gt;&lt;/p&gt;
-&lt;h4 id=&#34;sqs&#34; &gt;
+&lt;h2 id=&#34;sqs&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#sqs&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     SQS
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;What is SQS?&lt;/p&gt;
 &lt;p&gt;SQS (Simple Queue Service) is an Amazon service that lets you send, store, and receive messages between software components at any volume, without losing messages or requiring other services to be available.&lt;/p&gt;
 &lt;p&gt;The best part is free, actually to pay for this service you gonna need to send over 1 million requests per month then amazon is going to bill you.&lt;/p&gt;
@@ -328,14 +320,14 @@ Repository:&lt;/p&gt;
 &lt;p&gt;In the console area, type SQS in search and enter the first option Simple Queue Service.
 Click on Create queue, add a name to the queue and go to the end of the page and click Create queue. You can change the default values, but for now, all the settings are ok.
 &lt;br/&gt;&lt;/p&gt;
-&lt;h4 id=&#34;aws-command-line-interface&#34; &gt;
+&lt;h2 id=&#34;aws-command-line-interface&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#aws-command-line-interface&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     AWS Command Line Interface
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;The AWS Command Line Interface allows us to make changes directly from the console without the need to access the AWS console.
 For example, if we need to list the buckets:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;aws s3api list-buckets
@@ -352,14 +344,14 @@ For example, if we need to list the buckets:&lt;/p&gt;
 &lt;p&gt;After the configuration, you&amp;rsquo;re gonna able to execute the list buckets.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;aws s3api list-buckets
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
-&lt;h4 id=&#34;publisher&#34; &gt;
+&lt;h2 id=&#34;publisher&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#publisher&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Publisher
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;What is a publisher?&lt;/p&gt;
 &lt;p&gt;A publisher it&amp;rsquo;s a service that gonna get the information that something changes and sends to the queue a request.
 In the example used in the queue post, the publisher is inside the API, and after a new user was created the request was sent to the queue.&lt;/p&gt;
@@ -422,14 +414,14 @@ In the example used in the queue post, the publisher is inside the API, and afte
 &lt;p&gt;In the sqsCLient.GetQueueUrlAsync(&amp;ldquo;customers&amp;rdquo;) I used &amp;ldquo;customers&amp;rdquo; cuz that is the name of my queue&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;br/&gt;
-&lt;h4 id=&#34;consumer&#34; &gt;
+&lt;h2 id=&#34;consumer&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#consumer&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Consumer
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;What it&amp;rsquo;s a consumer?&lt;/p&gt;
 &lt;p&gt;A consumer it&amp;rsquo;s the service that will be listening the queue.&lt;/p&gt;
 &lt;p&gt;We&amp;rsquo;re gonna use a Console App&lt;/p&gt;
@@ -509,14 +501,14 @@ Many sites and stack overflow have the same question, with many disappointing pe
 &lt;li&gt;omnisharp.json file&lt;/li&gt;
 &lt;li&gt;settings.json modifications&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;omnisharp&#34; &gt;
+&lt;h2 id=&#34;omnisharp&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#omnisharp&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Omnisharp
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;You can find your omnisharp location by checking on %USERPROFILE%/.omnisharp/&lt;/p&gt;
 &lt;p&gt;Mine is in /home/amanda/.omnisharp/omnisharp.json&lt;/p&gt;
 &lt;p&gt;This is my omnisharp config:&lt;/p&gt;
@@ -546,14 +538,14 @@ Many sites and stack overflow have the same question, with many disappointing pe
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Based on &lt;a href=&#34;https://github.com/OmniSharp/omnisharp-vscode/issues/1506#issuecomment-303390666&#34;&gt;this comment&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;vscode-settings&#34; &gt;
+&lt;h2 id=&#34;vscode-settings&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#vscode-settings&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     VSCode Settings
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;You can find your settings.json location by checking on ~/.config/Code/User&lt;/p&gt;
 &lt;p&gt;Mine is in /home/amanda/.config/Code/User/settings.json&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;ve inserted these lines in my settings.json:&lt;/p&gt;

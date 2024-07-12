@@ -19,14 +19,14 @@
       <guid>/pt-pt/post/queue-csharp-sqs/</guid>
       <description>&lt;p&gt;Nesse &lt;a href=&#34;https://amandamata.github.io/pt-pt/queue&#34;&gt;post&lt;/a&gt;, eu passei a introdução de uma fila e como utilizá-la. Agora, eu vou explicar como implementar um consumer e sqs publisher usando c# dotnet.
 &lt;br/&gt;&lt;/p&gt;
-&lt;h4 id=&#34;sqs&#34; &gt;
+&lt;h2 id=&#34;sqs&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#sqs&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     SQS
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;O que é SQS?&lt;/p&gt;
 &lt;p&gt;SQS (Simple Queue Service) é um serviço da Amazon que permite que você envie, salve, e receba mensagens entre aplicações, sem que você perca essas mensagens caso o serviço esteja indisponível.&lt;/p&gt;
 &lt;p&gt;A melhor parte de tudo isso é que, para você pagar por esse serviço, você teria que enviar mais de um milhão de requisições por mês, para que a amazon te envie uma cobrança.&lt;/p&gt;
@@ -34,14 +34,14 @@
 &lt;p&gt;Na área do console, digite SQS no campo de busca e entre na primeira opção, Simple Queue Service.&lt;/p&gt;
 &lt;p&gt;Clique em Create queue, e adicione o nome para a fila, e então vá para o final da página e clique em Create queue. Você pode alterar os valores que vem por padrão, mas para esse exemplos o padrão já está de acordo.
 &lt;br/&gt;&lt;/p&gt;
-&lt;h4 id=&#34;aws-command-line-interface&#34; &gt;
+&lt;h2 id=&#34;aws-command-line-interface&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#aws-command-line-interface&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     AWS Command Line Interface
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;A AWS Command Line Interface permite que façamos mudanças e requisições diretamente pelo console localmente, sem a necessidade de acessar o AWS console no navegador.&lt;/p&gt;
 &lt;p&gt;Se por exemplo quisermos listar os buckets:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;aws s3api list-buckets
@@ -58,14 +58,14 @@
 &lt;p&gt;Depois da configuração finalizada, você poderá executar a listagem de buckets.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;aws s3api list-buckets
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
-&lt;h4 id=&#34;publisher&#34; &gt;
+&lt;h2 id=&#34;publisher&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#publisher&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Publisher
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;O que é um publisher?&lt;/p&gt;
 &lt;p&gt;Um publisher é um serviço que vai pegar uma informação que algo mudou por exemplo e enviar essa informação para a fila.
 No exemplo que utilizei no post sobre a fila, o publisher estava dentro da API, e quando um novo usuário era criado a informação era enviada para a fila.&lt;/p&gt;
@@ -128,14 +128,14 @@ No exemplo que utilizei no post sobre a fila, o publisher estava dentro da API, 
 &lt;p&gt;No sqsCLient.GetQueueUrlAsync(&amp;ldquo;customers&amp;rdquo;) eu utilizei &amp;ldquo;customers&amp;rdquo; porque esse é o nome da minha fila&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;br/&gt;
-&lt;h4 id=&#34;consumer&#34; &gt;
+&lt;h2 id=&#34;consumer&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#consumer&#34;&gt;
-        ###
+        #
     &lt;/a&gt;
     Consumer
 &lt;/div&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;O que é um consumer?&lt;/p&gt;
 &lt;p&gt;Um consumer é o serviço que irá escutar a fila.&lt;/p&gt;
 &lt;p&gt;Vamos utilizar o Console App&lt;/p&gt;
