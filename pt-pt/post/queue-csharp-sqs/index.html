@@ -12,7 +12,7 @@
 
 <title>Implementando um publisher e consumer SQS usando dotnet - amandamata</title>
 
-<meta name="description" content="Nesse post, eu passei a introdução de uma fila e como utilizá-la. Agora, eu vou explicar como implementar um consumer e sqs publisher usando c# dotnet. #### SQS O que é SQS?
+<meta name="description" content="Nesse post, eu passei a introdução de uma fila e como utilizá-la. Agora, eu vou explicar como implementar um consumer e sqs publisher usando c# dotnet. ### SQS O que é SQS?
 SQS (Simple Queue Service) é um serviço da Amazon que permite que você envie, salve, e receba mensagens entre aplicações, sem que você perca essas mensagens caso o serviço esteja indisponível.
 A melhor parte de tudo isso é que, para você pagar por esse serviço, você teria que enviar mais de um milhão de requisições por mês, para que a amazon te envie uma cobrança.">
 
@@ -505,30 +505,30 @@ A melhor parte de tudo isso é que, para você pagar por esse serviço, você te
 
         <div class="content e-content">
             <p>Nesse <a href="/pt-pt/queue">post</a>, eu passei a introdução de uma fila e como utilizá-la. Agora, eu vou explicar como implementar um consumer e sqs publisher usando c# dotnet.
-<br/><br/></p>
-<h5 id="sqs" >
+<br/></p>
+<h4 id="sqs" >
 <div>
     <a href="#sqs">
-        ####
+        ###
     </a>
     SQS
 </div>
-</h5>
+</h4>
 <p>O que é SQS?</p>
 <p>SQS (Simple Queue Service) é um serviço da Amazon que permite que você envie, salve, e receba mensagens entre aplicações, sem que você perca essas mensagens caso o serviço esteja indisponível.</p>
 <p>A melhor parte de tudo isso é que, para você pagar por esse serviço, você teria que enviar mais de um milhão de requisições por mês, para que a amazon te envie uma cobrança.</p>
 <p>Para começar pe necessário criar uma conta na <a href="https://aws.amazon.com/">aws</a> e então ir para o <a href="https://console.aws.amazon.com">console</a>.</p>
 <p>Na área do console, digite SQS no campo de busca e entre na primeira opção, Simple Queue Service.</p>
 <p>Clique em Create queue, e adicione o nome para a fila, e então vá para o final da página e clique em Create queue. Você pode alterar os valores que vem por padrão, mas para esse exemplos o padrão já está de acordo.
-<br/><br/></p>
-<h5 id="aws-command-line-interface" >
+<br/></p>
+<h4 id="aws-command-line-interface" >
 <div>
     <a href="#aws-command-line-interface">
-        ####
+        ###
     </a>
     AWS Command Line Interface
 </div>
-</h5>
+</h4>
 <p>A AWS Command Line Interface permite que façamos mudanças e requisições diretamente pelo console localmente, sem a necessidade de acessar o AWS console no navegador.</p>
 <p>Se por exemplo quisermos listar os buckets:</p>
 <pre tabindex="0"><code>aws s3api list-buckets
@@ -545,14 +545,14 @@ A melhor parte de tudo isso é que, para você pagar por esse serviço, você te
 <p>Depois da configuração finalizada, você poderá executar a listagem de buckets.</p>
 <pre tabindex="0"><code>aws s3api list-buckets
 </code></pre><br/>
-<h5 id="publisher" >
+<h4 id="publisher" >
 <div>
     <a href="#publisher">
-        ####
+        ###
     </a>
     Publisher
 </div>
-</h5>
+</h4>
 <p>O que é um publisher?</p>
 <p>Um publisher é um serviço que vai pegar uma informação que algo mudou por exemplo e enviar essa informação para a fila.
 No exemplo que utilizei no post sobre a fila, o publisher estava dentro da API, e quando um novo usuário era criado a informação era enviada para a fila.</p>
@@ -615,14 +615,14 @@ Console.WriteLine();
 <p>No sqsCLient.GetQueueUrlAsync(&ldquo;customers&rdquo;) eu utilizei &ldquo;customers&rdquo; porque esse é o nome da minha fila</p>
 </blockquote>
 <br/>
-<h5 id="consumer" >
+<h4 id="consumer" >
 <div>
     <a href="#consumer">
-        ####
+        ###
     </a>
     Consumer
 </div>
-</h5>
+</h4>
 <p>O que é um consumer?</p>
 <p>Um consumer é o serviço que irá escutar a fila.</p>
 <p>Vamos utilizar o Console App</p>

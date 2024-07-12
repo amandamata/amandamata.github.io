@@ -200,14 +200,14 @@ blockquote,
 <p>Today I learned something extremely useful: how to efficiently remove sensitive information from commit history.</p>
 <p>I believe that at some point, we have all made the mistake of accidentally pushing sensitive information to a repository on GitHub. Simply deleting the information does not solve the problem because the commit history will still show the previous version with that sensitive information.</p>
 <p>To address this issue, people often use git-filter-branch. However, I would like to introduce an even better alternative: BFG.</p>
-<p>BFG is a powerful and user-friendly tool that allows you to securely remove confidential information from your repository&rsquo;s commit history. It provides a faster and more efficient solution compared to git-filter-branch.</br></br></p>
+<p>BFG is a powerful and user-friendly tool that allows you to securely remove confidential information from your repository&rsquo;s commit history. It provides a faster and more efficient solution compared to git-filter-branch.</br></p>
 <h5 id="scenario">Scenario</h5>
 <p>We have the repository how-to-use-bfg.</p>
 <p>In this repository, there was an appsettings.json file with sensitive information:
 <img src="https://amandamata.github.io/img/bfg1.png" alt="Some description" class="some-class" style="some-style"></p>
 <p>I deleted this sensitive information, made the commit and push, but the sensitive information still appears in the commit history:
 <img src="https://amandamata.github.io/img/bfg2.png" alt="Some description" class="some-class" style="some-style">
-</br></br></p>
+</br></p>
 <h5 id="how-to-use">How to Use</h5>
 <p>The tutorial on the BFG website is not difficult, but I will describe it here in more detail to make the process easier to understand.</p>
 <p>To use BFG, follow these steps:</p>

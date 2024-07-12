@@ -18,30 +18,30 @@
       
       <guid>/post/queue-csharp-sqs/</guid>
       <description>&lt;p&gt;In this &lt;a href=&#34;https://amandamata.github.io/queue&#34;&gt;post&lt;/a&gt;, I pass an introduction to a queue and how to use it. Now I gonna explain how to implement an sqs consumer and publisher using c# dotnet.
-&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;h5 id=&#34;sqs&#34; &gt;
+&lt;br/&gt;&lt;/p&gt;
+&lt;h4 id=&#34;sqs&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#sqs&#34;&gt;
-        ####
+        ###
     &lt;/a&gt;
     SQS
 &lt;/div&gt;
-&lt;/h5&gt;
+&lt;/h4&gt;
 &lt;p&gt;What is SQS?&lt;/p&gt;
 &lt;p&gt;SQS (Simple Queue Service) is an Amazon service that lets you send, store, and receive messages between software components at any volume, without losing messages or requiring other services to be available.&lt;/p&gt;
 &lt;p&gt;The best part is free, actually to pay for this service you gonna need to send over 1 million requests per month then amazon is going to bill you.&lt;/p&gt;
 &lt;p&gt;To start, it&amp;rsquo;s necessary to create an account in &lt;a href=&#34;https://aws.amazon.com/&#34;&gt;aws&lt;/a&gt; and go to &lt;a href=&#34;https://console.aws.amazon.com&#34;&gt;console&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;In the console area, type SQS in search and enter the first option Simple Queue Service.
 Click on Create queue, add a name to the queue and go to the end of the page and click Create queue. You can change the default values, but for now, all the settings are ok.
-&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;h5 id=&#34;aws-command-line-interface&#34; &gt;
+&lt;br/&gt;&lt;/p&gt;
+&lt;h4 id=&#34;aws-command-line-interface&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#aws-command-line-interface&#34;&gt;
-        ####
+        ###
     &lt;/a&gt;
     AWS Command Line Interface
 &lt;/div&gt;
-&lt;/h5&gt;
+&lt;/h4&gt;
 &lt;p&gt;The AWS Command Line Interface allows us to make changes directly from the console without the need to access the AWS console.
 For example, if we need to list the buckets:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;aws s3api list-buckets
@@ -58,14 +58,14 @@ For example, if we need to list the buckets:&lt;/p&gt;
 &lt;p&gt;After the configuration, you&amp;rsquo;re gonna able to execute the list buckets.&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;aws s3api list-buckets
 &lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;
-&lt;h5 id=&#34;publisher&#34; &gt;
+&lt;h4 id=&#34;publisher&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#publisher&#34;&gt;
-        ####
+        ###
     &lt;/a&gt;
     Publisher
 &lt;/div&gt;
-&lt;/h5&gt;
+&lt;/h4&gt;
 &lt;p&gt;What is a publisher?&lt;/p&gt;
 &lt;p&gt;A publisher it&amp;rsquo;s a service that gonna get the information that something changes and sends to the queue a request.
 In the example used in the queue post, the publisher is inside the API, and after a new user was created the request was sent to the queue.&lt;/p&gt;
@@ -128,14 +128,14 @@ Console.WriteLine();
 &lt;p&gt;In the sqsCLient.GetQueueUrlAsync(&amp;ldquo;customers&amp;rdquo;) I used &amp;ldquo;customers&amp;rdquo; cuz that is the name of my queue&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;br/&gt;
-&lt;h5 id=&#34;consumer&#34; &gt;
+&lt;h4 id=&#34;consumer&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#consumer&#34;&gt;
-        ####
+        ###
     &lt;/a&gt;
     Consumer
 &lt;/div&gt;
-&lt;/h5&gt;
+&lt;/h4&gt;
 &lt;p&gt;What it&amp;rsquo;s a consumer?&lt;/p&gt;
 &lt;p&gt;A consumer it&amp;rsquo;s the service that will be listening the queue.&lt;/p&gt;
 &lt;p&gt;We&amp;rsquo;re gonna use a Console App&lt;/p&gt;
@@ -208,7 +208,6 @@ We could instead of making all those things sync, make only the crucial sync and
 &lt;p&gt;To get this done it&amp;rsquo;s necessary to have a consumer service, that will be listening to the queue and do something with the information in the queue, like sending an email.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/queue3.png&#34; alt=&#34;queue3&#34;&gt;&lt;/p&gt;
 &lt;p&gt;That makes your system more resilient if something fails to process, it&amp;rsquo;s going back to the queue and then will be reprocessed later.&lt;/p&gt;
-&lt;p&gt;See more about queue &lt;a href=&#34;https://amandamata.github.io/queue-csharp-sqs&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

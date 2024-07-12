@@ -20,29 +20,29 @@
       <description>&lt;p&gt;Today I learned something extremely useful: how to efficiently remove sensitive information from commit history.&lt;/p&gt;
 &lt;p&gt;I believe that at some point, we have all made the mistake of accidentally pushing sensitive information to a repository on GitHub. Simply deleting the information does not solve the problem because the commit history will still show the previous version with that sensitive information.&lt;/p&gt;
 &lt;p&gt;To address this issue, people often use git-filter-branch. However, I would like to introduce an even better alternative: BFG.&lt;/p&gt;
-&lt;p&gt;BFG is a powerful and user-friendly tool that allows you to securely remove confidential information from your repository&amp;rsquo;s commit history. It provides a faster and more efficient solution compared to git-filter-branch.&lt;/br&gt;&lt;/br&gt;&lt;/p&gt;
-&lt;h5 id=&#34;scenario&#34; &gt;
+&lt;p&gt;BFG is a powerful and user-friendly tool that allows you to securely remove confidential information from your repository&amp;rsquo;s commit history. It provides a faster and more efficient solution compared to git-filter-branch.&lt;/br&gt;&lt;/p&gt;
+&lt;h4 id=&#34;scenario&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#scenario&#34;&gt;
-        ####
+        ###
     &lt;/a&gt;
     Scenario
 &lt;/div&gt;
-&lt;/h5&gt;
+&lt;/h4&gt;
 &lt;p&gt;We have the repository how-to-use-bfg.&lt;/p&gt;
 &lt;p&gt;In this repository, there was an appsettings.json file with sensitive information:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg1.png&#34; alt=&#34;bfg&#34;&gt;&lt;/p&gt;
 &lt;p&gt;I deleted this sensitive information, made the commit and push, but the sensitive information still appears in the commit history:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg2.png&#34; alt=&#34;bfg2&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/br&gt;&lt;/br&gt;&lt;/p&gt;
-&lt;h5 id=&#34;how-to-use&#34; &gt;
+&lt;/br&gt;
+&lt;h4 id=&#34;how-to-use&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#how-to-use&#34;&gt;
-        ####
+        ###
     &lt;/a&gt;
     How to Use
 &lt;/div&gt;
-&lt;/h5&gt;
+&lt;/h4&gt;
 &lt;p&gt;The tutorial on the BFG website is not difficult, but I will describe it here in more detail to make the process easier to understand.&lt;/p&gt;
 &lt;p&gt;To use BFG, follow these steps:&lt;/p&gt;
 &lt;ol&gt;
@@ -66,9 +66,9 @@
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git push
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;After following these steps, your repository&amp;rsquo;s commit history will be updated, and the sensitive information will be removed.&lt;/p&gt;
+&lt;/br&gt;
+After following these steps, your repository&#39;s commit history will be updated, and the sensitive information will be removed.
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg3.png&#34; alt=&#34;bfg3&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Give BFG a try and ensure that your confidential information is protected in the commit history.&lt;/p&gt;
 </description>
     </item>
     

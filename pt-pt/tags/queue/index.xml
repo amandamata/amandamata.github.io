@@ -18,30 +18,30 @@
       
       <guid>/pt-pt/post/queue-csharp-sqs/</guid>
       <description>&lt;p&gt;Nesse &lt;a href=&#34;https://amandamata.github.io/pt-pt/queue&#34;&gt;post&lt;/a&gt;, eu passei a introdução de uma fila e como utilizá-la. Agora, eu vou explicar como implementar um consumer e sqs publisher usando c# dotnet.
-&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;h5 id=&#34;sqs&#34; &gt;
+&lt;br/&gt;&lt;/p&gt;
+&lt;h4 id=&#34;sqs&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#sqs&#34;&gt;
-        ####
+        ###
     &lt;/a&gt;
     SQS
 &lt;/div&gt;
-&lt;/h5&gt;
+&lt;/h4&gt;
 &lt;p&gt;O que é SQS?&lt;/p&gt;
 &lt;p&gt;SQS (Simple Queue Service) é um serviço da Amazon que permite que você envie, salve, e receba mensagens entre aplicações, sem que você perca essas mensagens caso o serviço esteja indisponível.&lt;/p&gt;
 &lt;p&gt;A melhor parte de tudo isso é que, para você pagar por esse serviço, você teria que enviar mais de um milhão de requisições por mês, para que a amazon te envie uma cobrança.&lt;/p&gt;
 &lt;p&gt;Para começar pe necessário criar uma conta na &lt;a href=&#34;https://aws.amazon.com/&#34;&gt;aws&lt;/a&gt; e então ir para o &lt;a href=&#34;https://console.aws.amazon.com&#34;&gt;console&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Na área do console, digite SQS no campo de busca e entre na primeira opção, Simple Queue Service.&lt;/p&gt;
 &lt;p&gt;Clique em Create queue, e adicione o nome para a fila, e então vá para o final da página e clique em Create queue. Você pode alterar os valores que vem por padrão, mas para esse exemplos o padrão já está de acordo.
-&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;h5 id=&#34;aws-command-line-interface&#34; &gt;
+&lt;br/&gt;&lt;/p&gt;
+&lt;h4 id=&#34;aws-command-line-interface&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#aws-command-line-interface&#34;&gt;
-        ####
+        ###
     &lt;/a&gt;
     AWS Command Line Interface
 &lt;/div&gt;
-&lt;/h5&gt;
+&lt;/h4&gt;
 &lt;p&gt;A AWS Command Line Interface permite que façamos mudanças e requisições diretamente pelo console localmente, sem a necessidade de acessar o AWS console no navegador.&lt;/p&gt;
 &lt;p&gt;Se por exemplo quisermos listar os buckets:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;aws s3api list-buckets
@@ -58,14 +58,14 @@
 &lt;p&gt;Depois da configuração finalizada, você poderá executar a listagem de buckets.&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;aws s3api list-buckets
 &lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;
-&lt;h5 id=&#34;publisher&#34; &gt;
+&lt;h4 id=&#34;publisher&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#publisher&#34;&gt;
-        ####
+        ###
     &lt;/a&gt;
     Publisher
 &lt;/div&gt;
-&lt;/h5&gt;
+&lt;/h4&gt;
 &lt;p&gt;O que é um publisher?&lt;/p&gt;
 &lt;p&gt;Um publisher é um serviço que vai pegar uma informação que algo mudou por exemplo e enviar essa informação para a fila.
 No exemplo que utilizei no post sobre a fila, o publisher estava dentro da API, e quando um novo usuário era criado a informação era enviada para a fila.&lt;/p&gt;
@@ -128,14 +128,14 @@ Console.WriteLine();
 &lt;p&gt;No sqsCLient.GetQueueUrlAsync(&amp;ldquo;customers&amp;rdquo;) eu utilizei &amp;ldquo;customers&amp;rdquo; porque esse é o nome da minha fila&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;br/&gt;
-&lt;h5 id=&#34;consumer&#34; &gt;
+&lt;h4 id=&#34;consumer&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#consumer&#34;&gt;
-        ####
+        ###
     &lt;/a&gt;
     Consumer
 &lt;/div&gt;
-&lt;/h5&gt;
+&lt;/h4&gt;
 &lt;p&gt;O que é um consumer?&lt;/p&gt;
 &lt;p&gt;Um consumer é o serviço que irá escutar a fila.&lt;/p&gt;
 &lt;p&gt;Vamos utilizar o Console App&lt;/p&gt;
@@ -208,7 +208,6 @@ Nesse cenário, se enviarmos um email, e nessa etapa falhar, a requisição inte
 Para que isso aconteça será necessário que tenhamos um consumer service, que vai ficar escutando o que tem na fila e fazer algo com a informação da fila,como enviar o email.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/queue3.png&#34; alt=&#34;queue3&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Isso faz com que seu sistema seja mais resiliente, e se algo falhar, vai voltar para a fila e será processado novamente depois.&lt;/p&gt;
-&lt;p&gt;Veja mais sobre filas &lt;a href=&#34;https://amandamata.github.io/pt-pt/queue-csharp-sqs&#34;&gt;aqui&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

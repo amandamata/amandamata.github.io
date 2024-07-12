@@ -498,29 +498,29 @@ To address this issue, people often use git-filter-branch. However, I would like
             <p>Today I learned something extremely useful: how to efficiently remove sensitive information from commit history.</p>
 <p>I believe that at some point, we have all made the mistake of accidentally pushing sensitive information to a repository on GitHub. Simply deleting the information does not solve the problem because the commit history will still show the previous version with that sensitive information.</p>
 <p>To address this issue, people often use git-filter-branch. However, I would like to introduce an even better alternative: BFG.</p>
-<p>BFG is a powerful and user-friendly tool that allows you to securely remove confidential information from your repository&rsquo;s commit history. It provides a faster and more efficient solution compared to git-filter-branch.</br></br></p>
-<h5 id="scenario" >
+<p>BFG is a powerful and user-friendly tool that allows you to securely remove confidential information from your repository&rsquo;s commit history. It provides a faster and more efficient solution compared to git-filter-branch.</br></p>
+<h4 id="scenario" >
 <div>
     <a href="#scenario">
-        ####
+        ###
     </a>
     Scenario
 </div>
-</h5>
+</h4>
 <p>We have the repository how-to-use-bfg.</p>
 <p>In this repository, there was an appsettings.json file with sensitive information:</p>
 <p><img src="/img/bfg1.png" alt="bfg"></p>
 <p>I deleted this sensitive information, made the commit and push, but the sensitive information still appears in the commit history:</p>
 <p><img src="/img/bfg2.png" alt="bfg2"></p>
-<p></br></br></p>
-<h5 id="how-to-use" >
+</br>
+<h4 id="how-to-use" >
 <div>
     <a href="#how-to-use">
-        ####
+        ###
     </a>
     How to Use
 </div>
-</h5>
+</h4>
 <p>The tutorial on the BFG website is not difficult, but I will describe it here in more detail to make the process easier to understand.</p>
 <p>To use BFG, follow these steps:</p>
 <ol>
@@ -544,9 +544,9 @@ To address this issue, people often use git-filter-branch. However, I would like
 <pre tabindex="0"><code>git push
 </code></pre></li>
 </ol>
-<p>After following these steps, your repository&rsquo;s commit history will be updated, and the sensitive information will be removed.</p>
+</br>
+After following these steps, your repository's commit history will be updated, and the sensitive information will be removed.
 <p><img src="/img/bfg3.png" alt="bfg3"></p>
-<p>Give BFG a try and ensure that your confidential information is protected in the commit history.</p>
 
         </div>
 
