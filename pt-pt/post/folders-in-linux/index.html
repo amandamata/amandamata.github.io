@@ -12,8 +12,8 @@
 
 <title>Ententendo as pastas no linux - amandabytes</title>
 
-<meta name="description" content="Você acabou de instalar o linux e está acostumado com a estrutura do windows e seus diretórios, então você vai dar uma olhada no seu gestor de arquivos procurando pelo disco C: e não encontra.. Conhecer os diretórios do linux pode ajudar a administrar o sistema e entender como ele funciona.
-Se a gente for analisar o windows e o linux acabaram evoluindo de forma diferente com relação a estrutura de diretórios.">
+<meta name="description" content="Se você acabou de instalar o Linux e está acostumado com a estrutura de diretórios do Windows, pode estar se perguntando onde está o &ldquo;disco C:&rdquo;? Conhecer os diretórios do Linux pode ajudar a administrar o sistema e entender como ele funciona.
+# Estrutura de diretórios: Windows vs. Linux Windows e Linux evoluíram de forma diferente em termos de estrutura de diretórios. O Linux é mais parecido com outros sistemas Unix-like, como o macOS, na verdade, o Windows é o que mais difere da maioria dos sistemas operacionais em termos de organização.">
 
 
 
@@ -455,72 +455,270 @@ Se a gente for analisar o windows e o linux acabaram evoluindo de forma diferent
 </script>
 
         <div class="content e-content">
-            <p>Você acabou de instalar o linux e está acostumado com a estrutura do windows e seus diretórios, então você vai dar uma olhada no seu gestor de arquivos procurando pelo disco C: e não encontra..
-Conhecer os diretórios do linux pode ajudar a administrar o sistema e entender como ele funciona.</p>
-<p>Se a gente for analisar o windows e o linux acabaram evoluindo de forma diferente com relação a estrutura de diretórios. O linux inclusive é muito mais parecido com qualquer outro sistema com raízes unix como o macOS. Na verdade, o windows, considerando a maior parte dos sistemas operacionais existentes, é o que tem a organização mais diferente.</p>
-<p>A hierarquia de diretórios do linux não é mais difícil e também não é mais fácil é simplesmente diferente, tanto o disco C: do windows quanto a raiz do linux servem para a mesma coisa mas fazem isso de forma diferente.</p>
-<p>Os sistemas linux possuem a hierarquia de sistema <strong>FHS</strong>, Filesystem hierarchy standard, padrão mantido pela linux foundation.</p>
-<p>Existem pastas que possuem uma seta e outras que possuem um x.
-As pastas que possuem a seta são chamadas de links simbólicos, que são atalhos para outras pastas ou arquivos, essas pastas podem ser acessadas mas quando você entra neles você está entrando em outro diretório. Como exemplo o /bin, se observar as propriedades dele vai ver que tem como destino a pasta /usr/bin, dessa forma se você for utilizar o terminal para fazer um shell script ou executar o bash, não é preciso executar o comando /usr/bin/bash e sim /bash.</p>
-<p>Já as pastas que contém o x significa que não podem ser acessadas sem que esteja navegando como root, o usuário comum não tem permissão de escrita em nenhuma pasta com x.</p>
-<p>Vamos observar a funcionalidade das pastas que compõem a raiz do linux.</p>
-<p><strong>/</strong></p>
-<p>O diretório <strong>/</strong> é oque chamamos de diretório raiz, é onde todos os outros diretórios e subdiretórios vão se abrigar.</p>
-<p><strong>/bin</strong></p>
-<p>Binaries ou binários
-Nesse diretório você encontra os executáveis de diversos programas do sistema operacional, como o bash, cat, ls e etc. Encontrando também links simbólicos e shell script. Essa pasta é comparável com a pasta disco C: arquivos e programas do windows.</p>
-<p><strong>/boot</strong></p>
-<p>Contém os arquivos necessários para o sistema operacional iniciar.</p>
-<p><strong>/cdroom</strong></p>
-<p>Diretório legado, a imagem do disco será montada neste diretório.</p>
-<p><strong>/dev</strong></p>
-<p>Devices</p>
-<p>Dentro dessa pasta você encontra arquivos que correspondem ao seu hardware, arquivos que podem ser configuráveis e mudar a forma que um determinado device funciona. É por isso que as unidades de discos são chamadas de <strong>/dev/sda</strong> e algum número. O número só aparece se houver partições nesse disco.</p>
-<p>Curiosidade: <strong>/dev/null</strong> é um diretorio buraco negro, que perde todas as informações que são enviadas para ele.</p>
-<p><strong>/etc</strong></p>
-<p>Edit to config ou et cetera</p>
-<p>A função dessa pasta é manter os arquivos de configuração do sistema, de forma system wide, ou seja, para todos os usuários do sistema e não configurações específicas de um usuário, essas configurações específicas ficam em /home.</p>
-<p><strong>/home</strong></p>
-<p>Onde ficam os usuários comuns dos sistema, dentro de cada pasta de usuário, é possível ter configurações específicas de aplicativos para o usuário em questão.</p>
-<p><strong>/lib</strong></p>
-<p>Library</p>
-<p><strong>/lib lib32 lib64 libx32</strong></p>
-<p>Todas elas são pastas que contém bibliotecas de software para o sistema operacional e os aplicativos instalados, um novo programa instalado pode adicionar libs nessas pastas são comparadas com dlls do windows.</p>
-<p><strong>/media</strong></p>
-<p>É a pasta onde vão ser montados automaticamente as unidades removíveis do sistema, como pendrive, hd externo ou outro disco incluindo unidades de rede mapeados pelo samba por exemplo.</p>
-<p><strong>/mnt</strong></p>
-<p>Mount</p>
-<p>Pensado para ser um ponto de montagem de unidades de disco, quando feito manualmente pelo usuário utilizando o fstab.</p>
-<p><strong>/opt</strong></p>
-<p>Optional</p>
-<p>Nessa pasta onde encontra-se softwares instalados por fabricantes que enviam computadores com linux ou por softwares proprietários por exemplo.</p>
-<p><strong>/proc</strong></p>
-<p>Processes</p>
-<p>Onde encontra-se arquivos que contêm informações sobre o sistema e processos dele. É um diretório virtual, não existem realmente no disco, são criados toda vez que inicia o computador.</p>
-<p><strong>/root</strong></p>
-<p>Como o diretório home, mas para o usuário root.</p>
-<p><strong>/run</strong></p>
-<p>Runtime</p>
-<p>É um diretório virtual, carregado na memória do computador e apagado ao desligar. Contém informações como usuários logados, daemons rodando etc.</p>
-<p><strong>/sbin</strong></p>
-<p>System binaries</p>
-<p>Armazena binários também, programas que só podem ser utilizados pelo administrador do sistema sudo root.</p>
-<p><strong>/snap</strong></p>
-<p>Encontra diretórios para pacotes snaps, é uma forma de empacotamento diferente. O suporte a pacote snap é padrão no ubuntu.</p>
-<p><strong>/srv</strong></p>
-<p>Services
-Se utilizar algum servidor web ou sftp é possível armazenar aqui arquivos que vão ser acessíveis para outros usuários. É possível montar ela a partir de um disco externo.</p>
-<p><strong>/sys</strong></p>
-<p>System</p>
-<p>Aqui armazena-se arquivos que interagem diretamente com o kernel, como drivers e firmwares. Também é temporario.</p>
-<p><strong>/tmp</strong></p>
-<p>Temp</p>
-<p>Arquivos são apagados durante o reboot.</p>
-<p><strong>/usr</strong></p>
-<p>Diretório que mudou de função. Usr pode significar duas coisas, user ou unix system resources. Hoje em dia contém arquivos de programas e libs.</p>
-<p><strong>/var</strong></p>
-<p>Variable</p>
-<p>Diretório de variáveis, arquivos que são esperados que aumentem de tamanho, arquivos de backup, log, cache do sistema por exemplo.</p>
+            <p>Se você acabou de instalar o Linux e está acostumado com a estrutura de diretórios do Windows, pode estar se perguntando onde está o &ldquo;disco C:&rdquo;?
+Conhecer os diretórios do Linux pode ajudar a administrar o sistema e entender como ele funciona.</p>
+<h2 id="estrutura-de-diretórios-windows-vs-linux" >
+<div>
+    <a href="#estrutura-de-diret%c3%b3rios-windows-vs-linux">
+        #
+    </a>
+    Estrutura de diretórios: Windows vs. Linux
+</div>
+</h2>
+<p>Windows e Linux evoluíram de forma diferente em termos de estrutura de diretórios. O Linux é mais parecido com outros sistemas Unix-like, como o macOS, na verdade, o Windows é o que mais difere da maioria dos sistemas operacionais em termos de organização.</p>
+<p>A hierarquia de diretórios do Linux não é mais difícil, nem mais fácil, é simplesmente diferente. Tanto o &ldquo;disco C:&rdquo; do Windows quanto a raiz do Linux (/), servem para a mesma finalidade, mas de maneiras distintas.</p>
+<p>Os sistemas Linux seguem o padrão FHS (Filesystem Hierarchy Standard), mantido pela Linux Foundation.</p>
+<h2 id="tipos-de-diretórios-e-permissões" >
+<div>
+    <a href="#tipos-de-diret%c3%b3rios-e-permiss%c3%b5es">
+        #
+    </a>
+    Tipos de Diretórios e Permissões
+</div>
+</h2>
+<ul>
+<li><strong>Links Simbólicos</strong>: Pastas com uma seta são atalhos para outras pastas ou arquivos. Por exemplo, /bin é um link simbólico para /usr/bin.</li>
+<li><strong>Diretórios Protegidos</strong>: Pastas com um &ldquo;x&rdquo; exigem permissões de root para serem acessadas ou modificadas.</li>
+</ul>
+<h2 id="diretórios-principais-no-linux" >
+<div>
+    <a href="#diret%c3%b3rios-principais-no-linux">
+        #
+    </a>
+    Diretórios Principais no Linux
+</div>
+</h2>
+<h3 id="heading" >
+<div>
+    <a href="#heading">
+        ##
+    </a>
+    /
+</div>
+</h3>
+<ul>
+<li><strong>Raiz</strong>: O diretório raiz, onde todos os outros diretórios e subdiretórios residem.</li>
+</ul>
+<h3 id="bin" >
+<div>
+    <a href="#bin">
+        ##
+    </a>
+    /bin
+</div>
+</h3>
+<ul>
+<li><strong>Binaries</strong>: Contém executáveis de programas essenciais do sistema, como bash, cat, ls, etc. É comparável à pasta &ldquo;Arquivos de Programas&rdquo; do Windows.</li>
+</ul>
+<h3 id="boot" >
+<div>
+    <a href="#boot">
+        ##
+    </a>
+    /boot
+</div>
+</h3>
+<ul>
+<li><strong>Inicialização</strong>: Contém arquivos necessários para o sistema operacional iniciar.</li>
+</ul>
+<h3 id="cdrom" >
+<div>
+    <a href="#cdrom">
+        ##
+    </a>
+    /cdrom
+</div>
+</h3>
+<ul>
+<li><strong>Legado</strong>: Diretório onde a imagem do disco é montada.</li>
+</ul>
+<h3 id="dev" >
+<div>
+    <a href="#dev">
+        ##
+    </a>
+    /dev
+</div>
+</h3>
+<ul>
+<li><strong>Devices</strong>: Contém arquivos que representam dispositivos de hardware. Por exemplo, /dev/sda para discos.</li>
+</ul>
+<h3 id="etc" >
+<div>
+    <a href="#etc">
+        ##
+    </a>
+    /etc
+</div>
+</h3>
+<ul>
+<li><strong>Configuração</strong>: Armazena arquivos de configuração do sistema, válidos para todos os usuários.</li>
+</ul>
+<h3 id="home" >
+<div>
+    <a href="#home">
+        ##
+    </a>
+    /home
+</div>
+</h3>
+<ul>
+<li><strong>Usuários</strong>: Diretório onde ficam os diretórios pessoais dos usuários.</li>
+</ul>
+<h3 id="lib" >
+<div>
+    <a href="#lib">
+        ##
+    </a>
+    /lib
+</div>
+</h3>
+<ul>
+<li><strong>Libraries</strong>: Contém bibliotecas de software necessárias para o sistema operacional e aplicativos.</li>
+</ul>
+<h3 id="media" >
+<div>
+    <a href="#media">
+        ##
+    </a>
+    /media
+</div>
+</h3>
+<ul>
+<li><strong>Mídia Removível</strong>: Diretório onde são montadas automaticamente unidades removíveis como pendrives.</li>
+</ul>
+<h3 id="mnt" >
+<div>
+    <a href="#mnt">
+        ##
+    </a>
+    /mnt
+</div>
+</h3>
+<ul>
+<li><strong>Montagem</strong>: Ponto de montagem para unidades de disco configuradas manualmente.</li>
+</ul>
+<h3 id="opt" >
+<div>
+    <a href="#opt">
+        ##
+    </a>
+    /opt
+</div>
+</h3>
+<ul>
+<li><strong>Optional</strong>: Contém software adicional de fabricantes ou software proprietário.</li>
+</ul>
+<h3 id="proc" >
+<div>
+    <a href="#proc">
+        ##
+    </a>
+    /proc
+</div>
+</h3>
+<ul>
+<li><strong>Processos</strong>: Diretório virtual com informações sobre o sistema e processos em execução.</li>
+</ul>
+<h3 id="root" >
+<div>
+    <a href="#root">
+        ##
+    </a>
+    /root
+</div>
+</h3>
+<ul>
+<li><strong>Home do Root</strong>: Diretório pessoal do usuário root.</li>
+</ul>
+<h3 id="run" >
+<div>
+    <a href="#run">
+        ##
+    </a>
+    /run
+</div>
+</h3>
+<ul>
+<li><strong>Runtime</strong>: Diretório virtual na memória, apagado ao desligar. Contém informações sobre usuários logados e daemons.</li>
+</ul>
+<h3 id="sbin" >
+<div>
+    <a href="#sbin">
+        ##
+    </a>
+    /sbin
+</div>
+</h3>
+<ul>
+<li><strong>System Binaries</strong>: Contém executáveis que só podem ser usados pelo administrador do sistema (root).</li>
+</ul>
+<h3 id="snap" >
+<div>
+    <a href="#snap">
+        ##
+    </a>
+    /snap
+</div>
+</h3>
+<ul>
+<li><strong>Pacotes Snap</strong>: Diretórios para pacotes Snap, uma forma diferente de empacotamento de software.</li>
+</ul>
+<h3 id="srv" >
+<div>
+    <a href="#srv">
+        ##
+    </a>
+    /srv
+</div>
+</h3>
+<ul>
+<li><strong>Services</strong>: Usado para armazenar dados de serviços, como servidores web.</li>
+</ul>
+<h3 id="sys" >
+<div>
+    <a href="#sys">
+        ##
+    </a>
+    /sys
+</div>
+</h3>
+<ul>
+<li><strong>System</strong>: Contém arquivos que interagem diretamente com o kernel, como drivers e firmwares.</li>
+</ul>
+<h3 id="tmp" >
+<div>
+    <a href="#tmp">
+        ##
+    </a>
+    /tmp
+</div>
+</h3>
+<ul>
+<li><strong>Temp</strong>: Arquivos temporários que são apagados no reboot.</li>
+</ul>
+<h3 id="usr" >
+<div>
+    <a href="#usr">
+        ##
+    </a>
+    /usr
+</div>
+</h3>
+<ul>
+<li><strong>User ou Unix System Resources</strong>: Contém programas e bibliotecas.</li>
+</ul>
+<h3 id="var" >
+<div>
+    <a href="#var">
+        ##
+    </a>
+    /var
+</div>
+</h3>
+<ul>
+<li><strong>Variáveis</strong>: Diretório para arquivos que aumentam de tamanho, como logs e caches do sistema.</li>
+</ul>
 
         </div>
 
@@ -567,11 +765,11 @@ Se utilizar algum servidor web ou sftp é possível armazenar aqui arquivos que 
 
     
         
-            <li><a href="/post/folders-in-linux/">en</a></li>
+            <li>pt</li>
         
     
         
-            <li>pt</li>
+            <li><a href="/post/folders-in-linux/">en</a></li>
         
     
 </ul>
