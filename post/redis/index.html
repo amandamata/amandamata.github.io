@@ -10,9 +10,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer-when-downgrade">
 
-<title>Implementing Redis caching with dotnet - amandabytes</title>
+<title>Implementing Redis Caching with .NET - amandabytes</title>
 
-<meta name="description" content="I recently had to implement a cache in an application to avoid unnecessary database queries, and that was cool. I&rsquo;ve worked with Redis in the past, but I think I&rsquo;ve done it the wrong way because implementing a cache with Redis has never been so cool. # Redis vs Mem cached Redis is almost like a NoSql database, but it is even better because it stores data with key and values and with that, it is much easier to use it as a cache.">
+<meta name="description" content="# Introduction Recently, I had to implement a cache in an application to avoid unnecessary database queries. Having worked with Redis in the past, I realized that implementing a cache with Redis can be quite straightforward and effective when done correctly.
+# Redis vs Memcached Redis is almost like a NoSQL database but excels as a cache due to its key-value storage model. The choice between Redis and Memcached depends on the use case and data volume.">
 
 
 
@@ -369,7 +370,7 @@
     <article class="post h-entry">
         <div class="post-header">
             <header>
-                <h1 class="p-name post-title">Implementing Redis caching with dotnet</h1>
+                <h1 class="p-name post-title">Implementing Redis Caching with .NET</h1>
                 
     
     <span>
@@ -457,57 +458,49 @@
 </script>
 
         <div class="content e-content">
-            <p>I recently had to implement a cache in an application to avoid unnecessary database queries, and that was cool. I&rsquo;ve worked with Redis in the past, but I think I&rsquo;ve done it the wrong way because implementing a cache with Redis has never been so cool.
-<br/></p>
-<h2 id="redis-vs-mem-cached" >
+            <h2 id="introduction" >
 <div>
-    <a href="#redis-vs-mem-cached">
+    <a href="#introduction">
         #
     </a>
-    Redis vs Mem cached
+    Introduction
 </div>
 </h2>
-<p>Redis is almost like a NoSql database, but it is even better because it stores data with key and values and with that, it is much easier to use it as a cache.
-But the main point in this comparison is: it depends, it depends on how and how much data will be used in this cache. If you&rsquo;re not sure how to store session information, MemCache makes sense. But if we&rsquo;re talking about a lot of queries with bigger data, like the data we store in the database, Redis does a better job. This is because when using MemCache we are using the application&rsquo;s memory to save that information, since Redis is a distributed cache, it has nothing to do with the application&rsquo;s memory and it is possible to use more than one Redis database, scaling this service vertically according to demand grow up.</p>
-<p>The first time it is necessary to use the cache, the information will not be there, so it is necessary to consult the database and save it in the cache, the second time it is no longer necessary to go to the database, as the information will be in the cache. And this makes the application take less time to respond to a request, as going to the bank takes much longer than going to Redis.</p>
-<p><img src="/img/redis.png" alt="redis">
-<br/></p>
-<h2 id="why-use" >
+<p>Recently, I had to implement a cache in an application to avoid unnecessary database queries. Having worked with Redis in the past, I realized that implementing a cache with Redis can be quite straightforward and effective when done correctly.</p>
+<h2 id="redis-vs-memcached" >
 <div>
-    <a href="#why-use">
+    <a href="#redis-vs-memcached">
         #
     </a>
-    Why use
+    Redis vs Memcached
 </div>
 </h2>
-<ul>
-<li>
-<p>Reduce response time
-Improve the end-user experience with the application, making him wait less for each click or action.</p>
-</li>
-<li>
-<p>Raise availability
-Since it is necessary to consume less computational resources, because it is already in the cache and I return it faster to the end user, it is then possible to have more users accessing the application simultaneously.</p>
-</li>
-<li>
-<p>Reduce computational costs
-When we are talking about the cloud, we are reducing the consumption of lambdas and resources where the monthly bill can be cheaper.</p>
-</li>
-</ul>
-<p>The cost of a cache is high, so it has to be expensive on the server side to make this migration to the cache. For example, problems with the delay in response to the end customer can be costly, the end customer can simply give up using the application due to the delay, and many other problems that this delay can generate. To reduce both the cost of losing a customer and the cost of consulting the bank, the cache is then used to solve these problems.
-<br/></p>
-<h2 id="problem" >
+<p>Redis is almost like a NoSQL database but excels as a cache due to its key-value storage model. The choice between Redis and Memcached depends on the use case and data volume. If you need to store session information, Memcached is a good choice. However, for extensive queries involving larger data sets, Redis is more suitable. Memcached uses the application&rsquo;s memory to store data, while Redis is a distributed cache, independent of the application&rsquo;s memory, allowing it to scale vertically as demand grows.</p>
+<p>When a cache is first used, the required information won&rsquo;t be available, necessitating a database query. Subsequent requests can retrieve data directly from the cache, significantly reducing response times compared to database queries.</p>
+<p><img src="/img/redis.png" alt="redis"></p>
+<h2 id="why-use-caching" >
 <div>
-    <a href="#problem">
+    <a href="#why-use-caching">
         #
     </a>
-    Problem
+    Why Use Caching?
 </div>
 </h2>
-<p>Suppose there is an application that makes many calls to the database, but always consulting the same information, when the application was developed the developers did not think it could grow so much, and a cache was not implemented to avoid these queries to the database.
-The application is for car rental for companies, and the query is simple, with each request received at the rental endpoint, it is necessary to check whether the company (document) informed in the rental request is the same as the one in the bank.
-We have the scenario, let&rsquo;s move on to implementation.
-<br/></p>
+<ol>
+<li><strong>Reduce Response Time</strong>: Improve the end-user experience by minimizing wait times for actions or clicks.</li>
+<li><strong>Increase Availability</strong>: Reduce computational resources by leveraging cached data, allowing more users to access the application simultaneously.</li>
+<li><strong>Reduce Computational Costs</strong>: Lower cloud service costs by reducing the need for frequent database queries and server resources.</li>
+<li><strong>Handle Load Peaks</strong>: Manage load spikes effectively by distributing the processing load over time.</li>
+</ol>
+<h2 id="problem-scenario" >
+<div>
+    <a href="#problem-scenario">
+        #
+    </a>
+    Problem Scenario
+</div>
+</h2>
+<p>Consider an application that frequently queries the same information from the database. Originally, the application was not designed to handle such growth, resulting in performance issues. For example, a car rental application needs to verify if the company (identified by a document) in the rental request exists in the database. Each request involves querying this information repeatedly.</p>
 <h2 id="implementation" >
 <div>
     <a href="#implementation">
@@ -516,14 +509,29 @@ We have the scenario, let&rsquo;s move on to implementation.
     Implementation
 </div>
 </h2>
-<p>Explanation and problem presentations, let&rsquo;s implement!
-For this implementation we will follow a pattern called Decorator, with this pattern it is possible to add a cache layer without adding more complexity to the repository layer, and we will follow the S principle of SOLID, [Single-responsibility principle](https:// g.co/kgs/phLumf).</p>
+<p>To implement caching, we&rsquo;ll use the Decorator pattern. This allows us to add a cache layer without increasing complexity in the repository layer, adhering to the Single Responsibility Principle of SOLID.</p>
+<h3 id="step-1-install-required-packages" >
+<div>
+    <a href="#step-1-install-required-packages">
+        ##
+    </a>
+    Step 1: Install Required Packages
+</div>
+</h3>
+<p>Install Scrutor for dependency injection and Microsoft.Extensions.Caching.StackExchangeRedis for Redis support.</p>
 <p>Let&rsquo;s work with dotnet, and install the packages <a href="https://www.nuget.org/packages/scrutor/">Scrutor</a> and <a href="https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis/7.0.5">StackExchangeRedis</a></p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>dotnet add package Scrutor --version 4.2.2
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>dotnet add package Microsoft.Extensions.Caching.StackExchangeRedis --version 7.0.5
 </span></span></code></pre></div><p>Scrutor will help us during the implementation of the caching layer without taking the single responsibility away from the repository. And StackExchangeRedis is Microsoft&rsquo;s client package for using Redis with . NET.</p>
+<h3 id="step-2-create-a-cache-service" >
+<div>
+    <a href="#step-2-create-a-cache-service">
+        ##
+    </a>
+    Step 2: Create a Cache Service
+</div>
+</h3>
 <p>Let&rsquo;s create a Service to handle everything related to Redis.
-<br/>
 Service:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">CacheService</span> : ICacheService
 </span></span><span style="display:flex;"><span>{
@@ -580,8 +588,15 @@ Service:</p>
 </span></span><span style="display:flex;"><span>    	}
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Let&rsquo;s create a Repository to handle the query request to the database that will &ldquo;intercept&rdquo; and go first in Redis.
-<br/>
+</span></span></code></pre></div><h3 id="step-3-create-a-cached-repository" >
+<div>
+    <a href="#step-3-create-a-cached-repository">
+        ##
+    </a>
+    Step 3: Create a Cached Repository
+</div>
+</h3>
+<p>Let&rsquo;s create a Repository to handle the query request to the database that will &ldquo;intercept&rdquo; and go first in Redis.
 Repository:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">CachedAlugatorRepository</span> : IAlugatorRepository
 </span></span><span style="display:flex;"><span>{
@@ -625,10 +640,27 @@ Repository:</p>
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">await</span> _alugatorRepository.UpsertAsync(alugator);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>The ace in the hole is in the way we are going to configure the Repository in the Program class:</p>
+</span></span></code></pre></div><h3 id="step-4-configure-the-repository-in-program-class" >
+<div>
+    <a href="#step-4-configure-the-repository-in-program-class">
+        ##
+    </a>
+    Step 4: Configure the Repository in Program Class
+</div>
+</h3>
+<p>Use the Decorate method to ensure the CachedAlugatorRepository is called before the original repository.</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>services.AddSingleton&lt;IAlugatorRepository, AlugatorRepository&gt;();
 </span></span><span style="display:flex;"><span>services.Decorate&lt;IAlugatorRepository, CachedAlugatorRepository&gt;();
-</span></span></code></pre></div><p>This Decorate does the magic, because now when calling the AlugatorRepository the CachedAlugatorRepository will be &ldquo;called&rdquo; first, so every call to the repository will initially be made to the Cache Repository that contains the query logic to Redis through service. With that we keep the AlugatorRepository clean, we have a specific repository for the CachedAlugatorRepository cache and we don&rsquo;t hurt the Single Responsibility Principle.</p>
+</span></span></code></pre></div><p>This configuration ensures that every call to the repository will first go through the CachedAlugatorRepository, keeping the original AlugatorRepository clean and maintaining adherence to the Single Responsibility Principle.</p>
+<h3 id="conclusion" >
+<div>
+    <a href="#conclusion">
+        ##
+    </a>
+    Conclusion
+</div>
+</h3>
+<p>Implementing Redis caching with .NET using the Decorator pattern allows for an efficient, scalable, and maintainable solution. By reducing response times, increasing availability, and lowering computational costs, caching enhances the overall performance and user experience of the application.</p>
 
         </div>
 
