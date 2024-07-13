@@ -10,11 +10,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer-when-downgrade">
 
-<title>Implementing a sqs publisher and consumer using dotnet - amandabytes</title>
+<title>Implementing an SQS Publisher and Consumer Using .NET - amandabytes</title>
 
-<meta name="description" content="In this post, I pass an introduction to a queue and how to use it. Now I gonna explain how to implement an sqs consumer and publisher using c# dotnet. # SQS What is SQS?
-SQS (Simple Queue Service) is an Amazon service that lets you send, store, and receive messages between software components at any volume, without losing messages or requiring other services to be available.
-The best part is free, actually to pay for this service you gonna need to send over 1 million requests per month then amazon is going to bill you.">
+<meta name="description" content="In a previous post, I introduced the concept of queues and their usage. Now, I will explain how to implement an SQS consumer and publisher using C# and .NET.
+# SQS SQS (Simple Queue Service) is an Amazon Web Services offering that enables the sending, storing, and receiving of messages between software components at any volume, ensuring no message loss and eliminating the need for immediate availability of other services.">
 
 
 
@@ -371,7 +370,7 @@ The best part is free, actually to pay for this service you gonna need to send o
     <article class="post h-entry">
         <div class="post-header">
             <header>
-                <h1 class="p-name post-title">Implementing a sqs publisher and consumer using dotnet</h1>
+                <h1 class="p-name post-title">Implementing an SQS Publisher and Consumer Using .NET</h1>
                 
     
     <span>
@@ -459,8 +458,7 @@ The best part is free, actually to pay for this service you gonna need to send o
 </script>
 
         <div class="content e-content">
-            <p>In this <a href="/queue">post</a>, I pass an introduction to a queue and how to use it. Now I gonna explain how to implement an sqs consumer and publisher using c# dotnet.
-<br/></p>
+            <p>In a previous post, I introduced the concept of queues and their usage. Now, I will explain how to implement an SQS consumer and publisher using C# and .NET.</p>
 <h2 id="sqs" >
 <div>
     <a href="#sqs">
@@ -469,23 +467,19 @@ The best part is free, actually to pay for this service you gonna need to send o
     SQS
 </div>
 </h2>
-<p>What is SQS?</p>
-<p>SQS (Simple Queue Service) is an Amazon service that lets you send, store, and receive messages between software components at any volume, without losing messages or requiring other services to be available.</p>
-<p>The best part is free, actually to pay for this service you gonna need to send over 1 million requests per month then amazon is going to bill you.</p>
-<p>To start, it&rsquo;s necessary to create an account in <a href="https://aws.amazon.com/">aws</a> and go to <a href="https://console.aws.amazon.com">console</a>.</p>
-<p>In the console area, type SQS in search and enter the first option Simple Queue Service.
-Click on Create queue, add a name to the queue and go to the end of the page and click Create queue. You can change the default values, but for now, all the settings are ok.
-<br/></p>
-<h2 id="aws-command-line-interface" >
+<p>SQS (Simple Queue Service) is an Amazon Web Services offering that enables the sending, storing, and receiving of messages between software components at any volume, ensuring no message loss and eliminating the need for immediate availability of other services.</p>
+<p>One of the best features of SQS is its cost-effectiveness; it&rsquo;s free for up to 1 million requests per month, after which Amazon starts billing for the service.</p>
+<p>To begin, you need to create an account on <a href="https://aws.amazon.com/">AWS</a> and navigate to the <a href="https://console.aws.amazon.com">AWS Management Console</a>.</p>
+<p>In the console, search for SQS and select the first option, Simple Queue Service. Click on &ldquo;Create queue&rdquo;, name your queue, and proceed to the end of the page to click &ldquo;Create queue&rdquo;. Default settings are sufficient for starting, but feel free to adjust as necessary.</p>
+<h3 id="aws-command-line-interface" >
 <div>
     <a href="#aws-command-line-interface">
-        #
+        ##
     </a>
     AWS Command Line Interface
 </div>
-</h2>
-<p>The AWS Command Line Interface allows us to make changes directly from the console without the need to access the AWS console.
-For example, if we need to list the buckets:</p>
+</h3>
+<p>The AWS Command Line Interface (CLI) enables making changes directly from the terminal, bypassing the need to use the AWS Management Console. For instance, to list all S3 buckets, you can use the following command:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>aws s3api list-buckets
 </span></span></code></pre></div><p>To be able to do that we need to install the cli, the tutorial for Windows, Linux, and macOS is <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">here</a>.</p>
 <p>After the installation, it&rsquo;s necessary to authenticate your machine against aws.</p>
@@ -508,12 +502,12 @@ For example, if we need to list the buckets:</p>
     Publisher
 </div>
 </h2>
-<p>What is a publisher?</p>
-<p>A publisher it&rsquo;s a service that gonna get the information that something changes and sends to the queue a request.
-In the example used in the queue post, the publisher is inside the API, and after a new user was created the request was sent to the queue.</p>
-<p>So with everything configured, it&rsquo;s time to create the publisher.</p>
-<p>In order to simplify, the example here it&rsquo;s gonna be only the publisher, then you can take the implementation and use it in your API.</p>
-<p>We&rsquo;re gonna use a Console App</p>
+<p>What is a Publisher?</p>
+<p>A publisher is a service that detects changes or events and sends a message to a queue. In the context of the example discussed in the previous post about queues, the publisher resides within an API. For instance, after creating a new user, the publisher sends a message to the queue to notify other parts of the system about this event.</p>
+<p>Now that we have our setup ready, let&rsquo;s proceed to create the publisher.</p>
+<p>For simplicity, this example will focus solely on the publisher component. You can later integrate this implementation into your API as needed.</p>
+<p>We will use a Console Application for this demonstration.</p>
+<p>Open your terminal or command prompt and run the following command to create a new folder named <code>publisher</code>:</p>
 <p>Create a new folder:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir publisher
 </span></span></code></pre></div><p>Go inside the folder:</p>
@@ -578,9 +572,9 @@ In the example used in the queue post, the publisher is inside the API, and afte
     Consumer
 </div>
 </h2>
-<p>What it&rsquo;s a consumer?</p>
-<p>A consumer it&rsquo;s the service that will be listening the queue.</p>
-<p>We&rsquo;re gonna use a Console App</p>
+<p>What is a Consumer?</p>
+<p>A consumer is a service designed to listen to the queue. It waits for messages to arrive in the queue and processes them according to the defined business logic.</p>
+<p>For this part of the implementation, we will also use a Console Application to demonstrate how a consumer can be set up to listen to and process messages from the queue.</p>
 <p>Create a new folder:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir consumer
 </span></span></code></pre></div><p>Go inside the folder:</p>
@@ -625,7 +619,7 @@ In the example used in the queue post, the publisher is inside the API, and afte
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Console.WriteLine();
 </span></span></code></pre></div><br/>
-<p>Now the publisher and the consumer It&rsquo;s created, you can pull for messages inside the aws console, but just running the publisher and the consumer you&rsquo;re gonna be able to see the sending and receiving messages.</p>
+<p>Now that both the publisher and the consumer have been created, you have the option to pull messages directly from the AWS console. However, by simply running the publisher and the consumer, you will be able to observe the process of sending and receiving messages in action.</p>
 <hr>
 <p>I create this post for my studying purpose, the learnings I posted here were driven by the <a href="https://nickchapsas.com/p/cloud-fundamentals-aws-services-for-c-developers">Cloud Fundamentals: AWS Services for C# Developers course</a>.</p>
 
@@ -646,7 +640,7 @@ In the example used in the queue post, the publisher is inside the API, and afte
                 
                 <li><a href="/post/curly-brace/">Curly braces on new line in vscode</a></li>
                 
-                <li><a href="/post/queue/">Application of queue</a></li>
+                <li><a href="/post/queue/">Uses for a queue</a></li>
                 
             </ul>
         

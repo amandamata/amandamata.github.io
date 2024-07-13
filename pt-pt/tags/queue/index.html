@@ -374,7 +374,7 @@
         <article class="post-list h-feed post-card">
     <div class="post-header">
         <header>
-            <h1 class="p-name post-title"><a class="u-url" href="/pt-pt/post/queue-csharp-sqs/">Implementando um publisher e consumer SQS usando dotnet</a></h1>
+            <h1 class="p-name post-title"><a class="u-url" href="/pt-pt/post/queue-csharp-sqs/">Implementando um Publicador e Consumidor SQS Usando .NET</a></h1>
         </header>
         
     
@@ -401,9 +401,8 @@
 
     
         <div class="content post-summary p-summary">
-            Nesse post, eu passei a introdução de uma fila e como utilizá-la. Agora, eu vou explicar como implementar um consumer e sqs publisher usando c# dotnet. # SQS O que é SQS?
-SQS (Simple Queue Service) é um serviço da Amazon que permite que você envie, salve, e receba mensagens entre aplicações, sem que você perca essas mensagens caso o serviço esteja indisponível.
-A melhor parte de tudo isso é que, para você pagar por esse serviço, você teria que enviar mais de um milhão de requisições por mês, para que a amazon te envie uma cobrança.
+            Em um post anterior, introduzi o conceito de filas e seu uso. Agora, explicarei como implementar um Consumer (consumidor) e Publisher (publicador) SQS usando C# e .NET.
+# SQS SQS (Simple Queue Service) é um serviço da Amazon Web Services que permite enviar, armazenar e receber mensagens entre componentes de software em qualquer volume, garantindo que nenhuma mensagem seja perdida e eliminando a necessidade de disponibilidade imediata de outros serviços.
         </div>
     
     
@@ -474,9 +473,7 @@ A melhor parte de tudo isso é que, para você pagar por esse serviço, você te
 
     
         <div class="content post-summary p-summary">
-            O que é uma fila? Uma fila é uma estrutura de dados dinâmica que admite remoção de elementos e inserção de novos objetos. Mais especificamente, uma fila (= queue) é uma estrutura sujeita à seguinte regra de operação: sempre que houver uma remoção, o elemento removido é o que está na estrutura há mais tempo.
-Imagine que temos uma api de usuários
-Com essa API, podemos criar usuários no sistema e receber uma resposta dessa criação, talvez até atualizar ou deletar o usuário, enviar um email para o usuário e fazer uma requisição para outra API.
+            # O que é uma fila? Uma fila é uma estrutura de dados dinâmica que admite remoção de elementos e inserção de novos objetos. Mais especificamente, uma fila (= queue) é uma estrutura sujeita à seguinte regra de operação: sempre que houver uma remoção, o elemento removido é o que está na estrutura há mais tempo. As filas seguem o princípio FIFO (First In, First Out), onde o primeiro elemento adicionado é o primeiro a ser removido.
         </div>
     
     

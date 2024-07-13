@@ -10,11 +10,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer-when-downgrade">
 
-<title>Implementando um publisher e consumer SQS usando dotnet - amandabytes</title>
+<title>Implementando um Publicador e Consumidor SQS Usando .NET - amandabytes</title>
 
-<meta name="description" content="Nesse post, eu passei a introdução de uma fila e como utilizá-la. Agora, eu vou explicar como implementar um consumer e sqs publisher usando c# dotnet. # SQS O que é SQS?
-SQS (Simple Queue Service) é um serviço da Amazon que permite que você envie, salve, e receba mensagens entre aplicações, sem que você perca essas mensagens caso o serviço esteja indisponível.
-A melhor parte de tudo isso é que, para você pagar por esse serviço, você teria que enviar mais de um milhão de requisições por mês, para que a amazon te envie uma cobrança.">
+<meta name="description" content="Em um post anterior, introduzi o conceito de filas e seu uso. Agora, explicarei como implementar um Consumer (consumidor) e Publisher (publicador) SQS usando C# e .NET.
+# SQS SQS (Simple Queue Service) é um serviço da Amazon Web Services que permite enviar, armazenar e receber mensagens entre componentes de software em qualquer volume, garantindo que nenhuma mensagem seja perdida e eliminando a necessidade de disponibilidade imediata de outros serviços.">
 
 
 
@@ -371,7 +370,7 @@ A melhor parte de tudo isso é que, para você pagar por esse serviço, você te
     <article class="post h-entry">
         <div class="post-header">
             <header>
-                <h1 class="p-name post-title">Implementando um publisher e consumer SQS usando dotnet</h1>
+                <h1 class="p-name post-title">Implementando um Publicador e Consumidor SQS Usando .NET</h1>
                 
     
     <span>
@@ -459,8 +458,7 @@ A melhor parte de tudo isso é que, para você pagar por esse serviço, você te
 </script>
 
         <div class="content e-content">
-            <p>Nesse <a href="/pt-pt/queue">post</a>, eu passei a introdução de uma fila e como utilizá-la. Agora, eu vou explicar como implementar um consumer e sqs publisher usando c# dotnet.
-<br/></p>
+            <p>Em um post anterior, introduzi o conceito de filas e seu uso. Agora, explicarei como implementar um Consumer (consumidor) e Publisher (publicador) SQS usando C# e .NET.</p>
 <h2 id="sqs" >
 <div>
     <a href="#sqs">
@@ -469,35 +467,29 @@ A melhor parte de tudo isso é que, para você pagar por esse serviço, você te
     SQS
 </div>
 </h2>
-<p>O que é SQS?</p>
-<p>SQS (Simple Queue Service) é um serviço da Amazon que permite que você envie, salve, e receba mensagens entre aplicações, sem que você perca essas mensagens caso o serviço esteja indisponível.</p>
-<p>A melhor parte de tudo isso é que, para você pagar por esse serviço, você teria que enviar mais de um milhão de requisições por mês, para que a amazon te envie uma cobrança.</p>
-<p>Para começar pe necessário criar uma conta na <a href="https://aws.amazon.com/">aws</a> e então ir para o <a href="https://console.aws.amazon.com">console</a>.</p>
-<p>Na área do console, digite SQS no campo de busca e entre na primeira opção, Simple Queue Service.</p>
-<p>Clique em Create queue, e adicione o nome para a fila, e então vá para o final da página e clique em Create queue. Você pode alterar os valores que vem por padrão, mas para esse exemplos o padrão já está de acordo.
-<br/></p>
-<h2 id="aws-command-line-interface" >
+<p>SQS (Simple Queue Service) é um serviço da Amazon Web Services que permite enviar, armazenar e receber mensagens entre componentes de software em qualquer volume, garantindo que nenhuma mensagem seja perdida e eliminando a necessidade de disponibilidade imediata de outros serviços.</p>
+<p>Uma das melhores características do SQS é sua relação custo-benefício; é gratuito para até 1 milhão de solicitações por mês, após o qual a Amazon começa a cobrar pelo serviço.</p>
+<p>Para começar, você precisa criar uma conta na <a href="https://aws.amazon.com/">AWS</a> e navegar até o <a href="https://console.aws.amazon.com">AWS Management Console</a>.</p>
+<p>No console, procure por SQS e selecione a primeira opção, Simple Queue Service. Clique em &ldquo;Create queue&rdquo;, nomeie sua fila e vá até o final da página para clicar em &ldquo;Create queue&rdquo;. As configurações padrão são suficientes para começar, mas sinta-se à vontade para ajustá-las conforme necessário.</p>
+<h3 id="aws-command-line-interface" >
 <div>
     <a href="#aws-command-line-interface">
-        #
+        ##
     </a>
     AWS Command Line Interface
 </div>
-</h2>
-<p>A AWS Command Line Interface permite que façamos mudanças e requisições diretamente pelo console localmente, sem a necessidade de acessar o AWS console no navegador.</p>
-<p>Se por exemplo quisermos listar os buckets:</p>
+</h3>
+<p>A AWS Command Line Interface (CLI) permite fazer alterações diretamente do terminal, sem a necessidade de usar o AWS Management Console. Por exemplo, para listar todos os buckets do S3, você pode usar o seguinte comando:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>aws s3api list-buckets
-</span></span></code></pre></div><p>Para conseguirmos fazer isso, é necessário instalar o cli, o tutorial para Windows, Linux e macOs está <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">aqui</a>.</p>
-<p>Depois da instalação, é necessário autenticar sua máquina na aws.</p>
-<p>Na aws console, clique em seu nome e vá até Security Credentials, lá você precisa criar uma Access Key.</p>
-<p>Então em seu console você vai digitar:</p>
+</span></span></code></pre></div><p>Para poder fazer isso, precisamos instalar a CLI, o tutorial para Windows, Linux e macOS está <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">aqui</a>.</p>
+<p>Após a instalação, é necessário autenticar sua máquina contra a AWS.</p>
+<p>No console da AWS, clique no seu nome e vá para Credenciais de Segurança, lá, você precisa criar uma Chave de Acesso.</p>
+<p>No seu console, digite:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>aws configure
-</span></span></code></pre></div><p>Então coloque a sua access key e token quando solicitado.</p>
-<blockquote>
-<p>Importante, no console da aws você possui uma região, a minha é us-east-1, você pode ver a sua consultando a url: https://<em><strong>us-east-1</strong></em>.console.aws.amazon.com/</p>
-</blockquote>
-<p>Essa região deve ser passada durante a configuração aws no console, para que consiga utilizar completamente as features via console localmente.</p>
-<p>Depois da configuração finalizada, você poderá executar a listagem de buckets.</p>
+</span></span></code></pre></div><p>Em seguida, forneça sua chave de acesso e token quando solicitado.</p>
+<p>Importante, no console da AWS você tem uma região, a minha é us-east-1, você pode ver a sua verificando a URL: https://<em><strong>us-east-1</strong></em>.console.aws.amazon.com/</p>
+<p>Essa região precisa ser informada durante a configuração da AWS para poder acessar os recursos localmente.</p>
+<p>Após a configuração, você poderá executar o comando de listar buckets:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>aws s3api list-buckets
 </span></span></code></pre></div><br/>
 <h2 id="publisher" >
@@ -509,18 +501,18 @@ A melhor parte de tudo isso é que, para você pagar por esse serviço, você te
 </div>
 </h2>
 <p>O que é um publisher?</p>
-<p>Um publisher é um serviço que vai pegar uma informação que algo mudou por exemplo e enviar essa informação para a fila.
-No exemplo que utilizei no post sobre a fila, o publisher estava dentro da API, e quando um novo usuário era criado a informação era enviada para a fila.</p>
-<p>Então com tudo configurado, agora vamos criar o publisher.</p>
-<p>Para deixar simples, o exemplo aqui vai ser apenas o publisher, então você pode pegar a implementação e aplicar na sua API.</p>
-<p>Vamos utilizar o Console App</p>
+<p>Um publisher é um serviço que detecta mudanças ou eventos e envia uma mensagem para uma fila. No contexto do exemplo discutido no post anterior sobre filas, o publisher reside dentro de uma API. Por exemplo, após criar um novo usuário, o publisher envia uma mensagem para a fila para notificar outras partes do sistema sobre este evento.</p>
+<p>Agora que temos nossa configuração pronta, vamos criar o publisher.</p>
+<p>Para simplicidade, este exemplo focará apenas no componente do publisher. Você pode integrar essa implementação à sua API conforme necessário.</p>
+<p>Usaremos um aplicativo de console para esta demonstração.</p>
+<p>Abra seu terminal ou prompt de comando e execute o seguinte comando para criar uma nova pasta chamada publisher:</p>
 <p>Crie uma nova pasta:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir publisher
 </span></span></code></pre></div><p>Entre na pasta:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#ff5c57">cd</span> publisher
 </span></span></code></pre></div><p>Crie o projeto:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>dotnet new console
-</span></span></code></pre></div><p>Um modelo é necessário:</p>
+</span></span></code></pre></div><p>É necessário um model:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">CustomerCreated</span>
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">public</span> Guid Id { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
@@ -578,16 +570,16 @@ No exemplo que utilizei no post sobre a fila, o publisher estava dentro da API, 
     Consumer
 </div>
 </h2>
-<p>O que é um consumer?</p>
-<p>Um consumer é o serviço que irá escutar a fila.</p>
-<p>Vamos utilizar o Console App</p>
+<p>O que é um Consumer?</p>
+<p>Um consumer é um serviço projetado para ouvir a fila. Ele espera que as mensagens cheguem à fila e as processa de acordo com a lógica de negócios definida.
+Para esta parte da implementação, também usaremos um aplicativo de console para demonstrar como um consumidor pode ser configurado para ouvir e processar mensagens da fila.</p>
 <p>Crie uma nova pasta:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir consumer
 </span></span></code></pre></div><p>Entre na pasta:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#ff5c57">cd</span> consumer
 </span></span></code></pre></div><p>Crie o projeto:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>dotnet new console
-</span></span></code></pre></div><p>Um modelo é necessário:</p>
+</span></span></code></pre></div><p>É necessário um model:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">CustomerCreated</span>
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">public</span> Guid Id { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
@@ -597,7 +589,7 @@ No exemplo que utilizei no post sobre a fila, o publisher estava dentro da API, 
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>E instale o <a href="https://www.nuget.org/packages/AWSSDK.SQS">AWS SDK</a></p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>dotnet add package AWSSDK.SQS --version 3.7.100.78
-</span></span></code></pre></div><p>Então na classe Program precisamos receber a requisição:</p>
+</span></span></code></pre></div><p>Depois disso, no Program, precisamos receber a solicitação:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">using</span> Amazon.SQS;
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">using</span> Amazon.SQS.Model;
 </span></span><span style="display:flex;"><span>	 
@@ -625,7 +617,7 @@ No exemplo que utilizei no post sobre a fila, o publisher estava dentro da API, 
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Console.WriteLine();
 </span></span></code></pre></div><br/>
-<p>Agora o publisher e o consumer estão criados, você pode verificar as mensagens no aws console, mas apenas executando o publisher e o consumer você vai conseguir ver as mensagens sendo enviadas e sendo recebidas.</p>
+<p>Agora que tanto o publicador quanto o consumidor foram criados, você tem a opção de verificar as mensagens diretamente do console da AWS. No entanto, simplesmente executando o publicador e o consumidor, você poderá observar o processo de envio e recebimento de mensagens em ação.</p>
 <hr>
 <p>Eu criei esse post para meus estudos, os aprendizados passados aqui foram obtidos através do curso <a href="https://nickchapsas.com/p/cloud-fundamentals-aws-services-for-c-developers">Cloud Fundamentals: AWS Services for C# Developers course</a>.</p>
 

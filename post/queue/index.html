@@ -10,11 +10,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer-when-downgrade">
 
-<title>Application of queue - amandabytes</title>
+<title>Uses for a queue - amandabytes</title>
 
-<meta name="description" content="What is a queue? A queue is a collection of entities that are maintained in a sequence and can be modified by the addition of entities at one end of the sequence and the removal of entities from the other end of sequence. Wikipedia
-Imagine that we have a user&rsquo;s API.
-We can create users in the system and then retrieve them back, maybe update and maybe delete them, send an email to the user, and also make a request to another API.">
+<meta name="description" content="# What is a Queue? A queue is a dynamic data structure that allows for the removal of elements and the insertion of new objects. More specifically, a queue is a structure that follows the rule of operation where whenever there is a removal, the element removed is the one that has been in the structure the longest. Queues follow the FIFO (First In, First Out) principle, where the first element added is the first to be removed.">
 
 
 
@@ -371,7 +369,7 @@ We can create users in the system and then retrieve them back, maybe update and 
     <article class="post h-entry">
         <div class="post-header">
             <header>
-                <h1 class="p-name post-title">Application of queue</h1>
+                <h1 class="p-name post-title">Uses for a queue</h1>
                 
     
     <span>
@@ -456,19 +454,99 @@ We can create users in the system and then retrieve them back, maybe update and 
 </script>
 
         <div class="content e-content">
-            <p>What is a queue?
-A queue is a collection of entities that are maintained in a sequence and can be modified by the addition of entities at one end of the sequence and the removal of entities from the other end of sequence. Wikipedia</p>
-<p>Imagine that we have a user&rsquo;s API.</p>
-<p><img src="/img/queue2.png" alt="queue2"></p>
-<p>We can create users in the system and then retrieve them back, maybe update and maybe delete them, send an email to the user, and also make a request to another API.
-In this scenario, if when sending an email and that email fails, that entire request fails and it&rsquo;s necessary to make another request to have the entire process done.</p>
+            <h2 id="what-is-a-queue" >
+<div>
+    <a href="#what-is-a-queue">
+        #
+    </a>
+    What is a Queue?
+</div>
+</h2>
+<p>A queue is a dynamic data structure that allows for the removal of elements and the insertion of new objects. More specifically, a queue is a structure that follows the rule of operation where whenever there is a removal, the element removed is the one that has been in the structure the longest.
+Queues follow the FIFO (First In, First Out) principle, where the first element added is the first to be removed. This is useful for many applications in distributed systems, where the order of operations is important.</p>
+<h2 id="use-case" >
+<div>
+    <a href="#use-case">
+        #
+    </a>
+    Use Case
+</div>
+</h2>
+<p>Imagine we have a user API.</p>
+<p>With this API, we can create users, update them, delete them, and receive a response for these operations, send an email to the user, and make a request to another API. In this scenario, if an email fails to send, the entire request will fail, and another request must be sent to achieve a successful response.</p>
 <p><img src="/img/queue1.png" alt="queue1"></p>
-<p>But that does not need to be like this, cuz sending an email and making the request to another API for this flow it&rsquo;s not crucial and could be done later async.</p>
-<p>Here enter the queue concept.
-We could instead of making all those things sync, make only the crucial sync and the rest async by adding in a queue what could be done later.</p>
-<p>To get this done it&rsquo;s necessary to have a consumer service, that will be listening to the queue and do something with the information in the queue, like sending an email.</p>
-<p><img src="/img/queue3.png" alt="queue3"></p>
-<p>That makes your system more resilient if something fails to process, it&rsquo;s going back to the queue and then will be reprocessed later.</p>
+<p>However, it doesn&rsquo;t have to be this way. Sending an email and making the request to another API in this flow is not crucial and can be done asynchronously later.</p>
+<h2 id="introducing-the-concept-of-a-queue" >
+<div>
+    <a href="#introducing-the-concept-of-a-queue">
+        #
+    </a>
+    Introducing the Concept of a Queue
+</div>
+</h2>
+<p>Here enters the concept of a queue. Instead of doing all these operations synchronously, we can do only the crucial ones synchronously and the rest asynchronously by adding to the queue what can be done later.</p>
+<p>To make this work, it&rsquo;s necessary to have a consumer service that will be listening to the queue and will do something with the information in the queue, like sending an email.</p>
+<p><img src="/img/queue3.png" alt="queue2"></p>
+<p>This makes your system more resilient. If something fails in the processing, the message goes back to the queue and will be reprocessed later.</p>
+<h2 id="benefits-of-using-queues" >
+<div>
+    <a href="#benefits-of-using-queues">
+        #
+    </a>
+    Benefits of Using Queues
+</div>
+</h2>
+<ol>
+<li><strong>Resilience</strong>: If a system component fails, the message can be reprocessed.</li>
+<li><strong>Scalability</strong>: Publishers and consumers can be scaled independently.</li>
+<li><strong>Decoupling</strong>: Reduces direct dependency between system components, allowing for greater flexibility and maintenance.</li>
+<li><strong>Load Management</strong>: Queues allow the system to handle load spikes by distributing processing over time.</li>
+<li><strong>Priority</strong>: Messages can be prioritized to ensure the most important ones are processed first.</li>
+</ol>
+<h2 id="tools" >
+<div>
+    <a href="#tools">
+        #
+    </a>
+    Tools
+</div>
+</h2>
+<h3 id="aws-sqs-simple-queue-service" >
+<div>
+    <a href="#aws-sqs-simple-queue-service">
+        ##
+    </a>
+    AWS SQS (Simple Queue Service)
+</div>
+</h3>
+<p><a href="https://aws.amazon.com/sqs/">AWS SQS</a> is a fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications. With SQS, you can send, store, and receive messages between software components.</p>
+<h3 id="rabbitmq" >
+<div>
+    <a href="#rabbitmq">
+        ##
+    </a>
+    RabbitMQ
+</div>
+</h3>
+<p><a href="https://www.rabbitmq.com/">RabbitMQ</a> is one of the most widely deployed open-source message brokers, used both in the cloud and on-premises. It&rsquo;s a reliable messaging middleware that can be used for message queuing, message routing, load balancing, and more.</p>
+<h3 id="apache-kafka" >
+<div>
+    <a href="#apache-kafka">
+        ##
+    </a>
+    Apache Kafka
+</div>
+</h3>
+<p><a href="https://kafka.apache.org/">Apache Kafka</a> is a distributed event streaming platform. It&rsquo;s used for building real-time data pipelines and streaming applications, offering high throughput, low latency, and message durability.</p>
+<h2 id="conclusion" >
+<div>
+    <a href="#conclusion">
+        #
+    </a>
+    Conclusion
+</div>
+</h2>
+<p>Using queues can make your system more robust and efficient, allowing non-crucial tasks to be processed asynchronously. This improves the resilience and scalability of the system, ensuring that failures in secondary operations do not affect the user experience. Additionally, with tools like AWS SQS, RabbitMQ, and Apache Kafka, implementing queues is accessible and powerful.</p>
 
         </div>
 

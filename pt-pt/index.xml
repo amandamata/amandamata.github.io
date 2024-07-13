@@ -394,13 +394,12 @@ Repository:&lt;/p&gt;
     </item>
     
     <item>
-      <title>Implementando um publisher e consumer SQS usando dotnet</title>
+      <title>Implementando um Publicador e Consumidor SQS Usando .NET</title>
       <link>/pt-pt/post/queue-csharp-sqs/</link>
       <pubDate>Wed, 22 Feb 2023 07:19:25 -0300</pubDate>
       
       <guid>/pt-pt/post/queue-csharp-sqs/</guid>
-      <description>&lt;p&gt;Nesse &lt;a href=&#34;https://amandamata.github.io/pt-pt/queue&#34;&gt;post&lt;/a&gt;, eu passei a introdução de uma fila e como utilizá-la. Agora, eu vou explicar como implementar um consumer e sqs publisher usando c# dotnet.
-&lt;br/&gt;&lt;/p&gt;
+      <description>&lt;p&gt;Em um post anterior, introduzi o conceito de filas e seu uso. Agora, explicarei como implementar um Consumer (consumidor) e Publisher (publicador) SQS usando C# e .NET.&lt;/p&gt;
 &lt;h2 id=&#34;sqs&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#sqs&#34;&gt;
@@ -409,35 +408,29 @@ Repository:&lt;/p&gt;
     SQS
 &lt;/div&gt;
 &lt;/h2&gt;
-&lt;p&gt;O que é SQS?&lt;/p&gt;
-&lt;p&gt;SQS (Simple Queue Service) é um serviço da Amazon que permite que você envie, salve, e receba mensagens entre aplicações, sem que você perca essas mensagens caso o serviço esteja indisponível.&lt;/p&gt;
-&lt;p&gt;A melhor parte de tudo isso é que, para você pagar por esse serviço, você teria que enviar mais de um milhão de requisições por mês, para que a amazon te envie uma cobrança.&lt;/p&gt;
-&lt;p&gt;Para começar pe necessário criar uma conta na &lt;a href=&#34;https://aws.amazon.com/&#34;&gt;aws&lt;/a&gt; e então ir para o &lt;a href=&#34;https://console.aws.amazon.com&#34;&gt;console&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Na área do console, digite SQS no campo de busca e entre na primeira opção, Simple Queue Service.&lt;/p&gt;
-&lt;p&gt;Clique em Create queue, e adicione o nome para a fila, e então vá para o final da página e clique em Create queue. Você pode alterar os valores que vem por padrão, mas para esse exemplos o padrão já está de acordo.
-&lt;br/&gt;&lt;/p&gt;
-&lt;h2 id=&#34;aws-command-line-interface&#34; &gt;
+&lt;p&gt;SQS (Simple Queue Service) é um serviço da Amazon Web Services que permite enviar, armazenar e receber mensagens entre componentes de software em qualquer volume, garantindo que nenhuma mensagem seja perdida e eliminando a necessidade de disponibilidade imediata de outros serviços.&lt;/p&gt;
+&lt;p&gt;Uma das melhores características do SQS é sua relação custo-benefício; é gratuito para até 1 milhão de solicitações por mês, após o qual a Amazon começa a cobrar pelo serviço.&lt;/p&gt;
+&lt;p&gt;Para começar, você precisa criar uma conta na &lt;a href=&#34;https://aws.amazon.com/&#34;&gt;AWS&lt;/a&gt; e navegar até o &lt;a href=&#34;https://console.aws.amazon.com&#34;&gt;AWS Management Console&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;No console, procure por SQS e selecione a primeira opção, Simple Queue Service. Clique em &amp;ldquo;Create queue&amp;rdquo;, nomeie sua fila e vá até o final da página para clicar em &amp;ldquo;Create queue&amp;rdquo;. As configurações padrão são suficientes para começar, mas sinta-se à vontade para ajustá-las conforme necessário.&lt;/p&gt;
+&lt;h3 id=&#34;aws-command-line-interface&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#aws-command-line-interface&#34;&gt;
-        #
+        ##
     &lt;/a&gt;
     AWS Command Line Interface
 &lt;/div&gt;
-&lt;/h2&gt;
-&lt;p&gt;A AWS Command Line Interface permite que façamos mudanças e requisições diretamente pelo console localmente, sem a necessidade de acessar o AWS console no navegador.&lt;/p&gt;
-&lt;p&gt;Se por exemplo quisermos listar os buckets:&lt;/p&gt;
+&lt;/h3&gt;
+&lt;p&gt;A AWS Command Line Interface (CLI) permite fazer alterações diretamente do terminal, sem a necessidade de usar o AWS Management Console. Por exemplo, para listar todos os buckets do S3, você pode usar o seguinte comando:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;aws s3api list-buckets
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Para conseguirmos fazer isso, é necessário instalar o cli, o tutorial para Windows, Linux e macOs está &lt;a href=&#34;https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html&#34;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Depois da instalação, é necessário autenticar sua máquina na aws.&lt;/p&gt;
-&lt;p&gt;Na aws console, clique em seu nome e vá até Security Credentials, lá você precisa criar uma Access Key.&lt;/p&gt;
-&lt;p&gt;Então em seu console você vai digitar:&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Para poder fazer isso, precisamos instalar a CLI, o tutorial para Windows, Linux e macOS está &lt;a href=&#34;https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html&#34;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Após a instalação, é necessário autenticar sua máquina contra a AWS.&lt;/p&gt;
+&lt;p&gt;No console da AWS, clique no seu nome e vá para Credenciais de Segurança, lá, você precisa criar uma Chave de Acesso.&lt;/p&gt;
+&lt;p&gt;No seu console, digite:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;aws configure
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Então coloque a sua access key e token quando solicitado.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Importante, no console da aws você possui uma região, a minha é us-east-1, você pode ver a sua consultando a url: https://&lt;em&gt;&lt;strong&gt;us-east-1&lt;/strong&gt;&lt;/em&gt;.console.aws.amazon.com/&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Essa região deve ser passada durante a configuração aws no console, para que consiga utilizar completamente as features via console localmente.&lt;/p&gt;
-&lt;p&gt;Depois da configuração finalizada, você poderá executar a listagem de buckets.&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Em seguida, forneça sua chave de acesso e token quando solicitado.&lt;/p&gt;
+&lt;p&gt;Importante, no console da AWS você tem uma região, a minha é us-east-1, você pode ver a sua verificando a URL: https://&lt;em&gt;&lt;strong&gt;us-east-1&lt;/strong&gt;&lt;/em&gt;.console.aws.amazon.com/&lt;/p&gt;
+&lt;p&gt;Essa região precisa ser informada durante a configuração da AWS para poder acessar os recursos localmente.&lt;/p&gt;
+&lt;p&gt;Após a configuração, você poderá executar o comando de listar buckets:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;aws s3api list-buckets
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
 &lt;h2 id=&#34;publisher&#34; &gt;
@@ -449,18 +442,18 @@ Repository:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/h2&gt;
 &lt;p&gt;O que é um publisher?&lt;/p&gt;
-&lt;p&gt;Um publisher é um serviço que vai pegar uma informação que algo mudou por exemplo e enviar essa informação para a fila.
-No exemplo que utilizei no post sobre a fila, o publisher estava dentro da API, e quando um novo usuário era criado a informação era enviada para a fila.&lt;/p&gt;
-&lt;p&gt;Então com tudo configurado, agora vamos criar o publisher.&lt;/p&gt;
-&lt;p&gt;Para deixar simples, o exemplo aqui vai ser apenas o publisher, então você pode pegar a implementação e aplicar na sua API.&lt;/p&gt;
-&lt;p&gt;Vamos utilizar o Console App&lt;/p&gt;
+&lt;p&gt;Um publisher é um serviço que detecta mudanças ou eventos e envia uma mensagem para uma fila. No contexto do exemplo discutido no post anterior sobre filas, o publisher reside dentro de uma API. Por exemplo, após criar um novo usuário, o publisher envia uma mensagem para a fila para notificar outras partes do sistema sobre este evento.&lt;/p&gt;
+&lt;p&gt;Agora que temos nossa configuração pronta, vamos criar o publisher.&lt;/p&gt;
+&lt;p&gt;Para simplicidade, este exemplo focará apenas no componente do publisher. Você pode integrar essa implementação à sua API conforme necessário.&lt;/p&gt;
+&lt;p&gt;Usaremos um aplicativo de console para esta demonstração.&lt;/p&gt;
+&lt;p&gt;Abra seu terminal ou prompt de comando e execute o seguinte comando para criar uma nova pasta chamada publisher:&lt;/p&gt;
 &lt;p&gt;Crie uma nova pasta:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir publisher
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Entre na pasta:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff5c57&#34;&gt;cd&lt;/span&gt; publisher
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Crie o projeto:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;dotnet new console
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Um modelo é necessário:&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;É necessário um model:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;CustomerCreated&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; Guid Id { &lt;span style=&#34;color:#ff6ac1&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#ff6ac1&#34;&gt;init&lt;/span&gt;; }
@@ -518,16 +511,16 @@ No exemplo que utilizei no post sobre a fila, o publisher estava dentro da API, 
     Consumer
 &lt;/div&gt;
 &lt;/h2&gt;
-&lt;p&gt;O que é um consumer?&lt;/p&gt;
-&lt;p&gt;Um consumer é o serviço que irá escutar a fila.&lt;/p&gt;
-&lt;p&gt;Vamos utilizar o Console App&lt;/p&gt;
+&lt;p&gt;O que é um Consumer?&lt;/p&gt;
+&lt;p&gt;Um consumer é um serviço projetado para ouvir a fila. Ele espera que as mensagens cheguem à fila e as processa de acordo com a lógica de negócios definida.
+Para esta parte da implementação, também usaremos um aplicativo de console para demonstrar como um consumidor pode ser configurado para ouvir e processar mensagens da fila.&lt;/p&gt;
 &lt;p&gt;Crie uma nova pasta:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir consumer
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Entre na pasta:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff5c57&#34;&gt;cd&lt;/span&gt; consumer
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Crie o projeto:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;dotnet new console
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Um modelo é necessário:&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;É necessário um model:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;CustomerCreated&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; Guid Id { &lt;span style=&#34;color:#ff6ac1&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#ff6ac1&#34;&gt;init&lt;/span&gt;; }
@@ -537,7 +530,7 @@ No exemplo que utilizei no post sobre a fila, o publisher estava dentro da API, 
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;E instale o &lt;a href=&#34;https://www.nuget.org/packages/AWSSDK.SQS&#34;&gt;AWS SDK&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;dotnet add package AWSSDK.SQS --version 3.7.100.78
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Então na classe Program precisamos receber a requisição:&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Depois disso, no Program, precisamos receber a solicitação:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;using&lt;/span&gt; Amazon.SQS;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;using&lt;/span&gt; Amazon.SQS.Model;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	 
@@ -565,7 +558,7 @@ No exemplo que utilizei no post sobre a fila, o publisher estava dentro da API, 
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Console.WriteLine();
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
-&lt;p&gt;Agora o publisher e o consumer estão criados, você pode verificar as mensagens no aws console, mas apenas executando o publisher e o consumer você vai conseguir ver as mensagens sendo enviadas e sendo recebidas.&lt;/p&gt;
+&lt;p&gt;Agora que tanto o publicador quanto o consumidor foram criados, você tem a opção de verificar as mensagens diretamente do console da AWS. No entanto, simplesmente executando o publicador e o consumidor, você poderá observar o processo de envio e recebimento de mensagens em ação.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Eu criei esse post para meus estudos, os aprendizados passados aqui foram obtidos através do curso &lt;a href=&#34;https://nickchapsas.com/p/cloud-fundamentals-aws-services-for-c-developers&#34;&gt;Cloud Fundamentals: AWS Services for C# Developers course&lt;/a&gt;.&lt;/p&gt;
 </description>
@@ -962,19 +955,100 @@ Conhecer os diretórios do Linux pode ajudar a administrar o sistema e entender 
       <pubDate>Wed, 08 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>/pt-pt/post/queue/</guid>
-      <description>&lt;p&gt;O que é uma fila?
-Uma fila é uma estrutura de dados dinâmica que admite remoção de elementos e inserção de novos objetos. Mais especificamente, uma fila (= queue) é uma estrutura sujeita à seguinte regra de operação: sempre que houver uma remoção, o elemento removido é o que está na estrutura há mais tempo.&lt;/p&gt;
-&lt;p&gt;Imagine que temos uma api de usuários&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/queue2.png&#34; alt=&#34;queue2&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Com essa API, podemos criar usuários no sistema e receber uma resposta dessa criação, talvez até atualizar ou deletar o usuário, enviar um email para o usuário e fazer uma requisição para outra API.
-Nesse cenário, se enviarmos um email, e nessa etapa falhar, a requisição inteira não vai estar completa, e para obter uma resposta de sucesso será necessário enviar outro request.&lt;/p&gt;
+      <description>&lt;h2 id=&#34;o-que-é-uma-fila&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#o-que-%c3%a9-uma-fila&#34;&gt;
+        #
+    &lt;/a&gt;
+    O que é uma fila?
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Uma fila é uma estrutura de dados dinâmica que admite remoção de elementos e inserção de novos objetos. Mais especificamente, uma fila (= queue) é uma estrutura sujeita à seguinte regra de operação: sempre que houver uma remoção, o elemento removido é o que está na estrutura há mais tempo.
+As filas seguem o princípio FIFO (First In, First Out), onde o primeiro elemento adicionado é o primeiro a ser removido. Isso é útil para muitas aplicações em sistemas distribuídos, onde a ordem das operações é importante.&lt;/p&gt;
+&lt;h2 id=&#34;caso-de-uso&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#caso-de-uso&#34;&gt;
+        #
+    &lt;/a&gt;
+    Caso de uso
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Imagine que temos uma API de usuários.&lt;/p&gt;
+&lt;p&gt;Com essa API, podemos criar usuários, atualiza-lós, deletá-los e receber uma resposta dessas operações, enviar um email para o usuário e fazer uma requisição para outra API.
+Nesse cenário, se ao enviar um um e-mail ocorrer uma falha, toda a requisição falhará, e para obter uma resposta de sucesso será necessário enviar outro request.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/queue1.png&#34; alt=&#34;queue1&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Mas não precisa ser dessa forma, porque enviar um email e fazer a requisição para outra API, para esse fluxo não é tão importante quanto salvar no banco as informações. E podem ser feitos depois, de maneira assíncrona.&lt;/p&gt;
-&lt;p&gt;É nesse momento que o conceito de fila vai nos ajudar.&lt;/p&gt;
-&lt;p&gt;Ao invés de fazer todas essas coisas sincronamente, podemos fazer apenas o crucial de forma síncrona, e o restante de forma assíncrona apenas adicionando em uma fila o que pode ser feito depois.
-Para que isso aconteça será necessário que tenhamos um consumer service, que vai ficar escutando o que tem na fila e fazer algo com a informação da fila,como enviar o email.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/queue3.png&#34; alt=&#34;queue3&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Isso faz com que seu sistema seja mais resiliente, e se algo falhar, vai voltar para a fila e será processado novamente depois.&lt;/p&gt;
+&lt;p&gt;No entanto, isso não precisa ser assim. Enviar um e-mail e fazer a solicitação para outra API nesse fluxo não é crucial e pode ser feito de forma assíncrona posteriormente.&lt;/p&gt;
+&lt;h2 id=&#34;introduzindo-o-conceito-de-fila&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#introduzindo-o-conceito-de-fila&#34;&gt;
+        #
+    &lt;/a&gt;
+    Introduzindo o conceito de fila
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Aqui entra o conceito de fila. Em vez de fazer todas essas operações de forma síncrona, podemos fazer apenas as operações cruciais de forma síncrona e as demais de forma assíncrona, adicionando na fila o que pode ser feito depois.&lt;/p&gt;
+&lt;p&gt;Para que isso funcione, é necessário ter um serviço consumidor que ficará ouvindo a fila e fará algo com as informações nela contidas, como enviar um e-mail.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/queue3.png&#34; alt=&#34;queue2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Isso torna seu sistema mais resiliente. Se algo falhar no processamento, a mensagem volta para a fila e será reprocessada posteriormente.&lt;/p&gt;
+&lt;h2 id=&#34;benefícios-de-usar-filas&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#benef%c3%adcios-de-usar-filas&#34;&gt;
+        #
+    &lt;/a&gt;
+    Benefícios de usar filas
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Resiliência: Se um componente do sistema falhar, a mensagem pode ser reprocessada.&lt;/li&gt;
+&lt;li&gt;Escalabilidade: Publisher e Consumers podem ser escalados independentemente.&lt;/li&gt;
+&lt;li&gt;Desacoplamento: Reduz a dependência direta entre componentes do sistema, permitindo maior flexibilidade e manutenção.&lt;/li&gt;
+&lt;li&gt;Gerenciamento de picos de carga: Filas permitem que o sistema lide com picos de carga distribuindo o processamento ao longo do tempo.&lt;/li&gt;
+&lt;li&gt;Prioridade: Mensagens podem ser priorizadas para garantir que as mais importantes sejam processadas primeiro.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;ferramentas&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#ferramentas&#34;&gt;
+        #
+    &lt;/a&gt;
+    Ferramentas
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;aws-sqs-simple-queue-service&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#aws-sqs-simple-queue-service&#34;&gt;
+        ##
+    &lt;/a&gt;
+    AWS SQS (Simple Queue Service)
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;AWS SQS é um serviço totalmente gerenciado de filas de mensagens que permite desacoplar e escalar microserviços, sistemas distribuídos e aplicativos sem servidor. Com SQS, você pode enviar, armazenar e receber mensagens entre componentes de software.&lt;/p&gt;
+&lt;h3 id=&#34;rabbitmq&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#rabbitmq&#34;&gt;
+        ##
+    &lt;/a&gt;
+    RabbitMQ
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;RabbitMQ é um dos mensageiros mais amplamente implantados na nuvem e on-premises. É um middleware de mensagens confiável que pode ser usado para filas de mensagens, roteamento de mensagens, balanceamento de carga e muito mais.&lt;/p&gt;
+&lt;h3 id=&#34;apache-kafka&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#apache-kafka&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Apache Kafka
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;Apache Kafka é uma plataforma distribuída de streaming de eventos. É usada para criar pipelines de dados em tempo real e aplicativos de streaming, oferecendo alta taxa de transferência, baixa latência e durabilidade de mensagens.&lt;/p&gt;
+&lt;h2 id=&#34;conclusão&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#conclus%c3%a3o&#34;&gt;
+        #
+    &lt;/a&gt;
+    Conclusão
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;O uso de filas pode tornar seu sistema mais robusto e eficiente, permitindo que tarefas não cruciais sejam processadas de forma assíncrona. Isso melhora a resiliência e escalabilidade do sistema, garantindo que falhas em operações secundárias não afetem a experiência do usuário. Além disso, com ferramentas como AWS SQS, RabbitMQ e Apache Kafka, a implementação de filas é acessível e poderosa.&lt;/p&gt;
 </description>
     </item>
     

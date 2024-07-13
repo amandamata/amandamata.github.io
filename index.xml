@@ -379,13 +379,12 @@ Repository:&lt;/p&gt;
     </item>
     
     <item>
-      <title>Implementing a sqs publisher and consumer using dotnet</title>
+      <title>Implementing an SQS Publisher and Consumer Using .NET</title>
       <link>/post/queue-csharp-sqs/</link>
       <pubDate>Wed, 22 Feb 2023 07:19:25 -0300</pubDate>
       
       <guid>/post/queue-csharp-sqs/</guid>
-      <description>&lt;p&gt;In this &lt;a href=&#34;https://amandamata.github.io/queue&#34;&gt;post&lt;/a&gt;, I pass an introduction to a queue and how to use it. Now I gonna explain how to implement an sqs consumer and publisher using c# dotnet.
-&lt;br/&gt;&lt;/p&gt;
+      <description>&lt;p&gt;In a previous post, I introduced the concept of queues and their usage. Now, I will explain how to implement an SQS consumer and publisher using C# and .NET.&lt;/p&gt;
 &lt;h2 id=&#34;sqs&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#sqs&#34;&gt;
@@ -394,23 +393,19 @@ Repository:&lt;/p&gt;
     SQS
 &lt;/div&gt;
 &lt;/h2&gt;
-&lt;p&gt;What is SQS?&lt;/p&gt;
-&lt;p&gt;SQS (Simple Queue Service) is an Amazon service that lets you send, store, and receive messages between software components at any volume, without losing messages or requiring other services to be available.&lt;/p&gt;
-&lt;p&gt;The best part is free, actually to pay for this service you gonna need to send over 1 million requests per month then amazon is going to bill you.&lt;/p&gt;
-&lt;p&gt;To start, it&amp;rsquo;s necessary to create an account in &lt;a href=&#34;https://aws.amazon.com/&#34;&gt;aws&lt;/a&gt; and go to &lt;a href=&#34;https://console.aws.amazon.com&#34;&gt;console&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;In the console area, type SQS in search and enter the first option Simple Queue Service.
-Click on Create queue, add a name to the queue and go to the end of the page and click Create queue. You can change the default values, but for now, all the settings are ok.
-&lt;br/&gt;&lt;/p&gt;
-&lt;h2 id=&#34;aws-command-line-interface&#34; &gt;
+&lt;p&gt;SQS (Simple Queue Service) is an Amazon Web Services offering that enables the sending, storing, and receiving of messages between software components at any volume, ensuring no message loss and eliminating the need for immediate availability of other services.&lt;/p&gt;
+&lt;p&gt;One of the best features of SQS is its cost-effectiveness; it&amp;rsquo;s free for up to 1 million requests per month, after which Amazon starts billing for the service.&lt;/p&gt;
+&lt;p&gt;To begin, you need to create an account on &lt;a href=&#34;https://aws.amazon.com/&#34;&gt;AWS&lt;/a&gt; and navigate to the &lt;a href=&#34;https://console.aws.amazon.com&#34;&gt;AWS Management Console&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In the console, search for SQS and select the first option, Simple Queue Service. Click on &amp;ldquo;Create queue&amp;rdquo;, name your queue, and proceed to the end of the page to click &amp;ldquo;Create queue&amp;rdquo;. Default settings are sufficient for starting, but feel free to adjust as necessary.&lt;/p&gt;
+&lt;h3 id=&#34;aws-command-line-interface&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#aws-command-line-interface&#34;&gt;
-        #
+        ##
     &lt;/a&gt;
     AWS Command Line Interface
 &lt;/div&gt;
-&lt;/h2&gt;
-&lt;p&gt;The AWS Command Line Interface allows us to make changes directly from the console without the need to access the AWS console.
-For example, if we need to list the buckets:&lt;/p&gt;
+&lt;/h3&gt;
+&lt;p&gt;The AWS Command Line Interface (CLI) enables making changes directly from the terminal, bypassing the need to use the AWS Management Console. For instance, to list all S3 buckets, you can use the following command:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;aws s3api list-buckets
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To be able to do that we need to install the cli, the tutorial for Windows, Linux, and macOS is &lt;a href=&#34;https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;After the installation, it&amp;rsquo;s necessary to authenticate your machine against aws.&lt;/p&gt;
@@ -433,12 +428,12 @@ For example, if we need to list the buckets:&lt;/p&gt;
     Publisher
 &lt;/div&gt;
 &lt;/h2&gt;
-&lt;p&gt;What is a publisher?&lt;/p&gt;
-&lt;p&gt;A publisher it&amp;rsquo;s a service that gonna get the information that something changes and sends to the queue a request.
-In the example used in the queue post, the publisher is inside the API, and after a new user was created the request was sent to the queue.&lt;/p&gt;
-&lt;p&gt;So with everything configured, it&amp;rsquo;s time to create the publisher.&lt;/p&gt;
-&lt;p&gt;In order to simplify, the example here it&amp;rsquo;s gonna be only the publisher, then you can take the implementation and use it in your API.&lt;/p&gt;
-&lt;p&gt;We&amp;rsquo;re gonna use a Console App&lt;/p&gt;
+&lt;p&gt;What is a Publisher?&lt;/p&gt;
+&lt;p&gt;A publisher is a service that detects changes or events and sends a message to a queue. In the context of the example discussed in the previous post about queues, the publisher resides within an API. For instance, after creating a new user, the publisher sends a message to the queue to notify other parts of the system about this event.&lt;/p&gt;
+&lt;p&gt;Now that we have our setup ready, let&amp;rsquo;s proceed to create the publisher.&lt;/p&gt;
+&lt;p&gt;For simplicity, this example will focus solely on the publisher component. You can later integrate this implementation into your API as needed.&lt;/p&gt;
+&lt;p&gt;We will use a Console Application for this demonstration.&lt;/p&gt;
+&lt;p&gt;Open your terminal or command prompt and run the following command to create a new folder named &lt;code&gt;publisher&lt;/code&gt;:&lt;/p&gt;
 &lt;p&gt;Create a new folder:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir publisher
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Go inside the folder:&lt;/p&gt;
@@ -503,9 +498,9 @@ In the example used in the queue post, the publisher is inside the API, and afte
     Consumer
 &lt;/div&gt;
 &lt;/h2&gt;
-&lt;p&gt;What it&amp;rsquo;s a consumer?&lt;/p&gt;
-&lt;p&gt;A consumer it&amp;rsquo;s the service that will be listening the queue.&lt;/p&gt;
-&lt;p&gt;We&amp;rsquo;re gonna use a Console App&lt;/p&gt;
+&lt;p&gt;What is a Consumer?&lt;/p&gt;
+&lt;p&gt;A consumer is a service designed to listen to the queue. It waits for messages to arrive in the queue and processes them according to the defined business logic.&lt;/p&gt;
+&lt;p&gt;For this part of the implementation, we will also use a Console Application to demonstrate how a consumer can be set up to listen to and process messages from the queue.&lt;/p&gt;
 &lt;p&gt;Create a new folder:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir consumer
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Go inside the folder:&lt;/p&gt;
@@ -550,7 +545,7 @@ In the example used in the queue post, the publisher is inside the API, and afte
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Console.WriteLine();
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br/&gt;
-&lt;p&gt;Now the publisher and the consumer It&amp;rsquo;s created, you can pull for messages inside the aws console, but just running the publisher and the consumer you&amp;rsquo;re gonna be able to see the sending and receiving messages.&lt;/p&gt;
+&lt;p&gt;Now that both the publisher and the consumer have been created, you have the option to pull messages directly from the AWS console. However, by simply running the publisher and the consumer, you will be able to observe the process of sending and receiving messages in action.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;I create this post for my studying purpose, the learnings I posted here were driven by the &lt;a href=&#34;https://nickchapsas.com/p/cloud-fundamentals-aws-services-for-c-developers&#34;&gt;Cloud Fundamentals: AWS Services for C# Developers course&lt;/a&gt;.&lt;/p&gt;
 </description>
@@ -938,24 +933,104 @@ They have this fix on the roadmap, but until the fix is released, the &lt;em&gt;
     </item>
     
     <item>
-      <title>Application of queue</title>
+      <title>Uses for a queue</title>
       <link>/post/queue/</link>
       <pubDate>Wed, 08 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>/post/queue/</guid>
-      <description>&lt;p&gt;What is a queue?
-A queue is a collection of entities that are maintained in a sequence and can be modified by the addition of entities at one end of the sequence and the removal of entities from the other end of sequence. Wikipedia&lt;/p&gt;
-&lt;p&gt;Imagine that we have a user&amp;rsquo;s API.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/queue2.png&#34; alt=&#34;queue2&#34;&gt;&lt;/p&gt;
-&lt;p&gt;We can create users in the system and then retrieve them back, maybe update and maybe delete them, send an email to the user, and also make a request to another API.
-In this scenario, if when sending an email and that email fails, that entire request fails and it&amp;rsquo;s necessary to make another request to have the entire process done.&lt;/p&gt;
+      <description>&lt;h2 id=&#34;what-is-a-queue&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#what-is-a-queue&#34;&gt;
+        #
+    &lt;/a&gt;
+    What is a Queue?
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;A queue is a dynamic data structure that allows for the removal of elements and the insertion of new objects. More specifically, a queue is a structure that follows the rule of operation where whenever there is a removal, the element removed is the one that has been in the structure the longest.
+Queues follow the FIFO (First In, First Out) principle, where the first element added is the first to be removed. This is useful for many applications in distributed systems, where the order of operations is important.&lt;/p&gt;
+&lt;h2 id=&#34;use-case&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#use-case&#34;&gt;
+        #
+    &lt;/a&gt;
+    Use Case
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Imagine we have a user API.&lt;/p&gt;
+&lt;p&gt;With this API, we can create users, update them, delete them, and receive a response for these operations, send an email to the user, and make a request to another API. In this scenario, if an email fails to send, the entire request will fail, and another request must be sent to achieve a successful response.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/queue1.png&#34; alt=&#34;queue1&#34;&gt;&lt;/p&gt;
-&lt;p&gt;But that does not need to be like this, cuz sending an email and making the request to another API for this flow it&amp;rsquo;s not crucial and could be done later async.&lt;/p&gt;
-&lt;p&gt;Here enter the queue concept.
-We could instead of making all those things sync, make only the crucial sync and the rest async by adding in a queue what could be done later.&lt;/p&gt;
-&lt;p&gt;To get this done it&amp;rsquo;s necessary to have a consumer service, that will be listening to the queue and do something with the information in the queue, like sending an email.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/queue3.png&#34; alt=&#34;queue3&#34;&gt;&lt;/p&gt;
-&lt;p&gt;That makes your system more resilient if something fails to process, it&amp;rsquo;s going back to the queue and then will be reprocessed later.&lt;/p&gt;
+&lt;p&gt;However, it doesn&amp;rsquo;t have to be this way. Sending an email and making the request to another API in this flow is not crucial and can be done asynchronously later.&lt;/p&gt;
+&lt;h2 id=&#34;introducing-the-concept-of-a-queue&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#introducing-the-concept-of-a-queue&#34;&gt;
+        #
+    &lt;/a&gt;
+    Introducing the Concept of a Queue
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Here enters the concept of a queue. Instead of doing all these operations synchronously, we can do only the crucial ones synchronously and the rest asynchronously by adding to the queue what can be done later.&lt;/p&gt;
+&lt;p&gt;To make this work, it&amp;rsquo;s necessary to have a consumer service that will be listening to the queue and will do something with the information in the queue, like sending an email.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/queue3.png&#34; alt=&#34;queue2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;This makes your system more resilient. If something fails in the processing, the message goes back to the queue and will be reprocessed later.&lt;/p&gt;
+&lt;h2 id=&#34;benefits-of-using-queues&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#benefits-of-using-queues&#34;&gt;
+        #
+    &lt;/a&gt;
+    Benefits of Using Queues
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Resilience&lt;/strong&gt;: If a system component fails, the message can be reprocessed.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Scalability&lt;/strong&gt;: Publishers and consumers can be scaled independently.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Decoupling&lt;/strong&gt;: Reduces direct dependency between system components, allowing for greater flexibility and maintenance.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Load Management&lt;/strong&gt;: Queues allow the system to handle load spikes by distributing processing over time.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Priority&lt;/strong&gt;: Messages can be prioritized to ensure the most important ones are processed first.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;tools&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#tools&#34;&gt;
+        #
+    &lt;/a&gt;
+    Tools
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;aws-sqs-simple-queue-service&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#aws-sqs-simple-queue-service&#34;&gt;
+        ##
+    &lt;/a&gt;
+    AWS SQS (Simple Queue Service)
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://aws.amazon.com/sqs/&#34;&gt;AWS SQS&lt;/a&gt; is a fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications. With SQS, you can send, store, and receive messages between software components.&lt;/p&gt;
+&lt;h3 id=&#34;rabbitmq&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#rabbitmq&#34;&gt;
+        ##
+    &lt;/a&gt;
+    RabbitMQ
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.rabbitmq.com/&#34;&gt;RabbitMQ&lt;/a&gt; is one of the most widely deployed open-source message brokers, used both in the cloud and on-premises. It&amp;rsquo;s a reliable messaging middleware that can be used for message queuing, message routing, load balancing, and more.&lt;/p&gt;
+&lt;h3 id=&#34;apache-kafka&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#apache-kafka&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Apache Kafka
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://kafka.apache.org/&#34;&gt;Apache Kafka&lt;/a&gt; is a distributed event streaming platform. It&amp;rsquo;s used for building real-time data pipelines and streaming applications, offering high throughput, low latency, and message durability.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#conclusion&#34;&gt;
+        #
+    &lt;/a&gt;
+    Conclusion
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Using queues can make your system more robust and efficient, allowing non-crucial tasks to be processed asynchronously. This improves the resilience and scalability of the system, ensuring that failures in secondary operations do not affect the user experience. Additionally, with tools like AWS SQS, RabbitMQ, and Apache Kafka, implementing queues is accessible and powerful.&lt;/p&gt;
 </description>
     </item>
     
