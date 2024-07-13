@@ -487,7 +487,7 @@ Nesse cenário, se ao enviar um um e-mail ocorrer uma falha, toda a requisição
 </h2>
 <p>Aqui entra o conceito de fila. Em vez de fazer todas essas operações de forma síncrona, podemos fazer apenas as operações cruciais de forma síncrona e as demais de forma assíncrona, adicionando na fila o que pode ser feito depois.</p>
 <p>Para que isso funcione, é necessário ter um serviço consumidor que ficará ouvindo a fila e fará algo com as informações nela contidas, como enviar um e-mail.</p>
-<p><img src="/img/queue3.png" alt="queue2"></p>
+<p><img src="/img/queue2.png" alt="queue2"></p>
 <p>Isso torna seu sistema mais resiliente. Se algo falhar no processamento, a mensagem volta para a fila e será reprocessada posteriormente.</p>
 <h2 id="benefícios-de-usar-filas" >
 <div>

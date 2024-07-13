@@ -486,7 +486,7 @@ Queues follow the FIFO (First In, First Out) principle, where the first element 
 </h2>
 <p>Here enters the concept of a queue. Instead of doing all these operations synchronously, we can do only the crucial ones synchronously and the rest asynchronously by adding to the queue what can be done later.</p>
 <p>To make this work, it&rsquo;s necessary to have a consumer service that will be listening to the queue and will do something with the information in the queue, like sending an email.</p>
-<p><img src="/img/queue3.png" alt="queue2"></p>
+<p><img src="/img/queue2.png" alt="queue2"></p>
 <p>This makes your system more resilient. If something fails in the processing, the message goes back to the queue and will be reprocessed later.</p>
 <h2 id="benefits-of-using-queues" >
 <div>
