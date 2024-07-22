@@ -1071,47 +1071,45 @@ Queues follow the FIFO (First In, First Out) principle, where the first element 
       <pubDate>Wed, 25 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>/about/</guid>
-      <description>&lt;p&gt;Hello! I&amp;rsquo;m Amanda, and I&amp;rsquo;m 28 years old.&lt;/p&gt;
-&lt;p&gt;Since 2014, I&amp;rsquo;ve been immersed in the world of technology, and since 2019, I&amp;rsquo;ve ventured into the universe of programming. Here in my little corner of the internet, you&amp;rsquo;ll find a collection of learnings, experiences, and projects I&amp;rsquo;ve worked on.&lt;/p&gt;
-&lt;p&gt;Feel free to explore and, who knows, find something that resonates with you.&lt;/p&gt;
-&lt;h2 id=&#34;my-journey&#34; &gt;
+      <description>&lt;h2 id=&#34;hello&#34; &gt;
 &lt;div&gt;
-    &lt;a href=&#34;#my-journey&#34;&gt;
+    &lt;a href=&#34;#hello&#34;&gt;
         #
     &lt;/a&gt;
-    My Journey
+    Hello!
 &lt;/div&gt;
 &lt;/h2&gt;
-&lt;p&gt;I have a degree in Computer Science and currently work as a Software Engineer at PagarMe. Over the years, I&amp;rsquo;ve worked with various technologies, including C#, JavaScript, Go, and modern frameworks like Node.js. Each project I&amp;rsquo;ve worked on has taught me something new, and I&amp;rsquo;m always looking for new challenges.&lt;/p&gt;
-&lt;h2 id=&#34;contact&#34; &gt;
+&lt;p&gt;I’m Amanda, 28 years old, living in the countryside of São Paulo, and I’m a Software Engineer at pagar.me StoneCo. My passions include coffee, tattoos, astronomy, economics, retro games, and the Rubik&amp;rsquo;s Cube.&lt;/p&gt;
+&lt;p&gt;Since I was young, I’ve been fascinated by understanding how things work. I used to disassemble anything with gears and batteries to figure out its workings. During my teenage years, I received a Positivo notebook – a gift that, although it was a nightmare in terms of performance, became a milestone for me. A friend from MSN, who knew a bit about computers, helped me reinstall the sound driver I had accidentally deleted. It was amazing to see how, with just the model of my notebook, he managed to help me restore the sound that had stopped working. This episode further sparked my interest in computers and led me to study more about the subject.&lt;/p&gt;
+&lt;p&gt;With the suggestion of my computer hardware professor, I decided to pursue Computer Science and started college in 2014, graduating in 2019. My initial experience in IT was in computer support, but in 2019 I transitioned to software development. I feel fulfilled working in a field that allows me to solve problems, something that has always fascinated me.&lt;/p&gt;
+&lt;p&gt;I created this blog to share the learnings and challenges I’ve encountered throughout my journey in technology. Feel free to explore, and perhaps find something that helps you.&lt;/p&gt;
+&lt;h3 id=&#34;disclaimer&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#disclaimer&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Disclaimer
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;The opinions expressed here are personal and do not represent those of my current or any previous employers.&lt;/p&gt;
+&lt;h3 id=&#34;contact&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#contact&#34;&gt;
-        #
+        ##
     &lt;/a&gt;
     Contact
 &lt;/div&gt;
-&lt;/h2&gt;
-&lt;p&gt;Want to chat? Send me an email: &lt;strong&gt;&lt;a href=&#34;mailto:amanda.mata@live.com&#34;&gt;amanda.mata@live.com&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;opinions&#34; &gt;
+&lt;/h3&gt;
+&lt;p&gt;If you wish to get in touch with me, you can find me on &lt;strong&gt;&lt;a href=&#34;https://www.linkedin.com/in/amanda-mata/&#34;&gt;LinkedIn&lt;/a&gt;&lt;/strong&gt; or send an email to &lt;strong&gt;&lt;a href=&#34;mailto:amanda.mata@live.com&#34;&gt;amanda.mata@live.com&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;buy-me-a-coffee&#34; &gt;
 &lt;div&gt;
-    &lt;a href=&#34;#opinions&#34;&gt;
-        #
+    &lt;a href=&#34;#buy-me-a-coffee&#34;&gt;
+        ##
     &lt;/a&gt;
-    Opinions
+    Buy me a coffee
 &lt;/div&gt;
-&lt;/h2&gt;
-&lt;p&gt;The opinions expressed here are personal and do not represent those of my current employer or any previous employer.&lt;/p&gt;
-&lt;h2 id=&#34;support-my-work&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#support-my-work&#34;&gt;
-        #
-    &lt;/a&gt;
-    Support My Work
-&lt;/div&gt;
-&lt;/h2&gt;
-&lt;p&gt;If you like the content I create and want to support me, consider buying me a coffee. Any contribution is greatly appreciated and helps me continue producing content.&lt;/p&gt;
+&lt;/h3&gt;
 &lt;p&gt;BTC Wallet: &lt;code&gt;bc1qjy622x7qh6k453tdgcu7hhhj7agv6nqnysfdlntx6uf0tp4g8ujs0vcd9a&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/wallet.png&#34; alt=&#34;wallet&#34;&gt;&lt;/p&gt;
 </description>
     </item>
     

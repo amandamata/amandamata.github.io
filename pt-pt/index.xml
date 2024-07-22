@@ -1090,47 +1090,46 @@ Nesse cenário, se ao enviar um um e-mail ocorrer uma falha, toda a requisição
       <pubDate>Wed, 25 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>/pt-pt/about/</guid>
-      <description>&lt;p&gt;Olá! Sou a Amanda, tenho 28 anos.&lt;/p&gt;
-&lt;p&gt;Desde 2014, estou imersa no mundo da tecnologia, e desde 2019, me aventurei no universo da programação. Aqui no meu cantinho da internet, você encontrará uma coleção de aprendizados, experiências e projetos nos quais trabalhei.&lt;/p&gt;
-&lt;p&gt;Sinta-se à vontade para explorar e, quem sabe, encontrar algo que ressoe com você.&lt;/p&gt;
-&lt;h2 id=&#34;minha-jornada&#34; &gt;
+      <description>&lt;h2 id=&#34;olá&#34; &gt;
 &lt;div&gt;
-    &lt;a href=&#34;#minha-jornada&#34;&gt;
+    &lt;a href=&#34;#ol%c3%a1&#34;&gt;
         #
     &lt;/a&gt;
-    Minha Jornada
+    Olá!
 &lt;/div&gt;
 &lt;/h2&gt;
-&lt;p&gt;Sou formada em Ciência da Computação e atualmente trabalho como Engenheira de Software na PagarMe. Ao longo dos anos, trabalhei com diversas tecnologias, incluindo C#, JavaScript, Go e frameworks modernos como Node.js. Cada projeto em que trabalhei me ensinou algo novo, e estou sempre em busca de novos desafios.&lt;/p&gt;
-&lt;h2 id=&#34;contato&#34; &gt;
+&lt;p&gt;Eu sou Amanda, tenho 28 anos, moro no interior de São Paulo, sou Engenheira de Software na pagar.me StoneCo.
+Minhas paixões são: café, tatuagens, astronomia e economia, jogos antigos e cubo mágico.&lt;/p&gt;
+&lt;p&gt;Desde pequena, sempre fui fascinada por entender como as coisas funcionam. Desmontava tudo o que tinha engrenagens e bateria para descobrir como funcionava. Na adolescência, ganhei um notebook da Positivo – um presente que, embora tenha sido um terror em termos de performance, se tornou um marco para mim. Um amigo do MSN, que sabia um pouco sobre computadores, me ajudou a reinstalar o driver de som que eu havia apagado acidentalmente. Foi incrível ver como, com apenas o modelo do meu notebook, ele conseguiu me ajudar a restaurar o som que havia parado de funcionar. Esse episódio despertou ainda mais meu interesse por computadores, e me levou a estudar mais sobre o assunto.&lt;/p&gt;
+&lt;p&gt;Com a sugestão do meu professor de hardware de computadores, decidi seguir para Ciências da Computação e comecei a faculdade em 2014, me formando em 2019. Meu início na área de TI foi com suporte a computadores, mas em 2019 transicionei para o desenvolvimento de software. Sinto-me realizada por trabalhar em uma área que me permite resolver problemas, algo que sempre me fascinou.&lt;/p&gt;
+&lt;p&gt;Criei este blog para compartilhar os aprendizados e desafios que encontrei ao longo da minha jornada na Tecnologia. Sinta-se à vontade para explorar, e quem sabe encontrar algo que te ajude.&lt;/p&gt;
+&lt;h3 id=&#34;disclaimer&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#disclaimer&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Disclaimer
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;As opiniões expressas aqui são pessoais e não representam as de meu empregador atual ou de qualquer empregador anterior.&lt;/p&gt;
+&lt;h3 id=&#34;contato&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#contato&#34;&gt;
-        #
+        ##
     &lt;/a&gt;
     Contato
 &lt;/div&gt;
-&lt;/h2&gt;
-&lt;p&gt;Quer conversar? Me mande um e-mail: &lt;strong&gt;&lt;a href=&#34;mailto:amanda.mata@live.com&#34;&gt;amanda.mata@live.com&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;opiniões&#34; &gt;
+&lt;/h3&gt;
+&lt;p&gt;Se desejar entrar em contato comigo, você pode me encontrar no &lt;strong&gt;&lt;a href=&#34;https://www.linkedin.com/in/amanda-mata/&#34;&gt;LinkedIn&lt;/a&gt;&lt;/strong&gt; ou enviar um e-mail para &lt;strong&gt;&lt;a href=&#34;mailto:amanda.mata@live.com&#34;&gt;amanda.mata@live.com&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;h4 id=&#34;me-pague-um-café&#34; &gt;
 &lt;div&gt;
-    &lt;a href=&#34;#opini%c3%b5es&#34;&gt;
-        #
+    &lt;a href=&#34;#me-pague-um-caf%c3%a9&#34;&gt;
+        ###
     &lt;/a&gt;
-    Opiniões
+    Me pague um café
 &lt;/div&gt;
-&lt;/h2&gt;
-&lt;p&gt;As opiniões expressas aqui são pessoais e não representam as de meu empregador atual ou de qualquer empregador anterior.&lt;/p&gt;
-&lt;h2 id=&#34;apoie-meu-trabalho&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#apoie-meu-trabalho&#34;&gt;
-        #
-    &lt;/a&gt;
-    Apoie meu trabalho
-&lt;/div&gt;
-&lt;/h2&gt;
-&lt;p&gt;Se você gosta do conteúdo que eu crio e quer me apoiar, considere me comprar um café. Qualquer contribuição é muito apreciada e me ajuda a continuar produzindo conteúdo.&lt;/p&gt;
+&lt;/h4&gt;
 &lt;p&gt;BTC Wallet: &lt;code&gt;bc1qjy622x7qh6k453tdgcu7hhhj7agv6nqnysfdlntx6uf0tp4g8ujs0vcd9a&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/wallet.png&#34; alt=&#34;wallet&#34;&gt;&lt;/p&gt;
 </description>
     </item>
     
