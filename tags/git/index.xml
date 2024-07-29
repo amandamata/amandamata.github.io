@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Git on amandabytes</title>
+    <title>git on amandabytes</title>
     <link>/tags/git/</link>
-    <description>amandabytes (Git)</description>
+    <description>amandabytes (git)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 30 May 2023 14:01:29 -0300</lastBuildDate>
@@ -31,9 +31,9 @@
 &lt;/h2&gt;
 &lt;p&gt;We have the repository &lt;a href=&#34;https://github.com/amandamata/how-to-use-bfg&#34;&gt;how-to-use-bfg&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;In this repository, there was an &lt;code&gt;appsettings.json&lt;/code&gt; with sensitive information.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;bfg1&#34; src=&#34;https://amandamata.github.io/img/bfg1.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg1.png&#34; alt=&#34;bfg1&#34;&gt;&lt;/p&gt;
 &lt;p&gt;I deleted this sensitive information, made the commit and push, but the sensitive information still appears in the history.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;bfg2&#34; src=&#34;https://amandamata.github.io/img/bfg2.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg2.png&#34; alt=&#34;bfg2&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;prerequisites&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#prerequisites&#34;&gt;
@@ -77,7 +77,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;After following these steps, your repository&amp;rsquo;s commit history will be updated, and the sensitive information will be removed.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;bfg3&#34; src=&#34;https://amandamata.github.io/img/bfg3.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg3.png&#34; alt=&#34;bfg3&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;conclusion&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#conclusion&#34;&gt;

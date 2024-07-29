@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Git on amandabytes</title>
+    <title>git on amandabytes</title>
     <link>/pt-pt/tags/git/</link>
-    <description>amandabytes (Git)</description>
+    <description>amandabytes (git)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-pt</language>
     <lastBuildDate>Tue, 30 May 2023 14:01:29 -0300</lastBuildDate>
@@ -31,9 +31,9 @@
 &lt;/h2&gt;
 &lt;p&gt;Temos o repositório &lt;a href=&#34;https://github.com/amandamata/how-to-use-bfg&#34;&gt;how-to-use-bfg&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Nesse repositório existia um &lt;code&gt;appsettings.json&lt;/code&gt; com informações sensíveis.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;bfg1&#34; src=&#34;https://amandamata.github.io/img/bfg1.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg1.png&#34; alt=&#34;bfg1&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Eu excluí essa informação sensível, fiz o commit e push, mas no histórico essa informação sensível ainda aparece.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;bfg2&#34; src=&#34;https://amandamata.github.io/img/bfg2.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg2.png&#34; alt=&#34;bfg2&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;pré-requisitos&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#pr%c3%a9-requisitos&#34;&gt;
@@ -85,7 +85,7 @@
 &lt;/ol&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git push
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Após seguir esses passos, o histórico de commit do seu repositório será atualizado e os dados sensiveis serão removidos.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;bfg3&#34; src=&#34;https://amandamata.github.io/img/bfg3.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg3.png&#34; alt=&#34;bfg3&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;conclusão&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#conclus%c3%a3o&#34;&gt;

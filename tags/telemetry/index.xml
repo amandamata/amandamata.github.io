@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Telemetry on amandabytes</title>
+    <title>telemetry on amandabytes</title>
     <link>/tags/telemetry/</link>
-    <description>amandabytes (Telemetry)</description>
+    <description>amandabytes (telemetry)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 13 Nov 2023 18:19:29 -0300</lastBuildDate>
@@ -36,19 +36,19 @@
 &lt;/div&gt;
 &lt;/h2&gt;
 &lt;p&gt;After installing the &lt;a href=&#34;https://github.com/Fody/MethodTimer&#34;&gt;MethodTimer&lt;/a&gt; library in your project, simply add the [Time] attribute above any method you want to monitor. See an example:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;MyClass&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;MyClass&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#57c7ff&#34;&gt;    [Time]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;void&lt;/span&gt; MyMethod()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;void&lt;/span&gt; MyMethod()
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#78787e&#34;&gt;// Your code here&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Console.WriteLine(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;Hello&amp;#34;&lt;/span&gt;);
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;When you run your code, the library automatically injects the timing logic, and the debug output will show the method&amp;rsquo;s execution time.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;MyClass&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;MyClass&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;void&lt;/span&gt; MyMethod()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;void&lt;/span&gt; MyMethod()
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#9aedfe&#34;&gt;var&lt;/span&gt; stopwatch = Stopwatch.StartNew();
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;try&lt;/span&gt;
@@ -68,10 +68,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;namespace&lt;/span&gt; JokerCharge
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff5c57&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;MethodTimeLogger&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;MethodTimeLogger&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff5c57&#34;&gt;static&lt;/span&gt; ILogger Logger;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff5c57&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;void&lt;/span&gt; Log(MethodBase methodBase, TimeSpan elapsed, &lt;span style=&#34;color:#9aedfe&#34;&gt;string&lt;/span&gt; message)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;static&lt;/span&gt; ILogger Logger;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;void&lt;/span&gt; Log(MethodBase methodBase, TimeSpan elapsed, &lt;span style=&#34;color:#9aedfe&#34;&gt;string&lt;/span&gt; message)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            Logger.LogTrace(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;{Class}.{Method} {Duration}&amp;#34;&lt;/span&gt;, methodBase.DeclaringType!.Name, methodBase.Name, elapsed);
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
@@ -90,7 +90,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;With everything configured, you can log and inject the information you want.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;telemetry&#34; src=&#34;https://amandamata.github.io/img/telemetry.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/telemetry.png&#34; alt=&#34;telemetry&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;benefits&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#benefits&#34;&gt;

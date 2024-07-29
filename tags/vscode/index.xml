@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Vscode on amandabytes</title>
+    <title>vscode on amandabytes</title>
     <link>/tags/vscode/</link>
-    <description>amandabytes (Vscode)</description>
+    <description>amandabytes (vscode)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 18 Feb 2023 06:13:07 -0300</lastBuildDate>
@@ -93,9 +93,9 @@ My file is at &lt;code&gt;/home/amanda/.config/Code/User/settings.json&lt;/code&
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;[csharp]&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ff5c57&#34;&gt;:&lt;/span&gt; {&lt;span style=&#34;color:#ff6ac1&#34;&gt;&amp;#34;editor.defaultFormatter&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;ms-dotnettools.csharp&amp;#34;&lt;/span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For these settings to work, you need to have the C# extension installed and enabled, and after all this, restart Omnisharp.&lt;/p&gt;
 &lt;p&gt;Here is the extension:
-&lt;img alt=&#34;brace1&#34; src=&#34;https://amandamata.github.io/img/brace1.png&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://amandamata.github.io/img/brace1.png&#34; alt=&#34;brace1&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Ctrl+Shift+P: Restart Omnisharp
-&lt;img alt=&#34;brace2&#34; src=&#34;https://amandamata.github.io/img/brace2.png&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://amandamata.github.io/img/brace2.png&#34; alt=&#34;brace2&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;everything-working-but&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#everything-working-but&#34;&gt;
@@ -105,7 +105,7 @@ My file is at &lt;code&gt;/home/amanda/.config/Code/User/settings.json&lt;/code&
 &lt;/div&gt;
 &lt;/h2&gt;
 &lt;p&gt;After all these changes, you can start using Visual Studio Code and enjoy having braces inserted on a new line&amp;hellip; BUT automatic formatting while typing is not working. To work, you need to use the Format Document option in Visual Studio Code.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;brace3&#34; src=&#34;https://amandamata.github.io/img/brace3.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/brace3.png&#34; alt=&#34;brace3&#34;&gt;&lt;/p&gt;
 &lt;p&gt;I didn&amp;rsquo;t want to keep using this option every time, so after a lot of searching, I found these settings for the editor:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;em&gt;&lt;strong&gt;editor.formatOnSave&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;

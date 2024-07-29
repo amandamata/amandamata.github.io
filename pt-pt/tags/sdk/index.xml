@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sdk on amandabytes</title>
+    <link>/pt-pt/tags/sdk/</link>
+    <description>amandabytes (sdk)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-pt</language>
+    <lastBuildDate>Sun, 28 Jul 2024 21:08:50 -0300</lastBuildDate>
+    
+    <atom:link href="/pt-pt/tags/sdk/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Refit</title>
+      <link>/pt-pt/post/refit/</link>
+      <pubDate>Sun, 28 Jul 2024 21:08:50 -0300</pubDate>
+      
+      <guid>/pt-pt/post/refit/</guid>
+      <description>&lt;p&gt;upcomming&amp;hellip;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cache on amandabytes</title>
+    <title>cache on amandabytes</title>
     <link>/pt-pt/tags/cache/</link>
-    <description>amandabytes (Cache)</description>
+    <description>amandabytes (cache)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-pt</language>
     <lastBuildDate>Tue, 25 Apr 2023 07:42:55 -0300</lastBuildDate>
@@ -36,7 +36,7 @@
 &lt;/h2&gt;
 &lt;p&gt;Redis é quase como um banco de dados NoSQL, mas se destaca como um cache devido ao seu modelo de armazenamento em chave-valor. A escolha entre Redis e Memcached depende do caso de uso e do volume de dados. Se você precisa armazenar informações de sessão, Memcached é uma boa escolha. No entanto, para consultas extensas envolvendo conjuntos de dados maiores, o Redis é mais adequado. Memcached usa a memória da aplicação para armazenar dados, enquanto o Redis é um cache distribuído, independente da memória da aplicação, permitindo escalonamento vertical conforme a demanda cresce.&lt;/p&gt;
 &lt;p&gt;Quando um cache é usado pela primeira vez, a informação necessária não estará disponível, exigindo uma consulta ao banco de dados. Solicitações subsequentes podem recuperar dados diretamente do cache, reduzindo significativamente os tempos de resposta em comparação com as consultas ao banco de dados.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;redis&#34; src=&#34;https://amandamata.github.io/img/redis.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/redis.png&#34; alt=&#34;redis&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;por-que-usar-cache&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#por-que-usar-cache&#34;&gt;
@@ -93,12 +93,12 @@ Para essa implementação vamos seguir um padrão chamado Decorator, com esse pa
 &lt;/h3&gt;
 &lt;p&gt;Vamos criar um serviço para lidar com tudo relacionado ao Redis.
 Service:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;CacheService&lt;/span&gt; : ICacheService
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;CacheService&lt;/span&gt; : ICacheService
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff5c57&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;readonly&lt;/span&gt; IDistributedCache _distributedCache;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff5c57&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;readonly&lt;/span&gt; DistributedCacheEntryOptions _options;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;readonly&lt;/span&gt; IDistributedCache _distributedCache;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;readonly&lt;/span&gt; DistributedCacheEntryOptions _options;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; CacheService(IDistributedCache distributedCache)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; CacheService(IDistributedCache distributedCache)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        _distributedCache = distributedCache;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        _options = &lt;span style=&#34;color:#ff6ac1&#34;&gt;new&lt;/span&gt; DistributedCacheEntryOptions
@@ -107,7 +107,7 @@ Service:&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        };
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff5c57&#34;&gt;async&lt;/span&gt; Task&amp;lt;T&amp;gt; GetAsync&amp;lt;T&amp;gt;(&lt;span style=&#34;color:#9aedfe&#34;&gt;string&lt;/span&gt; key)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;async&lt;/span&gt; Task&amp;lt;T&amp;gt; GetAsync&amp;lt;T&amp;gt;(&lt;span style=&#34;color:#9aedfe&#34;&gt;string&lt;/span&gt; key)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;try&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
@@ -123,7 +123,7 @@ Service:&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;default&lt;/span&gt;(T);
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff5c57&#34;&gt;async&lt;/span&gt; Task SetAsync&amp;lt;T&amp;gt;(&lt;span style=&#34;color:#9aedfe&#34;&gt;string&lt;/span&gt; key, T &lt;span style=&#34;color:#ff6ac1&#34;&gt;value&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;async&lt;/span&gt; Task SetAsync&amp;lt;T&amp;gt;(&lt;span style=&#34;color:#9aedfe&#34;&gt;string&lt;/span&gt; key, T &lt;span style=&#34;color:#ff6ac1&#34;&gt;value&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;try&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
@@ -136,7 +136,7 @@ Service:&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff5c57&#34;&gt;async&lt;/span&gt; Task RemoveAsync(&lt;span style=&#34;color:#9aedfe&#34;&gt;string&lt;/span&gt; key)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;async&lt;/span&gt; Task RemoveAsync(&lt;span style=&#34;color:#9aedfe&#34;&gt;string&lt;/span&gt; key)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;try&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
@@ -158,18 +158,18 @@ Service:&lt;/p&gt;
 &lt;/h3&gt;
 &lt;p&gt;Vamos criar um repositório para lidar com a solicitação de consulta ao banco de dados que &amp;ldquo;interceptará&amp;rdquo; e consultará primeiro o Redis.
 Repository:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;CachedAlugatorRepository&lt;/span&gt; : IAlugatorRepository
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;CachedAlugatorRepository&lt;/span&gt; : IAlugatorRepository
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff5c57&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;readonly&lt;/span&gt; IAlugatorRepository _alugatorRepository;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff5c57&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;readonly&lt;/span&gt; ICacheService _cache;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;readonly&lt;/span&gt; IAlugatorRepository _alugatorRepository;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;readonly&lt;/span&gt; ICacheService _cache;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; CachedAlugatorRepository(IAlugatorRepository alugatorRepository, ICacheService cache)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; CachedAlugatorRepository(IAlugatorRepository alugatorRepository, ICacheService cache)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        _alugatorRepository = alugatorRepository;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        _cache = cache;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff5c57&#34;&gt;async&lt;/span&gt; Task&amp;lt;&lt;span style=&#34;color:#9aedfe&#34;&gt;bool&lt;/span&gt;&amp;gt; DeleteAsync(&lt;span style=&#34;color:#9aedfe&#34;&gt;string&lt;/span&gt; id)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;async&lt;/span&gt; Task&amp;lt;&lt;span style=&#34;color:#9aedfe&#34;&gt;bool&lt;/span&gt;&amp;gt; DeleteAsync(&lt;span style=&#34;color:#9aedfe&#34;&gt;string&lt;/span&gt; id)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#9aedfe&#34;&gt;var&lt;/span&gt; alugator = &lt;span style=&#34;color:#ff6ac1&#34;&gt;await&lt;/span&gt; _alugatorRepository.GetAsync(id);
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;if&lt;/span&gt; (alugator &lt;span style=&#34;color:#ff6ac1&#34;&gt;is&lt;/span&gt; not &lt;span style=&#34;color:#ff6ac1&#34;&gt;null&lt;/span&gt;)
@@ -181,7 +181,7 @@ Repository:&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;true&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff5c57&#34;&gt;async&lt;/span&gt; Task&amp;lt;Alugator&amp;gt; GetAsync(&lt;span style=&#34;color:#9aedfe&#34;&gt;string&lt;/span&gt; id)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;async&lt;/span&gt; Task&amp;lt;Alugator&amp;gt; GetAsync(&lt;span style=&#34;color:#9aedfe&#34;&gt;string&lt;/span&gt; id)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#9aedfe&#34;&gt;var&lt;/span&gt; alugator = &lt;span style=&#34;color:#ff6ac1&#34;&gt;await&lt;/span&gt; _cache.GetAsync&amp;lt;Alugator&amp;gt;(id);
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;if&lt;/span&gt; (alugator &lt;span style=&#34;color:#ff6ac1&#34;&gt;is&lt;/span&gt; not &lt;span style=&#34;color:#ff6ac1&#34;&gt;null&lt;/span&gt;)
@@ -193,7 +193,7 @@ Repository:&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;return&lt;/span&gt; alugator;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff5c57&#34;&gt;async&lt;/span&gt; Task&amp;lt;&lt;span style=&#34;color:#9aedfe&#34;&gt;bool&lt;/span&gt;&amp;gt; UpsertAsync(Alugator alugator)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;async&lt;/span&gt; Task&amp;lt;&lt;span style=&#34;color:#9aedfe&#34;&gt;bool&lt;/span&gt;&amp;gt; UpsertAsync(Alugator alugator)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;await&lt;/span&gt; _cache.SetAsync(alugator.documentId, alugator);
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
