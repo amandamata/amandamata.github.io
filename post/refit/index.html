@@ -12,7 +12,9 @@
 
 <title>Refit - amandabytes</title>
 
-<meta name="description" content="upcomming&hellip;">
+<meta name="description" content="Recently, I had the opportunity to test a great C# library that significantly improves the development of an SDK.
+In later experiences develop an sdk project was something really honorous, wee need to create a lot of classes and methods to handle with the api request and response. Then, during my researchs I found Refit.
+Refit is an rest library that helps a lot during an sdk develpment, you just need to create the contract classes (if you already has in an side project is even easyer), and create the interfaces for each controller.">
 
 
 
@@ -358,7 +360,7 @@
     <nav class="noselect">
         
         
-        <a class="" href="https://amandamata.github.io/" title="amandabytes">home</a>
+        <a class="" href="https://amandamata.github.io/" title="">home</a>
         
         <a class="" href="https://amandamata.github.io/tags" title="">tags</a>
         
@@ -384,7 +386,7 @@
     <article class="post h-entry">
         <div class="post-header">
             <header>
-                <h1 class="p-name post-title draft">Refit</h1>
+                <h1 class="p-name post-title">Refit</h1>
             </header>
             
 
@@ -393,13 +395,13 @@
 <div class="post-info noselect">
     
         <div class="post-date dt-published">
-            <time datetime="2024-07-28">2024-07-28</time>
+            <time datetime="2024-08-04">2024-08-04</time>
             
         </div>
     
 
     <a class="post-hidden-url u-url" href="/post/refit/">/post/refit/</a>
-    <a href="https://amandamata.github.io" class="p-name p-author post-hidden-author h-card" rel="me"></a>
+    <a href="https://amandamata.github.io/" class="p-name p-author post-hidden-author h-card" rel="me"></a>
 
 
     <div class="post-taxonomies">
@@ -408,13 +410,13 @@
             <ul class="post-tags">
                 
                     
-                    <li><a href="/tags/dotnet/">#dotnet</a></li>
+                    <li><a href="/tags/dotnet/">#Dotnet</a></li>
                 
                     
-                    <li><a href="/tags/sdk/">#sdk</a></li>
+                    <li><a href="/tags/sdk/">#Sdk</a></li>
                 
                     
-                    <li><a href="/tags/refit/">#refit</a></li>
+                    <li><a href="/tags/refit/">#Refit</a></li>
                 
             </ul>
         
@@ -454,7 +456,122 @@
 </script>
 
         <div class="content e-content">
-            <p>upcomming&hellip;</p>
+            <p>Recently, I had the opportunity to test a great C# library that significantly improves the development of an SDK.</p>
+<p>In later experiences develop an sdk project was something really honorous, wee need to create a lot of classes and methods to handle with the api request and response. Then, during my researchs I found <a href="https://github.com/reactiveui/refit">Refit</a>.</p>
+<p>Refit is an rest library that helps a lot during an sdk develpment, you just need to create the contract classes (if you already has in an side project is even easyer), and create the interfaces for each controller. Simple as that.</p>
+<h3 id="without-refit-x-with-refit" >
+<div>
+    <a href="#without-refit-x-with-refit">
+        ##
+    </a>
+    Without Refit x With Refit
+</div>
+</h3>
+<p>Without Refit:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">using</span> System;
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">using</span> System.Net.Http;
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">using</span> System.Threading.Tasks;
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">using</span> Newtonsoft.Json;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">ApiClient</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">private</span> <span style="color:#ff6ac1">readonly</span> HttpClient _httpClient;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> ApiClient(HttpClient httpClient)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _httpClient = httpClient;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff5c57">async</span> Task&lt;User&gt; GetUserAsync(<span style="color:#9aedfe">int</span> userId)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> response = <span style="color:#ff6ac1">await</span> _httpClient.GetAsync(<span style="color:#5af78e">$&#34;https://api.example.com/users/{userId}&#34;</span>);
+</span></span><span style="display:flex;"><span>        response.EnsureSuccessStatusCode();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> content = <span style="color:#ff6ac1">await</span> response.Content.ReadAsStringAsync();
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> JsonConvert.DeserializeObject&lt;User&gt;(content);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">User</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">int</span> Id { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">set</span>; }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">string</span> Name { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">set</span>; }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">string</span> Email { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">set</span>; }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>With Refit:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">using</span> System;
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">using</span> System.Threading.Tasks;
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">using</span> Refit;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">interface</span> <span style="color:#f3f99d">IApiClient</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#57c7ff">    [Get(&#34;/users/{userId}&#34;)]</span>
+</span></span><span style="display:flex;"><span>    Task&lt;User&gt; GetUserAsync(<span style="color:#9aedfe">int</span> userId);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">User</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">int</span> Id { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">set</span>; }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">string</span> Name { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">set</span>; }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">string</span> Email { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">set</span>; }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">Program</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff5c57">static</span> <span style="color:#ff5c57">async</span> Task Main(<span style="color:#9aedfe">string</span>[] args)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> apiClient = RestService.For&lt;IApiClient&gt;(<span style="color:#5af78e">&#34;https://api.example.com&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> user = <span style="color:#ff6ac1">await</span> apiClient.GetUserAsync(<span style="color:#ff9f43">1</span>);
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#5af78e">$&#34;Name: {user.Name}, Email: {user.Email}&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol>
+<li>
+<p>Define the Interface: You start by defining an interface that represents your API. Each method in the interface corresponds to an API endpoint. You use attributes to specify the HTTP method (e.g., GET, POST) and the route.</p>
+</li>
+<li>
+<p>Create the Data Models: Define the data models that represent the JSON responses from the API.</p>
+</li>
+<li>
+<p>Generate the Implementation: Refit generates the implementation of the interface at runtime. You don&rsquo;t need to write any additional code to handle the HTTP requests and responses. You create an instance of the API client using RestService.For<T>().</p>
+</li>
+<li>
+<p>Make API Calls: You can now use the generated client to make API calls. Refit handles the serialization and deserialization of the request and response data, making the code much cleaner and easier to maintain.</p>
+</li>
+</ol>
+<h3 id="authorization" >
+<div>
+    <a href="#authorization">
+        ##
+    </a>
+    Authorization
+</div>
+</h3>
+<p>Simple as that:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">using</span> Refit;
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">using</span> System.Threading.Tasks;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">interface</span> <span style="color:#f3f99d">IApiClient</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#57c7ff">    [Headers(&#34;Authorization: Bearer&#34;)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#57c7ff">    [Get(&#34;/users/{userId}&#34;)]</span>
+</span></span><span style="display:flex;"><span>    Task&lt;User&gt; GetUserAsync(<span style="color:#9aedfe">int</span> userId);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>You can find more examples of authorization in the <a href="https://github.com/reactiveui/refit">Refit repository</a>.</p>
+<h3 id="benefits" >
+<div>
+    <a href="#benefits">
+        ##
+    </a>
+    Benefits
+</div>
+</h3>
+<ul>
+<li>Simplicity: Refit abstracts away the boilerplate code required for making HTTP requests, allowing you to focus on defining your API contracts.</li>
+<li>Maintainability: By defining your API endpoints as interfaces, your code becomes more modular and easier to maintain.</li>
+<li>Type Safety: Refit provides compile-time checking of your API contracts, reducing the likelihood of runtime errors.</li>
+<li>Integration: Refit integrates seamlessly with other .NET libraries and frameworks, making it a versatile choice for .NET developers.</li>
+</ul>
 
         </div>
 
@@ -529,7 +646,7 @@
 
     <p class="h-card vcard">
 
-    <a href=https://amandamata.github.io class="p-name u-url url fn" rel="me"></a>
+    <a href=https://amandamata.github.io/ class="p-name u-url url fn" rel="me"></a>
 
     
 

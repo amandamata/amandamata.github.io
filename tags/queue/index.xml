@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>queue on amandabytes</title>
+    <title>Queue on amandabytes</title>
     <link>/tags/queue/</link>
-    <description>amandabytes (queue)</description>
+    <description>amandabytes (Queue)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 22 Feb 2023 07:19:25 -0300</lastBuildDate>
@@ -74,12 +74,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Create the project:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;dotnet new console
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;It&amp;rsquo;s necessary a model:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;CustomerCreated&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;CustomerCreated&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; Guid Id { &lt;span style=&#34;color:#ff6ac1&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#ff6ac1&#34;&gt;init&lt;/span&gt;; }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#9aedfe&#34;&gt;string&lt;/span&gt; FullName { &lt;span style=&#34;color:#ff6ac1&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#ff6ac1&#34;&gt;init&lt;/span&gt;; }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#9aedfe&#34;&gt;string&lt;/span&gt; Email { &lt;span style=&#34;color:#ff6ac1&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#ff6ac1&#34;&gt;init&lt;/span&gt;; }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; DateTime DateOfBirth { &lt;span style=&#34;color:#ff6ac1&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#ff6ac1&#34;&gt;init&lt;/span&gt;; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; Guid Id { &lt;span style=&#34;color:#ff6ac1&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#ff6ac1&#34;&gt;init&lt;/span&gt;; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#9aedfe&#34;&gt;string&lt;/span&gt; FullName { &lt;span style=&#34;color:#ff6ac1&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#ff6ac1&#34;&gt;init&lt;/span&gt;; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#9aedfe&#34;&gt;string&lt;/span&gt; Email { &lt;span style=&#34;color:#ff6ac1&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#ff6ac1&#34;&gt;init&lt;/span&gt;; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; DateTime DateOfBirth { &lt;span style=&#34;color:#ff6ac1&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#ff6ac1&#34;&gt;init&lt;/span&gt;; }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And install the &lt;a href=&#34;https://www.nuget.org/packages/AWSSDK.SQS&#34;&gt;AWS SDK&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;dotnet add package AWSSDK.SQS --version 3.7.100.78
@@ -141,12 +141,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Create the project:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;dotnet new console
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;It&amp;rsquo;s necessary a model:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;CustomerCreated&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#f3f99d&#34;&gt;CustomerCreated&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; Guid Id { &lt;span style=&#34;color:#ff6ac1&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#ff6ac1&#34;&gt;init&lt;/span&gt;; }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#9aedfe&#34;&gt;string&lt;/span&gt; FullName { &lt;span style=&#34;color:#ff6ac1&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#ff6ac1&#34;&gt;init&lt;/span&gt;; }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#9aedfe&#34;&gt;string&lt;/span&gt; Email { &lt;span style=&#34;color:#ff6ac1&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#ff6ac1&#34;&gt;init&lt;/span&gt;; }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff6ac1&#34;&gt;public&lt;/span&gt; DateTime DateOfBirth { &lt;span style=&#34;color:#ff6ac1&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#ff6ac1&#34;&gt;init&lt;/span&gt;; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; Guid Id { &lt;span style=&#34;color:#ff6ac1&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#ff6ac1&#34;&gt;init&lt;/span&gt;; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#9aedfe&#34;&gt;string&lt;/span&gt; FullName { &lt;span style=&#34;color:#ff6ac1&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#ff6ac1&#34;&gt;init&lt;/span&gt;; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#9aedfe&#34;&gt;string&lt;/span&gt; Email { &lt;span style=&#34;color:#ff6ac1&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#ff6ac1&#34;&gt;init&lt;/span&gt;; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff5c57&#34;&gt;public&lt;/span&gt; DateTime DateOfBirth { &lt;span style=&#34;color:#ff6ac1&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#ff6ac1&#34;&gt;init&lt;/span&gt;; }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And install the &lt;a href=&#34;https://www.nuget.org/packages/AWSSDK.SQS&#34;&gt;AWS SDK&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;dotnet add package AWSSDK.SQS --version 3.7.100.78
@@ -167,7 +167,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;while&lt;/span&gt;(!cts.IsCancellationRequested)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#9aedfe&#34;&gt;var&lt;/span&gt; response = &lt;span style=&#34;color:#ff6ac1&#34;&gt;await&lt;/span&gt; sqsCLient.ReceiveMessageAsync(receiveMessageRequest, cts.Token);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  response.Messages.ForEach(&lt;span style=&#34;color:#ff6ac1&#34;&gt;async&lt;/span&gt; message =&amp;gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  response.Messages.ForEach(&lt;span style=&#34;color:#ff5c57&#34;&gt;async&lt;/span&gt; message =&amp;gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Console.WriteLine(&lt;span style=&#34;color:#5af78e&#34;&gt;$&amp;#34;Message Id: { message.MessageId }&amp;#34;&lt;/span&gt;);
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Console.WriteLine(&lt;span style=&#34;color:#5af78e&#34;&gt;$&amp;#34;Message Body: { message.Body }&amp;#34;&lt;/span&gt;);
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;await&lt;/span&gt; sqsCLient.DeleteMessageAsync(queueUrlResponse.QueueUrl, message.ReceiptHandle);
@@ -210,7 +210,7 @@ Queues follow the FIFO (First In, First Out) principle, where the first element 
 &lt;/h2&gt;
 &lt;p&gt;Imagine we have a user API.&lt;/p&gt;
 &lt;p&gt;With this API, we can create users, update them, delete them, and receive a response for these operations, send an email to the user, and make a request to another API. In this scenario, if an email fails to send, the entire request will fail, and another request must be sent to achieve a successful response.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/queue1.png&#34; alt=&#34;queue1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;queue1&#34; src=&#34;https://amandamata.github.io/img/queue1.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;However, it doesn&amp;rsquo;t have to be this way. Sending an email and making the request to another API in this flow is not crucial and can be done asynchronously later.&lt;/p&gt;
 &lt;h2 id=&#34;introducing-the-concept-of-a-queue&#34; &gt;
 &lt;div&gt;
@@ -222,7 +222,7 @@ Queues follow the FIFO (First In, First Out) principle, where the first element 
 &lt;/h2&gt;
 &lt;p&gt;Here enters the concept of a queue. Instead of doing all these operations synchronously, we can do only the crucial ones synchronously and the rest asynchronously by adding to the queue what can be done later.&lt;/p&gt;
 &lt;p&gt;To make this work, it&amp;rsquo;s necessary to have a consumer service that will be listening to the queue and will do something with the information in the queue, like sending an email.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/queue2.png&#34; alt=&#34;queue2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;queue2&#34; src=&#34;https://amandamata.github.io/img/queue2.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;This makes your system more resilient. If something fails in the processing, the message goes back to the queue and will be reprocessed later.&lt;/p&gt;
 &lt;h2 id=&#34;benefits-of-using-queues&#34; &gt;
 &lt;div&gt;

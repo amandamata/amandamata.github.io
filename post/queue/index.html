@@ -358,7 +358,7 @@
     <nav class="noselect">
         
         
-        <a class="" href="https://amandamata.github.io/" title="amandabytes">home</a>
+        <a class="" href="https://amandamata.github.io/" title="">home</a>
         
         <a class="" href="https://amandamata.github.io/tags" title="">tags</a>
         
@@ -399,7 +399,7 @@
     
 
     <a class="post-hidden-url u-url" href="/post/queue/">/post/queue/</a>
-    <a href="https://amandamata.github.io" class="p-name p-author post-hidden-author h-card" rel="me"></a>
+    <a href="https://amandamata.github.io/" class="p-name p-author post-hidden-author h-card" rel="me"></a>
 
 
     <div class="post-taxonomies">
@@ -408,7 +408,7 @@
             <ul class="post-tags">
                 
                     
-                    <li><a href="/tags/queue/">#queue</a></li>
+                    <li><a href="/tags/queue/">#Queue</a></li>
                 
             </ul>
         
@@ -468,7 +468,7 @@ Queues follow the FIFO (First In, First Out) principle, where the first element 
 </h2>
 <p>Imagine we have a user API.</p>
 <p>With this API, we can create users, update them, delete them, and receive a response for these operations, send an email to the user, and make a request to another API. In this scenario, if an email fails to send, the entire request will fail, and another request must be sent to achieve a successful response.</p>
-<p><img src="/img/queue1.png" alt="queue1"></p>
+<p><img alt="queue1" src="/img/queue1.png"></p>
 <p>However, it doesn&rsquo;t have to be this way. Sending an email and making the request to another API in this flow is not crucial and can be done asynchronously later.</p>
 <h2 id="introducing-the-concept-of-a-queue" >
 <div>
@@ -480,7 +480,7 @@ Queues follow the FIFO (First In, First Out) principle, where the first element 
 </h2>
 <p>Here enters the concept of a queue. Instead of doing all these operations synchronously, we can do only the crucial ones synchronously and the rest asynchronously by adding to the queue what can be done later.</p>
 <p>To make this work, it&rsquo;s necessary to have a consumer service that will be listening to the queue and will do something with the information in the queue, like sending an email.</p>
-<p><img src="/img/queue2.png" alt="queue2"></p>
+<p><img alt="queue2" src="/img/queue2.png"></p>
 <p>This makes your system more resilient. If something fails in the processing, the message goes back to the queue and will be reprocessed later.</p>
 <h2 id="benefits-of-using-queues" >
 <div>
@@ -602,7 +602,7 @@ Queues follow the FIFO (First In, First Out) principle, where the first element 
 
     <p class="h-card vcard">
 
-    <a href=https://amandamata.github.io class="p-name u-url url fn" rel="me"></a>
+    <a href=https://amandamata.github.io/ class="p-name u-url url fn" rel="me"></a>
 
     
 

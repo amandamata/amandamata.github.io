@@ -359,7 +359,7 @@
     <nav class="noselect">
         
         
-        <a class="" href="https://amandamata.github.io/" title="amandabytes">home</a>
+        <a class="" href="https://amandamata.github.io/" title="">home</a>
         
         <a class="" href="https://amandamata.github.io/tags" title="">tags</a>
         
@@ -400,7 +400,7 @@
     
 
     <a class="post-hidden-url u-url" href="/post/queue-csharp-sqs/">/post/queue-csharp-sqs/</a>
-    <a href="https://amandamata.github.io" class="p-name p-author post-hidden-author h-card" rel="me"></a>
+    <a href="https://amandamata.github.io/" class="p-name p-author post-hidden-author h-card" rel="me"></a>
 
 
     <div class="post-taxonomies">
@@ -409,10 +409,10 @@
             <ul class="post-tags">
                 
                     
-                    <li><a href="/tags/queue/">#queue</a></li>
+                    <li><a href="/tags/queue/">#Queue</a></li>
                 
                     
-                    <li><a href="/tags/dotnet/">#dotnet</a></li>
+                    <li><a href="/tags/dotnet/">#Dotnet</a></li>
                 
             </ul>
         
@@ -509,12 +509,12 @@
 </span></span></code></pre></div><p>Create the project:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>dotnet new console
 </span></span></code></pre></div><p>It&rsquo;s necessary a model:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">CustomerCreated</span>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">CustomerCreated</span>
 </span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">public</span> Guid Id { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">public</span> <span style="color:#9aedfe">string</span> FullName { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">public</span> <span style="color:#9aedfe">string</span> Email { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">public</span> DateTime DateOfBirth { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff5c57">public</span> Guid Id { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">string</span> FullName { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">string</span> Email { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff5c57">public</span> DateTime DateOfBirth { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>And install the <a href="https://www.nuget.org/packages/AWSSDK.SQS">AWS SDK</a></p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>dotnet add package AWSSDK.SQS --version 3.7.100.78
@@ -576,12 +576,12 @@
 </span></span></code></pre></div><p>Create the project:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>dotnet new console
 </span></span></code></pre></div><p>It&rsquo;s necessary a model:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">CustomerCreated</span>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">CustomerCreated</span>
 </span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">public</span> Guid Id { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">public</span> <span style="color:#9aedfe">string</span> FullName { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">public</span> <span style="color:#9aedfe">string</span> Email { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">public</span> DateTime DateOfBirth { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff5c57">public</span> Guid Id { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">string</span> FullName { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">string</span> Email { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff5c57">public</span> DateTime DateOfBirth { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>And install the <a href="https://www.nuget.org/packages/AWSSDK.SQS">AWS SDK</a></p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>dotnet add package AWSSDK.SQS --version 3.7.100.78
@@ -602,7 +602,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">while</span>(!cts.IsCancellationRequested)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#9aedfe">var</span> response = <span style="color:#ff6ac1">await</span> sqsCLient.ReceiveMessageAsync(receiveMessageRequest, cts.Token);
-</span></span><span style="display:flex;"><span>  response.Messages.ForEach(<span style="color:#ff6ac1">async</span> message =&gt; {
+</span></span><span style="display:flex;"><span>  response.Messages.ForEach(<span style="color:#ff5c57">async</span> message =&gt; {
 </span></span><span style="display:flex;"><span>    Console.WriteLine(<span style="color:#5af78e">$&#34;Message Id: { message.MessageId }&#34;</span>);
 </span></span><span style="display:flex;"><span>    Console.WriteLine(<span style="color:#5af78e">$&#34;Message Body: { message.Body }&#34;</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">await</span> sqsCLient.DeleteMessageAsync(queueUrlResponse.QueueUrl, message.ReceiptHandle);
@@ -686,7 +686,7 @@
 
     <p class="h-card vcard">
 
-    <a href=https://amandamata.github.io class="p-name u-url url fn" rel="me"></a>
+    <a href=https://amandamata.github.io/ class="p-name u-url url fn" rel="me"></a>
 
     
 

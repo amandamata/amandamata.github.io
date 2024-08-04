@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>vscode on amandabytes</title>
+    <title>Vscode on amandabytes</title>
     <link>/pt-pt/tags/vscode/</link>
-    <description>amandabytes (vscode)</description>
+    <description>amandabytes (Vscode)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-pt</language>
     <lastBuildDate>Sat, 18 Feb 2023 06:12:47 -0300</lastBuildDate>
@@ -94,10 +94,10 @@ O meu arquivo está em &lt;code&gt;/home/amanda/.config/Code/User/settings.json&
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;[csharp]&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ff5c57&#34;&gt;:&lt;/span&gt; {&lt;span style=&#34;color:#ff6ac1&#34;&gt;&amp;#34;editor.defaultFormatter&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;ms-dotnettools.csharp&amp;#34;&lt;/span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Para essas configurações funcionarem, é necessário ter a extensão C# instalada e habilitada, e depois de tudo isso, reiniciar o omnisharp.&lt;/p&gt;
 &lt;p&gt;Essa é a extensão:
-&lt;img src=&#34;https://amandamata.github.io/img/brace1.png&#34; alt=&#34;brace1&#34;&gt;&lt;/p&gt;
+&lt;img alt=&#34;brace1&#34; src=&#34;https://amandamata.github.io/img/brace1.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Restart omnisharp
 &lt;code&gt;Ctrl+Shift+P&lt;/code&gt;
-&lt;img src=&#34;https://amandamata.github.io/img/brace2.png&#34; alt=&#34;brace2&#34;&gt;&lt;/p&gt;
+&lt;img alt=&#34;brace2&#34; src=&#34;https://amandamata.github.io/img/brace2.png&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;tudo-funcionando-mas&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#tudo-funcionando-mas&#34;&gt;
@@ -109,7 +109,7 @@ O meu arquivo está em &lt;code&gt;/home/amanda/.config/Code/User/settings.json&
 &lt;p&gt;Depois de todas essas alterações, você pode começar a utilizar o visual studio code e aproveitar os colchetes sendo inseridos em uma nova linha&amp;hellip;
 MAS
 A formatação automática durante a digitação não está funcionando, para funcionar é necessário utilizar a opção Format Document no Visual Studio Code.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/brace3.png&#34; alt=&#34;brace3&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;brace3&#34; src=&#34;https://amandamata.github.io/img/brace3.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Eu não queria ficar utilizando essa opção toda vez, então, depois de muita busca, eu encontrei essas configurações para o editor:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;em&gt;&lt;strong&gt;editor.formatOnSave&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;

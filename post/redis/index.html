@@ -359,7 +359,7 @@
     <nav class="noselect">
         
         
-        <a class="" href="https://amandamata.github.io/" title="amandabytes">home</a>
+        <a class="" href="https://amandamata.github.io/" title="">home</a>
         
         <a class="" href="https://amandamata.github.io/tags" title="">tags</a>
         
@@ -400,7 +400,7 @@
     
 
     <a class="post-hidden-url u-url" href="/post/redis/">/post/redis/</a>
-    <a href="https://amandamata.github.io" class="p-name p-author post-hidden-author h-card" rel="me"></a>
+    <a href="https://amandamata.github.io/" class="p-name p-author post-hidden-author h-card" rel="me"></a>
 
 
     <div class="post-taxonomies">
@@ -409,10 +409,10 @@
             <ul class="post-tags">
                 
                     
-                    <li><a href="/tags/cache/">#cache</a></li>
+                    <li><a href="/tags/cache/">#Cache</a></li>
                 
                     
-                    <li><a href="/tags/dotnet/">#dotnet</a></li>
+                    <li><a href="/tags/dotnet/">#Dotnet</a></li>
                 
             </ul>
         
@@ -471,7 +471,7 @@
 </h2>
 <p>Redis is almost like a NoSQL database but excels as a cache due to its key-value storage model. The choice between Redis and Memcached depends on the use case and data volume. If you need to store session information, Memcached is a good choice. However, for extensive queries involving larger data sets, Redis is more suitable. Memcached uses the application&rsquo;s memory to store data, while Redis is a distributed cache, independent of the application&rsquo;s memory, allowing it to scale vertically as demand grows.</p>
 <p>When a cache is first used, the required information won&rsquo;t be available, necessitating a database query. Subsequent requests can retrieve data directly from the cache, significantly reducing response times compared to database queries.</p>
-<p><img src="/img/redis.png" alt="redis"></p>
+<p><img alt="redis" src="/img/redis.png"></p>
 <h2 id="why-use-caching" >
 <div>
     <a href="#why-use-caching">
@@ -527,12 +527,12 @@
 </h3>
 <p>Let&rsquo;s create a Service to handle everything related to Redis.
 Service:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">CacheService</span> : ICacheService
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">CacheService</span> : ICacheService
 </span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">private</span> <span style="color:#ff6ac1">readonly</span> IDistributedCache _distributedCache;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">private</span> <span style="color:#ff6ac1">readonly</span> DistributedCacheEntryOptions _options;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">private</span> <span style="color:#ff6ac1">readonly</span> IDistributedCache _distributedCache;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">private</span> <span style="color:#ff6ac1">readonly</span> DistributedCacheEntryOptions _options;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">public</span> CacheService(IDistributedCache distributedCache)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> CacheService(IDistributedCache distributedCache)
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>        _distributedCache = distributedCache;
 </span></span><span style="display:flex;"><span>        _options = <span style="color:#ff6ac1">new</span> DistributedCacheEntryOptions
@@ -541,7 +541,7 @@ Service:</p>
 </span></span><span style="display:flex;"><span>        };
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">async</span> Task&lt;T&gt; GetAsync&lt;T&gt;(<span style="color:#9aedfe">string</span> key)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff5c57">async</span> Task&lt;T&gt; GetAsync&lt;T&gt;(<span style="color:#9aedfe">string</span> key)
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">try</span>
 </span></span><span style="display:flex;"><span>        {
@@ -557,7 +557,7 @@ Service:</p>
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">default</span>(T);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">async</span> Task SetAsync&lt;T&gt;(<span style="color:#9aedfe">string</span> key, T <span style="color:#ff6ac1">value</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff5c57">async</span> Task SetAsync&lt;T&gt;(<span style="color:#9aedfe">string</span> key, T <span style="color:#ff6ac1">value</span>)
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">try</span>
 </span></span><span style="display:flex;"><span>        {
@@ -570,7 +570,7 @@ Service:</p>
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">async</span> Task RemoveAsync(<span style="color:#9aedfe">string</span> key)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff5c57">async</span> Task RemoveAsync(<span style="color:#9aedfe">string</span> key)
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">try</span>
 </span></span><span style="display:flex;"><span>        {
@@ -592,18 +592,18 @@ Service:</p>
 </h3>
 <p>Let&rsquo;s create a Repository to handle the query request to the database that will &ldquo;intercept&rdquo; and go first in Redis.
 Repository:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">CachedAlugatorRepository</span> : IAlugatorRepository
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">CachedAlugatorRepository</span> : IAlugatorRepository
 </span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">private</span> <span style="color:#ff6ac1">readonly</span> IAlugatorRepository _alugatorRepository;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">private</span> <span style="color:#ff6ac1">readonly</span> ICacheService _cache;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">private</span> <span style="color:#ff6ac1">readonly</span> IAlugatorRepository _alugatorRepository;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">private</span> <span style="color:#ff6ac1">readonly</span> ICacheService _cache;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">public</span> CachedAlugatorRepository(IAlugatorRepository alugatorRepository, ICacheService cache)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> CachedAlugatorRepository(IAlugatorRepository alugatorRepository, ICacheService cache)
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>        _alugatorRepository = alugatorRepository;
 </span></span><span style="display:flex;"><span>        _cache = cache;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">async</span> Task&lt;<span style="color:#9aedfe">bool</span>&gt; DeleteAsync(<span style="color:#9aedfe">string</span> id)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff5c57">async</span> Task&lt;<span style="color:#9aedfe">bool</span>&gt; DeleteAsync(<span style="color:#9aedfe">string</span> id)
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> alugator = <span style="color:#ff6ac1">await</span> _alugatorRepository.GetAsync(id);
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> (alugator <span style="color:#ff6ac1">is</span> not <span style="color:#ff6ac1">null</span>)
@@ -615,7 +615,7 @@ Repository:</p>
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">true</span>;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">async</span> Task&lt;Alugator&gt; GetAsync(<span style="color:#9aedfe">string</span> id)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff5c57">async</span> Task&lt;Alugator&gt; GetAsync(<span style="color:#9aedfe">string</span> id)
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> alugator = <span style="color:#ff6ac1">await</span> _cache.GetAsync&lt;Alugator&gt;(id);
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> (alugator <span style="color:#ff6ac1">is</span> not <span style="color:#ff6ac1">null</span>)
@@ -627,7 +627,7 @@ Repository:</p>
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> alugator;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">public</span> <span style="color:#ff6ac1">async</span> Task&lt;<span style="color:#9aedfe">bool</span>&gt; UpsertAsync(Alugator alugator)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff5c57">async</span> Task&lt;<span style="color:#9aedfe">bool</span>&gt; UpsertAsync(Alugator alugator)
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">await</span> _cache.SetAsync(alugator.documentId, alugator);
 </span></span><span style="display:flex;"><span>
@@ -725,7 +725,7 @@ Repository:</p>
 
     <p class="h-card vcard">
 
-    <a href=https://amandamata.github.io class="p-name u-url url fn" rel="me"></a>
+    <a href=https://amandamata.github.io/ class="p-name u-url url fn" rel="me"></a>
 
     
 
