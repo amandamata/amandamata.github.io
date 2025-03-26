@@ -12,7 +12,16 @@
 
 <title>Usos para uma fila - amandabytes</title>
 
-<meta name="description" content="# O que é uma fila? Uma fila é uma estrutura de dados dinâmica que admite remoção de elementos e inserção de novos objetos. Mais especificamente, uma fila (= queue) é uma estrutura sujeita à seguinte regra de operação: sempre que houver uma remoção, o elemento removido é o que está na estrutura há mais tempo. As filas seguem o princípio FIFO (First In, First Out), onde o primeiro elemento adicionado é o primeiro a ser removido.">
+<meta name="description" content="
+
+    
+        #
+    
+    O que é uma fila?
+
+
+Uma fila é uma estrutura de dados dinâmica que admite remoção de elementos e inserção de novos objetos. Mais especificamente, uma fila (= queue) é uma estrutura sujeita à seguinte regra de operação: sempre que houver uma remoção, o elemento removido é o que está na estrutura há mais tempo.
+As filas seguem o princípio FIFO (First In, First Out), onde o primeiro elemento adicionado é o primeiro a ser removido. Isso é útil para muitas aplicações em sistemas distribuídos, onde a ordem das operações é importante.">
 
 
 
@@ -358,7 +367,7 @@
     <nav class="noselect">
         
         
-        <a class="" href="https://amandamata.github.io/pt-pt/" title="">início</a>
+        <a class="" href="https://amandamata.github.io/pt-pt/" title="amandabytes">início</a>
         
         <a class="" href="https://amandamata.github.io/pt-pt/tags" title="">tags</a>
         
@@ -469,7 +478,7 @@ As filas seguem o princípio FIFO (First In, First Out), onde o primeiro element
 <p>Imagine que temos uma API de usuários.</p>
 <p>Com essa API, podemos criar usuários, atualiza-lós, deletá-los e receber uma resposta dessas operações, enviar um email para o usuário e fazer uma requisição para outra API.
 Nesse cenário, se ao enviar um um e-mail ocorrer uma falha, toda a requisição falhará, e para obter uma resposta de sucesso será necessário enviar outro request.</p>
-<p><img alt="queue1" src="/img/queue1.png"></p>
+<p><img src="/img/queue1.png" alt="queue1"></p>
 <p>No entanto, isso não precisa ser assim. Enviar um e-mail e fazer a solicitação para outra API nesse fluxo não é crucial e pode ser feito de forma assíncrona posteriormente.</p>
 <h2 id="introduzindo-o-conceito-de-fila" >
 <div>
@@ -481,7 +490,7 @@ Nesse cenário, se ao enviar um um e-mail ocorrer uma falha, toda a requisição
 </h2>
 <p>Aqui entra o conceito de fila. Em vez de fazer todas essas operações de forma síncrona, podemos fazer apenas as operações cruciais de forma síncrona e as demais de forma assíncrona, adicionando na fila o que pode ser feito depois.</p>
 <p>Para que isso funcione, é necessário ter um serviço consumidor que ficará ouvindo a fila e fará algo com as informações nela contidas, como enviar um e-mail.</p>
-<p><img alt="queue2" src="/img/queue2.png"></p>
+<p><img src="/img/queue2.png" alt="queue2"></p>
 <p>Isso torna seu sistema mais resiliente. Se algo falhar no processamento, a mensagem volta para a fila e será reprocessada posteriormente.</p>
 <h2 id="benefícios-de-usar-filas" >
 <div>
@@ -560,19 +569,6 @@ Nesse cenário, se ao enviar um um e-mail ocorrer uma falha, toda a requisição
     
 
     
-        
-
-
-
-
-
-
-
-
-
-    
-
-    
 
     
 
@@ -583,7 +579,7 @@ Nesse cenário, se ao enviar um um e-mail ocorrer uma falha, toda a requisição
         
 
         <div style="display: flex; align-items: center; gap:8px">
-            © amanda, 2024
+            © 2025
             
         </div>
         <div style="display:flex;align-items: center">

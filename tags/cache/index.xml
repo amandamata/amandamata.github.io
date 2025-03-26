@@ -36,7 +36,7 @@
 &lt;/h2&gt;
 &lt;p&gt;Redis is almost like a NoSQL database but excels as a cache due to its key-value storage model. The choice between Redis and Memcached depends on the use case and data volume. If you need to store session information, Memcached is a good choice. However, for extensive queries involving larger data sets, Redis is more suitable. Memcached uses the application&amp;rsquo;s memory to store data, while Redis is a distributed cache, independent of the application&amp;rsquo;s memory, allowing it to scale vertically as demand grows.&lt;/p&gt;
 &lt;p&gt;When a cache is first used, the required information won&amp;rsquo;t be available, necessitating a database query. Subsequent requests can retrieve data directly from the cache, significantly reducing response times compared to database queries.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;redis&#34; src=&#34;https://amandamata.github.io/img/redis.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/redis.png&#34; alt=&#34;redis&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;why-use-caching&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#why-use-caching&#34;&gt;

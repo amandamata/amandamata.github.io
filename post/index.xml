@@ -215,7 +215,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;With everything configured, you can log and inject the information you want.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;telemetry&#34; src=&#34;https://amandamata.github.io/img/telemetry.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/telemetry.png&#34; alt=&#34;telemetry&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;benefits&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#benefits&#34;&gt;
@@ -261,9 +261,9 @@
 &lt;/h2&gt;
 &lt;p&gt;We have the repository &lt;a href=&#34;https://github.com/amandamata/how-to-use-bfg&#34;&gt;how-to-use-bfg&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;In this repository, there was an &lt;code&gt;appsettings.json&lt;/code&gt; with sensitive information.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;bfg1&#34; src=&#34;https://amandamata.github.io/img/bfg1.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg1.png&#34; alt=&#34;bfg1&#34;&gt;&lt;/p&gt;
 &lt;p&gt;I deleted this sensitive information, made the commit and push, but the sensitive information still appears in the history.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;bfg2&#34; src=&#34;https://amandamata.github.io/img/bfg2.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg2.png&#34; alt=&#34;bfg2&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;prerequisites&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#prerequisites&#34;&gt;
@@ -307,7 +307,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;After following these steps, your repository&amp;rsquo;s commit history will be updated, and the sensitive information will be removed.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;bfg3&#34; src=&#34;https://amandamata.github.io/img/bfg3.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg3.png&#34; alt=&#34;bfg3&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;conclusion&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#conclusion&#34;&gt;
@@ -347,7 +347,7 @@ Removing sensitive information from the commit history is crucial for maintainin
 &lt;/h2&gt;
 &lt;p&gt;Redis is almost like a NoSQL database but excels as a cache due to its key-value storage model. The choice between Redis and Memcached depends on the use case and data volume. If you need to store session information, Memcached is a good choice. However, for extensive queries involving larger data sets, Redis is more suitable. Memcached uses the application&amp;rsquo;s memory to store data, while Redis is a distributed cache, independent of the application&amp;rsquo;s memory, allowing it to scale vertically as demand grows.&lt;/p&gt;
 &lt;p&gt;When a cache is first used, the required information won&amp;rsquo;t be available, necessitating a database query. Subsequent requests can retrieve data directly from the cache, significantly reducing response times compared to database queries.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;redis&#34; src=&#34;https://amandamata.github.io/img/redis.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/redis.png&#34; alt=&#34;redis&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;why-use-caching&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#why-use-caching&#34;&gt;
@@ -570,8 +570,7 @@ Repository:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;aws configure
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then pass your access key and token when requested.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Important, in the aws console you have a region, mine is us-east-1, you can see yours by checking on url: https://&lt;em&gt;&lt;strong&gt;us-east-1&lt;/strong&gt;&lt;/em&gt;.console.aws.amazon.com/&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Important, in the aws console you have a region, mine is us-east-1, you can see yours by checking on url: https://&lt;em&gt;&lt;strong&gt;us-east-1&lt;/strong&gt;&lt;/em&gt;.console.aws.amazon.com/&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;That region needs to be passed during aws configuration, to be able to access aws features locally.&lt;/p&gt;
 &lt;p&gt;After the configuration, you&amp;rsquo;re gonna able to execute the list buckets.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;aws s3api list-buckets
@@ -643,8 +642,7 @@ Repository:&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Console.WriteLine();
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;In the sqsCLient.GetQueueUrlAsync(&amp;ldquo;customers&amp;rdquo;) I used &amp;ldquo;customers&amp;rdquo; cuz that is the name of my queue&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;In the sqsCLient.GetQueueUrlAsync(&amp;ldquo;customers&amp;rdquo;) I used &amp;ldquo;customers&amp;rdquo; cuz that is the name of my queue&lt;/p&gt;&lt;/blockquote&gt;
 &lt;br/&gt;
 &lt;h2 id=&#34;consumer&#34; &gt;
 &lt;div&gt;
@@ -789,9 +787,9 @@ My file is at &lt;code&gt;/home/amanda/.config/Code/User/settings.json&lt;/code&
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;[csharp]&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ff5c57&#34;&gt;:&lt;/span&gt; {&lt;span style=&#34;color:#ff6ac1&#34;&gt;&amp;#34;editor.defaultFormatter&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;ms-dotnettools.csharp&amp;#34;&lt;/span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For these settings to work, you need to have the C# extension installed and enabled, and after all this, restart Omnisharp.&lt;/p&gt;
 &lt;p&gt;Here is the extension:
-&lt;img alt=&#34;brace1&#34; src=&#34;https://amandamata.github.io/img/brace1.png&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://amandamata.github.io/img/brace1.png&#34; alt=&#34;brace1&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Ctrl+Shift+P: Restart Omnisharp
-&lt;img alt=&#34;brace2&#34; src=&#34;https://amandamata.github.io/img/brace2.png&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://amandamata.github.io/img/brace2.png&#34; alt=&#34;brace2&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;everything-working-but&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#everything-working-but&#34;&gt;
@@ -801,7 +799,7 @@ My file is at &lt;code&gt;/home/amanda/.config/Code/User/settings.json&lt;/code&
 &lt;/div&gt;
 &lt;/h2&gt;
 &lt;p&gt;After all these changes, you can start using Visual Studio Code and enjoy having braces inserted on a new line&amp;hellip; BUT automatic formatting while typing is not working. To work, you need to use the Format Document option in Visual Studio Code.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;brace3&#34; src=&#34;https://amandamata.github.io/img/brace3.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/brace3.png&#34; alt=&#34;brace3&#34;&gt;&lt;/p&gt;
 &lt;p&gt;I didn&amp;rsquo;t want to keep using this option every time, so after a lot of searching, I found these settings for the editor:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;em&gt;&lt;strong&gt;editor.formatOnSave&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
@@ -1114,7 +1112,7 @@ Queues follow the FIFO (First In, First Out) principle, where the first element 
 &lt;/h2&gt;
 &lt;p&gt;Imagine we have a user API.&lt;/p&gt;
 &lt;p&gt;With this API, we can create users, update them, delete them, and receive a response for these operations, send an email to the user, and make a request to another API. In this scenario, if an email fails to send, the entire request will fail, and another request must be sent to achieve a successful response.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;queue1&#34; src=&#34;https://amandamata.github.io/img/queue1.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/queue1.png&#34; alt=&#34;queue1&#34;&gt;&lt;/p&gt;
 &lt;p&gt;However, it doesn&amp;rsquo;t have to be this way. Sending an email and making the request to another API in this flow is not crucial and can be done asynchronously later.&lt;/p&gt;
 &lt;h2 id=&#34;introducing-the-concept-of-a-queue&#34; &gt;
 &lt;div&gt;
@@ -1126,7 +1124,7 @@ Queues follow the FIFO (First In, First Out) principle, where the first element 
 &lt;/h2&gt;
 &lt;p&gt;Here enters the concept of a queue. Instead of doing all these operations synchronously, we can do only the crucial ones synchronously and the rest asynchronously by adding to the queue what can be done later.&lt;/p&gt;
 &lt;p&gt;To make this work, it&amp;rsquo;s necessary to have a consumer service that will be listening to the queue and will do something with the information in the queue, like sending an email.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;queue2&#34; src=&#34;https://amandamata.github.io/img/queue2.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/queue2.png&#34; alt=&#34;queue2&#34;&gt;&lt;/p&gt;
 &lt;p&gt;This makes your system more resilient. If something fails in the processing, the message goes back to the queue and will be reprocessed later.&lt;/p&gt;
 &lt;h2 id=&#34;benefits-of-using-queues&#34; &gt;
 &lt;div&gt;

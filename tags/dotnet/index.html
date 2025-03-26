@@ -359,7 +359,7 @@
     <nav class="noselect">
         
         
-        <a class="" href="https://amandamata.github.io/" title="">home</a>
+        <a class="" href="https://amandamata.github.io/" title="amandabytes">home</a>
         
         <a class="" href="https://amandamata.github.io/tags" title="">tags</a>
         
@@ -395,9 +395,9 @@
 
     
         <div class="content post-summary p-summary">
-            Recently, I had the opportunity to test a great C# library that significantly improves the development of an SDK.
-In later experiences develop an sdk project was something really honorous, wee need to create a lot of classes and methods to handle with the api request and response. Then, during my researchs I found Refit.
-Refit is an rest library that helps a lot during an sdk develpment, you just need to create the contract classes (if you already has in an side project is even easyer), and create the interfaces for each controller.
+            <p>Recently, I had the opportunity to test a great C# library that significantly improves the development of an SDK.</p>
+<p>In later experiences develop an sdk project was something really honorous, wee need to create a lot of classes and methods to handle with the api request and response. Then, during my researchs I found <a href="https://github.com/reactiveui/refit">Refit</a>.</p>
+<p>Refit is an rest library that helps a lot during an sdk develpment, you just need to create the contract classes (if you already has in an side project is even easyer), and create the interfaces for each controller. Simple as that.</p>
         </div>
     
     
@@ -450,8 +450,16 @@ Refit is an rest library that helps a lot during an sdk develpment, you just nee
 
     
         <div class="content post-summary p-summary">
-            Measuring method execution time is essential for optimizing applications, whether for profiling, performance monitoring, or detecting degradation over time. Although there are many tools and libraries available for this purpose, we often seek straightforward and non-intrusive solutions.
-# The Solution: MethodTimer One of the most efficient and cleanest ways to measure method performance in C# is by using the MethodTimer.Fody library. This tool automatically adds timers to the desired methods through a simple attribute, without modifying the existing code.
+            <p>Measuring method execution time is essential for optimizing applications, whether for profiling, performance monitoring, or detecting degradation over time. Although there are many tools and libraries available for this purpose, we often seek straightforward and non-intrusive solutions.</p>
+<h2 id="the-solution-methodtimer" >
+<div>
+    <a href="#the-solution-methodtimer">
+        #
+    </a>
+    The Solution: MethodTimer
+</div>
+</h2>
+<p>One of the most efficient and cleanest ways to measure method performance in C# is by using the MethodTimer.Fody library. This tool automatically adds timers to the desired methods through a simple attribute, without modifying the existing code.</p>
         </div>
     
     
@@ -501,8 +509,24 @@ Refit is an rest library that helps a lot during an sdk develpment, you just nee
 
     
         <div class="content post-summary p-summary">
-            # Introduction Recently, I had to implement a cache in an application to avoid unnecessary database queries. Having worked with Redis in the past, I realized that implementing a cache with Redis can be quite straightforward and effective when done correctly.
-# Redis vs Memcached Redis is almost like a NoSQL database but excels as a cache due to its key-value storage model. The choice between Redis and Memcached depends on the use case and data volume.
+            <h2 id="introduction" >
+<div>
+    <a href="#introduction">
+        #
+    </a>
+    Introduction
+</div>
+</h2>
+<p>Recently, I had to implement a cache in an application to avoid unnecessary database queries. Having worked with Redis in the past, I realized that implementing a cache with Redis can be quite straightforward and effective when done correctly.</p>
+<h2 id="redis-vs-memcached" >
+<div>
+    <a href="#redis-vs-memcached">
+        #
+    </a>
+    Redis vs Memcached
+</div>
+</h2>
+<p>Redis is almost like a NoSQL database but excels as a cache due to its key-value storage model. The choice between Redis and Memcached depends on the use case and data volume. If you need to store session information, Memcached is a good choice. However, for extensive queries involving larger data sets, Redis is more suitable. Memcached uses the application&rsquo;s memory to store data, while Redis is a distributed cache, independent of the application&rsquo;s memory, allowing it to scale vertically as demand grows.</p>
         </div>
     
     
@@ -552,8 +576,16 @@ Refit is an rest library that helps a lot during an sdk develpment, you just nee
 
     
         <div class="content post-summary p-summary">
-            In a previous post, I introduced the concept of queues and their usage. Now, I will explain how to implement an SQS consumer and publisher using C# and .NET.
-# SQS SQS (Simple Queue Service) is an Amazon Web Services offering that enables the sending, storing, and receiving of messages between software components at any volume, ensuring no message loss and eliminating the need for immediate availability of other services.
+            <p>In a previous post, I introduced the concept of queues and their usage. Now, I will explain how to implement an SQS consumer and publisher using C# and .NET.</p>
+<h2 id="sqs" >
+<div>
+    <a href="#sqs">
+        #
+    </a>
+    SQS
+</div>
+</h2>
+<p>SQS (Simple Queue Service) is an Amazon Web Services offering that enables the sending, storing, and receiving of messages between software components at any volume, ensuring no message loss and eliminating the need for immediate availability of other services.</p>
         </div>
     
     
@@ -603,10 +635,17 @@ Refit is an rest library that helps a lot during an sdk develpment, you just nee
 
     
         <div class="content post-summary p-summary">
-            This past week, I dedicated my mornings to a single goal: configuring Visual Studio Code to automatically insert a new line before braces {}.
-How it was:
-if (true){ // do something } How I wanted it to be:
-if (true) { // do something } The task proved to be more challenging than I expected. I found many discussions about the same issue in forums and on Stack Overflow, but no definitive solution.
+            <p>This past week, I dedicated my mornings to a single goal: configuring Visual Studio Code to automatically insert a new line before braces {}.</p>
+<p>How it was:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> <span style="color:#ff6ac1">(</span><span style="color:#ff5c57">true</span><span style="color:#ff6ac1">){</span>
+</span></span><span style="display:flex;"><span>  // <span style="color:#ff6ac1">do</span> something
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">}</span>
+</span></span></code></pre></div><p>How I wanted it to be:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> <span style="color:#ff6ac1">(</span><span style="color:#ff5c57">true</span><span style="color:#ff6ac1">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">{</span>
+</span></span><span style="display:flex;"><span>  // <span style="color:#ff6ac1">do</span> something
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">}</span>
+</span></span></code></pre></div><p>The task proved to be more challenging than I expected. I found many discussions about the same issue in forums and on Stack  Overflow, but no definitive solution. So I&rsquo;m here to share the solution I discovered.</p>
         </div>
     
     
@@ -658,7 +697,7 @@ if (true) { // do something } The task proved to be more challenging than I expe
         
 
         <div style="display: flex; align-items: center; gap:8px">
-            © amanda, 2024
+            © 2025
             
         </div>
         <div style="display:flex;align-items: center">

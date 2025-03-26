@@ -14,8 +14,16 @@
 
 <meta name="description" content="Nesta última semana, dediquei minhas manhãs a um único objetivo: configurar o Visual Studio Code para inserir automaticamente uma nova linha antes dos colchetes {}.
 Como estava:
-if (true){ // do something } Como gostaria que estivesse:
-if (true) { // do something } A tarefa se mostrou mais desafiadora do que eu esperava. Encontrei muitas discussões sobre o mesmo problema em fóruns e no Stack Overflow, mas nenhuma solução definitiva.">
+if (true){
+  // do something
+}
+Como gostaria que estivesse:
+if (true)
+{
+  // do something
+}
+A tarefa se mostrou mais desafiadora do que eu esperava.
+Encontrei muitas discussões sobre o mesmo problema em fóruns e no Stack Overflow, mas nenhuma solução definitiva. Então estou aqui para compartilhar a solução que descobri.">
 
 
 
@@ -361,7 +369,7 @@ if (true) { // do something } A tarefa se mostrou mais desafiadora do que eu esp
     <nav class="noselect">
         
         
-        <a class="" href="https://amandamata.github.io/pt-pt/" title="">início</a>
+        <a class="" href="https://amandamata.github.io/pt-pt/" title="amandabytes">início</a>
         
         <a class="" href="https://amandamata.github.io/pt-pt/tags" title="">tags</a>
         
@@ -531,10 +539,10 @@ O meu arquivo está em <code>/home/amanda/.config/Code/User/settings.json</code>
 </span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;[csharp]&#34;</span><span style="color:#ff5c57">:</span> {<span style="color:#ff6ac1">&#34;editor.defaultFormatter&#34;</span>: <span style="color:#5af78e">&#34;ms-dotnettools.csharp&#34;</span>}
 </span></span></code></pre></div><p>Para essas configurações funcionarem, é necessário ter a extensão C# instalada e habilitada, e depois de tudo isso, reiniciar o omnisharp.</p>
 <p>Essa é a extensão:
-<img alt="brace1" src="/img/brace1.png"></p>
+<img src="/img/brace1.png" alt="brace1"></p>
 <p>Restart omnisharp
 <code>Ctrl+Shift+P</code>
-<img alt="brace2" src="/img/brace2.png"></p>
+<img src="/img/brace2.png" alt="brace2"></p>
 <h2 id="tudo-funcionando-mas" >
 <div>
     <a href="#tudo-funcionando-mas">
@@ -546,7 +554,7 @@ O meu arquivo está em <code>/home/amanda/.config/Code/User/settings.json</code>
 <p>Depois de todas essas alterações, você pode começar a utilizar o visual studio code e aproveitar os colchetes sendo inseridos em uma nova linha&hellip;
 MAS
 A formatação automática durante a digitação não está funcionando, para funcionar é necessário utilizar a opção Format Document no Visual Studio Code.</p>
-<p><img alt="brace3" src="/img/brace3.png"></p>
+<p><img src="/img/brace3.png" alt="brace3"></p>
 <p>Eu não queria ficar utilizando essa opção toda vez, então, depois de muita busca, eu encontrei essas configurações para o editor:</p>
 <ul>
 <li><em><strong>editor.formatOnSave</strong></em></li>
@@ -575,19 +583,6 @@ Encontrei uma <a href="https://github.com/microsoft/vscode-cpptools/issues/1419"
     
 
     
-        
-
-
-
-
-
-
-
-
-
-    
-
-    
 
     
 
@@ -598,7 +593,7 @@ Encontrei uma <a href="https://github.com/microsoft/vscode-cpptools/issues/1419"
         
 
         <div style="display: flex; align-items: center; gap:8px">
-            © amanda, 2024
+            © 2025
             
         </div>
         <div style="display:flex;align-items: center">

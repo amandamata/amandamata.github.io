@@ -223,7 +223,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Com tudo configurado, você pode logar e injetar as informações que desejar.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;telemetry&#34; src=&#34;https://amandamata.github.io/img/telemetry.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/telemetry.png&#34; alt=&#34;telemetry&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;benefícios&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#benef%c3%adcios&#34;&gt;
@@ -269,9 +269,9 @@
 &lt;/h2&gt;
 &lt;p&gt;Temos o repositório &lt;a href=&#34;https://github.com/amandamata/how-to-use-bfg&#34;&gt;how-to-use-bfg&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Nesse repositório existia um &lt;code&gt;appsettings.json&lt;/code&gt; com informações sensíveis.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;bfg1&#34; src=&#34;https://amandamata.github.io/img/bfg1.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg1.png&#34; alt=&#34;bfg1&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Eu excluí essa informação sensível, fiz o commit e push, mas no histórico essa informação sensível ainda aparece.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;bfg2&#34; src=&#34;https://amandamata.github.io/img/bfg2.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg2.png&#34; alt=&#34;bfg2&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;pré-requisitos&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#pr%c3%a9-requisitos&#34;&gt;
@@ -323,7 +323,7 @@
 &lt;/ol&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git push
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Após seguir esses passos, o histórico de commit do seu repositório será atualizado e os dados sensiveis serão removidos.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;bfg3&#34; src=&#34;https://amandamata.github.io/img/bfg3.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/bfg3.png&#34; alt=&#34;bfg3&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;conclusão&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#conclus%c3%a3o&#34;&gt;
@@ -362,7 +362,7 @@
 &lt;/h2&gt;
 &lt;p&gt;Redis é quase como um banco de dados NoSQL, mas se destaca como um cache devido ao seu modelo de armazenamento em chave-valor. A escolha entre Redis e Memcached depende do caso de uso e do volume de dados. Se você precisa armazenar informações de sessão, Memcached é uma boa escolha. No entanto, para consultas extensas envolvendo conjuntos de dados maiores, o Redis é mais adequado. Memcached usa a memória da aplicação para armazenar dados, enquanto o Redis é um cache distribuído, independente da memória da aplicação, permitindo escalonamento vertical conforme a demanda cresce.&lt;/p&gt;
 &lt;p&gt;Quando um cache é usado pela primeira vez, a informação necessária não estará disponível, exigindo uma consulta ao banco de dados. Solicitações subsequentes podem recuperar dados diretamente do cache, reduzindo significativamente os tempos de resposta em comparação com as consultas ao banco de dados.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;redis&#34; src=&#34;https://amandamata.github.io/img/redis.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/redis.png&#34; alt=&#34;redis&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;por-que-usar-cache&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#por-que-usar-cache&#34;&gt;
@@ -657,8 +657,7 @@ Repository:&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Console.WriteLine();
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;No sqsCLient.GetQueueUrlAsync(&amp;ldquo;customers&amp;rdquo;) eu utilizei &amp;ldquo;customers&amp;rdquo; porque esse é o nome da minha fila&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;No sqsCLient.GetQueueUrlAsync(&amp;ldquo;customers&amp;rdquo;) eu utilizei &amp;ldquo;customers&amp;rdquo; porque esse é o nome da minha fila&lt;/p&gt;&lt;/blockquote&gt;
 &lt;br/&gt;
 &lt;h2 id=&#34;consumer&#34; &gt;
 &lt;div&gt;
@@ -804,10 +803,10 @@ O meu arquivo está em &lt;code&gt;/home/amanda/.config/Code/User/settings.json&
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;[csharp]&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ff5c57&#34;&gt;:&lt;/span&gt; {&lt;span style=&#34;color:#ff6ac1&#34;&gt;&amp;#34;editor.defaultFormatter&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;ms-dotnettools.csharp&amp;#34;&lt;/span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Para essas configurações funcionarem, é necessário ter a extensão C# instalada e habilitada, e depois de tudo isso, reiniciar o omnisharp.&lt;/p&gt;
 &lt;p&gt;Essa é a extensão:
-&lt;img alt=&#34;brace1&#34; src=&#34;https://amandamata.github.io/img/brace1.png&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://amandamata.github.io/img/brace1.png&#34; alt=&#34;brace1&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Restart omnisharp
 &lt;code&gt;Ctrl+Shift+P&lt;/code&gt;
-&lt;img alt=&#34;brace2&#34; src=&#34;https://amandamata.github.io/img/brace2.png&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://amandamata.github.io/img/brace2.png&#34; alt=&#34;brace2&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;tudo-funcionando-mas&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#tudo-funcionando-mas&#34;&gt;
@@ -819,7 +818,7 @@ O meu arquivo está em &lt;code&gt;/home/amanda/.config/Code/User/settings.json&
 &lt;p&gt;Depois de todas essas alterações, você pode começar a utilizar o visual studio code e aproveitar os colchetes sendo inseridos em uma nova linha&amp;hellip;
 MAS
 A formatação automática durante a digitação não está funcionando, para funcionar é necessário utilizar a opção Format Document no Visual Studio Code.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;brace3&#34; src=&#34;https://amandamata.github.io/img/brace3.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/brace3.png&#34; alt=&#34;brace3&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Eu não queria ficar utilizando essa opção toda vez, então, depois de muita busca, eu encontrei essas configurações para o editor:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;em&gt;&lt;strong&gt;editor.formatOnSave&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
@@ -1133,7 +1132,7 @@ As filas seguem o princípio FIFO (First In, First Out), onde o primeiro element
 &lt;p&gt;Imagine que temos uma API de usuários.&lt;/p&gt;
 &lt;p&gt;Com essa API, podemos criar usuários, atualiza-lós, deletá-los e receber uma resposta dessas operações, enviar um email para o usuário e fazer uma requisição para outra API.
 Nesse cenário, se ao enviar um um e-mail ocorrer uma falha, toda a requisição falhará, e para obter uma resposta de sucesso será necessário enviar outro request.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;queue1&#34; src=&#34;https://amandamata.github.io/img/queue1.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/queue1.png&#34; alt=&#34;queue1&#34;&gt;&lt;/p&gt;
 &lt;p&gt;No entanto, isso não precisa ser assim. Enviar um e-mail e fazer a solicitação para outra API nesse fluxo não é crucial e pode ser feito de forma assíncrona posteriormente.&lt;/p&gt;
 &lt;h2 id=&#34;introduzindo-o-conceito-de-fila&#34; &gt;
 &lt;div&gt;
@@ -1145,7 +1144,7 @@ Nesse cenário, se ao enviar um um e-mail ocorrer uma falha, toda a requisição
 &lt;/h2&gt;
 &lt;p&gt;Aqui entra o conceito de fila. Em vez de fazer todas essas operações de forma síncrona, podemos fazer apenas as operações cruciais de forma síncrona e as demais de forma assíncrona, adicionando na fila o que pode ser feito depois.&lt;/p&gt;
 &lt;p&gt;Para que isso funcione, é necessário ter um serviço consumidor que ficará ouvindo a fila e fará algo com as informações nela contidas, como enviar um e-mail.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;queue2&#34; src=&#34;https://amandamata.github.io/img/queue2.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://amandamata.github.io/img/queue2.png&#34; alt=&#34;queue2&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Isso torna seu sistema mais resiliente. Se algo falhar no processamento, a mensagem volta para a fila e será reprocessada posteriormente.&lt;/p&gt;
 &lt;h2 id=&#34;benefícios-de-usar-filas&#34; &gt;
 &lt;div&gt;
@@ -1246,15 +1245,6 @@ Nesse cenário, se ao enviar um um e-mail ocorrer uma falha, toda a requisição
 &lt;/div&gt;
 &lt;/h3&gt;
 &lt;p&gt;Se desejar entrar em contato comigo, você pode me encontrar no &lt;strong&gt;&lt;a href=&#34;https://www.linkedin.com/in/amanda-mata/&#34;&gt;LinkedIn&lt;/a&gt;&lt;/strong&gt; ou enviar um e-mail para &lt;strong&gt;&lt;a href=&#34;mailto:amanda.mata@live.com&#34;&gt;amanda.mata@live.com&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
-&lt;h4 id=&#34;me-pague-um-café&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#me-pague-um-caf%c3%a9&#34;&gt;
-        ###
-    &lt;/a&gt;
-    Me pague um café
-&lt;/div&gt;
-&lt;/h4&gt;
-&lt;p&gt;BTC Wallet: &lt;code&gt;bc1qjy622x7qh6k453tdgcu7hhhj7agv6nqnysfdlntx6uf0tp4g8ujs0vcd9a&lt;/code&gt;&lt;/p&gt;
 </description>
     </item>
     

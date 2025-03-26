@@ -359,7 +359,7 @@
     <nav class="noselect">
         
         
-        <a class="" href="https://amandamata.github.io/pt-pt/" title="">início</a>
+        <a class="" href="https://amandamata.github.io/pt-pt/" title="amandabytes">início</a>
         
         <a class="" href="https://amandamata.github.io/pt-pt/tags" title="">tags</a>
         
@@ -395,9 +395,9 @@
 
     
         <div class="content post-summary p-summary">
-            Recentemente eu pude testar uma ótima biblioteca C# que melhora muito o desenvolvimento de uma SDK.
-Em experiências anteriores, desenvolver um projeto de SDK era algo realmente trabalhoso. Era necessário criar muitas classes e métodos para lidar com as requisições e respostas da API. Então, durante minhas pesquisas, encontrei o Refit.
-Refit é uma biblioteca REST que ajuda muito durante o desenvolvimento de um SDK. Você só precisa criar as classes de contrato (se você já tiver em um projeto paralelo, é ainda mais fácil) e criar as interfaces para cada controller.
+            <p>Recentemente eu pude testar uma ótima biblioteca C# que melhora muito o desenvolvimento de uma SDK.</p>
+<p>Em experiências anteriores, desenvolver um projeto de SDK era algo realmente trabalhoso. Era necessário criar muitas classes e métodos para lidar com as requisições e respostas da API. Então, durante minhas pesquisas, encontrei o <a href="https://github.com/reactiveui/refit">Refit</a>.</p>
+<p>Refit é uma biblioteca REST que ajuda muito durante o desenvolvimento de um SDK. Você só precisa criar as classes de contrato (se você já tiver em um projeto paralelo, é ainda mais fácil) e criar as interfaces para cada controller. Simples assim.</p>
         </div>
     
     
@@ -450,8 +450,24 @@ Refit é uma biblioteca REST que ajuda muito durante o desenvolvimento de um SDK
 
     
         <div class="content post-summary p-summary">
-            # Introdução Medir o tempo de execução de métodos é essencial para otimizar aplicações, seja para profiling, monitoramento de performance ou detecção de degradações ao longo do tempo. Embora existam várias ferramentas e bibliotecas disponíveis para essa finalidade, muitas vezes procuramos soluções que sejam diretas e não intrusivas.
-# A Solução: MethodTimer Uma das maneiras mais eficientes e limpas de medir a performance de métodos em C# é utilizando a biblioteca MethodTimer.
+            <h2 id="introdução" >
+<div>
+    <a href="#introdu%c3%a7%c3%a3o">
+        #
+    </a>
+    Introdução
+</div>
+</h2>
+<p>Medir o tempo de execução de métodos é essencial para otimizar aplicações, seja para profiling, monitoramento de performance ou detecção de degradações ao longo do tempo. Embora existam várias ferramentas e bibliotecas disponíveis para essa finalidade, muitas vezes procuramos soluções que sejam diretas e não intrusivas.</p>
+<h2 id="a-solução-methodtimer" >
+<div>
+    <a href="#a-solu%c3%a7%c3%a3o-methodtimer">
+        #
+    </a>
+    A Solução: MethodTimer
+</div>
+</h2>
+<p>Uma das maneiras mais eficientes e limpas de medir a performance de métodos em C# é utilizando a biblioteca MethodTimer.Fody. Essa ferramenta permite adicionar automaticamente cronômetros aos métodos desejados através de um simples atributo, sem a necessidade de modificar o código existente.</p>
         </div>
     
     
@@ -501,8 +517,24 @@ Refit é uma biblioteca REST que ajuda muito durante o desenvolvimento de um SDK
 
     
         <div class="content post-summary p-summary">
-            # Introdução Recentemente, precisei implementar um cache em uma aplicação para evitar consultas desnecessárias ao banco de dados. Já trabalhei com Redis no passado, e percebi que a implementação de um cache com Redis pode ser bastante direta e eficaz quando feita corretamente.
-# Redis vs Memcached Redis é quase como um banco de dados NoSQL, mas se destaca como um cache devido ao seu modelo de armazenamento em chave-valor.
+            <h2 id="introdução" >
+<div>
+    <a href="#introdu%c3%a7%c3%a3o">
+        #
+    </a>
+    Introdução
+</div>
+</h2>
+<p>Recentemente, precisei implementar um cache em uma aplicação para evitar consultas desnecessárias ao banco de dados. Já trabalhei com Redis no passado, e percebi que a implementação de um cache com Redis pode ser bastante direta e eficaz quando feita corretamente.</p>
+<h2 id="redis-vs-memcached" >
+<div>
+    <a href="#redis-vs-memcached">
+        #
+    </a>
+    Redis vs Memcached
+</div>
+</h2>
+<p>Redis é quase como um banco de dados NoSQL, mas se destaca como um cache devido ao seu modelo de armazenamento em chave-valor. A escolha entre Redis e Memcached depende do caso de uso e do volume de dados. Se você precisa armazenar informações de sessão, Memcached é uma boa escolha. No entanto, para consultas extensas envolvendo conjuntos de dados maiores, o Redis é mais adequado. Memcached usa a memória da aplicação para armazenar dados, enquanto o Redis é um cache distribuído, independente da memória da aplicação, permitindo escalonamento vertical conforme a demanda cresce.</p>
         </div>
     
     
@@ -552,8 +584,16 @@ Refit é uma biblioteca REST que ajuda muito durante o desenvolvimento de um SDK
 
     
         <div class="content post-summary p-summary">
-            Em um post anterior, introduzi o conceito de filas e seu uso. Agora, explicarei como implementar um Consumer (consumidor) e Publisher (publicador) SQS usando C# e .NET.
-# SQS SQS (Simple Queue Service) é um serviço da Amazon Web Services que permite enviar, armazenar e receber mensagens entre componentes de software em qualquer volume, garantindo que nenhuma mensagem seja perdida e eliminando a necessidade de disponibilidade imediata de outros serviços.
+            <p>Em um post anterior, introduzi o conceito de filas e seu uso. Agora, explicarei como implementar um Consumer (consumidor) e Publisher (publicador) SQS usando C# e .NET.</p>
+<h2 id="sqs" >
+<div>
+    <a href="#sqs">
+        #
+    </a>
+    SQS
+</div>
+</h2>
+<p>SQS (Simple Queue Service) é um serviço da Amazon Web Services que permite enviar, armazenar e receber mensagens entre componentes de software em qualquer volume, garantindo que nenhuma mensagem seja perdida e eliminando a necessidade de disponibilidade imediata de outros serviços.</p>
         </div>
     
     
@@ -603,10 +643,18 @@ Refit é uma biblioteca REST que ajuda muito durante o desenvolvimento de um SDK
 
     
         <div class="content post-summary p-summary">
-            Nesta última semana, dediquei minhas manhãs a um único objetivo: configurar o Visual Studio Code para inserir automaticamente uma nova linha antes dos colchetes {}.
-Como estava:
-if (true){ // do something } Como gostaria que estivesse:
-if (true) { // do something } A tarefa se mostrou mais desafiadora do que eu esperava. Encontrei muitas discussões sobre o mesmo problema em fóruns e no Stack Overflow, mas nenhuma solução definitiva.
+            <p>Nesta última semana, dediquei minhas manhãs a um único objetivo: configurar o Visual Studio Code para inserir automaticamente uma nova linha antes dos colchetes <code>{}</code>.</p>
+<p>Como estava:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> (<span style="color:#ff6ac1">true</span>){
+</span></span><span style="display:flex;"><span>  <span style="color:#78787e">// do something</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Como gostaria que estivesse:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> (<span style="color:#ff6ac1">true</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#78787e">// do something</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>A tarefa se mostrou mais desafiadora do que eu esperava.
+Encontrei muitas discussões sobre o mesmo problema em fóruns e no Stack Overflow, mas nenhuma solução definitiva. Então estou aqui para compartilhar a solução que descobri.</p>
         </div>
     
     
@@ -658,7 +706,7 @@ if (true) { // do something } A tarefa se mostrou mais desafiadora do que eu esp
         
 
         <div style="display: flex; align-items: center; gap:8px">
-            © amanda, 2024
+            © 2025
             
         </div>
         <div style="display:flex;align-items: center">
